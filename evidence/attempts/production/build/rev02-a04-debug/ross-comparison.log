@@ -1,0 +1,1 @@
+A04 pinned ROSS torsional C comparison: PASS [{'signed_ratio': 1.0, 'max_absolute_error': 0.0, 'status': 'PASS'}, {'signed_ratio': 2.5, 'max_absolute_error': 0.0, 'status': 'PASS'}, {'signed_ratio': -2.5, 'max_absolute_error': 0.0, 'status': 'PASS'}]

@@ -1,0 +1,37 @@
+{
+  "repository": "https://github.com/petrobras/ross",
+  "commit": "3a258dc84113425534e8ca0be5336b2ba4baa83a",
+  "access": "GitHub connector, exact commit reference",
+  "files": {
+    "disk_element.py": {
+      "git_blob_sha1": "330e0745a8d2898967f2b098369c6529db758d1f",
+      "sha256": "6ff37f5188bc8eff9d8961cdd326496f7b8de2255f01a70655894584b6fa3d53",
+      "path": "ross/disk_element.py"
+    },
+    "shaft_element.py": {
+      "git_blob_sha1": "df74525956dc3b27d1cb675e0997146b4a835af3",
+      "sha256": "46d6bdf328dad4958a3b3398c28c8424c6057775ff461a646627339104cb89f6",
+      "path": "ross/shaft_element.py"
+    },
+    "rotor_assembly.py": {
+      "git_blob_sha1": "54cfd2cb6c95e990eb06a9b993b49fe0911d5754",
+      "sha256": "c5e6562d092426ffdb44641a1fb2092c6e5df8e3e44be437749b3711f7633c09",
+      "path": "ross/rotor_assembly.py"
+    },
+    "utils.py": {
+      "git_blob_sha1": "b4a02fc3284f800b21ec9632e54ce7de6e7d7f0d",
+      "sha256": "08708dc134682b40dcb8259527cdd9586e9f3eac26c0b510eda29355e05eb8d9",
+      "path": "ross/utils.py"
+    },
+    "LICENSE.md": {
+      "git_blob_sha1": "4cb345f4b743d1e74e1d49e09584bbf13afd3b35",
+      "sha256": "d7b9a998022830c169d38c3f679d0f145c8dfd999daede91aa818c4e44887b9e",
+      "path": "LICENSE.md"
+    },
+    "coupling_element.py": {
+      "git_blob_sha1": "4e273b9939958c44022f63bb1e11102f8c70794f",
+      "sha256": "c321ef3b45b8b34478af57092cf7f3f8640bb350de0486ef1a3ccaf97c3be49d",
+      "path": "ross/coupling_element.py"
+    }
+  }
+}

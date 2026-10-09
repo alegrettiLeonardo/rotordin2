@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "head": "539134eaee209f6de1c0c91e705fe92a75a28412",
+  "tree": "64432e4d80a0d1c91aee282f60b53452166d58c6",
+  "reviewed_checkpoint": "644b85a7a486ae45ecdc5f575c8a2210f5ad6bfd",
+  "clean_tracked_and_untracked_tree": true,
+  "export_and_restored_bundle_identical_files": 2688,
+  "restored_executable_modes_identical": true,
+  "bundle_sha256": "6dcf620ed9c6caac99379b03476ee81c2a3684996b46a404dbb74e08b9360706",
+  "binaries": [
+    {
+      "path": "bin/rotordin2",
+      "sha256": "029cefaa943b910932324f37aa7148e3b6bf41adbbcfddb77f362b3ffc03ade8",
+      "tested_source_head": "539134eaee209f6de1c0c91e705fe92a75a28412"
+    },
+    {
+      "path": "bin/rotordin2-debug",
+      "sha256": "c86961caf5b8b107e859543f1f884b758d7508e24119e9fe7127ae8f16c603b8",
+      "tested_source_head": "539134eaee209f6de1c0c91e705fe92a75a28412"
+    }
+  ],
+  "books_redistributed": false
+}

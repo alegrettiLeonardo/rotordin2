@@ -1,0 +1,582 @@
+make: Entering directory '/workspace/scratch/8c0efd7393df/rev_work/final_source_fcb2cde823e4'
+INTEGRITY: PASS; solver original=80; fontes LAPACK selecionados=213
+FC solver: src/source/blockd.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/blockd.f90" -o "build/debug/obj/solver/blockd.o"
+FC solver: src/source/rd_sys.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/rd_sys.f90" -o "build/debug/obj/solver/rd_sys.o"
+FC solver: src/source/shaft_timoshenko_cowper.f90
+FC solver: src/source/rd_kinds.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/rd_kinds.f90" -o "build/debug/obj/solver/rd_kinds.o"
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/shaft_timoshenko_cowper.f90" -o "build/debug/obj/solver/shaft_timoshenko_cowper.o"
+FC solver: src/source/torsion/tinit.f90
+FC solver: src/source/torsion/tblockd.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/tblockd.f90" -o "build/debug/obj/solver/torsion/tblockd.o"
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/tinit.f90" -o "build/debug/obj/solver/torsion/tinit.o"
+FC solver: src/source/torsion/tmatfun.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/tmatfun.f90" -o "build/debug/obj/solver/torsion/tmatfun.o"
+FC solver: src/source/torsion/tpredad.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/tpredad.f90" -o "build/debug/obj/solver/torsion/tpredad.o"
+FC solver: src/source/torsion/tsecdl.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/tsecdl.f90" -o "build/debug/obj/solver/torsion/tsecdl.o"
+FC solver: src/source/torsion/tstrange.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/tstrange.f90" -o "build/debug/obj/solver/torsion/tstrange.o"
+FC solver: src/source/transient_newmark.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/transient_newmark.f90" -o "build/debug/obj/solver/transient_newmark.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/dasum.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/dasum.f" -o "build/debug/obj/lapack/BLAS/SRC/dasum.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/daxpy.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/daxpy.f" -o "build/debug/obj/lapack/BLAS/SRC/daxpy.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/dcabs1.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/dcabs1.f" -o "build/debug/obj/lapack/BLAS/SRC/dcabs1.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/dcopy.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/dcopy.f" -o "build/debug/obj/lapack/BLAS/SRC/dcopy.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/ddot.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/ddot.f" -o "build/debug/obj/lapack/BLAS/SRC/ddot.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/dgemm.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/dgemm.f" -o "build/debug/obj/lapack/BLAS/SRC/dgemm.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/dgemv.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/dgemv.f" -o "build/debug/obj/lapack/BLAS/SRC/dgemv.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/dger.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/dger.f" -o "build/debug/obj/lapack/BLAS/SRC/dger.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/dnrm2.f90
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/dnrm2.f90" -o "build/debug/obj/lapack/BLAS/SRC/dnrm2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/drot.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/drot.f" -o "build/debug/obj/lapack/BLAS/SRC/drot.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/dscal.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/dscal.f" -o "build/debug/obj/lapack/BLAS/SRC/dscal.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/dswap.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/dswap.f" -o "build/debug/obj/lapack/BLAS/SRC/dswap.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/dsymm.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/dsymm.f" -o "build/debug/obj/lapack/BLAS/SRC/dsymm.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/dsymv.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/dsymv.f" -o "build/debug/obj/lapack/BLAS/SRC/dsymv.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/dsyr2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/dsyr2.f" -o "build/debug/obj/lapack/BLAS/SRC/dsyr2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/dsyr2k.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/dsyr2k.f" -o "build/debug/obj/lapack/BLAS/SRC/dsyr2k.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/dsyrk.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/dsyrk.f" -o "build/debug/obj/lapack/BLAS/SRC/dsyrk.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/dtrmm.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/dtrmm.f" -o "build/debug/obj/lapack/BLAS/SRC/dtrmm.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/dtrmv.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/dtrmv.f" -o "build/debug/obj/lapack/BLAS/SRC/dtrmv.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/dtrsm.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/dtrsm.f" -o "build/debug/obj/lapack/BLAS/SRC/dtrsm.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/dtrsv.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/dtrsv.f" -o "build/debug/obj/lapack/BLAS/SRC/dtrsv.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/dzasum.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/dzasum.f" -o "build/debug/obj/lapack/BLAS/SRC/dzasum.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/dznrm2.f90
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/dznrm2.f90" -o "build/debug/obj/lapack/BLAS/SRC/dznrm2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/idamax.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/idamax.f" -o "build/debug/obj/lapack/BLAS/SRC/idamax.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/izamax.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/izamax.f" -o "build/debug/obj/lapack/BLAS/SRC/izamax.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/lsame.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/lsame.f" -o "build/debug/obj/lapack/BLAS/SRC/lsame.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/zaxpy.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/zaxpy.f" -o "build/debug/obj/lapack/BLAS/SRC/zaxpy.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/zcopy.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/zcopy.f" -o "build/debug/obj/lapack/BLAS/SRC/zcopy.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/zdotc.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/zdotc.f" -o "build/debug/obj/lapack/BLAS/SRC/zdotc.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/zdotu.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/zdotu.f" -o "build/debug/obj/lapack/BLAS/SRC/zdotu.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/zdrot.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/zdrot.f" -o "build/debug/obj/lapack/BLAS/SRC/zdrot.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/zdscal.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/zdscal.f" -o "build/debug/obj/lapack/BLAS/SRC/zdscal.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/zgemm.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/zgemm.f" -o "build/debug/obj/lapack/BLAS/SRC/zgemm.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/zgemv.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/zgemv.f" -o "build/debug/obj/lapack/BLAS/SRC/zgemv.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/zgerc.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/zgerc.f" -o "build/debug/obj/lapack/BLAS/SRC/zgerc.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/zgeru.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/zgeru.f" -o "build/debug/obj/lapack/BLAS/SRC/zgeru.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/zswap.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/zswap.f" -o "build/debug/obj/lapack/BLAS/SRC/zswap.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/zscal.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/zscal.f" -o "build/debug/obj/lapack/BLAS/SRC/zscal.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/ztrmm.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/ztrmm.f" -o "build/debug/obj/lapack/BLAS/SRC/ztrmm.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/ztrsv.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/ztrsv.f" -o "build/debug/obj/lapack/BLAS/SRC/ztrsv.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/BLAS/SRC/ztrsm.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/BLAS/SRC/ztrsm.f" -o "build/debug/obj/lapack/BLAS/SRC/ztrsm.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/INSTALL/dlamch.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/INSTALL/dlamch.f" -o "build/debug/obj/lapack/INSTALL/dlamch.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dgebak.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dgebak.f" -o "build/debug/obj/lapack/SRC/dgebak.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dgebal.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dgebal.f" -o "build/debug/obj/lapack/SRC/dgebal.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dgecon.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dgecon.f" -o "build/debug/obj/lapack/SRC/dgecon.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dgees.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dgees.f" -o "build/debug/obj/lapack/SRC/dgees.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dgehd2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dgehd2.f" -o "build/debug/obj/lapack/SRC/dgehd2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dgehrd.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dgehrd.f" -o "build/debug/obj/lapack/SRC/dgehrd.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dgeqr2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dgeqr2.f" -o "build/debug/obj/lapack/SRC/dgeqr2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dgeqrf.f
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dgerq2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dgeqrf.f" -o "build/debug/obj/lapack/SRC/dgeqrf.o"
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dgerq2.f" -o "build/debug/obj/lapack/SRC/dgerq2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dgesc2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dgesc2.f" -o "build/debug/obj/lapack/SRC/dgesc2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dgetc2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dgetc2.f" -o "build/debug/obj/lapack/SRC/dgetc2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dgetrf.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dgetrf.f" -o "build/debug/obj/lapack/SRC/dgetrf.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dgetrs.f
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dgetrf2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dgetrs.f" -o "build/debug/obj/lapack/SRC/dgetrs.o"
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dgetrf2.f" -o "build/debug/obj/lapack/SRC/dgetrf2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dggbak.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dggbak.f" -o "build/debug/obj/lapack/SRC/dggbak.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dggbal.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dggbal.f" -o "build/debug/obj/lapack/SRC/dggbal.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dggevx.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dggevx.f" -o "build/debug/obj/lapack/SRC/dggevx.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dgghrd.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dgghrd.f" -o "build/debug/obj/lapack/SRC/dgghrd.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dhgeqz.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dhgeqz.f" -o "build/debug/obj/lapack/SRC/dhgeqz.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dhseqr.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dhseqr.f" -o "build/debug/obj/lapack/SRC/dhseqr.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/disnan.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/disnan.f" -o "build/debug/obj/lapack/SRC/disnan.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlacn2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlacn2.f" -o "build/debug/obj/lapack/SRC/dlacn2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlacpy.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlacpy.f" -o "build/debug/obj/lapack/SRC/dlacpy.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dladiv.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dladiv.f" -o "build/debug/obj/lapack/SRC/dladiv.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlae2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlae2.f" -o "build/debug/obj/lapack/SRC/dlae2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlaev2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlaev2.f" -o "build/debug/obj/lapack/SRC/dlaev2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlaexc.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlaexc.f" -o "build/debug/obj/lapack/SRC/dlaexc.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlag2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlag2.f" -o "build/debug/obj/lapack/SRC/dlag2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlagv2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlagv2.f" -o "build/debug/obj/lapack/SRC/dlagv2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlahqr.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlahqr.f" -o "build/debug/obj/lapack/SRC/dlahqr.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlahr2.f
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlaisnan.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlahr2.f" -o "build/debug/obj/lapack/SRC/dlahr2.o"
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlaisnan.f" -o "build/debug/obj/lapack/SRC/dlaisnan.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlaln2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlaln2.f" -o "build/debug/obj/lapack/SRC/dlaln2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlange.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlange.f" -o "build/debug/obj/lapack/SRC/dlange.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlanhs.f
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlanst.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlanhs.f" -o "build/debug/obj/lapack/SRC/dlanhs.o"
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlanst.f" -o "build/debug/obj/lapack/SRC/dlanst.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlansy.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlansy.f" -o "build/debug/obj/lapack/SRC/dlansy.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlanv2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlanv2.f" -o "build/debug/obj/lapack/SRC/dlanv2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlapy2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlapy2.f" -o "build/debug/obj/lapack/SRC/dlapy2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlapy3.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlapy3.f" -o "build/debug/obj/lapack/SRC/dlapy3.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlaqr0.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlaqr0.f" -o "build/debug/obj/lapack/SRC/dlaqr0.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlaqr1.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlaqr1.f" -o "build/debug/obj/lapack/SRC/dlaqr1.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlaqr2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlaqr2.f" -o "build/debug/obj/lapack/SRC/dlaqr2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlaqr3.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlaqr3.f" -o "build/debug/obj/lapack/SRC/dlaqr3.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlaqr4.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlaqr4.f" -o "build/debug/obj/lapack/SRC/dlaqr4.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlaqr5.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlaqr5.f" -o "build/debug/obj/lapack/SRC/dlaqr5.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlarf.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlarf.f" -o "build/debug/obj/lapack/SRC/dlarf.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlarf1f.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlarf1f.f" -o "build/debug/obj/lapack/SRC/dlarf1f.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlarf1l.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlarf1l.f" -o "build/debug/obj/lapack/SRC/dlarf1l.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlarfb.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlarfb.f" -o "build/debug/obj/lapack/SRC/dlarfb.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlarfg.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlarfg.f" -o "build/debug/obj/lapack/SRC/dlarfg.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlarft.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlarft.f" -o "build/debug/obj/lapack/SRC/dlarft.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlarfx.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlarfx.f" -o "build/debug/obj/lapack/SRC/dlarfx.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/la_constants.f90
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/la_constants.f90" -o "build/debug/obj/lapack/SRC/la_constants.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlas2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlas2.f" -o "build/debug/obj/lapack/SRC/dlas2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlascl.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlascl.f" -o "build/debug/obj/lapack/SRC/dlascl.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlaset.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlaset.f" -o "build/debug/obj/lapack/SRC/dlaset.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlasq2.f
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlasq1.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlasq2.f" -o "build/debug/obj/lapack/SRC/dlasq2.o"
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlasq1.f" -o "build/debug/obj/lapack/SRC/dlasq1.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlasq3.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlasq3.f" -o "build/debug/obj/lapack/SRC/dlasq3.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlasq4.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlasq4.f" -o "build/debug/obj/lapack/SRC/dlasq4.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlasq5.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlasq5.f" -o "build/debug/obj/lapack/SRC/dlasq5.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlasq6.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlasq6.f" -o "build/debug/obj/lapack/SRC/dlasq6.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlasr.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlasr.f" -o "build/debug/obj/lapack/SRC/dlasr.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlasrt.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlasrt.f" -o "build/debug/obj/lapack/SRC/dlasrt.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/la_xisnan.F90
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/la_xisnan.F90" -o "build/debug/obj/lapack/SRC/la_xisnan.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlasv2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlasv2.f" -o "build/debug/obj/lapack/SRC/dlasv2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlaswp.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlaswp.f" -o "build/debug/obj/lapack/SRC/dlaswp.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlasy2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlasy2.f" -o "build/debug/obj/lapack/SRC/dlasy2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlatdf.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlatdf.f" -o "build/debug/obj/lapack/SRC/dlatdf.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlatrd.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlatrd.f" -o "build/debug/obj/lapack/SRC/dlatrd.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlatrs.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlatrs.f" -o "build/debug/obj/lapack/SRC/dlatrs.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dorg2l.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dorg2l.f" -o "build/debug/obj/lapack/SRC/dorg2l.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dorg2r.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dorg2r.f" -o "build/debug/obj/lapack/SRC/dorg2r.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dorghr.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dorghr.f" -o "build/debug/obj/lapack/SRC/dorghr.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dorgql.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dorgql.f" -o "build/debug/obj/lapack/SRC/dorgql.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dorgqr.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dorgqr.f" -o "build/debug/obj/lapack/SRC/dorgqr.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dorgr2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dorgr2.f" -o "build/debug/obj/lapack/SRC/dorgr2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dorgtr.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dorgtr.f" -o "build/debug/obj/lapack/SRC/dorgtr.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dormhr.f
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dorm2r.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dormhr.f" -o "build/debug/obj/lapack/SRC/dormhr.o"
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dorm2r.f" -o "build/debug/obj/lapack/SRC/dorm2r.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dormqr.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dormqr.f" -o "build/debug/obj/lapack/SRC/dormqr.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dormr2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dormr2.f" -o "build/debug/obj/lapack/SRC/dormr2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dpotrf.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dpotrf.f" -o "build/debug/obj/lapack/SRC/dpotrf.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dpotrf2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dpotrf2.f" -o "build/debug/obj/lapack/SRC/dpotrf2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/drscl.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/drscl.f" -o "build/debug/obj/lapack/SRC/drscl.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dsteqr.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dsteqr.f" -o "build/debug/obj/lapack/SRC/dsteqr.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dsterf.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dsterf.f" -o "build/debug/obj/lapack/SRC/dsterf.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dsyev.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dsyev.f" -o "build/debug/obj/lapack/SRC/dsyev.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dsygs2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dsygs2.f" -o "build/debug/obj/lapack/SRC/dsygs2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dsygst.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dsygst.f" -o "build/debug/obj/lapack/SRC/dsygst.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dsygv.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dsygv.f" -o "build/debug/obj/lapack/SRC/dsygv.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dsytd2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dsytd2.f" -o "build/debug/obj/lapack/SRC/dsytd2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dsytrd.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dsytrd.f" -o "build/debug/obj/lapack/SRC/dsytrd.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dtgevc.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dtgevc.f" -o "build/debug/obj/lapack/SRC/dtgevc.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dtgex2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dtgex2.f" -o "build/debug/obj/lapack/SRC/dtgex2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dtgexc.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dtgexc.f" -o "build/debug/obj/lapack/SRC/dtgexc.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dtgsna.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dtgsna.f" -o "build/debug/obj/lapack/SRC/dtgsna.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dtgsy2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dtgsy2.f" -o "build/debug/obj/lapack/SRC/dtgsy2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dtgsyl.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dtgsyl.f" -o "build/debug/obj/lapack/SRC/dtgsyl.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dtrexc.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dtrexc.f" -o "build/debug/obj/lapack/SRC/dtrexc.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dtrsen.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dtrsen.f" -o "build/debug/obj/lapack/SRC/dtrsen.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dtrsyl.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dtrsyl.f" -o "build/debug/obj/lapack/SRC/dtrsyl.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dzsum1.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dzsum1.f" -o "build/debug/obj/lapack/SRC/dzsum1.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/ieeeck.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/ieeeck.f" -o "build/debug/obj/lapack/SRC/ieeeck.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/iladlc.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/iladlc.f" -o "build/debug/obj/lapack/SRC/iladlc.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/iladlr.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/iladlr.f" -o "build/debug/obj/lapack/SRC/iladlr.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/ilaenv.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/ilaenv.f" -o "build/debug/obj/lapack/SRC/ilaenv.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/ilazlc.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/ilazlc.f" -o "build/debug/obj/lapack/SRC/ilazlc.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/ilazlr.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/ilazlr.f" -o "build/debug/obj/lapack/SRC/ilazlr.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/iparmq.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/iparmq.f" -o "build/debug/obj/lapack/SRC/iparmq.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/izmax1.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/izmax1.f" -o "build/debug/obj/lapack/SRC/izmax1.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/xerbla.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/xerbla.f" -o "build/debug/obj/lapack/SRC/xerbla.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zbdsqr.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zbdsqr.f" -o "build/debug/obj/lapack/SRC/zbdsqr.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zdrscl.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zdrscl.f" -o "build/debug/obj/lapack/SRC/zdrscl.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zgebd2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zgebd2.f" -o "build/debug/obj/lapack/SRC/zgebd2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zgebrd.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zgebrd.f" -o "build/debug/obj/lapack/SRC/zgebrd.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zgecon.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zgecon.f" -o "build/debug/obj/lapack/SRC/zgecon.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zgelq2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zgelq2.f" -o "build/debug/obj/lapack/SRC/zgelq2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zgelqf.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zgelqf.f" -o "build/debug/obj/lapack/SRC/zgelqf.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zgeqr2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zgeqr2.f" -o "build/debug/obj/lapack/SRC/zgeqr2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zgeqrf.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zgeqrf.f" -o "build/debug/obj/lapack/SRC/zgeqrf.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zgesc2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zgesc2.f" -o "build/debug/obj/lapack/SRC/zgesc2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zgesvd.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zgesvd.f" -o "build/debug/obj/lapack/SRC/zgesvd.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zgetc2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zgetc2.f" -o "build/debug/obj/lapack/SRC/zgetc2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zgetrf.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zgetrf.f" -o "build/debug/obj/lapack/SRC/zgetrf.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zgetrf2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zgetrf2.f" -o "build/debug/obj/lapack/SRC/zgetrf2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zgetrs.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zgetrs.f" -o "build/debug/obj/lapack/SRC/zgetrs.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zggbak.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zggbak.f" -o "build/debug/obj/lapack/SRC/zggbak.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zggbal.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zggbal.f" -o "build/debug/obj/lapack/SRC/zggbal.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zggevx.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zggevx.f" -o "build/debug/obj/lapack/SRC/zggevx.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zgghrd.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zgghrd.f" -o "build/debug/obj/lapack/SRC/zgghrd.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zhgeqz.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zhgeqz.f" -o "build/debug/obj/lapack/SRC/zhgeqz.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zlabrd.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zlabrd.f" -o "build/debug/obj/lapack/SRC/zlabrd.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zlacgv.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zlacgv.f" -o "build/debug/obj/lapack/SRC/zlacgv.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zlacn2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zlacn2.f" -o "build/debug/obj/lapack/SRC/zlacn2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zlacpy.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zlacpy.f" -o "build/debug/obj/lapack/SRC/zlacpy.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zladiv.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zladiv.f" -o "build/debug/obj/lapack/SRC/zladiv.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zlange.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zlange.f" -o "build/debug/obj/lapack/SRC/zlange.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zlanhs.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zlanhs.f" -o "build/debug/obj/lapack/SRC/zlanhs.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zlarf1f.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zlarf1f.f" -o "build/debug/obj/lapack/SRC/zlarf1f.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zlarfb.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zlarfb.f" -o "build/debug/obj/lapack/SRC/zlarfb.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zlarfg.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zlarfg.f" -o "build/debug/obj/lapack/SRC/zlarfg.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zlarft.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zlarft.f" -o "build/debug/obj/lapack/SRC/zlarft.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zlartg.f90
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zlartg.f90" -o "build/debug/obj/lapack/SRC/zlartg.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zlascl.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zlascl.f" -o "build/debug/obj/lapack/SRC/zlascl.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zlaset.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zlaset.f" -o "build/debug/obj/lapack/SRC/zlaset.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zlasr.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zlasr.f" -o "build/debug/obj/lapack/SRC/zlasr.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zlassq.f90
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zlassq.f90" -o "build/debug/obj/lapack/SRC/zlassq.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zlaswp.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zlaswp.f" -o "build/debug/obj/lapack/SRC/zlaswp.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zlatdf.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zlatdf.f" -o "build/debug/obj/lapack/SRC/zlatdf.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zlatrs.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zlatrs.f" -o "build/debug/obj/lapack/SRC/zlatrs.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zrot.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zrot.f" -o "build/debug/obj/lapack/SRC/zrot.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/ztgevc.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/ztgevc.f" -o "build/debug/obj/lapack/SRC/ztgevc.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/ztgex2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/ztgex2.f" -o "build/debug/obj/lapack/SRC/ztgex2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/ztgexc.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/ztgexc.f" -o "build/debug/obj/lapack/SRC/ztgexc.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/ztgsna.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/ztgsna.f" -o "build/debug/obj/lapack/SRC/ztgsna.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/ztgsy2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/ztgsy2.f" -o "build/debug/obj/lapack/SRC/ztgsy2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/ztgsyl.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/ztgsyl.f" -o "build/debug/obj/lapack/SRC/ztgsyl.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zung2r.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zung2r.f" -o "build/debug/obj/lapack/SRC/zung2r.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zungbr.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zungbr.f" -o "build/debug/obj/lapack/SRC/zungbr.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zungl2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zungl2.f" -o "build/debug/obj/lapack/SRC/zungl2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zunglq.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zunglq.f" -o "build/debug/obj/lapack/SRC/zunglq.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zungqr.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zungqr.f" -o "build/debug/obj/lapack/SRC/zungqr.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zunm2r.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zunm2r.f" -o "build/debug/obj/lapack/SRC/zunm2r.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zunmbr.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zunmbr.f" -o "build/debug/obj/lapack/SRC/zunmbr.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zunml2.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zunml2.f" -o "build/debug/obj/lapack/SRC/zunml2.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zunmlq.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zunmlq.f" -o "build/debug/obj/lapack/SRC/zunmlq.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/zunmqr.f
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/zunmqr.f" -o "build/debug/obj/lapack/SRC/zunmqr.o"
+FC solver: src/source/rd_commons.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/rd_commons.f90" -o "build/debug/obj/solver/rd_commons.o"
+FC solver: src/source/rd_modal_metrics.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/rd_modal_metrics.f90" -o "build/debug/obj/solver/rd_modal_metrics.o"
+FC solver: src/source/rd_bearing_contract.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/rd_bearing_contract.f90" -o "build/debug/obj/solver/rd_bearing_contract.o"
+FC solver: src/source/rd_torsion_time.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/rd_torsion_time.f90" -o "build/debug/obj/solver/rd_torsion_time.o"
+FC solver: src/source/torsion/thhmat.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/thhmat.f90" -o "build/debug/obj/solver/torsion/thhmat.o"
+FC solver: src/source/torsion/tcouprops.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/tcouprops.f90" -o "build/debug/obj/solver/torsion/tcouprops.o"
+FC solver: src/source/transient_forcing.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/transient_forcing.f90" -o "build/debug/obj/solver/transient_forcing.o"
+FC solver: src/source/transient_input.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/transient_input.f90" -o "build/debug/obj/solver/transient_input.o"
+FC solver: src/source/transient_matrix.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/transient_matrix.f90" -o "build/debug/obj/solver/transient_matrix.o"
+FC solver: src/source/transient_output.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/transient_output.f90" -o "build/debug/obj/solver/transient_output.o"
+FC solver: src/source/transient_solver.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/transient_solver.f90" -o "build/debug/obj/solver/transient_solver.o"
+FC solver: src/source/transient_speed.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/transient_speed.f90" -o "build/debug/obj/solver/transient_speed.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlartg.f90
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlartg.f90" -o "build/debug/obj/lapack/SRC/dlartg.o"
+FC LAPACK 3.12.1: lapack/lapack-3.12.1/SRC/dlassq.f90
+gfortran -O0 -g -cpp -frecursive -fcheck=all -fbacktrace -Ibuild/debug/mod/lapack -Jbuild/debug/mod/lapack -c "lapack/lapack-3.12.1/SRC/dlassq.f90" -o "build/debug/obj/lapack/SRC/dlassq.o"
+FC solver: src/source/calccm.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/calccm.f90" -o "build/debug/obj/solver/calccm.o"
+FC solver: src/source/rd_modal_tracking.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/rd_modal_tracking.f90" -o "build/debug/obj/solver/rd_modal_tracking.o"
+FC solver: src/source/rd_textfun.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/rd_textfun.f90" -o "build/debug/obj/solver/rd_textfun.o"
+FC solver: src/source/expmat.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/expmat.f90" -o "build/debug/obj/solver/expmat.o"
+FC solver: src/source/flexdisk.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/flexdisk.f90" -o "build/debug/obj/solver/flexdisk.o"
+FC solver: src/source/foundation.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/foundation.f90" -o "build/debug/obj/solver/foundation.o"
+FC solver: src/source/hpgl.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/hpgl.f90" -o "build/debug/obj/solver/hpgl.o"
+FC solver: src/source/model_audit.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/model_audit.f90" -o "build/debug/obj/solver/model_audit.o"
+FC solver: src/source/modos.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/modos.f90" -o "build/debug/obj/solver/modos.o"
+FC solver: src/source/parmanv.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/parmanv.f90" -o "build/debug/obj/solver/parmanv.o"
+FC solver: src/source/predad.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/predad.f90" -o "build/debug/obj/solver/predad.o"
+FC solver: src/source/progress.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/progress.f90" -o "build/debug/obj/solver/progress.o"
+FC solver: src/source/rd_response_quality.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/rd_response_quality.f90" -o "build/debug/obj/solver/rd_response_quality.o"
+FC solver: src/source/rdfra.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/rdfra.f90" -o "build/debug/obj/solver/rdfra.o"
+FC solver: src/source/resp_f.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/resp_f.f90" -o "build/debug/obj/solver/resp_f.o"
+FC solver: src/source/rotordin.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/rotordin.f90" -o "build/debug/obj/solver/rotordin.o"
+FC solver: src/source/saidas.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/saidas.f90" -o "build/debug/obj/solver/saidas.o"
+FC solver: src/source/torsion/evalf/evalf.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/evalf/evalf.f90" -o "build/debug/obj/solver/torsion/evalf/evalf.o"
+FC solver: src/source/torsion/tcmpbl.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/tcmpbl.f90" -o "build/debug/obj/solver/torsion/tcmpbl.o"
+FC solver: src/source/torsion/tentrada.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/tentrada.f90" -o "build/debug/obj/solver/torsion/tentrada.o"
+FC solver: src/source/torsion/tespmod.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/tespmod.f90" -o "build/debug/obj/solver/torsion/tespmod.o"
+FC solver: src/source/torsion/tflextor.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/tflextor.f90" -o "build/debug/obj/solver/torsion/tflextor.o"
+FC solver: src/source/torsion/thplots.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/thplots.f90" -o "build/debug/obj/solver/torsion/thplots.o"
+FC solver: src/source/torsion/tindsec.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/tindsec.f90" -o "build/debug/obj/solver/torsion/tindsec.o"
+FC solver: src/source/torsion/tmatrices.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/tmatrices.f90" -o "build/debug/obj/solver/torsion/tmatrices.o"
+FC solver: src/source/torsion/tmodos.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/tmodos.f90" -o "build/debug/obj/solver/torsion/tmodos.o"
+FC solver: src/source/torsion/tnuinteg.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/tnuinteg.f90" -o "build/debug/obj/solver/torsion/tnuinteg.o"
+FC solver: src/source/torsion/tpefora.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/tpefora.f90" -o "build/debug/obj/solver/torsion/tpefora.o"
+FC solver: src/source/torsion/tpefors.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/tpefors.f90" -o "build/debug/obj/solver/torsion/tpefors.o"
+FC solver: src/source/torsion/tprptran.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/tprptran.f90" -o "build/debug/obj/solver/torsion/tprptran.o"
+FC solver: src/source/torsion/tresp_f.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/tresp_f.f90" -o "build/debug/obj/solver/torsion/tresp_f.o"
+FC solver: src/source/torsion/tsaidas.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/tsaidas.f90" -o "build/debug/obj/solver/torsion/tsaidas.o"
+FC solver: src/source/torsion/tstatic.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/tstatic.f90" -o "build/debug/obj/solver/torsion/tstatic.o"
+FC solver: src/source/torsion/ttrqdiv.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/torsion/ttrqdiv.f90" -o "build/debug/obj/solver/torsion/ttrqdiv.o"
+FC solver: src/source/rd_spectral_families.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/rd_spectral_families.f90" -o "build/debug/obj/solver/rd_spectral_families.o"
+FC solver: src/source/entrada.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/entrada.f90" -o "build/debug/obj/solver/entrada.o"
+FC solver: src/source/espmod.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/espmod.f90" -o "build/debug/obj/solver/espmod.o"
+FC solver: src/source/expgeo.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/expgeo.f90" -o "build/debug/obj/solver/expgeo.o"
+FC solver: src/source/hplots.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/hplots.f90" -o "build/debug/obj/solver/hplots.o"
+FC solver: src/source/indsec.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/indsec.f90" -o "build/debug/obj/solver/indsec.o"
+FC solver: src/source/init.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/init.f90" -o "build/debug/obj/solver/init.o"
+FC solver: src/source/linhael.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/linhael.f90" -o "build/debug/obj/solver/linhael.o"
+FC solver: src/source/maprig.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/maprig.f90" -o "build/debug/obj/solver/maprig.o"
+FC solver: src/source/matfun.f90
+FC solver: src/source/matrizes.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/matfun.f90" -o "build/debug/obj/solver/matfun.o"
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/matrizes.f90" -o "build/debug/obj/solver/matrizes.o"
+FC solver: src/source/messages.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/messages.f90" -o "build/debug/obj/solver/messages.o"
+FC solver: src/source/rd_harmonic_response.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/rd_harmonic_response.f90" -o "build/debug/obj/solver/rd_harmonic_response.o"
+FC solver: src/source/rd_campbell_families.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/rd_campbell_families.f90" -o "build/debug/obj/solver/rd_campbell_families.o"
+FC solver: src/source/resp_fv.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/resp_fv.f90" -o "build/debug/obj/solver/resp_fv.o"
+FC solver: src/source/resp_t.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/resp_t.f90" -o "build/debug/obj/solver/resp_t.o"
+FC solver: src/source/rd_campbell_engine.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/rd_campbell_engine.f90" -o "build/debug/obj/solver/rd_campbell_engine.o"
+FC solver: src/source/campbl.f90
+gfortran -O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow -D_LINUX -Isrc/source -Ibuild/debug/mod/solver -Jbuild/debug/mod/solver -c "src/source/campbl.f90" -o "build/debug/obj/solver/campbl.o"
+Link: RotorDin2 + LAPACK/BLAS 3.12.1 integralmente local (sem legado)
+gfortran  -Wl,-Map,"build/debug/link.map" -o "bin/rotordin2-debug" build/debug/obj/solver/blockd.o build/debug/obj/solver/calccm.o build/debug/obj/solver/campbl.o build/debug/obj/solver/entrada.o build/debug/obj/solver/espmod.o build/debug/obj/solver/expgeo.o build/debug/obj/solver/expmat.o build/debug/obj/solver/flexdisk.o build/debug/obj/solver/foundation.o build/debug/obj/solver/hpgl.o build/debug/obj/solver/hplots.o build/debug/obj/solver/indsec.o build/debug/obj/solver/init.o build/debug/obj/solver/linhael.o build/debug/obj/solver/maprig.o build/debug/obj/solver/matfun.o build/debug/obj/solver/matrizes.o build/debug/obj/solver/messages.o build/debug/obj/solver/model_audit.o build/debug/obj/solver/modos.o build/debug/obj/solver/parmanv.o build/debug/obj/solver/predad.o build/debug/obj/solver/progress.o build/debug/obj/solver/rd_bearing_contract.o build/debug/obj/solver/rd_campbell_engine.o build/debug/obj/solver/rd_campbell_families.o build/debug/obj/solver/rd_commons.o build/debug/obj/solver/rd_harmonic_response.o build/debug/obj/solver/rd_kinds.o build/debug/obj/solver/rd_modal_metrics.o build/debug/obj/solver/rd_modal_tracking.o build/debug/obj/solver/rd_response_quality.o build/debug/obj/solver/rd_spectral_families.o build/debug/obj/solver/rd_sys.o build/debug/obj/solver/rd_textfun.o build/debug/obj/solver/rd_torsion_time.o build/debug/obj/solver/rdfra.o build/debug/obj/solver/resp_f.o build/debug/obj/solver/resp_fv.o build/debug/obj/solver/resp_t.o build/debug/obj/solver/rotordin.o build/debug/obj/solver/saidas.o build/debug/obj/solver/shaft_timoshenko_cowper.o build/debug/obj/solver/torsion/evalf/evalf.o build/debug/obj/solver/torsion/tblockd.o build/debug/obj/solver/torsion/tcmpbl.o build/debug/obj/solver/torsion/tcouprops.o build/debug/obj/solver/torsion/tentrada.o build/debug/obj/solver/torsion/tespmod.o build/debug/obj/solver/torsion/tflextor.o build/debug/obj/solver/torsion/thhmat.o build/debug/obj/solver/torsion/thplots.o build/debug/obj/solver/torsion/tindsec.o build/debug/obj/solver/torsion/tinit.o build/debug/obj/solver/torsion/tmatfun.o build/debug/obj/solver/torsion/tmatrices.o build/debug/obj/solver/torsion/tmodos.o build/debug/obj/solver/torsion/tnuinteg.o build/debug/obj/solver/torsion/tpefora.o build/debug/obj/solver/torsion/tpefors.o build/debug/obj/solver/torsion/tpredad.o build/debug/obj/solver/torsion/tprptran.o build/debug/obj/solver/torsion/tresp_f.o build/debug/obj/solver/torsion/tsaidas.o build/debug/obj/solver/torsion/tsecdl.o build/debug/obj/solver/torsion/tstatic.o build/debug/obj/solver/torsion/tstrange.o build/debug/obj/solver/torsion/ttrqdiv.o build/debug/obj/solver/transient_forcing.o build/debug/obj/solver/transient_input.o build/debug/obj/solver/transient_matrix.o build/debug/obj/solver/transient_newmark.o build/debug/obj/solver/transient_output.o build/debug/obj/solver/transient_solver.o build/debug/obj/solver/transient_speed.o build/debug/obj/lapack/BLAS/SRC/dasum.o build/debug/obj/lapack/BLAS/SRC/daxpy.o build/debug/obj/lapack/BLAS/SRC/dcabs1.o build/debug/obj/lapack/BLAS/SRC/dcopy.o build/debug/obj/lapack/BLAS/SRC/ddot.o build/debug/obj/lapack/BLAS/SRC/dgemm.o build/debug/obj/lapack/BLAS/SRC/dgemv.o build/debug/obj/lapack/BLAS/SRC/dger.o build/debug/obj/lapack/BLAS/SRC/dnrm2.o build/debug/obj/lapack/BLAS/SRC/drot.o build/debug/obj/lapack/BLAS/SRC/dscal.o build/debug/obj/lapack/BLAS/SRC/dswap.o build/debug/obj/lapack/BLAS/SRC/dsymm.o build/debug/obj/lapack/BLAS/SRC/dsymv.o build/debug/obj/lapack/BLAS/SRC/dsyr2.o build/debug/obj/lapack/BLAS/SRC/dsyr2k.o build/debug/obj/lapack/BLAS/SRC/dsyrk.o build/debug/obj/lapack/BLAS/SRC/dtrmm.o build/debug/obj/lapack/BLAS/SRC/dtrmv.o build/debug/obj/lapack/BLAS/SRC/dtrsm.o build/debug/obj/lapack/BLAS/SRC/dtrsv.o build/debug/obj/lapack/BLAS/SRC/dzasum.o build/debug/obj/lapack/BLAS/SRC/dznrm2.o build/debug/obj/lapack/BLAS/SRC/idamax.o build/debug/obj/lapack/BLAS/SRC/izamax.o build/debug/obj/lapack/BLAS/SRC/lsame.o build/debug/obj/lapack/BLAS/SRC/zaxpy.o build/debug/obj/lapack/BLAS/SRC/zcopy.o build/debug/obj/lapack/BLAS/SRC/zdotc.o build/debug/obj/lapack/BLAS/SRC/zdotu.o build/debug/obj/lapack/BLAS/SRC/zdrot.o build/debug/obj/lapack/BLAS/SRC/zdscal.o build/debug/obj/lapack/BLAS/SRC/zgemm.o build/debug/obj/lapack/BLAS/SRC/zgemv.o build/debug/obj/lapack/BLAS/SRC/zgerc.o build/debug/obj/lapack/BLAS/SRC/zgeru.o build/debug/obj/lapack/BLAS/SRC/zscal.o build/debug/obj/lapack/BLAS/SRC/zswap.o build/debug/obj/lapack/BLAS/SRC/ztrmm.o build/debug/obj/lapack/BLAS/SRC/ztrsm.o build/debug/obj/lapack/BLAS/SRC/ztrsv.o build/debug/obj/lapack/INSTALL/dlamch.o build/debug/obj/lapack/SRC/dgebak.o build/debug/obj/lapack/SRC/dgebal.o build/debug/obj/lapack/SRC/dgecon.o build/debug/obj/lapack/SRC/dgees.o build/debug/obj/lapack/SRC/dgehd2.o build/debug/obj/lapack/SRC/dgehrd.o build/debug/obj/lapack/SRC/dgeqr2.o build/debug/obj/lapack/SRC/dgeqrf.o build/debug/obj/lapack/SRC/dgerq2.o build/debug/obj/lapack/SRC/dgesc2.o build/debug/obj/lapack/SRC/dgetc2.o build/debug/obj/lapack/SRC/dgetrf.o build/debug/obj/lapack/SRC/dgetrf2.o build/debug/obj/lapack/SRC/dgetrs.o build/debug/obj/lapack/SRC/dggbak.o build/debug/obj/lapack/SRC/dggbal.o build/debug/obj/lapack/SRC/dggevx.o build/debug/obj/lapack/SRC/dgghrd.o build/debug/obj/lapack/SRC/dhgeqz.o build/debug/obj/lapack/SRC/dhseqr.o build/debug/obj/lapack/SRC/disnan.o build/debug/obj/lapack/SRC/dlacn2.o build/debug/obj/lapack/SRC/dlacpy.o build/debug/obj/lapack/SRC/dladiv.o build/debug/obj/lapack/SRC/dlae2.o build/debug/obj/lapack/SRC/dlaev2.o build/debug/obj/lapack/SRC/dlaexc.o build/debug/obj/lapack/SRC/dlag2.o build/debug/obj/lapack/SRC/dlagv2.o build/debug/obj/lapack/SRC/dlahqr.o build/debug/obj/lapack/SRC/dlahr2.o build/debug/obj/lapack/SRC/dlaisnan.o build/debug/obj/lapack/SRC/dlaln2.o build/debug/obj/lapack/SRC/dlange.o build/debug/obj/lapack/SRC/dlanhs.o build/debug/obj/lapack/SRC/dlanst.o build/debug/obj/lapack/SRC/dlansy.o build/debug/obj/lapack/SRC/dlanv2.o build/debug/obj/lapack/SRC/dlapy2.o build/debug/obj/lapack/SRC/dlapy3.o build/debug/obj/lapack/SRC/dlaqr0.o build/debug/obj/lapack/SRC/dlaqr1.o build/debug/obj/lapack/SRC/dlaqr2.o build/debug/obj/lapack/SRC/dlaqr3.o build/debug/obj/lapack/SRC/dlaqr4.o build/debug/obj/lapack/SRC/dlaqr5.o build/debug/obj/lapack/SRC/dlarf.o build/debug/obj/lapack/SRC/dlarf1f.o build/debug/obj/lapack/SRC/dlarf1l.o build/debug/obj/lapack/SRC/dlarfb.o build/debug/obj/lapack/SRC/dlarfg.o build/debug/obj/lapack/SRC/dlarft.o build/debug/obj/lapack/SRC/dlarfx.o build/debug/obj/lapack/SRC/dlartg.o build/debug/obj/lapack/SRC/dlas2.o build/debug/obj/lapack/SRC/dlascl.o build/debug/obj/lapack/SRC/dlaset.o build/debug/obj/lapack/SRC/dlasq1.o build/debug/obj/lapack/SRC/dlasq2.o build/debug/obj/lapack/SRC/dlasq3.o build/debug/obj/lapack/SRC/dlasq4.o build/debug/obj/lapack/SRC/dlasq5.o build/debug/obj/lapack/SRC/dlasq6.o build/debug/obj/lapack/SRC/dlasr.o build/debug/obj/lapack/SRC/dlasrt.o build/debug/obj/lapack/SRC/dlassq.o build/debug/obj/lapack/SRC/dlasv2.o build/debug/obj/lapack/SRC/dlaswp.o build/debug/obj/lapack/SRC/dlasy2.o build/debug/obj/lapack/SRC/dlatdf.o build/debug/obj/lapack/SRC/dlatrd.o build/debug/obj/lapack/SRC/dlatrs.o build/debug/obj/lapack/SRC/dorg2l.o build/debug/obj/lapack/SRC/dorg2r.o build/debug/obj/lapack/SRC/dorghr.o build/debug/obj/lapack/SRC/dorgql.o build/debug/obj/lapack/SRC/dorgqr.o build/debug/obj/lapack/SRC/dorgr2.o build/debug/obj/lapack/SRC/dorgtr.o build/debug/obj/lapack/SRC/dorm2r.o build/debug/obj/lapack/SRC/dormhr.o build/debug/obj/lapack/SRC/dormqr.o build/debug/obj/lapack/SRC/dormr2.o build/debug/obj/lapack/SRC/dpotrf.o build/debug/obj/lapack/SRC/dpotrf2.o build/debug/obj/lapack/SRC/drscl.o build/debug/obj/lapack/SRC/dsteqr.o build/debug/obj/lapack/SRC/dsterf.o build/debug/obj/lapack/SRC/dsyev.o build/debug/obj/lapack/SRC/dsygs2.o build/debug/obj/lapack/SRC/dsygst.o build/debug/obj/lapack/SRC/dsygv.o build/debug/obj/lapack/SRC/dsytd2.o build/debug/obj/lapack/SRC/dsytrd.o build/debug/obj/lapack/SRC/dtgevc.o build/debug/obj/lapack/SRC/dtgex2.o build/debug/obj/lapack/SRC/dtgexc.o build/debug/obj/lapack/SRC/dtgsna.o build/debug/obj/lapack/SRC/dtgsy2.o build/debug/obj/lapack/SRC/dtgsyl.o build/debug/obj/lapack/SRC/dtrexc.o build/debug/obj/lapack/SRC/dtrsen.o build/debug/obj/lapack/SRC/dtrsyl.o build/debug/obj/lapack/SRC/dzsum1.o build/debug/obj/lapack/SRC/ieeeck.o build/debug/obj/lapack/SRC/iladlc.o build/debug/obj/lapack/SRC/iladlr.o build/debug/obj/lapack/SRC/ilaenv.o build/debug/obj/lapack/SRC/ilazlc.o build/debug/obj/lapack/SRC/ilazlr.o build/debug/obj/lapack/SRC/iparmq.o build/debug/obj/lapack/SRC/izmax1.o build/debug/obj/lapack/SRC/la_constants.o build/debug/obj/lapack/SRC/la_xisnan.o build/debug/obj/lapack/SRC/xerbla.o build/debug/obj/lapack/SRC/zbdsqr.o build/debug/obj/lapack/SRC/zdrscl.o build/debug/obj/lapack/SRC/zgebd2.o build/debug/obj/lapack/SRC/zgebrd.o build/debug/obj/lapack/SRC/zgecon.o build/debug/obj/lapack/SRC/zgelq2.o build/debug/obj/lapack/SRC/zgelqf.o build/debug/obj/lapack/SRC/zgeqr2.o build/debug/obj/lapack/SRC/zgeqrf.o build/debug/obj/lapack/SRC/zgesc2.o build/debug/obj/lapack/SRC/zgesvd.o build/debug/obj/lapack/SRC/zgetc2.o build/debug/obj/lapack/SRC/zgetrf.o build/debug/obj/lapack/SRC/zgetrf2.o build/debug/obj/lapack/SRC/zgetrs.o build/debug/obj/lapack/SRC/zggbak.o build/debug/obj/lapack/SRC/zggbal.o build/debug/obj/lapack/SRC/zggevx.o build/debug/obj/lapack/SRC/zgghrd.o build/debug/obj/lapack/SRC/zhgeqz.o build/debug/obj/lapack/SRC/zlabrd.o build/debug/obj/lapack/SRC/zlacgv.o build/debug/obj/lapack/SRC/zlacn2.o build/debug/obj/lapack/SRC/zlacpy.o build/debug/obj/lapack/SRC/zladiv.o build/debug/obj/lapack/SRC/zlange.o build/debug/obj/lapack/SRC/zlanhs.o build/debug/obj/lapack/SRC/zlarf1f.o build/debug/obj/lapack/SRC/zlarfb.o build/debug/obj/lapack/SRC/zlarfg.o build/debug/obj/lapack/SRC/zlarft.o build/debug/obj/lapack/SRC/zlartg.o build/debug/obj/lapack/SRC/zlascl.o build/debug/obj/lapack/SRC/zlaset.o build/debug/obj/lapack/SRC/zlasr.o build/debug/obj/lapack/SRC/zlassq.o build/debug/obj/lapack/SRC/zlaswp.o build/debug/obj/lapack/SRC/zlatdf.o build/debug/obj/lapack/SRC/zlatrs.o build/debug/obj/lapack/SRC/zrot.o build/debug/obj/lapack/SRC/ztgevc.o build/debug/obj/lapack/SRC/ztgex2.o build/debug/obj/lapack/SRC/ztgexc.o build/debug/obj/lapack/SRC/ztgsna.o build/debug/obj/lapack/SRC/ztgsy2.o build/debug/obj/lapack/SRC/ztgsyl.o build/debug/obj/lapack/SRC/zung2r.o build/debug/obj/lapack/SRC/zungbr.o build/debug/obj/lapack/SRC/zungl2.o build/debug/obj/lapack/SRC/zunglq.o build/debug/obj/lapack/SRC/zungqr.o build/debug/obj/lapack/SRC/zunm2r.o build/debug/obj/lapack/SRC/zunmbr.o build/debug/obj/lapack/SRC/zunml2.o build/debug/obj/lapack/SRC/zunmlq.o build/debug/obj/lapack/SRC/zunmqr.o
+Executável: bin/rotordin2-debug
+make: Leaving directory '/workspace/scratch/8c0efd7393df/rev_work/final_source_fcb2cde823e4'

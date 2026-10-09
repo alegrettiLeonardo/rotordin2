@@ -1,0 +1,7 @@
+644b85a7a486ae45ecdc5f575c8a2210f5ad6bfd refs/heads/fix/rotordin2-mathematical-reliability
+644b85a7a486ae45ecdc5f575c8a2210f5ad6bfd refs/remotes/origin/HEAD
+644b85a7a486ae45ecdc5f575c8a2210f5ad6bfd refs/remotes/origin/fix/rotordin2-mathematical-reliability
+4d928f79c8daf0ad9ee67e4439e23e0e7c6b6f47 refs/remotes/origin/task/st41-priority-fixes
+ec8f0b05517f668dc1daf9c8fde5b06a0da15387 refs/remotes/origin/work/a02-torsion-phase
+c715532c3dcba5e07dbbc48ce4513d580f315862 refs/remotes/origin/work/a04-a05-torsion-dynamics
+f10b9eba3b3443794dd1d8b48494b3cb375c9af5 refs/remotes/origin/work/a07-angular-acceleration

@@ -1,0 +1,8 @@
+BLOCKED_MISSING_FIXTURES
+The provided source archive and generic controls do not include:
+- rotordin2_evidencias_ST41.zip
+- rotordin2_evidencias_input_nativo_ST41.zip
+- the exact archived ST41 input and corresponding original executable.
+The archived amplitudes, geometry targets, 39-point AF crop, and seven 1X / 23
+Campbell intersections remain unverified. See docs/ST41_FIX_STATUS.md.
+The executor return code covers the available native qualification only.

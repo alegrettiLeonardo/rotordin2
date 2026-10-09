@@ -1,0 +1,22 @@
+PASS IN-01/02: 34 export/rank/header/finite diagnostic assertions
+PASS constant: expected rc=0
+PASS table: expected rc=0
+PASS zero_literal: expected rc=0
+PASS free: expected rc=0
+PASS missing: expected rc=1
+PASS modal_zero: expected rc=1
+PASS modal_override: expected rc=0
+PASS orbit_speed: expected rc=0
+PASS modes_and_orbit: expected rc=0
+PASS orbit_zero_grid: expected rc=0
+PASS empty_table: expected rc=1
+PASS empty_kind: expected rc=1
+PASS table_bad_scale: expected rc=1
+PASS table_nan_scale: expected rc=1
+PASS table_inf_scale: expected rc=1
+PASS table_bad_row: expected rc=1
+PASS bearing_bad_scale: expected rc=1
+PASS bearing_bad_rks: expected rc=1
+PASS bearing_bad_fxstf: expected rc=1
+PASS bearing_nan_scale: expected rc=1
+PASS IN-01/02: 20 native cases; table/constant amplitude+phase byte equality; no unselected zero lookup; controlled missing/domain/malformed errors

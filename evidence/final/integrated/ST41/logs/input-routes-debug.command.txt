@@ -1,0 +1,1 @@
+bash tests/st41/run_input_routes.sh bin/rotordin2-debug /workspace/scratch/8c0efd7393df/rev_work/final_campaign_539134eaee20/integrated/ST41/debug/input-routes 

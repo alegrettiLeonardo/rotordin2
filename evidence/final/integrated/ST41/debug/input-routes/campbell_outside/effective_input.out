@@ -1,0 +1,8 @@
+#BEGIN EFFECTIVE_INPUT
+SPEED_UNIT=rpm; only selected analyses are reported; coefficient lookups are logged when used.
+BEARING_SUPPORT_OPTION_B=T
+ANALYSIS=CAMPBELL SOURCE=CPBIS,CPBFS,CPBSPD FIRST,LAST,INITIAL_COUNT= 3.7400000000000000E+002  2.4000000000000000E+003  5.0000000000000000E+000  PRESENTATION_COUNT(INTSPD)=11
+CAMPBELL: CPBSPD is an initial sample count; solved adaptive points are reported by the engine.
+GLOBAL_REFERENCE_CONSTRAINT=NOT_DETERMINED; connectivity/rank records do not certify stability.
+FXSTF_ROLE=STATIC_ELASTIC_LINE_ONLY; no stiffness is injected into the dynamic model.
+#END EFFECTIVE_INPUT

@@ -1,0 +1,25 @@
+# Configuração standalone. Configure este caminho em Settings > CI/CD > General pipelines.
+# Preserve/reintegre includes, tags e políticas corporativas antes de substituir o CI existente.
+# Usa a toolchain do runner; não instala pacotes nem faz downloads no job.
+stages:
+  - test
+
+rotordin2-source-qualification:
+  stage: test
+  variables:
+    LC_ALL: C
+  script:
+    - 'echo "Qualification commit: $CI_COMMIT_SHA"'
+    - gfortran --version
+    - make --version
+    - make -j"$(nproc)" qualify
+    - bash tests/check_index.sh
+  artifacts:
+    when: always
+    expire_in: 14 days
+    paths:
+      - bin/rotordin2
+      - build/release/config.stamp
+      - build/release/link.map
+      - build/release/link.objects
+      - build/release/tests/

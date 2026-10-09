@@ -1,0 +1,24 @@
+INTEGRITY: PASS; solver original=79; fontes LAPACK selecionados=213
+LINK_AUDIT: PASS; 287 objetos locais; LAPACK/BLAS 3.12.1; sem agregados históricos
+PASS DGEMM    0.000000E+00
+PASS DPOTRF    4.440892E-16
+PASS DPOTRF rejects invalid SPD    0.000000E+00
+PASS DSYEV n=2    4.440892E-16
+PASS DSYEV n=80    2.664535E-15
+PASS DSYGV    3.330669E-16
+PASS DGEES sorted complex pair    0.000000E+00
+PASS DTRSEN reorder and conditions    0.000000E+00
+PASS DGGEVX    0.000000E+00
+PASS ZGESVD 3x2    5.404227E-16
+PASS ZGESVD 40x22    1.440599E-14
+PASS DGETRF/DGETRS    0.000000E+00
+PASS ZGETRF/ZGETRS    0.000000E+00
+PASS ZGGEVX    0.000000E+00
+PASS DGEMV    0.000000E+00
+PASS DNRM2 scaled extremes    1.110223E-16
+ LINALG_SMOKE: 16 checks PASS; tolerance=   1.0000000000000000E-010
+NUMERIC_REGRESSION: PASS; values=27; max_delta_rpm=  2.0000E-06
+PASS campbell: rc=0; stdout estruturado; progresso stderr; referência preservada
+NUMERIC_REGRESSION: PASS; values=27; max_delta_rpm=  2.0000E-06
+PASS modes: rc=0; stdout estruturado; progresso stderr; referência preservada
+STDIO_SMOKE: 2 selected cases PASS; not a complete physical qualification

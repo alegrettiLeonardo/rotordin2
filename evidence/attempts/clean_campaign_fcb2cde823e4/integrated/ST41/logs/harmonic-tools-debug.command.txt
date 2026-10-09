@@ -1,0 +1,1 @@
+make MODE=debug FC=gfortran build/debug/tests/st41/harmonic_oracle build/debug/tests/st41/compare_harmonic 

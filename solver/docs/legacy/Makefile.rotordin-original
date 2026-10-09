@@ -1,0 +1,127 @@
+#
+# =================
+# Makefile rotordin
+# =================
+
+# Project name prefix
+PROJECT=rotordin
+#
+# Fortran compiler
+CC = gfortran
+#
+# Remmove file command
+RM = rm
+#
+# Remove files command flags
+RMFLAGS = -f
+#
+# Recursive remove files  flag
+RMRECURSIVE = -R
+#
+# Compiler strip non used symbols flag
+STRIP = strip
+#
+# Doxygen documentation command
+DOXY = doxygen
+#
+# Doxygen arguments
+DOXYARGS =
+#
+# Doxygen configuration file name
+DOXYCFG = Doxyfile
+# Doxygen include filter
+DOXYFIL = doxfilt
+DOXYFLG = -o
+#
+# Path settings
+DIRSP = /
+SPATH = ../source
+OPATH = ../tmp
+BPATH = ../bin
+HPATH = ./html
+STOR = torsion
+EVAL = $(STOR)/evalf
+SLAP = lapack
+VPATH = $(SPATH)
+#
+# folders
+BUILD_DIRS = $(OPATH) $(OPATH)/$(SLAP) $(OPATH)/$(STOR) $(OPATH)/$(EVAL) $(BPATH) $(HPATH)
+
+# repository version
+#SVN_REV="$(shell svnversion -c .)"
+SVN_REV="$(shell git describe --abbrev=9 --always)"
+
+# extension of exec file
+EXEC =
+
+# Fortran FPE
+# FPE = -ffpe-trap=invalid,zero,overflow -fbacktrace
+FPE = 
+#
+# Fortran compiler flags
+CFLAGS = -c -g -O0 -cpp $(FPE) -D_LINUX
+CFLAGS = -c -O2 -cpp $(FPE) -D_LINUX
+#
+# Fortran libraries to link, please check order
+LIBS =
+#
+# Fortran link options
+LDFLAGS =
+#
+# tell make what a project file suffix is
+.SUFFIXES: .f
+#
+SOURCES = blockd.f calccm.f campbl.f entrada.f espmod.f expgeo.f expmat.f \
+hpgl.f hplots.f indsec.f init.f linhael.f maprig.f matfun.f \
+matrizes.f messages.f modos.f parmanv.f predad.f rdfra.f resp_f.f \
+resp_fv.f resp_t.f rotordin.f saidas.f \
+$(SLAP)/blas.f $(SLAP)/cmpeig.f $(SLAP)/lapack.f \
+$(STOR)/tblockd.f $(STOR)/tcouprops.f $(STOR)/tentrada.f $(STOR)/tespmod.f \
+$(STOR)/thplots.f $(STOR)/tinit.f $(STOR)/tindsec.f $(STOR)/tmatfun.f \
+$(STOR)/tmatrices.f $(STOR)/tmodos.f $(STOR)/tpredad.f $(STOR)/tsaidas.f \
+$(STOR)/tsecdl.f $(STOR)/tstatic.f $(STOR)/tstrange.f $(STOR)/ttrqdiv.f \
+$(STOR)/tcmpbl.f $(STOR)/tresp_f.f $(STOR)/thhmat.f $(STOR)/tpefors.f \
+$(STOR)/tprptran.f $(STOR)/tnuinteg.f $(STOR)/tflextor.f \
+$(STOR)/tpefora.f $(EVAL)/evalf.f
+#
+# Program name
+PROGRAM = $(BPATH)/$(PROJECT)$(EXEC)
+#
+# Fortran objects
+OBJECTS = $(patsubst %,$(OPATH)/%,$(SOURCES:.f=.o))
+
+# rules
+all: $(BUILD_DIRS) $(PROGRAM)
+
+# create folders
+$(BUILD_DIRS):
+	$(info )
+	$(info BUILD_DIRS=$(BUILD_DIRS))
+	mkdir -p $(BUILD_DIRS)
+
+# Linking
+$(PROGRAM) : $(OBJECTS)
+	$(CC) -o $@ $(LDFLAGS) $^ $(LIBS)
+#
+# Compiling
+$(OPATH)/%.o : $(SPATH)/%.f
+	$(CC) -o $@ $(CFLAGS) $<
+#
+.PHONY: clean teststd
+#
+clean :
+	$(RM) $(RMFLAGS) $(OPATH)/*.o $(OPATH)/$(SLAP)/*.o $(OPATH)/$(STOR)/*.o $(OPATH)/$(EVAL)/*.o $(DOXYFIL).o $(DOXYFIL) $(DOXYFIL).exe
+#
+cleanall : clean
+	$(RM) $(RMFLAGS) $(RMRECURSIVE) $(PROGRAM) $(HPATH)/* $(BPATH)/*
+#
+strip: $(PROGRAM)
+	$(STRIP) $(PROGRAM)
+#
+$(DOXYFIL).o : $(DOXYFIL).f
+	$(CC) -c $<
+	$(CC) $@ $(DOXYFLG) $(DOXYFIL)
+#
+doc : $(DOXYFIL)
+	$(DOXY) $(DOXYARGS) $(DOXYCFG)
+#

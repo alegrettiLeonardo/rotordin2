@@ -1,0 +1,7 @@
+{
+  "id": "A05",
+  "status": "FAIL",
+  "checks": 2016,
+  "failures": 11,
+  "description": "Recorded from preserved initial results.log and returncode; original runner did not write status.json"
+}

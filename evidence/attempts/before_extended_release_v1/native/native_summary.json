@@ -1,0 +1,1580 @@
+{
+  "status": "FAIL",
+  "mode": "release",
+  "baseline": true,
+  "gates": {
+    "REV01": "FAIL",
+    "REV02": "FAIL",
+    "completeness": "FAIL",
+    "no_false_success": "FAIL",
+    "physics": "FAIL",
+    "refinement": "FAIL"
+  },
+  "cases": {
+    "m0_aligned": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_roundoff03": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_roundoff029": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_fraction": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_short": {
+      "status": "FAIL",
+      "issues": [
+        "advertised/actual/expected row count mismatch",
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "advertised/actual/expected row count mismatch",
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_translated_large": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_stride_0.25": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_stride_0.5": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_stride_1.0": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_stride_2.0": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_stride_1.3": {
+      "status": "FAIL",
+      "issues": [
+        "advertised/actual/expected row count mismatch",
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "advertised/actual/expected row count mismatch",
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_shifted": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_cropped": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_affine": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_damped_affine": {
+      "status": "FAIL",
+      "issues": [
+        "advertised/actual/expected row count mismatch",
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "advertised/actual/expected row count mismatch",
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_multi": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_zero": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_zero_other_marker": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_two_load_points": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_wrapper": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_periodic_spline": {
+      "status": "FAIL",
+      "issues": [
+        "advertised/actual/expected row count mismatch",
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "advertised/actual/expected row count mismatch",
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_invalid_hzero": {
+      "status": "FAIL",
+      "issues": [
+        "invalid input was not rejected contextually"
+      ],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_hnegative": {
+      "status": "FAIL",
+      "issues": [
+        "invalid input was not rejected contextually"
+      ],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_hszero": {
+      "status": "FAIL",
+      "issues": [
+        "invalid input was not rejected contextually"
+      ],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_hsnegative": {
+      "status": "FAIL",
+      "issues": [
+        "invalid input was not rejected contextually"
+      ],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_reversed": {
+      "status": "FAIL",
+      "issues": [
+        "invalid input was not rejected contextually"
+      ],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_capacity": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_bad_time_table": {
+      "status": "FAIL",
+      "issues": [
+        "invalid input was not rejected contextually"
+      ],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_bad_index": {
+      "status": "FAIL",
+      "issues": [
+        "invalid input was not rejected contextually"
+      ],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_unrepresentable_time": {
+      "status": "FAIL",
+      "issues": [
+        "invalid input was not rejected contextually"
+      ],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_refine_free_0_dense": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_refine_free_0_nodes": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_refine_free_1_dense": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_refine_free_1_nodes": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_refine_free_2_dense": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_refine_free_2_nodes": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_refine_viscous_0_dense": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_refine_viscous_0_nodes": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_refine_viscous_1_dense": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_refine_viscous_1_nodes": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_refine_viscous_2_dense": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_refine_viscous_2_nodes": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_refine_coupled_0_dense": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_refine_coupled_0_nodes": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_refine_coupled_1_dense": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_refine_coupled_1_nodes": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_refine_coupled_2_dense": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m0_refine_coupled_2_nodes": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_aligned": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_roundoff03": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_roundoff029": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_fraction": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_short": {
+      "status": "FAIL",
+      "issues": [
+        "advertised/actual/expected row count mismatch",
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "advertised/actual/expected row count mismatch",
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_translated_large": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_stride_0.25": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_stride_0.5": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_stride_1.0": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_stride_2.0": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_stride_1.3": {
+      "status": "FAIL",
+      "issues": [
+        "advertised/actual/expected row count mismatch",
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "advertised/actual/expected row count mismatch",
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_shifted": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_cropped": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_affine": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_damped_affine": {
+      "status": "FAIL",
+      "issues": [
+        "advertised/actual/expected row count mismatch",
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "advertised/actual/expected row count mismatch",
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_multi": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_zero": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_zero_other_marker": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_two_load_points": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_wrapper": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_periodic_spline": {
+      "status": "FAIL",
+      "issues": [
+        "advertised/actual/expected row count mismatch",
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "advertised/actual/expected row count mismatch",
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_invalid_hzero": {
+      "status": "FAIL",
+      "issues": [
+        "invalid input was not rejected contextually"
+      ],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_hnegative": {
+      "status": "FAIL",
+      "issues": [
+        "invalid input was not rejected contextually"
+      ],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_hszero": {
+      "status": "FAIL",
+      "issues": [
+        "invalid input was not rejected contextually"
+      ],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_hsnegative": {
+      "status": "FAIL",
+      "issues": [
+        "invalid input was not rejected contextually"
+      ],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_reversed": {
+      "status": "FAIL",
+      "issues": [
+        "invalid input was not rejected contextually"
+      ],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_capacity": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_bad_time_table": {
+      "status": "FAIL",
+      "issues": [
+        "invalid input was not rejected contextually"
+      ],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_bad_index": {
+      "status": "FAIL",
+      "issues": [
+        "invalid input was not rejected contextually"
+      ],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_unrepresentable_time": {
+      "status": "FAIL",
+      "issues": [
+        "invalid input was not rejected contextually"
+      ],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_refine_free_0_dense": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_refine_free_0_nodes": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_refine_free_1_dense": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_refine_free_1_nodes": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_refine_free_2_dense": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_refine_free_2_nodes": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_refine_viscous_0_dense": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_refine_viscous_0_nodes": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_refine_viscous_1_dense": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_refine_viscous_1_nodes": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_refine_viscous_2_dense": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_refine_viscous_2_nodes": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_refine_coupled_0_dense": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_refine_coupled_0_nodes": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_refine_coupled_1_dense": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_refine_coupled_1_nodes": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_refine_coupled_2_dense": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    },
+    "m1_refine_coupled_2_nodes": {
+      "status": "FAIL",
+      "issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "completeness_issues": [
+        "active q/v/a/load/time contains marker or nonfinite value"
+      ],
+      "metrics": {}
+    }
+  },
+  "case_count": 96,
+  "refinements": [
+    {
+      "method": 0,
+      "model": "free",
+      "metric": "q",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 0,
+      "model": "free",
+      "metric": "v",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 0,
+      "model": "free",
+      "metric": "a_dyn",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 0,
+      "model": "free",
+      "metric": "energy",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 0,
+      "model": "free",
+      "metric": "kinematic_defect",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 0.9,
+      "status": "FAIL"
+    },
+    {
+      "method": 0,
+      "model": "viscous",
+      "metric": "q",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 0,
+      "model": "viscous",
+      "metric": "v",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 0,
+      "model": "viscous",
+      "metric": "a_dyn",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 0,
+      "model": "viscous",
+      "metric": "energy",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 0,
+      "model": "viscous",
+      "metric": "kinematic_defect",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 0.9,
+      "status": "FAIL"
+    },
+    {
+      "method": 0,
+      "model": "coupled",
+      "metric": "q",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 0,
+      "model": "coupled",
+      "metric": "v",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 0,
+      "model": "coupled",
+      "metric": "a_dyn",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 0,
+      "model": "coupled",
+      "metric": "effort",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 0,
+      "model": "coupled",
+      "metric": "energy",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 0,
+      "model": "coupled",
+      "metric": "kinematic_defect",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 0.9,
+      "status": "FAIL"
+    },
+    {
+      "method": 1,
+      "model": "free",
+      "metric": "q",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 1,
+      "model": "free",
+      "metric": "v",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 1,
+      "model": "free",
+      "metric": "a_dyn",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 1,
+      "model": "free",
+      "metric": "energy",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 1,
+      "model": "free",
+      "metric": "kinematic_defect",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 0.9,
+      "status": "FAIL"
+    },
+    {
+      "method": 1,
+      "model": "viscous",
+      "metric": "q",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 1,
+      "model": "viscous",
+      "metric": "v",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 1,
+      "model": "viscous",
+      "metric": "a_dyn",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 1,
+      "model": "viscous",
+      "metric": "energy",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 1,
+      "model": "viscous",
+      "metric": "kinematic_defect",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 0.9,
+      "status": "FAIL"
+    },
+    {
+      "method": 1,
+      "model": "coupled",
+      "metric": "q",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 1,
+      "model": "coupled",
+      "metric": "v",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 1,
+      "model": "coupled",
+      "metric": "a_dyn",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 1,
+      "model": "coupled",
+      "metric": "effort",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 1,
+      "model": "coupled",
+      "metric": "energy",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 1.8,
+      "status": "FAIL"
+    },
+    {
+      "method": 1,
+      "model": "coupled",
+      "metric": "kinematic_defect",
+      "errors": [
+        null,
+        null,
+        null
+      ],
+      "orders": [
+        null,
+        null
+      ],
+      "minimum_order": 0.9,
+      "status": "FAIL"
+    }
+  ],
+  "refinement_failures": [
+    "method 0 free q refinement",
+    "method 0 free v refinement",
+    "method 0 free a_dyn refinement",
+    "method 0 free energy refinement",
+    "method 0 free kinematic_defect refinement",
+    "method 0 viscous q refinement",
+    "method 0 viscous v refinement",
+    "method 0 viscous a_dyn refinement",
+    "method 0 viscous energy refinement",
+    "method 0 viscous kinematic_defect refinement",
+    "method 0 coupled q refinement",
+    "method 0 coupled v refinement",
+    "method 0 coupled a_dyn refinement",
+    "method 0 coupled effort refinement",
+    "method 0 coupled energy refinement",
+    "method 0 coupled kinematic_defect refinement",
+    "method 1 free q refinement",
+    "method 1 free v refinement",
+    "method 1 free a_dyn refinement",
+    "method 1 free energy refinement",
+    "method 1 free kinematic_defect refinement",
+    "method 1 viscous q refinement",
+    "method 1 viscous v refinement",
+    "method 1 viscous a_dyn refinement",
+    "method 1 viscous energy refinement",
+    "method 1 viscous kinematic_defect refinement",
+    "method 1 coupled q refinement",
+    "method 1 coupled v refinement",
+    "method 1 coupled a_dyn refinement",
+    "method 1 coupled effort refinement",
+    "method 1 coupled energy refinement",
+    "method 1 coupled kinematic_defect refinement"
+  ],
+  "negative_fill_controls": [],
+  "publication_independence": [
+    {
+      "base": "m0_stride_1.0",
+      "other": "m0_stride_0.25",
+      "common_rows": 0,
+      "max_error": null,
+      "status": "FAIL"
+    },
+    {
+      "base": "m0_stride_1.0",
+      "other": "m0_stride_0.5",
+      "common_rows": 0,
+      "max_error": null,
+      "status": "FAIL"
+    },
+    {
+      "base": "m0_stride_1.0",
+      "other": "m0_stride_2.0",
+      "common_rows": 0,
+      "max_error": null,
+      "status": "FAIL"
+    },
+    {
+      "base": "m0_stride_1.0",
+      "other": "m0_stride_1.3",
+      "common_rows": 0,
+      "max_error": null,
+      "status": "FAIL"
+    },
+    {
+      "base": "m0_zero",
+      "other": "m0_zero_other_marker",
+      "status": "FAIL"
+    },
+    {
+      "base": "m1_stride_1.0",
+      "other": "m1_stride_0.25",
+      "common_rows": 0,
+      "max_error": null,
+      "status": "FAIL"
+    },
+    {
+      "base": "m1_stride_1.0",
+      "other": "m1_stride_0.5",
+      "common_rows": 0,
+      "max_error": null,
+      "status": "FAIL"
+    },
+    {
+      "base": "m1_stride_1.0",
+      "other": "m1_stride_2.0",
+      "common_rows": 0,
+      "max_error": null,
+      "status": "FAIL"
+    },
+    {
+      "base": "m1_stride_1.0",
+      "other": "m1_stride_1.3",
+      "common_rows": 0,
+      "max_error": null,
+      "status": "FAIL"
+    },
+    {
+      "base": "m1_zero",
+      "other": "m1_zero_other_marker",
+      "status": "FAIL"
+    }
+  ],
+  "native_fill_control": {
+    "status": "FAIL",
+    "reason": "baseline has no native completion instrumentation"
+  },
+  "criteria": {
+    "residual_factor": 1000,
+    "precision": "real64",
+    "order_q_v_a_effort_energy": 1.8,
+    "order_kinematic_defect": 0.9,
+    "normalized_order_floor": 1e-11
+  }
+}

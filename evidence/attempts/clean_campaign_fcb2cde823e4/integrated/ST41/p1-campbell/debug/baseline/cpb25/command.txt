@@ -1,0 +1,1 @@
+/workspace/scratch/8c0efd7393df/work/rotordin2/build/pre-st41-baseline/rotordin2-debug-baseline -std -c -b < input.txt

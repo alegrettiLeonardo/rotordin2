@@ -1,0 +1,15 @@
+At line 165 of file /workspace/scratch/8c0efd7393df/work/a02/build/reliability/a02/qualification/baseline-source/ttrqdiv.f90
+Fortran runtime error: Index '0' of dimension 1 of array 'dl' below lower bound of 1
+
+Error termination. Backtrace:
+#0  0x7f2edc2a1e59 in ???
+#1  0x7f2edc2a2a71 in ???
+#2  0x7f2edc2a3082 in ???
+#3  0x5648b877933b in tdvtrst_
+	at /workspace/scratch/8c0efd7393df/work/a02/build/reliability/a02/qualification/baseline-source/ttrqdiv.f90:165
+#4  0x5648b875540a in tresp_f_
+	at /workspace/scratch/8c0efd7393df/work/a02/build/reliability/a02/qualification/baseline-source/tresp_f.f90:269
+#5  0x5648b851a4f3 in a02_native
+	at tests/reliability/a02_native.f90:123
+#6  0x5648b851a827 in main
+	at tests/reliability/a02_native.f90:4

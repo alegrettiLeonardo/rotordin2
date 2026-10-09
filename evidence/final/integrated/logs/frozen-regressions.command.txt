@@ -1,0 +1,1 @@
+git diff --exit-code 4d928f79c8daf0ad9ee67e4439e23e0e7c6b6f47 -- tests/ :\(exclude\)tests/reliability/\*\* lapack/ docs/legacy/lapack/ docs/manifests/LAPACK.sha256 src/source/resp_f.f90 src/source/resp_fv.f90 src/source/resp_t.f90 src/source/rd_harmonic_response.f90 src/source/rd_campbell_engine.f90 src/source/rd_campbell_families.f90 src/source/transient_speed.f90 

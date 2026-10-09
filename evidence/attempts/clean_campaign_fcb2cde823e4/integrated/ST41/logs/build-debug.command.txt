@@ -1,0 +1,1 @@
+make MODE=debug FC=gfortran -j4 

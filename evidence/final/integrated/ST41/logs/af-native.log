@@ -1,0 +1,11 @@
+PASS AF release baseline: AF_CASES PASS mode=preserved checks=13
+PASS AF release current: AF_CASES PASS mode=preserved checks=13
+EDGE AF=  7.7777777777777779E-01 STATE=n
+AF_CASES PASS mode=edge checks=6
+AF_CHECKED_CASES PASS checks=45
+PASS AF debug baseline: AF_CASES PASS mode=preserved checks=13
+PASS AF debug current: AF_CASES PASS mode=preserved checks=13
+EDGE AF=  7.7777777777777779E-01 STATE=n
+AF_CASES PASS mode=edge checks=6
+AF_CHECKED_CASES PASS checks=45
+RD2-07_NATIVE: PASS; old edge failure reproduced; fitted peak output byte-identical

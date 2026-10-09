@@ -1,0 +1,5 @@
+PASS messages release baseline: MESSAGES_CASES PASS mode=short checks=6
+PASS messages release current: MESSAGES_CASES PASS mode=all checks=22
+PASS messages debug baseline: MESSAGES_CASES PASS mode=short checks=6
+PASS messages debug current: MESSAGES_CASES PASS mode=all checks=22
+RD2-11_NATIVE: PASS; old optional/context overruns reproduced in release and debug

@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "bash",
+    "tests/check_sources.sh"
+  ],
+  "cwd": "/workspace/scratch/8c0efd7393df/rev_work/final_source_539134eaee20",
+  "environment": {
+    "FC": "gfortran",
+    "LC_ALL": "C"
+  }
+}

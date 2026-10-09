@@ -1,0 +1,4 @@
+RD_AUDIT_V1 EIGENSOLVER DGGEVX_REAL 3
+NATIVE_ROUTE=periodic
+NATIVE_RATIO=  1.0000000000000000E+00
+NATIVE_RESULT=-1 A02 NOT_QUALIFIED: 3-node torsion K/J interpolation mismatch; use qualified 2-node element.

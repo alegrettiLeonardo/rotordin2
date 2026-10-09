@@ -1,0 +1,67 @@
+{
+  "binary_sha256": "029cefaa943b910932324f37aa7148e3b6bf41adbbcfddb77f362b3ffc03ade8",
+  "before_A07_binary_sha256": "2b78967da3f10d3f9cba2a891d66a2de6dcbe9ea05d753272a05e87fee23339b",
+  "before_control_scope": "current other code; four A07 algorithm files restored from qualified baseline",
+  "cases": [
+    {
+      "case": "constant1500",
+      "before_returncode": 0,
+      "after_returncode": 0,
+      "result": "PASS",
+      "matrix_error": 0.0,
+      "state_error": 0.0,
+      "before_states": 1020,
+      "after_states": 1020
+    },
+    {
+      "case": "constant0",
+      "before_returncode": 0,
+      "after_returncode": 0,
+      "result": "PASS",
+      "matrix_error": 0.0,
+      "state_error": 0.0,
+      "before_states": 1020,
+      "after_states": 1020
+    },
+    {
+      "case": "flat_table",
+      "before_returncode": 0,
+      "after_returncode": 0,
+      "result": "PASS",
+      "matrix_error": 0.0,
+      "state_error": 0.0,
+      "before_states": 1020,
+      "after_states": 1020
+    },
+    {
+      "case": "startup",
+      "before_returncode": 0,
+      "after_returncode": 1,
+      "result": "NOT_QUALIFIED",
+      "gate_test": "PASS",
+      "after_states": 0,
+      "reason": "native actuator tilt-work and torque distribution unspecified"
+    },
+    {
+      "case": "coastdown",
+      "before_returncode": 0,
+      "after_returncode": 1,
+      "result": "NOT_QUALIFIED",
+      "gate_test": "PASS",
+      "after_states": 0,
+      "reason": "native actuator tilt-work and torque distribution unspecified"
+    },
+    {
+      "case": "delayed_ramp",
+      "before_returncode": 0,
+      "after_returncode": 1,
+      "result": "NOT_QUALIFIED",
+      "gate_test": "PASS",
+      "after_states": 0,
+      "reason": "native actuator tilt-work and torque distribution unspecified"
+    }
+  ],
+  "constant_speed_equivalence": "PASS",
+  "fail_closed_production_ramps": "PASS",
+  "production_ramp_physics": "NOT_QUALIFIED"
+}

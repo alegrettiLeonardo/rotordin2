@@ -1,0 +1,1 @@
+LOOKUP HARMONIC_ORBIT: blocks=16 coefficients=32 native_rows=32 min=900 max=2400

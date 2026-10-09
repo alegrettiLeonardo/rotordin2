@@ -1,0 +1,13 @@
+STOP 1
+#BEGIN MODEL_ERROR
+ERROR CODE          : IN_BEARING_DATA
+SUMMARY             : bearing rpm=  5.0001E+03 outside [  3.7500E+02,  5.0000E+03
+LOCATION            : BEARING 1; source=b1.tbl
+RECEIVED            : requested rpm=5.0001000000000013E+003; bearing rpm=  5.0001E+03 outside [  3.7500E+02,  5.0000E+03
+EXPECTED            : requested source must exist and provide valid coefficients at the requested analysis speed
+PHYSICAL CAUSE      : explicitly requested bearing data could not be resolved
+HOW TO FIX          : review bearing ID, source path, table domain/scale and selected analysis speed; no data was substituted
+ACTION              : analysis aborted before invalid results could be generated
+#END MODEL_ERROR
+
+ERR(11:23:10.3):MODEL_AUDIT [IN_BEARING_DATA]: bearing rpm=  5.0001E+03 outside [  3.7500E+02,  5.0000E+03

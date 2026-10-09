@@ -1,0 +1,50 @@
+[
+  {
+    "mode": "release",
+    "action": "build",
+    "command": [
+      "make",
+      "MODE=release",
+      "FC=/workspace/scratch/8c0efd7393df/toolchain/gfortran",
+      "-j4"
+    ],
+    "returncode": 0,
+    "seconds": 12.044881611000164
+  },
+  {
+    "mode": "release",
+    "action": "test",
+    "command": [
+      "make",
+      "MODE=release",
+      "FC=/workspace/scratch/8c0efd7393df/toolchain/gfortran",
+      "test"
+    ],
+    "returncode": 0,
+    "seconds": 11.482621812996513
+  },
+  {
+    "mode": "debug",
+    "action": "build",
+    "command": [
+      "make",
+      "MODE=debug",
+      "FC=/workspace/scratch/8c0efd7393df/toolchain/gfortran",
+      "-j4"
+    ],
+    "returncode": 0,
+    "seconds": 12.137479899996833
+  },
+  {
+    "mode": "debug",
+    "action": "test",
+    "command": [
+      "make",
+      "MODE=debug",
+      "FC=/workspace/scratch/8c0efd7393df/toolchain/gfortran",
+      "test"
+    ],
+    "returncode": 0,
+    "seconds": 34.92135154699645
+  }
+]

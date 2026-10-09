@@ -1,0 +1,1 @@
+A07 canonical matrix/kernel and safe production gate: PASS; production variable-spin physics: NOT_QUALIFIED

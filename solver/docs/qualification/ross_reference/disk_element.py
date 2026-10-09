@@ -1,0 +1,710 @@
+"""Disk Element module.
+
+This module defines the DiskElement classes which will be used to represent equipments
+attached to the rotor shaft, which add mainly mass and inertia to the system.
+"""
+
+import numpy as np
+from plotly import graph_objects as go
+
+from ross.element import Element
+from ross.plotly_theme import color_shades
+from ross.units import check_units
+from ross.utils import read_table_file
+
+__all__ = ["DiskElement"]
+
+
+class DiskElement(Element):
+    """A disk element.
+
+    This class creates a disk element from input data of inertia and mass.
+
+    Parameters
+    ----------
+    n: int
+        Node in which the disk will be inserted.
+    m : float, pint.Quantity
+        Mass of the disk element.
+    Id : float, pint.Quantity
+        Diametral moment of inertia.
+    Ip : float, pint.Quantity
+        Polar moment of inertia
+    tag : str, optional
+        A tag to name the element
+        Default is None
+    scale_factor: float or str, optional
+        The scale factor is used to scale the disk drawing.
+        For disks it is also possible to provide 'mass' as the scale factor.
+        In this case the code will calculate scale factors for each disk based
+        on the disk with the higher mass. Notice that in this case you have to
+        create all disks with the scale_factor='mass'.
+        Default is 1.
+    color : str, optional
+        A color to be used when the element is represented.
+        Default is 'Firebrick'.
+
+    Examples
+    --------
+    >>> disk = DiskElement(n=0, m=32, Id=0.2, Ip=0.3)
+    >>> disk.Ip
+    0.3
+    """
+
+    _legend_group = "Disk"
+
+    @check_units
+    def __init__(self, n, m, Id, Ip, tag=None, scale_factor=1.0, color="Firebrick"):
+        self.n = int(n)
+        self.n_l = n
+        self.n_r = n
+
+        self.m = float(m)
+        self.Id = float(Id)
+        self.Ip = float(Ip)
+        self.tag = tag
+        self.color = color
+        self.scale_factor = scale_factor
+        self.dof_global_index = None
+
+    def __eq__(self, other):
+        """Equality method for comparisons.
+
+        Parameters
+        ----------
+        other: object
+            The second object to be compared with.
+
+        Returns
+        -------
+        bool
+            True if the comparison is true; False otherwise.
+
+        Examples
+        --------
+        >>> disk1 = disk_example()
+        >>> disk2 = disk_example()
+        >>> disk1 == disk2
+        True
+        """
+        false_number = 0
+        if "DiskElement" in other.__class__.__name__:
+            for i in self.__dict__:
+                try:
+                    if np.allclose(self.__dict__[i], other.__dict__[i]):
+                        pass
+                    else:
+                        false_number += 1
+
+                except TypeError:
+                    if self.__dict__[i] == other.__dict__[i]:
+                        pass
+                    else:
+                        false_number += 1
+
+                except KeyError:
+                    false_number += 1
+        else:
+            false_number += 1
+
+        if false_number == 0:
+            return True
+        else:
+            return False
+
+    def __repr__(self):
+        """Return a string representation of a disk element.
+
+        Returns
+        -------
+        A string representation of a disk element object.
+
+        Examples
+        --------
+        >>> disk = disk_example()
+        >>> disk # doctest: +ELLIPSIS
+        DiskElement(Id=0.17809, Ip=0.32956...
+        """
+        return (
+            f"{self.__class__.__name__}"
+            f"(Id={self.Id:{0}.{5}}, Ip={self.Ip:{0}.{5}}, "
+            f"m={self.m:{0}.{5}}, color={self.color!r}, "
+            f"n={self.n}, scale_factor={self.scale_factor}, tag={self.tag!r})"
+        )
+
+    def __str__(self):
+        """Convert object into string.
+
+        Returns
+        -------
+        The object's parameters translated to strings
+
+        Example
+        -------
+        >>> print(DiskElement(n=0, m=32, Id=0.223, Ip=0.31223, tag="Disk"))
+        Tag:                      Disk
+        Node:                     0
+        Mass           (kg):      32.0
+        Diam. inertia  (kg*m**2): 0.223
+        Polar. inertia (kg*m**2): 0.31223
+        """
+        return (
+            f"Tag:                      {self.tag}"
+            f"\nNode:                     {self.n}"
+            f"\nMass           (kg):      {self.m:{2}.{5}}"
+            f"\nDiam. inertia  (kg*m**2): {self.Id:{2}.{5}}"
+            f"\nPolar. inertia (kg*m**2): {self.Ip:{2}.{5}}"
+        )
+
+    def __hash__(self):
+        """Return the hash value of the disk element.
+
+        Returns
+        -------
+        int
+            Hash value based on the element tag.
+        """
+        return hash(self.tag)
+
+    def dof_mapping(self):
+        """Degrees of freedom mapping.
+
+        Returns a dictionary with a mapping between degree of freedom and its index.
+
+        Returns
+        -------
+        dof_mapping : dict
+            A dictionary containing the degrees of freedom and their indexes.
+
+        Examples
+        --------
+        The numbering of the degrees of freedom for each node.
+
+        Being the following their ordering for a node:
+
+        x_0 - horizontal translation
+        y_0 - vertical translation
+        z_0 - axial translation
+        alpha_0 - rotation around horizontal
+        beta_0  - rotation around vertical
+        theta_0 - torsion around axial
+
+        >>> disk = disk_example()
+        >>> disk.dof_mapping()
+        {'x_0': 0, 'y_0': 1, 'z_0': 2, 'alpha_0': 3, 'beta_0': 4, 'theta_0': 5}
+        """
+        return dict(x_0=0, y_0=1, z_0=2, alpha_0=3, beta_0=4, theta_0=5)
+
+    def M(self):
+        """Mass matrix for an instance of a disk element.
+
+        This method will return the mass matrix for an instance of a disk element.
+
+        Returns
+        -------
+        M : np.ndarray
+            A matrix of floats containing the values of the mass matrix.
+
+        Examples
+        --------
+        >>> disk = DiskElement(0, 32.58972765, 0.17808928, 0.32956362)
+        >>> disk.M().round(2)
+        array([[32.59,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ],
+               [ 0.  , 32.59,  0.  ,  0.  ,  0.  ,  0.  ],
+               [ 0.  ,  0.  , 32.59,  0.  ,  0.  ,  0.  ],
+               [ 0.  ,  0.  ,  0.  ,  0.18,  0.  ,  0.  ],
+               [ 0.  ,  0.  ,  0.  ,  0.  ,  0.18,  0.  ],
+               [ 0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.33]])
+        """
+        m = self.m
+        Id = self.Id
+        Ip = self.Ip
+        # fmt: off
+        M = np.array([
+            [m,  0,  0,  0,  0,  0],
+            [0,  m,  0,  0,  0,  0],
+            [0,  0,  m,  0,  0,  0],
+            [0,  0,  0, Id,  0,  0],
+            [0,  0,  0,  0, Id,  0],
+            [0,  0,  0,  0,  0, Ip],
+        ])
+        # fmt: on
+        return M
+
+    def K(self):
+        """Stiffness matrix for an instance of a disk element.
+
+        This method will return the stiffness matrix for an instance of a disk
+        element.
+
+        Returns
+        -------
+        K : np.ndarray
+            A matrix of floats containing the values of the stiffness matrix.
+
+        Examples
+        --------
+        >>> disk = disk_example()
+        >>> disk.K().round(2)
+        array([[0., 0., 0., 0., 0., 0.],
+               [0., 0., 0., 0., 0., 0.],
+               [0., 0., 0., 0., 0., 0.],
+               [0., 0., 0., 0., 0., 0.],
+               [0., 0., 0., 0., 0., 0.],
+               [0., 0., 0., 0., 0., 0.]])
+        """
+        K = np.zeros((6, 6))
+
+        return K
+
+    def Kdt(self):
+        """Dynamic stiffness matrix for an instance of a disk element.
+
+        Stiffness matrix for the disk element associated with the
+        transient motion. It needs to be multiplied by the angular
+        acceleration when considered in time dependent analyses.
+
+        Returns
+        -------
+        Kdt : np.ndarray
+            A matrix of floats containing the values of the dynamic
+            stiffness matrix.
+
+        Examples
+        --------
+        >>> disk = disk_example()
+        >>> disk.Kdt().round(2)
+        array([[0.  , 0.  , 0.  , 0.  , 0.  , 0.  ],
+               [0.  , 0.  , 0.  , 0.  , 0.  , 0.  ],
+               [0.  , 0.  , 0.  , 0.  , 0.  , 0.  ],
+               [0.  , 0.  , 0.  , 0.  , 0.  , 0.  ],
+               [0.  , 0.  , 0.  , 0.33, 0.  , 0.  ],
+               [0.  , 0.  , 0.  , 0.  , 0.  , 0.  ]])
+        """
+        Ip = self.Ip
+        # fmt: off
+        Kdt = np.array([[0, 0, 0,  0, 0, 0],
+                        [0, 0, 0,  0, 0, 0],
+                        [0, 0, 0,  0, 0, 0],
+                        [0, 0, 0,  0, 0, 0],
+                        [0, 0, 0, Ip, 0, 0],
+                        [0, 0, 0,  0, 0, 0]])
+        # fmt: on
+        return Kdt
+
+    def C(self):
+        """Damping matrix for an instance of a disk element.
+
+        This method will return the damping matrix for an instance of a disk
+        element.
+
+        Returns
+        -------
+        C : np.ndarray
+            A matrix of floats containing the values of the damping matrix.
+
+        Examples
+        --------
+        >>> disk = disk_example()
+        >>> disk.C()
+        array([[0., 0., 0., 0., 0., 0.],
+               [0., 0., 0., 0., 0., 0.],
+               [0., 0., 0., 0., 0., 0.],
+               [0., 0., 0., 0., 0., 0.],
+               [0., 0., 0., 0., 0., 0.],
+               [0., 0., 0., 0., 0., 0.]])
+        """
+        C = np.zeros((6, 6))
+
+        return C
+
+    def G(self):
+        """Gyroscopic matrix for an instance of a disk element.
+
+        This method will return the gyroscopic matrix for an instance of a disk
+        element.
+
+        Returns
+        -------
+        G: np.ndarray
+            Gyroscopic matrix for the disk element.
+
+        Examples
+        --------
+        >>> disk = DiskElement(0, 32.58972765, 0.17808928, 0.32956362)
+        >>> disk.G().round(2)
+        array([[ 0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ],
+               [ 0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ],
+               [ 0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ],
+               [ 0.  ,  0.  ,  0.  ,  0.  ,  0.33,  0.  ],
+               [ 0.  ,  0.  ,  0.  , -0.33,  0.  ,  0.  ],
+               [ 0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ]])
+        """
+        Ip = self.Ip
+        # fmt: off
+        G = np.array([
+            [0, 0, 0,   0,  0, 0],
+            [0, 0, 0,   0,  0, 0],
+            [0, 0, 0,   0,  0, 0],
+            [0, 0, 0,   0, Ip, 0],
+            [0, 0, 0, -Ip,  0, 0],
+            [0, 0, 0,   0,  0, 0],
+        ])
+        # fmt: on
+        return G
+
+    def _patch(self, position, fig):
+        """Disk element patch.
+
+        Patch that will be used to draw the shaft element using plotly library.
+
+        The disk is drawn as an I shaped cross section (hub, web and rim), with
+        its height scaled by the disk mass relative to the heaviest disk in the
+        rotor.
+
+        Parameters
+        ----------
+        position : tuple
+            Position (z, y_low, y_center, height) in which the patch will be
+            drawn.
+        fig : plotly.graph_objects.Figure
+            The figure object which traces are added on.
+
+        Returns
+        -------
+        fig : plotly.graph_objects.Figure
+            The figure object which traces are added on.
+        """
+        zpos, ypos, yc_pos, height = position
+        shades = color_shades(self.color)
+
+        # axial width of a uniform disk with the same mass and inertias
+        width = 12 * (self.Id - self.Ip / 2) / self.m if self.m else 0
+        width = np.sqrt(width) if width > 0 else 0
+        width = min(max(width, 0.28 * height), 1.5 * height)
+        rim = width / 2
+        hub = 0.45 * rim
+
+        customdata = [self.n, self.Ip, self.Id, self.m]
+        hovertemplate = (
+            f"Disk Node: {customdata[0]}<br>"
+            + f"Polar Inertia: {customdata[1]:.3e}<br>"
+            + f"Diametral Inertia: {customdata[2]:.3e}<br>"
+            + f"Disk mass: {customdata[3]:.3f}<br>"
+        )
+
+        # fmt: off
+        z_offsets = [-rim, rim, rim, hub, hub, rim, rim, -rim, -rim, -hub, -hub, -rim, -rim]
+        y_factors = [0, 0, 0.14, 0.20, 0.78, 0.84, 1, 1, 0.84, 0.78, 0.20, 0.14, 0]
+        # fmt: on
+
+        sheen_color = "rgba(255,255,255,0.30)"
+
+        for sign in (1, -1):
+            y0 = sign * ypos + yc_pos
+            h = sign * height
+            z_pos = [zpos + dz for dz in z_offsets]
+            y_pos = [y0 + factor * h for factor in y_factors]
+
+            body = go.Scatter(
+                x=z_pos,
+                y=y_pos,
+                customdata=[customdata] * len(z_pos),
+                text=hovertemplate,
+                mode="lines",
+                fill="toself",
+                fillcolor=shades["dark"],
+                fillpattern=dict(
+                    shape="",
+                    fgcolor=shades["edge"],
+                    bgcolor=shades["section"],
+                    size=4,
+                    solidity=0.25,
+                ),
+                line=dict(width=1.0, color=shades["edge"]),
+                showlegend=False,
+                name=self.tag,
+                legendgroup=self._legend_group,
+                hoveron="points+fills",
+                hoverinfo="text",
+                hovertemplate=hovertemplate,
+                hoverlabel=dict(bgcolor=shades["dark"], font=dict(color="white")),
+            )
+            sheen = go.Scatter(
+                x=[zpos - 0.2 * rim] * 2,
+                y=[y0 + 0.06 * h, y0 + 0.92 * h],
+                mode="lines",
+                line=dict(width=2.0, color=sheen_color),
+                showlegend=False,
+                legendgroup=self._legend_group,
+                hoverinfo="skip",
+            )
+
+            if sign < 0:
+                body.update(
+                    meta=dict(
+                        morph=dict(
+                            render={
+                                "fillcolor": shades["dark"],
+                                "fillpattern.shape": "",
+                                "line.color": shades["edge"],
+                            },
+                            section={
+                                "fillcolor": shades["section"],
+                                "fillpattern.shape": "/",
+                                "line.color": shades["edge"],
+                            },
+                        )
+                    )
+                )
+                sheen.update(
+                    meta=dict(
+                        morph=dict(
+                            render={"line.color": sheen_color},
+                            section={"line.color": "rgba(255,255,255,0)"},
+                        )
+                    )
+                )
+
+            fig.add_trace(body)
+            fig.add_trace(sheen)
+
+        return fig
+
+    @staticmethod
+    def calculate_mass(rho, width, i_d, o_d):
+        """Calculate the mass of a disk from its geometry.
+
+        Parameters
+        ----------
+        rho : float
+            Density of the disk material (kg/m^3).
+        width : float
+            Width of the disk (m).
+        i_d : float
+            Inner diameter of the disk (m).
+        o_d : float
+            Outer diameter of the disk (m).
+
+        Returns
+        -------
+        mass : float
+            Mass of the disk element (kg).
+        """
+        return rho * np.pi * width * (o_d**2 - i_d**2) / 4
+
+    @staticmethod
+    def calculate_Ip(m, i_d, o_d):
+        """Calculate the polar moment of inertia of a disk from its geometry.
+
+        Parameters
+        ----------
+        m : float
+            Mass of the disk element (kg).
+        i_d : float
+            Inner diameter of the disk (m).
+        o_d : float
+            Outer diameter of the disk (m).
+
+        Returns
+        -------
+        Ip : float
+            Polar moment of inertia of the disk element (kg.m^2).
+        """
+        return m * (o_d**2 + i_d**2) / 8
+
+    @staticmethod
+    def calculate_Id(Ip, m, width):
+        """Calculate the diametral moment of inertia of a disk from its geometry.
+
+        Parameters
+        ----------
+        Ip : float
+            Polar moment of inertia of the disk element (kg.m^2).
+        m : float
+            Mass of the disk element (kg).
+        width : float
+            Width of the disk (m).
+
+        Returns
+        -------
+        Id : float
+            Diametral moment of inertia of the disk element (kg.m^2).
+        """
+        return 1 / 2 * Ip + 1 / 12 * m * width**2
+
+    @staticmethod
+    def calculate_width(rho, m, i_d, o_d):
+        """Calculate the width of a disk from its geometry and mass.
+
+        Parameters
+        ----------
+        rho : float
+            Density of the disk material (kg/m^3).
+        m : float
+            Mass of the disk element (kg).
+        i_d : float
+            Inner diameter of the disk (m).
+        o_d : float
+            Outer diameter of the disk (m).
+
+        Returns
+        -------
+        width : float
+            Width of the disk element (m).
+        """
+        return 4 * m / (rho * np.pi * (o_d**2 - i_d**2))
+
+    @classmethod
+    @check_units
+    def from_geometry(
+        cls, n, material, width, i_d, o_d, tag=None, scale_factor=1.0, color="Firebrick"
+    ):
+        """Create a disk element from geometry properties.
+
+        This class method will create a disk element from geometry data.
+        Properties are calculated as per :cite:`friswell2010dynamics`, appendix 1
+        for a hollow cylinder:
+
+        Mass:
+
+        :math:`m = \\rho \\pi w (d_o^2 - d_i^2) / 4`
+
+        Polar moment of inertia:
+
+        :math:`I_p = m (d_o^2 + d_i^2) / 8`
+
+        Diametral moment of inertia:
+
+        :math:`I_d = \\frac{1}{2} I_p + \\frac{1}{12} m w^2`
+
+        Where :math:`\\rho` is the material density, :math:`w` is the disk width,
+        :math:`d_o` is the outer diameter and :math:`d_i` is the inner diameter.
+
+        Parameters
+        ----------
+        n : int
+            Node in which the disk will be inserted.
+        material: ross.Material
+            Disk material.
+        width : float, pint.Quantity
+            The disk width.
+        i_d : float, pint.Quantity
+            Inner diameter.
+        o_d : float, pint.Quantity
+            Outer diameter.
+        tag : str, optional
+            A tag to name the element
+            Default is None
+        scale_factor: float, optional
+            The scale factor is used to scale the disk drawing.
+            Default is 1.
+        color : str, optional
+            A color to be used when the element is represented.
+            Default is 'Firebrick' (Cardinal).
+
+        Attributes
+        ----------
+        m : float
+            Mass of the disk element.
+        Id : float
+            Diametral moment of inertia.
+        Ip : float
+            Polar moment of inertia
+
+        Examples
+        --------
+        >>> from ross.materials import steel
+        >>> disk = DiskElement.from_geometry(0, steel, 0.07, 0.05, 0.28)
+        >>> disk.Ip
+        0.32956362089137037
+        """
+        m = cls.calculate_mass(material.rho, width, i_d, o_d)
+        Ip = cls.calculate_Ip(m, i_d, o_d)
+        Id = cls.calculate_Id(Ip, m, width)
+
+        return cls(n, m, Id, Ip, tag, scale_factor, color)
+
+    @classmethod
+    def from_table(cls, file, sheet_name=0, tag=None, scale_factor=None, color=None):
+        """Instantiate one or more disks using inputs from an Excel table.
+
+        A header with the names of the columns is required. These names should
+        match the names expected by the routine (usually the names of the
+        parameters, but also similar ones). The program will read every row
+        bellow the header until they end or it reaches a NaN.
+
+        Parameters
+        ----------
+        file : str
+            Path to the file containing the disk parameters.
+        sheet_name : int or str, optional
+            Position of the sheet in the file (starting from 0) or its name.
+            If none is passed, it is assumed to be the first sheet in the file.
+        tag : list, str, optional
+            Tag or list of tags for the disk elements.
+            Default is None
+        scale_factor: list, float, optional
+            Scale factor or list of scale factors for the disk elements patches.
+            The scale factor is used to scale the disk drawing.
+            If None, a default list of 1s is used.
+        color : list, str, optional
+            A color or list of colors to be used when the element is represented.
+            If None, a default list of 'Firebrick' is used.
+
+        Returns
+        -------
+        disk : list
+            A list of disk objects.
+
+        Examples
+        --------
+        >>> import os
+        >>> file_path = os.path.dirname(os.path.realpath(__file__)) + '/data/shaft_si.xls'
+        >>> list_of_disks = DiskElement.from_table(file_path, sheet_name="More")
+        >>> list_of_disks[0]
+        DiskElement(Id=0.0, Ip=0.0, m=15.12, color='Firebrick', n=3, scale_factor=1, tag=None)
+        """
+        parameters = read_table_file(file, "disk", sheet_name=sheet_name)
+        if tag is None:
+            tag = [None] * len(parameters["n"])
+        if scale_factor is None:
+            scale_factor = [1] * len(parameters["n"])
+        if color is None:
+            color = ["Firebrick"] * len(parameters["n"])
+
+        list_of_disks = []
+        for i in range(0, len(parameters["n"])):
+            list_of_disks.append(
+                cls(
+                    n=parameters["n"][i],
+                    m=parameters["m"][i],
+                    Id=float(parameters["Id"][i]),
+                    Ip=float(parameters["Ip"][i]),
+                    tag=tag[i],
+                    scale_factor=scale_factor[i],
+                    color=color[i],
+                )
+            )
+        return list_of_disks
+
+
+def disk_example():
+    """Create an example of disk element.
+
+    This function returns an instance of a simple disk. The purpose is to make available
+    a simple model so that doctest can be written using it.
+
+    Returns
+    -------
+    disk : ross.DiskElement
+        An instance of a disk object.
+
+    Examples
+    --------
+    >>> disk = disk_example()
+    >>> disk.Ip
+    0.32956362
+    """
+    disk = DiskElement(0, 32.589_727_65, 0.178_089_28, 0.329_563_62)
+    return disk

@@ -1,0 +1,6 @@
+HARMONIC_ORACLE_SOLVES=60
+MAX_ORACLE_RELATIVE_ERROR= 4.8646164126889649E-014
+MAX_INDEPENDENT_PHYSICAL_RESIDUAL= 1.6803238324986125E-016
+MAX_KINEMATIC_RESIDUAL= 3.2517760535851563E-015
+HARMONIC_ORACLE: PASS; fixed/table/cross terms/support/foundation; phases; degree/radian; KIND capability
+HARMONIC_CLI: PASS; 19 runs; phase, -t/-f-t/-m-t, NBRMOD, TANGLE, support, sweep, shape, plots, foundation lifecycle/restriction

@@ -1,0 +1,15 @@
+{
+  "id": "REV_TEMPORAL",
+  "mode": "release",
+  "source_commit": "52b01ae7aded55eacff7f4a3aa4acbad73649d04",
+  "status": "PASS",
+  "gates": {
+    "REV01": "PASS",
+    "REV02": "PASS",
+    "completeness": "PASS",
+    "no_false_success": "PASS",
+    "physics": "PASS",
+    "refinement": "PASS",
+    "cli": "PASS"
+  }
+}

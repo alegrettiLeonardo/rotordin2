@@ -1,0 +1,4 @@
+INTEGRITY: PASS; solver original=79; fontes LAPACK selecionados=213
+LINK_AUDIT: PASS; 287 objetos locais; LAPACK/BLAS 3.12.1; sem agregados históricos
+/bin/bash: line 1: build/debug/tests/linalg_smoke: Permission denied
+make: *** [Makefile:216: test-linalg] Error 126

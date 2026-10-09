@@ -1,0 +1,19 @@
+{
+  "source_head": "539134eaee209f6de1c0c91e705fe92a75a28412",
+  "platform": "Linux cb10887e819f 6.18.44 #1 SMP Sat Sep 26 20:02:31 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux",
+  "compiler": "GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "binaries": [
+    {
+      "name": "rotordin2",
+      "sha256": "029cefaa943b910932324f37aa7148e3b6bf41adbbcfddb77f362b3ffc03ade8",
+      "elf": "/workspace/scratch/8c0efd7393df/rev_work/final_source_539134eaee20/bin/rotordin2: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=29b802ae5fdfccd201e4ea9dc7243bc7a7af41c2, for GNU/Linux 3.2.0, not stripped",
+      "dependencies": "\tlinux-vdso.so.1 (0x00007f4f588d0000)\n\tlibgfortran.so.5 => /lib/x86_64-linux-gnu/libgfortran.so.5 (0x00007f4f0c5cf000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f4f0c4e6000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f4f0c4b8000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f4f0c2a6000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f4f588d2000)\n"
+    },
+    {
+      "name": "rotordin2-debug",
+      "sha256": "c86961caf5b8b107e859543f1f884b758d7508e24119e9fe7127ae8f16c603b8",
+      "elf": "/workspace/scratch/8c0efd7393df/rev_work/final_source_539134eaee20/bin/rotordin2-debug: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=aa898f135168df04ee84266ead4d198bf6f0e6fb, for GNU/Linux 3.2.0, with debug_info, not stripped",
+      "dependencies": "\tlinux-vdso.so.1 (0x00007ff2d126f000)\n\tlibgfortran.so.5 => /lib/x86_64-linux-gnu/libgfortran.so.5 (0x00007ff284bd6000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007ff284aed000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007ff284abf000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007ff2848ad000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007ff2d1271000)\n"
+    }
+  ]
+}

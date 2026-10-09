@@ -1,0 +1,19 @@
+# Generated products; source lists and tests are versioned.
+/build/
+/bin/
+*.o
+*.obj
+*.mod
+*.smod
+*.a
+*.so
+*.so.*
+*.dll
+*.exe
+*.pyc
+*.pyo
+__pycache__/
+.pytest_cache/
+*.log
+core
+core.*

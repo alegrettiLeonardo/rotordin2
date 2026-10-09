@@ -1,0 +1,4 @@
+72d890a1c6878d7e85c0dba55a885e63b1c5cf47b5b2b0466d8b4e1bdc31256a  src/source/rdfra.f90
+63ced2eb84a0fa9816762f0e678cffea698826373162414a1ce443f6dba721c6  /workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/af/baseline-source/rdfra.f90
+b9fba0e0bf4a721415104457c805d35c4dbb206f0095a7622d92e29bef0fd306  tests/st41/af_cases.f90
+4b3a7b2d390b766bee3ae9ff1b3d2653a92aa56d8e49dbb8491fdb4a78f4df87  tests/st41/af_checked_cases.f90

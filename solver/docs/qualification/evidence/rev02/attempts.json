@@ -1,0 +1,23 @@
+{
+  "original_before": "rev_work/evidence/before_directed_644b85 (original unmodified runner; parent evidence)",
+  "original_after_attempt1": {
+    "path": "build/rev02-original-after-attempt1",
+    "status": "FAIL: verifier could not read historical-object torque table",
+    "reason": "Wrapper initially required bit-exact last output time. Historical repeated addition produced .2900000000000001 versus .29. New core already produced exact .29. No physical oracle or reviewer runner was changed."
+  },
+  "original_after_attempt2": {
+    "path": "build/rev02-original-after-attempt2",
+    "status": "PASS Release and Debug",
+    "adjustment": "Wrapper alone accepts 8 spacing(endpoint) as call/output consistency; current kernel still requires exact tf."
+  },
+  "expanded_attempt1": {
+    "path": "build/rev02-expanded-after-attempt1",
+    "status": "PASS Release,100 native cases and8CLI; superseded by additional independent coverage"
+  },
+  "expanded_latest": {
+    "release": "rev_work/evidence/after_extended_release_52b01ae",
+    "debug": "build/rev02-expanded-debug-attempt2",
+    "status": "PASS110 native cases and8CLI each, including independent physical/refinement/missing-marker controls"
+  },
+  "legacy_rtsteps": "Bypassed by qualified core. Direct rsst=0 divide-by-zero remains documented backlog; no change to its unrelated ABI/semantics."
+}

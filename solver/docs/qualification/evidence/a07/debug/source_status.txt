@@ -1,0 +1,11 @@
+ M docs/manifests/SOLVER.sha256
+ M docs/manifests/TESTS.sha256
+ M src/source/matrizes.f90
+ M src/source/rd_commons.f90
+ M src/source/shaft_timoshenko_cowper.f90
+ M src/source/transient_matrix.f90
+ M src/source/transient_solver.f90
+?? docs/qualification/A07_ANGULAR_ACCELERATION.md
+?? docs/qualification/evidence/
+?? docs/qualification/tools/
+?? tests/reliability/

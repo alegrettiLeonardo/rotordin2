@@ -1,0 +1,32 @@
++ for source in "${sources[@]}"
++ gfortran -cpp -D_LINUX -std=f2018 -ffunction-sections -fdata-sections -O3 -ffpe-summary=none -I/workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/mod -J/workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/mod -c src/source/rd_kinds.f90 -o /workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/rd_kinds.o
++ objects+=("$work/$source.o")
++ for source in "${sources[@]}"
++ gfortran -cpp -D_LINUX -std=f2018 -ffunction-sections -fdata-sections -O3 -ffpe-summary=none -I/workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/mod -J/workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/mod -c src/source/rd_commons.f90 -o /workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/rd_commons.o
++ objects+=("$work/$source.o")
++ for source in "${sources[@]}"
++ gfortran -cpp -D_LINUX -std=f2018 -ffunction-sections -fdata-sections -O3 -ffpe-summary=none -I/workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/mod -J/workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/mod -c src/source/rd_sys.f90 -o /workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/rd_sys.o
++ objects+=("$work/$source.o")
++ for source in "${sources[@]}"
++ gfortran -cpp -D_LINUX -std=f2018 -ffunction-sections -fdata-sections -O3 -ffpe-summary=none -I/workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/mod -J/workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/mod -c src/source/rd_textfun.f90 -o /workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/rd_textfun.o
++ objects+=("$work/$source.o")
++ for source in "${sources[@]}"
++ gfortran -cpp -D_LINUX -std=f2018 -ffunction-sections -fdata-sections -O3 -ffpe-summary=none -I/workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/mod -J/workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/mod -c src/source/rd_modal_metrics.f90 -o /workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/rd_modal_metrics.o
++ objects+=("$work/$source.o")
++ for source in "${sources[@]}"
++ gfortran -cpp -D_LINUX -std=f2018 -ffunction-sections -fdata-sections -O3 -ffpe-summary=none -I/workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/mod -J/workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/mod -c src/source/rd_modal_tracking.f90 -o /workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/rd_modal_tracking.o
++ objects+=("$work/$source.o")
++ for source in "${sources[@]}"
++ gfortran -cpp -D_LINUX -std=f2018 -ffunction-sections -fdata-sections -O3 -ffpe-summary=none -I/workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/mod -J/workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/mod -c src/source/rd_spectral_families.f90 -o /workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/rd_spectral_families.o
++ objects+=("$work/$source.o")
++ for source in "${sources[@]}"
++ gfortran -cpp -D_LINUX -std=f2018 -ffunction-sections -fdata-sections -O3 -ffpe-summary=none -I/workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/mod -J/workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/mod -c src/source/matfun.f90 -o /workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/matfun.o
++ objects+=("$work/$source.o")
++ for source in "${sources[@]}"
++ gfortran -cpp -D_LINUX -std=f2018 -ffunction-sections -fdata-sections -O3 -ffpe-summary=none -I/workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/mod -J/workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/mod -c src/source/messages.f90 -o /workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/messages.o
++ objects+=("$work/$source.o")
++ for source in "${sources[@]}"
++ gfortran -cpp -D_LINUX -std=f2018 -ffunction-sections -fdata-sections -O3 -ffpe-summary=none -I/workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/mod -J/workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/mod -c src/source/init.f90 -o /workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/init.o
++ objects+=("$work/$source.o")
++ for source in "${sources[@]}"
++ gfortran -cpp -D_LINUX -std=f2018 -ffunction-sections -fdata-sections -O3 -ffpe-summary=none -I/workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/mod -J/workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/mod -c src/source/espmod.f90 -o /workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles/release/current/espmod.o

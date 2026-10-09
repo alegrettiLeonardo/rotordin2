@@ -1,0 +1,12 @@
+mode=release
+baseline=1
+5a5b4800859f49be156575e58c6a99b97acc730a
+GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+82f69d04554ba039286eddadc6b200864d30ba62c6f03c3aab9611bc654f5d06  /workspace/scratch/8c0efd7393df/work/a04_a05/tests/reliability/a05_acceleration.f90
+71d2dd0ac176f14d51a6cf72e23a1fd91e16ab6f9a1d701518cdaa8ef4b4242c  /workspace/scratch/8c0efd7393df/work/a04_a05/tests/reliability/a05_run.sh
+88a98e30532c2c44fe2c8d9e25d2cf7c7231a2d93ac68feafa4323ffc3c891f7  /workspace/scratch/8c0efd7393df/work/a04_a05/src/source/torsion/tnuinteg.f90
+c862ac5a97a9ca3a1a49a5a144138fd8f030d905ac6bcc51e4c76da5acbb27b1  /workspace/scratch/8c0efd7393df/work/rotordin2/build/release/obj/solver/torsion/tnuinteg.o

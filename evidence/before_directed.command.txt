@@ -1,0 +1,2 @@
+FC=gfortran bash /workspace/scratch/8c0efd7393df/rev_work/review_original/Revisao_Codex_644b85_Evidencias/run_directed_review.sh /workspace/scratch/8c0efd7393df/rev_work/reviewed_restore /workspace/scratch/8c0efd7393df/rev_work/evidence/before_directed_644b85
+PATH prepended: /workspace/scratch/8c0efd7393df/toolchain

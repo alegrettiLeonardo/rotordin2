@@ -1,0 +1,31 @@
+{
+  "id": "A05_ROSS_RESIDUAL",
+  "ross_commit": "3a258dc84113425534e8ca0be5336b2ba4baa83a",
+  "scope": "exact _residual_newmark function body, without Numba decorator",
+  "full_ross_transient_execution": "NOT_QUALIFIED",
+  "coordinate_map": "identical scalar torsional coordinates, q_ROSS = q_RotorDin (r=1)",
+  "status": "FAIL",
+  "cases": [
+    {
+      "case": "scalar",
+      "initial_velocity": -1.0,
+      "native_acceleration": -2.0,
+      "physical_residual": 4.0,
+      "status": "FAIL"
+    },
+    {
+      "case": "scalar",
+      "initial_velocity": 1.0,
+      "native_acceleration": 2.0,
+      "physical_residual": 4.0,
+      "status": "FAIL"
+    },
+    {
+      "case": "coupled",
+      "physical_residual": 0.5599999999999992,
+      "status": "FAIL"
+    }
+  ],
+  "utils_sha256": "08708dc134682b40dcb8259527cdd9586e9f3eac26c0b510eda29355e05eb8d9",
+  "native_results_sha256": "3b4acb7ef1c0d1f8884d7c2dd66d60c6f6bc4ab8ccf64b88bb50f28aa4dc57a9"
+}

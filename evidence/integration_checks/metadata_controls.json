@@ -1,0 +1,176 @@
+{
+  "scope": "Synthetic metadata extraction and override rejection only; no compiler or scientific runner executed",
+  "source_sha256": "ef2b1a839fb01b31ba751a0e4ba2944cfec26801f16653e1c5027cdc7733a558",
+  "controls": [
+    {
+      "case": "pass",
+      "returncode": 0,
+      "result": "PASS"
+    },
+    {
+      "case": "release-missing-summary.json",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "release-missing-status.json",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "release-missing-returncode",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "release-fail-REV01",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "release-fail-REV02",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "release-fail-completeness",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "release-fail-no_false_success",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "release-fail-physics",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "release-fail-refinement",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "release-fail-cli",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "release-bad-mode",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "release-bad-returncode",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "release-bad-json",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "release-inconsistent",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "debug-missing-summary.json",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "debug-missing-status.json",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "debug-missing-returncode",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "debug-fail-REV01",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "debug-fail-REV02",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "debug-fail-completeness",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "debug-fail-no_false_success",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "debug-fail-physics",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "debug-fail-refinement",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "debug-fail-cli",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "debug-bad-mode",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "debug-bad-returncode",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "debug-bad-json",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "debug-inconsistent",
+      "returncode": 1,
+      "result": "PASS"
+    },
+    {
+      "case": "preflight-REV_TEMPORAL_BASELINE",
+      "returncode": 2,
+      "result": "PASS",
+      "stderr": "Final qualification rejects REV temporal baseline mode."
+    },
+    {
+      "case": "preflight-REV_TEMPORAL_BIN",
+      "returncode": 2,
+      "result": "PASS",
+      "stderr": "Final qualification owns REV temporal binaries, builds and evidence paths; remove external overrides."
+    },
+    {
+      "case": "preflight-REV_TEMPORAL_SKIP_BUILD",
+      "returncode": 2,
+      "result": "PASS",
+      "stderr": "Final qualification owns REV temporal binaries, builds and evidence paths; remove external overrides."
+    },
+    {
+      "case": "preflight-REV_TEMPORAL_EVIDENCE_ROOT",
+      "returncode": 2,
+      "result": "PASS",
+      "stderr": "Final qualification owns REV temporal binaries, builds and evidence paths; remove external overrides."
+    }
+  ],
+  "result": "PASS"
+}

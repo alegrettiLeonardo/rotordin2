@@ -1,0 +1,20 @@
+{
+  "test_commit": "782d4f70d690033a3e121547c25e20522015828d",
+  "mode": "release",
+  "status": "PASS",
+  "case_count": 30,
+  "binary": "/workspace/scratch/8c0efd7393df/rev_work/evidence/after_extended_release_52b01ae/rev_temporal_native",
+  "binary_sha256": "999707381e3a33db600fa5d334a0b0794d081ea24ed61c1ee2adbdbadb14009c",
+  "oracle_sha256": "ad7b3c8d9b793e07b8fc45a2d4c89ccfc67662e6d5763a519b2146e9f40a870e",
+  "criteria_sha256": "1ca1dd2f544775f29776324049f7f0a90be79fddb0f78ab657465911249d73df",
+  "command": [
+    "python3",
+    "docs/qualification/tools/rev_temporal_oracle.py",
+    "/workspace/scratch/8c0efd7393df/rev_work/evidence/after_extended_release_52b01ae/rev_temporal_native",
+    "/workspace/scratch/8c0efd7393df/rev_work/evidence/after_supplement_release_782d4f7",
+    "--mode",
+    "release",
+    "--supplement-only"
+  ],
+  "scope": "Only 30 added cases; already linked stable native driver; no build or mutation of canonical campaign clone"
+}

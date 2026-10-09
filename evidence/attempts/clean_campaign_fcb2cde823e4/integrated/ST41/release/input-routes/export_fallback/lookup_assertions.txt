@@ -1,0 +1,1 @@
+LOOKUP EXPORT: blocks=1 coefficients=2 native_rows=2 min=1650 max=1650

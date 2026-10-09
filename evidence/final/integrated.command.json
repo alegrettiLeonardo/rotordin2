@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "bash",
+    "tests/reliability/run_qualification.sh",
+    "/workspace/scratch/8c0efd7393df/rev_work/final_campaign_539134eaee20/integrated",
+    "/workspace/scratch/8c0efd7393df/work/rotordin2/build/pre-st41-baseline/rotordin2-baseline",
+    "/workspace/scratch/8c0efd7393df/work/rotordin2/build/pre-st41-baseline/rotordin2-debug-baseline"
+  ],
+  "cwd": "/workspace/scratch/8c0efd7393df/rev_work/final_source_539134eaee20",
+  "environment": {
+    "FC": "gfortran",
+    "LC_ALL": "C"
+  }
+}

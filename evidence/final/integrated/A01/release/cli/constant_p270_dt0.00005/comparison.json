@@ -1,0 +1,10 @@
+{
+  "phase_deg": 270,
+  "dt": 5e-05,
+  "dofs": 20,
+  "complex_error": 5.147314738563691e-06,
+  "harmonic_error": 2.7256176939789945e-11,
+  "initial_force_error": 7.499274064133144e-17,
+  "max_real_pole": -20.446168282782857,
+  "result": "PASS"
+}

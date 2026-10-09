@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "git",
+    "clone",
+    "--branch",
+    "fix/rotordin2-mathematical-reliability",
+    "/workspace/scratch/8c0efd7393df/rev_work/final_campaign_539134eaee20/candidate-history.bundle",
+    "/workspace/scratch/8c0efd7393df/rev_work/final_source_539134eaee20"
+  ],
+  "cwd": "/workspace/scratch/8c0efd7393df",
+  "environment": {
+    "FC": "gfortran",
+    "LC_ALL": "C"
+  }
+}

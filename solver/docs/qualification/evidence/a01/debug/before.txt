@@ -1,0 +1,14 @@
+ERROR STOP A01 force/phase contract FAIL
+
+Error termination. Backtrace:
+#0  0x7f64e13dbe59 in ???
+#1  0x7f64e13dca71 in ???
+#2  0x7f64e13de10b in ???
+#3  0x563665140525 in a01_force_cases
+	at tests/reliability/a01_force_cases.f90:116
+#4  0x563665140611 in main
+	at tests/reliability/a01_force_cases.f90:4
+KINEMATIC_CASES=90
+MAX_FIVE_POINT_FORCE_ERROR=  1.8990990215291406E+00
+MAX_INTEGRATED_PHASE_ERROR=  2.8421709430404007E-14
+FAILED_CHECKS=92

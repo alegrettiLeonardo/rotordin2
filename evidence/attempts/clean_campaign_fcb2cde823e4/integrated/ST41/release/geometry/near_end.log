@@ -1,0 +1,2 @@
+MESH: physical sections=99 elements=108
+GEOMETRY near_end: checks=1848 failures=0

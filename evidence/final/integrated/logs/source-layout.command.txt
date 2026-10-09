@@ -1,0 +1,1 @@
+bash tests/check_sources.sh --layout 

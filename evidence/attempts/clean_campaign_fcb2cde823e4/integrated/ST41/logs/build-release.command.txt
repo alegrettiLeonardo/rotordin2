@@ -1,0 +1,1 @@
+make MODE=release FC=gfortran -j4 

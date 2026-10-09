@@ -1,0 +1,1 @@
+LOOKUP CAMPBELL: blocks=142 coefficients=284 native_rows=284 min=900 max=2400

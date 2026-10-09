@@ -1,0 +1,16 @@
+Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+A07 independent oracles: PASS (5 shafts, 9 frozen pole sets, 12 declared-drive integrations)
+A07 production variable-spin: NOT_QUALIFIED (drive tilt-work contract unspecified)
+ROSS acceleration-matrix physical equivalence: NOT_QUALIFIED; measured discrepancy retained
+A07 actual CLI: PASS (3 constants preserved, 3 unidentified ramps rejected before integration)

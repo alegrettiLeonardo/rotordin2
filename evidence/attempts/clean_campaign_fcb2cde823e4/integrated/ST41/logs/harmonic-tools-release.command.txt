@@ -1,0 +1,1 @@
+make MODE=release FC=gfortran build/release/tests/st41/harmonic_oracle build/release/tests/st41/compare_harmonic 

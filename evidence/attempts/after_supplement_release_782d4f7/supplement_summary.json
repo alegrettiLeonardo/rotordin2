@@ -1,0 +1,209 @@
+{
+  "status": "PASS",
+  "mode": "release",
+  "case_count": 30,
+  "cases": {
+    "m0_fine41": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 1.1519648082658485e-19,
+        "v_scaled_error": 3.9898639947466563e-17,
+        "a_dyn_scaled_error": 2.220446049250313e-16,
+        "load_scaled_error": 2.220446049250313e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 2.846030702774449e-19,
+        "energy_scaled_error": 3.9979955110402976e-19,
+        "energy_J": 5.00000000000004e-05,
+        "dissipation_J": 0.0,
+        "work_J": 5.000000000000012e-05
+      }
+    },
+    "m0_invalid_nonfinite_h_nan": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_nonfinite_h_positive_inf": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_nonfinite_hs_nan": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_nonfinite_hs_positive_inf": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_nonfinite_t0_nan": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_nonfinite_t0_positive_inf": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_nonfinite_tf_nan": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_nonfinite_tf_positive_inf": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_nonfinite_input_period_nan": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_nonfinite_input_period_positive_inf": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_nonfinite_nonfinite_table_time_nan": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_nonfinite_nonfinite_table_time_positive_inf": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_nonfinite_nonfinite_load_nan": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_nonfinite_nonfinite_load_positive_inf": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_fine41": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 1.3552527156068805e-20,
+        "v_scaled_error": 4.336808689942018e-18,
+        "a_dyn_scaled_error": 2.220446049250313e-16,
+        "load_scaled_error": 2.220446049250313e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 1.3552527156068805e-20,
+        "energy_scaled_error": 2.0328790734103208e-20,
+        "energy_J": 5.000000000000002e-05,
+        "dissipation_J": 0.0,
+        "work_J": 5.000000000000001e-05
+      }
+    },
+    "m1_invalid_nonfinite_h_nan": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_nonfinite_h_positive_inf": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_nonfinite_hs_nan": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_nonfinite_hs_positive_inf": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_nonfinite_t0_nan": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_nonfinite_t0_positive_inf": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_nonfinite_tf_nan": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_nonfinite_tf_positive_inf": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_nonfinite_input_period_nan": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_nonfinite_input_period_positive_inf": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_nonfinite_nonfinite_table_time_nan": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_nonfinite_nonfinite_table_time_positive_inf": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_nonfinite_nonfinite_load_nan": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_nonfinite_nonfinite_load_positive_inf": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    }
+  }
+}

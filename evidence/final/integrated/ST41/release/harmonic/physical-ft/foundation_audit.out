@@ -1,0 +1,20 @@
+============================================================
+ ROTORDIN - FOUNDATION MODAL AUDIT
+============================================================
+ SOURCE FILE: INLINE_INPUT
+ FOUNDATION DOF:      4
+ REDUCTION: USER_REDUCED
+ DAMPING MODEL: MATRIX
+ MATRIX VALIDATION:
+   M SYMMETRY / POSITIVE DEFINITE ........ PASS
+   K SYMMETRY / POSITIVE DEFINITE ........ PASS
+   C SYMMETRY ............................. PASS
+ INTERFACES:      2
+   #   CONNECT    COMPONENT     X_DOF     Z_DOF
+    1   SUPPORT          1          1          2
+    2   SUPPORT          2          3          4
+ MODE       UNDAMPED FREQUENCY [Hz]       MODAL DAMPING [%]
+     1                 71.176254                 0.22361
+     2                 74.341173                 0.23355
+     3                 76.879141                 0.24152
+     4                 78.962964                 0.24807

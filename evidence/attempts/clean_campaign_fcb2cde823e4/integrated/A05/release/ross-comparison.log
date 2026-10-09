@@ -1,0 +1,1 @@
+A05 pinned ROSS initial-equilibrium residual comparison: PASS [{'case': 'scalar', 'initial_velocity': -1.0, 'native_acceleration': 2.0, 'physical_residual': 0.0, 'status': 'PASS'}, {'case': 'scalar', 'initial_velocity': 1.0, 'native_acceleration': -2.0, 'physical_residual': 0.0, 'status': 'PASS'}, {'case': 'coupled', 'physical_residual': 1.3322676295501878e-15, 'status': 'PASS'}]

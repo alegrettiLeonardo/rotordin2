@@ -1,0 +1,3 @@
+STOP 1
+
+ERR(11:19:00.8):optionsf->error reading(kind) <./case.op>

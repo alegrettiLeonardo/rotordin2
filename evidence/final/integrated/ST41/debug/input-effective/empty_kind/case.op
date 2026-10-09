@@ -1,0 +1,12 @@
+KIND
+          
+
+PARAMETERS
+2         0         0         
+
+BEARING   FILE
+1         b1.tbl
+2         b2.tbl
+
+OPTIONS
+

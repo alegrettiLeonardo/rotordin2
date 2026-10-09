@@ -1,0 +1,4 @@
+STATE -1 0 1 1
+DIAGNOSTIC REV-01 time grid: finite t0, tf and step required
+REPORT 0 0 0 0                   Infinity   1.60000000000000003E-002                   Infinity   0.00000000000000000E+000                   Infinity
+FILLED

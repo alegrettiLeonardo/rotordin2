@@ -1,0 +1,15 @@
+At line 477 of file src/source/torsion/tnuinteg.f90
+Fortran runtime error: Index '8' of dimension 1 of array 'uo' above upper bound of 7
+
+Error termination. Backtrace:
+#0  0x7f27eb553e59 in ???
+#1  0x7f27eb554a71 in ???
+#2  0x7f27eb555082 in ???
+#3  0x565286273f34 in preprm_
+	at src/source/torsion/tnuinteg.f90:477
+#4  0x56528626caf3 in tnuinteg_
+	at src/source/torsion/tnuinteg.f90:1292
+#5  0x565286035bfd in rev_temporal_native
+	at /workspace/scratch/8c0efd7393df/work/rev_tests/tests/reliability/rev_temporal_native.f90:66
+#6  0x565286036fc6 in main
+	at /workspace/scratch/8c0efd7393df/work/rev_tests/tests/reliability/rev_temporal_native.f90:4

@@ -1,0 +1,17 @@
+At line 725 of file src/source/torsion/tnuinteg.f90
+Fortran runtime error: Index '0' of dimension 1 of array 'xa' below lower bound of 1
+
+Error termination. Backtrace:
+#0  0x7fea5e171e59 in ???
+#1  0x7fea5e172a71 in ???
+#2  0x7fea5e173082 in ???
+#3  0x55a1ccfe2f2c in splint_
+	at src/source/torsion/tnuinteg.f90:725
+#4  0x55a1ccfdb2b8 in ldinterp_
+	at src/source/torsion/tnuinteg.f90:835
+#5  0x55a1ccfd4f60 in tnuinteg_
+	at src/source/torsion/tnuinteg.f90:1342
+#6  0x55a1ccd9dbfd in rev_temporal_native
+	at /workspace/scratch/8c0efd7393df/work/rev_tests/tests/reliability/rev_temporal_native.f90:66
+#7  0x55a1ccd9efc6 in main
+	at /workspace/scratch/8c0efd7393df/work/rev_tests/tests/reliability/rev_temporal_native.f90:4

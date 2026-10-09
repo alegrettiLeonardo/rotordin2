@@ -1,0 +1,2714 @@
+{
+  "status": "PASS",
+  "mode": "release",
+  "baseline": false,
+  "gates": {
+    "REV01": "PASS",
+    "REV02": "PASS",
+    "completeness": "PASS",
+    "no_false_success": "PASS",
+    "physics": "PASS",
+    "refinement": "PASS"
+  },
+  "cases": {
+    "m0_aligned": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 1.1519648082658485e-19,
+        "v_scaled_error": 3.9898639947466563e-17,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 2.846030702774449e-19,
+        "energy_scaled_error": 3.9979955110402976e-19,
+        "energy_J": 5.00000000000004e-05,
+        "dissipation_J": 0.0,
+        "work_J": 5.000000000000012e-05
+      }
+    },
+    "m0_roundoff03": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 6.938893903907228e-18,
+        "v_scaled_error": 5.551115123125783e-17,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 1.3877787807814457e-17,
+        "energy_scaled_error": 0.0,
+        "energy_J": 0.045,
+        "dissipation_J": 0.0,
+        "work_J": 0.04500000000000001
+      }
+    },
+    "m0_roundoff029": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 5.551115123125783e-17,
+        "v_scaled_error": 1.9984014443252818e-15,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 4.3021142204224816e-16,
+        "energy_scaled_error": 4.3021142204224816e-16,
+        "energy_J": 0.04205000000000043,
+        "dissipation_J": 0.0,
+        "work_J": 0.04205
+      }
+    },
+    "m0_fraction": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 6.776263578034403e-21,
+        "v_scaled_error": 8.673617379884035e-18,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 8.131516293641283e-20,
+        "energy_scaled_error": 8.809142651444724e-20,
+        "energy_J": 5.512499999999992e-05,
+        "dissipation_J": 0.0,
+        "work_J": 5.5125e-05
+      }
+    },
+    "m0_short": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 0.0,
+        "v_scaled_error": 0.0,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 0.0,
+        "energy_scaled_error": 0.0,
+        "energy_J": 5e-07,
+        "dissipation_J": 0.0,
+        "work_J": 5e-07
+      }
+    },
+    "m0_translated_large": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 0.0,
+        "v_scaled_error": 4.336808689942018e-19,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 1.6940658945086007e-21,
+        "energy_scaled_error": 1.6940658945086007e-21,
+        "energy_J": 4.500000078231095e-06,
+        "dissipation_J": 0.0,
+        "work_J": 4.500000078231097e-06
+      }
+    },
+    "m0_stride_0.25": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 3.5236570605778894e-19,
+        "v_scaled_error": 5.724587470723463e-17,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 2.168404344971009e-19,
+        "energy_scaled_error": 1.3552527156068805e-19,
+        "energy_J": 0.00012800000000000013,
+        "dissipation_J": 0.0,
+        "work_J": 0.00012800000000000035
+      }
+    },
+    "m0_stride_0.5": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 3.5236570605778894e-19,
+        "v_scaled_error": 5.724587470723463e-17,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 2.168404344971009e-19,
+        "energy_scaled_error": 1.3552527156068805e-19,
+        "energy_J": 0.00012800000000000013,
+        "dissipation_J": 0.0,
+        "work_J": 0.00012800000000000035
+      }
+    },
+    "m0_stride_1.0": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 3.5236570605778894e-19,
+        "v_scaled_error": 5.724587470723463e-17,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 2.168404344971009e-19,
+        "energy_scaled_error": 1.3552527156068805e-19,
+        "energy_J": 0.00012800000000000013,
+        "dissipation_J": 0.0,
+        "work_J": 0.00012800000000000035
+      }
+    },
+    "m0_stride_2.0": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 3.5236570605778894e-19,
+        "v_scaled_error": 4.85722573273506e-17,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 2.168404344971009e-19,
+        "energy_scaled_error": 1.3552527156068805e-19,
+        "energy_J": 0.00012800000000000013,
+        "dissipation_J": 0.0,
+        "work_J": 0.00012800000000000035
+      }
+    },
+    "m0_stride_1.3": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 3.5236570605778894e-19,
+        "v_scaled_error": 5.377642775528102e-17,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 2.168404344971009e-19,
+        "energy_scaled_error": 1.3552527156068805e-19,
+        "energy_J": 0.00012800000000000013,
+        "dissipation_J": 0.0,
+        "work_J": 0.00012800000000000035
+      }
+    },
+    "m0_shifted": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 9.781333336063118e-10,
+        "v_scaled_error": 9.170000004471435e-08,
+        "a_dyn_scaled_error": 2.1958525012364645e-16,
+        "load_scaled_error": 2.1958525012364645e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 9.836108798115528e-10,
+        "energy_scaled_error": 4.87890977618477e-19,
+        "energy_J": 0.0001294376140800007,
+        "dissipation_J": 0.0,
+        "work_J": 0.00012943859769088052
+      }
+    },
+    "m0_cropped": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 9.78133333253946e-10,
+        "v_scaled_error": 9.169999999614209e-08,
+        "a_dyn_scaled_error": 2.1410144144733519e-16,
+        "load_scaled_error": 2.1410144144733519e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 1.008944018339019e-09,
+        "energy_scaled_error": 1.3823577699190182e-18,
+        "energy_J": 0.0001361910080000014,
+        "dissipation_J": 0.0,
+        "work_J": 0.00013619201694401974
+      }
+    },
+    "m0_affine": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 1.1737599993604658e-07,
+        "v_scaled_error": 1.4672000000631735e-06,
+        "a_dyn_scaled_error": 2.0483819642530562e-16,
+        "load_scaled_error": 2.0483819642530562e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 1.223057921745374e-07,
+        "energy_scaled_error": 2.463307335887066e-16,
+        "energy_J": 0.007817500799999752,
+        "dissipation_J": 0.0,
+        "work_J": 0.007817623105791927
+      }
+    },
+    "m0_affine_nodes": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 1.1737599993604658e-07,
+        "v_scaled_error": 2.2620794126737565e-15,
+        "a_dyn_scaled_error": 2.0483819642530562e-16,
+        "load_scaled_error": 2.0483819642530562e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 1.2230579217800686e-07,
+        "energy_scaled_error": 2.463307335887066e-16,
+        "energy_J": 0.007817500799999752,
+        "dissipation_J": 0.0,
+        "work_J": 0.00781762310579193
+      }
+    },
+    "m0_cropped_nodes": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 9.78133333253946e-10,
+        "v_scaled_error": 8.326672684688674e-17,
+        "a_dyn_scaled_error": 2.1410144144733519e-16,
+        "load_scaled_error": 2.1410144144733519e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 1.008944531844273e-09,
+        "energy_scaled_error": 1.3823577699190182e-18,
+        "energy_J": 0.0001361910080000014,
+        "dissipation_J": 0.0,
+        "work_J": 0.00013619201694453325
+      }
+    },
+    "m0_damped_affine": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 4.312381311506047e-08,
+        "v_scaled_error": 6.545729762299363e-07,
+        "a_dyn_scaled_error": 1.3091459524217086e-06,
+        "load_scaled_error": 2.0483819642530562e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 4.48465980315213e-08,
+        "energy_scaled_error": 9.109158419749741e-09,
+        "energy_J": 0.006198968860207074,
+        "dissipation_J": 0.0010291085262160281,
+        "work_J": 0.007228032539825071
+      }
+    },
+    "m0_multi": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 7.63553357260166e-10,
+        "v_scaled_error": 3.266425312262872e-08,
+        "a_dyn_scaled_error": 6.549190190163756e-09,
+        "load_scaled_error": 2.2115996506477222e-16,
+        "equilibrium_eta": 1.1101120134238139e-16,
+        "energy_balance_scaled": 2.5306689621466816e-10,
+        "energy_scaled_error": 3.9423047161826763e-10,
+        "energy_J": 0.0014687065714397108,
+        "dissipation_J": 8.771416925881228e-06,
+        "work_J": 0.0014774782414324883
+      }
+    },
+    "m0_zero": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 0.0,
+        "v_scaled_error": 0.0,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 0.0,
+        "energy_scaled_error": 0.0,
+        "energy_J": 0.0,
+        "dissipation_J": 0.0,
+        "work_J": 0.0
+      }
+    },
+    "m0_zero_other_marker": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 0.0,
+        "v_scaled_error": 0.0,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 0.0,
+        "energy_scaled_error": 0.0,
+        "energy_J": 0.0,
+        "dissipation_J": 0.0,
+        "work_J": 0.0
+      }
+    },
+    "m0_two_load_points": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 7.336000001369712e-10,
+        "v_scaled_error": 9.170000003604073e-08,
+        "a_dyn_scaled_error": 2.2019496720054673e-16,
+        "load_scaled_error": 2.2019496720054673e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 7.366811197114008e-10,
+        "energy_scaled_error": 4.2012834183813297e-19,
+        "energy_J": 7.260607008000043e-05,
+        "dissipation_J": 0.0,
+        "work_J": 7.260680676112014e-05
+      }
+    },
+    "m0_wrapper": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 2.9566359067197817e-08,
+        "load_scaled_error": 2.220446049250313e-16,
+        "effort_scaled_error": 1.7739815431905281e-07
+      }
+    },
+    "m0_periodic_spline": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 5.043272733825689e-07,
+        "v_scaled_error": 1.6802977666721675e-05,
+        "a_dyn_scaled_error": 1.4831594449247633e-05,
+        "load_scaled_error": 2.220446049250313e-16,
+        "equilibrium_eta": 3.1752787782216975e-16,
+        "energy_balance_scaled": 2.2603252143572027e-07,
+        "energy_scaled_error": 3.632579762937252e-07,
+        "energy_J": 0.0014083992309555672,
+        "dissipation_J": 0.00033668897027994236,
+        "work_J": 0.0017453142337569454,
+        "effort_scaled_error": 3.0259636370870424e-06
+      }
+    },
+    "m0_invalid_hzero": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_hnegative": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_hszero": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_hsnegative": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_reversed": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_capacity": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_bad_time_table": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_bad_index": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_invalid_unrepresentable_time": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m0_refine_free_0_dense": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 6.2600533337967e-07,
+        "v_scaled_error": 5.749028572310522e-06,
+        "a_dyn_scaled_error": 1.9968040011243822e-16,
+        "load_scaled_error": 1.9968040011243822e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 6.610616319034646e-07,
+        "energy_scaled_error": 1.491862189340054e-16,
+        "energy_J": 0.01427374080000015,
+        "dissipation_J": 0.0,
+        "work_J": 0.014274401861632053
+      }
+    },
+    "m0_refine_free_0_nodes": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 6.2600533337967e-07,
+        "v_scaled_error": 8.881784197001252e-16,
+        "a_dyn_scaled_error": 1.9968040011243822e-16,
+        "load_scaled_error": 1.9968040011243822e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 6.610616318999951e-07,
+        "energy_scaled_error": 1.491862189340054e-16,
+        "energy_J": 0.01427374080000015,
+        "dissipation_J": 0.0,
+        "work_J": 0.01427440186163205
+      }
+    },
+    "m0_refine_free_1_dense": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 1.5650133317404724e-07,
+        "v_scaled_error": 1.4372571429319136e-06,
+        "a_dyn_scaled_error": 1.9968040011243822e-16,
+        "load_scaled_error": 1.9968040011243822e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 1.6526540843816995e-07,
+        "energy_scaled_error": 6.106226635438361e-16,
+        "energy_J": 0.01427374079999939,
+        "dissipation_J": 0.0,
+        "work_J": 0.014273906065407828
+      }
+    },
+    "m0_refine_free_1_nodes": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 1.5650133317404724e-07,
+        "v_scaled_error": 3.6914915568786455e-15,
+        "a_dyn_scaled_error": 1.9968040011243822e-16,
+        "load_scaled_error": 1.9968040011243822e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 1.652654084347005e-07,
+        "energy_scaled_error": 6.106226635438361e-16,
+        "energy_J": 0.01427374079999939,
+        "dissipation_J": 0.0,
+        "work_J": 0.014273906065407824
+      }
+    },
+    "m0_refine_free_2_dense": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 3.9125333126110995e-08,
+        "v_scaled_error": 3.5931428721269754e-07,
+        "a_dyn_scaled_error": 1.9968040011243822e-16,
+        "load_scaled_error": 1.9968040011243822e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 4.1316352972567416e-08,
+        "energy_scaled_error": 1.205632815803881e-15,
+        "energy_J": 0.014273740799998795,
+        "dissipation_J": 0.0,
+        "work_J": 0.014273782116351767
+      }
+    },
+    "m0_refine_free_2_nodes": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 3.9125333126110995e-08,
+        "v_scaled_error": 1.2850831510036187e-14,
+        "a_dyn_scaled_error": 1.9968040011243822e-16,
+        "load_scaled_error": 1.9968040011243822e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 4.131635297603686e-08,
+        "energy_scaled_error": 1.205632815803881e-15,
+        "energy_J": 0.014273740799998795,
+        "dissipation_J": 0.0,
+        "work_J": 0.01427378211635177
+      }
+    },
+    "m0_refine_viscous_0_dense": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 8.511391413491137e-07,
+        "v_scaled_error": 1.0548824523258244e-05,
+        "a_dyn_scaled_error": 2.1097649046786238e-05,
+        "load_scaled_error": 1.9968040011243822e-16,
+        "equilibrium_eta": 1.0226814891536079e-16,
+        "energy_balance_scaled": 8.999121041391306e-07,
+        "energy_scaled_error": 2.3361897569414147e-07,
+        "energy_J": 0.01051296024809942,
+        "dissipation_J": 0.0023534103633454637,
+        "work_J": 0.012865470699340744
+      }
+    },
+    "m0_refine_viscous_0_nodes": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 8.511391413491137e-07,
+        "v_scaled_error": 1.6111390322703922e-06,
+        "a_dyn_scaled_error": 3.2222780644852733e-06,
+        "load_scaled_error": 1.9968040011243822e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 8.999121041443348e-07,
+        "energy_scaled_error": 2.3361897569414147e-07,
+        "energy_J": 0.01051296024809942,
+        "dissipation_J": 0.0023534103633454646,
+        "work_J": 0.01286547069934074
+      }
+    },
+    "m0_refine_viscous_1_dense": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 2.1277934574362445e-07,
+        "v_scaled_error": 2.6501968752343057e-06,
+        "a_dyn_scaled_error": 5.30039375046254e-06,
+        "load_scaled_error": 1.9968040011243822e-16,
+        "equilibrium_eta": 1.0458016433921968e-16,
+        "energy_balance_scaled": 2.2497534178829437e-07,
+        "energy_scaled_error": 5.8402969516091474e-08,
+        "energy_J": 0.010512785032093241,
+        "dissipation_J": 0.0023535807369950684,
+        "work_J": 0.012866140793746522
+      }
+    },
+    "m0_refine_viscous_1_nodes": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 2.1277934574362445e-07,
+        "v_scaled_error": 4.0277419921519453e-07,
+        "a_dyn_scaled_error": 8.055483983193668e-07,
+        "load_scaled_error": 1.9968040011243822e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 2.2497534461068946e-07,
+        "energy_scaled_error": 5.8402969516091474e-08,
+        "energy_J": 0.010512785032093241,
+        "dissipation_J": 0.0023535807369979168,
+        "work_J": 0.012866140793746548
+      }
+    },
+    "m0_refine_viscous_2_dense": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 5.319449580994118e-08,
+        "v_scaled_error": 6.649179292250815e-07,
+        "a_dyn_scaled_error": 1.329835858765449e-06,
+        "load_scaled_error": 1.9968040011243822e-16,
+        "equilibrium_eta": 1.0249474008725599e-16,
+        "energy_balance_scaled": 5.624364447440189e-08,
+        "energy_scaled_error": 1.4600634406364277e-08,
+        "energy_J": 0.010512741229758132,
+        "dissipation_J": 0.0023536233248337528,
+        "work_J": 0.01286630831094741
+      }
+    },
+    "m0_refine_viscous_2_nodes": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 5.319449580994118e-08,
+        "v_scaled_error": 1.0069291006553627e-07,
+        "a_dyn_scaled_error": 2.0138582013107253e-07,
+        "load_scaled_error": 1.9968040011243822e-16,
+        "equilibrium_eta": 1.0458016433921973e-16,
+        "energy_balance_scaled": 5.62436710989378e-08,
+        "energy_scaled_error": 1.4600634406364277e-08,
+        "energy_J": 0.010512741229758132,
+        "dissipation_J": 0.0023536233248634525,
+        "work_J": 0.012866308310950486
+      }
+    },
+    "m0_refine_coupled_0_dense": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 9.143034699850283e-06,
+        "v_scaled_error": 8.905871461672987e-05,
+        "a_dyn_scaled_error": 0.00012327381962677172,
+        "load_scaled_error": 1.1102230246251565e-16,
+        "equilibrium_eta": 2.220446049250313e-16,
+        "energy_balance_scaled": 7.94284584534899e-06,
+        "energy_scaled_error": 4.056297320600977e-06,
+        "energy_J": 0.051725411980071925,
+        "dissipation_J": 0.013611056949137675,
+        "work_J": 0.06532852608336426,
+        "effort_scaled_error": 5.4858208198754754e-05
+      }
+    },
+    "m0_refine_coupled_0_nodes": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 9.143034699850283e-06,
+        "v_scaled_error": 8.085229337873034e-06,
+        "a_dyn_scaled_error": 5.6394202282650254e-05,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 1.1102230246251565e-16,
+        "energy_balance_scaled": 7.942845845321234e-06,
+        "energy_scaled_error": 4.056297320600977e-06,
+        "energy_J": 0.051725411980071925,
+        "dissipation_J": 0.013611056949137668,
+        "work_J": 0.06532852608336427,
+        "effort_scaled_error": 5.4858208198754754e-05
+      }
+    },
+    "m0_refine_coupled_1_dense": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 2.286037963185328e-06,
+        "v_scaled_error": 2.225909602876497e-05,
+        "a_dyn_scaled_error": 3.086349966174851e-05,
+        "load_scaled_error": 1.1102230246251565e-16,
+        "equilibrium_eta": 2.220446049250313e-16,
+        "energy_balance_scaled": 1.9858607880340884e-06,
+        "energy_scaled_error": 1.0140755860102435e-06,
+        "energy_J": 0.051728454201806516,
+        "dissipation_J": 0.013615771735819309,
+        "work_J": 0.0653422400768378,
+        "effort_scaled_error": 1.3716227778237666e-05
+      }
+    },
+    "m0_refine_coupled_1_nodes": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 2.286037963185328e-06,
+        "v_scaled_error": 2.0241116725217e-06,
+        "a_dyn_scaled_error": 1.4099567257138313e-05,
+        "load_scaled_error": 2.220446049250313e-16,
+        "equilibrium_eta": 1.6653345369377348e-16,
+        "energy_balance_scaled": 1.9858609340839273e-06,
+        "energy_scaled_error": 1.0140755860102435e-06,
+        "energy_J": 0.051728454201806516,
+        "dissipation_J": 0.013615771735965352,
+        "work_J": 0.06534224007683778,
+        "effort_scaled_error": 1.3716227778237666e-05
+      }
+    },
+    "m0_refine_coupled_2_dense": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 5.715269444928062e-07,
+        "v_scaled_error": 5.564455788642508e-06,
+        "a_dyn_scaled_error": 7.735847423676985e-06,
+        "load_scaled_error": 1.1102230246251565e-16,
+        "equilibrium_eta": 1.6653345369377348e-16,
+        "energy_balance_scaled": 4.964741638774361e-07,
+        "energy_scaled_error": 2.535189403546356e-07,
+        "energy_J": 0.05172921475845217,
+        "dissipation_J": 0.013616950814587483,
+        "work_J": 0.06534566909887578,
+        "effort_scaled_error": 3.4291616642923017e-06
+      }
+    },
+    "m0_refine_coupled_2_nodes": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 5.715269444928062e-07,
+        "v_scaled_error": 5.060142241331e-07,
+        "a_dyn_scaled_error": 3.524955228447388e-06,
+        "load_scaled_error": 2.220446049250313e-16,
+        "equilibrium_eta": 2.220446049250313e-16,
+        "energy_balance_scaled": 4.964746065649894e-07,
+        "energy_scaled_error": 2.535189403546356e-07,
+        "energy_J": 0.05172921475845217,
+        "dissipation_J": 0.013616950815030159,
+        "work_J": 0.06534566909887576,
+        "effort_scaled_error": 3.4291616642923017e-06
+      }
+    },
+    "m1_aligned": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 6.776263578034403e-21,
+        "v_scaled_error": 4.336808689942018e-18,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 1.3552527156068805e-20,
+        "energy_scaled_error": 2.0328790734103208e-20,
+        "energy_J": 5.000000000000002e-05,
+        "dissipation_J": 0.0,
+        "work_J": 5.000000000000001e-05
+      }
+    },
+    "m1_roundoff03": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 0.0,
+        "v_scaled_error": 5.551115123125783e-17,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 2.0816681711721685e-17,
+        "energy_scaled_error": 2.0816681711721685e-17,
+        "energy_J": 0.04499999999999998,
+        "dissipation_J": 0.0,
+        "work_J": 0.045
+      }
+    },
+    "m1_roundoff029": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 1.0061396160665481e-16,
+        "v_scaled_error": 3.552713678800501e-15,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 1.0547118733938987e-15,
+        "energy_scaled_error": 1.0269562977782698e-15,
+        "energy_J": 0.042050000000001024,
+        "dissipation_J": 0.0,
+        "work_J": 0.04204999999999997
+      }
+    },
+    "m1_fraction": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 0.0,
+        "v_scaled_error": 1.734723475976807e-18,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 1.3552527156068805e-20,
+        "energy_scaled_error": 1.3552527156068805e-20,
+        "energy_J": 5.512499999999999e-05,
+        "dissipation_J": 0.0,
+        "work_J": 5.5125000000000005e-05
+      }
+    },
+    "m1_short": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 0.0,
+        "v_scaled_error": 0.0,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 0.0,
+        "energy_scaled_error": 0.0,
+        "energy_J": 5e-07,
+        "dissipation_J": 0.0,
+        "work_J": 5e-07
+      }
+    },
+    "m1_translated_large": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 8.470329472543003e-22,
+        "v_scaled_error": 8.673617379884035e-19,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 8.470329472543003e-22,
+        "energy_scaled_error": 2.541098841762901e-21,
+        "energy_J": 4.500000078231099e-06,
+        "dissipation_J": 0.0,
+        "work_J": 4.500000078231098e-06
+      }
+    },
+    "m1_stride_0.25": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 5.421010862427522e-20,
+        "v_scaled_error": 3.122502256758253e-17,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 4.607859233063394e-19,
+        "energy_scaled_error": 5.149960319306146e-19,
+        "energy_J": 0.0001280000000000005,
+        "dissipation_J": 0.0,
+        "work_J": 0.00012800000000000005
+      }
+    },
+    "m1_stride_0.5": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 5.421010862427522e-20,
+        "v_scaled_error": 3.122502256758253e-17,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 4.607859233063394e-19,
+        "energy_scaled_error": 5.149960319306146e-19,
+        "energy_J": 0.0001280000000000005,
+        "dissipation_J": 0.0,
+        "work_J": 0.00012800000000000005
+      }
+    },
+    "m1_stride_1.0": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 5.421010862427522e-20,
+        "v_scaled_error": 3.122502256758253e-17,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 4.607859233063394e-19,
+        "energy_scaled_error": 5.149960319306146e-19,
+        "energy_J": 0.0001280000000000005,
+        "dissipation_J": 0.0,
+        "work_J": 0.00012800000000000005
+      }
+    },
+    "m1_stride_2.0": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 5.421010862427522e-20,
+        "v_scaled_error": 3.122502256758253e-17,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 4.607859233063394e-19,
+        "energy_scaled_error": 5.149960319306146e-19,
+        "energy_J": 0.0001280000000000005,
+        "dissipation_J": 0.0,
+        "work_J": 0.00012800000000000005
+      }
+    },
+    "m1_stride_1.3": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 5.421010862427522e-20,
+        "v_scaled_error": 3.122502256758253e-17,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 4.607859233063394e-19,
+        "energy_scaled_error": 5.149960319306146e-19,
+        "energy_J": 0.0001280000000000005,
+        "dissipation_J": 0.0,
+        "work_J": 0.00012800000000000005
+      }
+    },
+    "m1_shifted": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 4.87890977618477e-19,
+        "v_scaled_error": 1.8388068845354155e-16,
+        "a_dyn_scaled_error": 2.1958525012364645e-16,
+        "load_scaled_error": 2.1958525012364645e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 2.439454888092385e-18,
+        "energy_scaled_error": 2.9544509200229996e-18,
+        "energy_J": 0.00012943761408000317,
+        "dissipation_J": 0.0,
+        "work_J": 0.00012943761408000073
+      }
+    },
+    "m1_cropped": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 1.8973538018496328e-19,
+        "v_scaled_error": 3.8163916471489756e-17,
+        "a_dyn_scaled_error": 2.1410144144733519e-16,
+        "load_scaled_error": 2.1410144144733519e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 1.6263032587282567e-19,
+        "energy_scaled_error": 1.0842021724855044e-19,
+        "energy_J": 0.0001361910079999999,
+        "dissipation_J": 0.0,
+        "work_J": 0.00013619100799999975
+      }
+    },
+    "m1_affine": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 1.3010426069826053e-17,
+        "v_scaled_error": 7.077671781985373e-16,
+        "a_dyn_scaled_error": 2.0483819642530562e-16,
+        "load_scaled_error": 2.0483819642530562e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 2.0816681711721685e-17,
+        "energy_scaled_error": 2.7755575615628914e-17,
+        "energy_J": 0.00781750079999997,
+        "dissipation_J": 0.0,
+        "work_J": 0.007817500799999991
+      }
+    },
+    "m1_affine_nodes": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 1.3010426069826053e-17,
+        "v_scaled_error": 4.85722573273506e-16,
+        "a_dyn_scaled_error": 2.0483819642530562e-16,
+        "load_scaled_error": 2.0483819642530562e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 1.9081958235744878e-17,
+        "energy_scaled_error": 2.7755575615628914e-17,
+        "energy_J": 0.00781750079999997,
+        "dissipation_J": 0.0,
+        "work_J": 0.00781750079999999
+      }
+    },
+    "m1_cropped_nodes": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 2.0328790734103208e-19,
+        "v_scaled_error": 3.9898639947466563e-17,
+        "a_dyn_scaled_error": 2.1410144144733519e-16,
+        "load_scaled_error": 2.1410144144733519e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 1.3552527156068805e-19,
+        "energy_scaled_error": 1.0842021724855044e-19,
+        "energy_J": 0.0001361910079999999,
+        "dissipation_J": 0.0,
+        "work_J": 0.00013619100799999978
+      }
+    },
+    "m1_damped_affine": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 2.273070565019658e-08,
+        "v_scaled_error": 3.5352693741885766e-07,
+        "a_dyn_scaled_error": 7.070538747822042e-07,
+        "load_scaled_error": 2.0483819642530562e-16,
+        "equilibrium_eta": 1.063758072038514e-16,
+        "energy_balance_scaled": 2.2158595498408817e-08,
+        "energy_scaled_error": 3.936385347454857e-08,
+        "energy_J": 0.006198999114902129,
+        "dissipation_J": 0.0010291243542417871,
+        "work_J": 0.0072281013105484175
+      }
+    },
+    "m1_multi": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 3.0361175769669235e-10,
+        "v_scaled_error": 1.5374458907368993e-08,
+        "a_dyn_scaled_error": 4.093393402015977e-09,
+        "load_scaled_error": 2.2115996506477222e-16,
+        "equilibrium_eta": 1.6625912613564968e-16,
+        "energy_balance_scaled": 8.610791873368134e-10,
+        "energy_scaled_error": 1.688903621555743e-09,
+        "energy_J": 0.001468705276766561,
+        "dissipation_J": 8.771410494237312e-06,
+        "work_J": 0.0014774775483399854
+      }
+    },
+    "m1_zero": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 0.0,
+        "v_scaled_error": 0.0,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 0.0,
+        "energy_scaled_error": 0.0,
+        "energy_J": 0.0,
+        "dissipation_J": 0.0,
+        "work_J": 0.0
+      }
+    },
+    "m1_zero_other_marker": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 0.0,
+        "v_scaled_error": 0.0,
+        "a_dyn_scaled_error": 0.0,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 0.0,
+        "energy_scaled_error": 0.0,
+        "energy_J": 0.0,
+        "dissipation_J": 0.0,
+        "work_J": 0.0
+      }
+    },
+    "m1_two_load_points": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 5.421010862427522e-20,
+        "v_scaled_error": 3.2959746043559335e-17,
+        "a_dyn_scaled_error": 2.2019496720054673e-16,
+        "load_scaled_error": 2.2019496720054673e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 1.4907779871675686e-19,
+        "energy_scaled_error": 1.7618285302889447e-19,
+        "energy_J": 7.260607008000018e-05,
+        "dissipation_J": 0.0,
+        "work_J": 7.260607008000003e-05
+      }
+    },
+    "m1_wrapper": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 9.17575326093642e-09,
+        "load_scaled_error": 2.220446049250313e-16,
+        "effort_scaled_error": 5.5054519563016435e-08
+      }
+    },
+    "m1_periodic_spline": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 5.109376508380566e-07,
+        "v_scaled_error": 9.460370381270122e-06,
+        "a_dyn_scaled_error": 9.174978999247257e-06,
+        "load_scaled_error": 2.220446049250313e-16,
+        "equilibrium_eta": 2.669379536076733e-16,
+        "energy_balance_scaled": 1.4875079513564267e-07,
+        "energy_scaled_error": 3.633631958433782e-07,
+        "energy_J": 0.0014083991257360176,
+        "dissipation_J": 0.0003367253543104146,
+        "work_J": 0.0017452732308415677,
+        "effort_scaled_error": 3.0656258859333707e-06
+      }
+    },
+    "m1_invalid_hzero": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_hnegative": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_hszero": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_hsnegative": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_reversed": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_capacity": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_bad_time_table": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_bad_index": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_invalid_unrepresentable_time": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {}
+    },
+    "m1_refine_free_0_dense": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 1.214306433183765e-17,
+        "v_scaled_error": 6.938893903907228e-16,
+        "a_dyn_scaled_error": 1.9968040011243822e-16,
+        "load_scaled_error": 1.9968040011243822e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 5.377642775528102e-17,
+        "energy_scaled_error": 5.551115123125783e-17,
+        "energy_J": 0.014273740800000056,
+        "dissipation_J": 0.0,
+        "work_J": 0.014273740800000002
+      }
+    },
+    "m1_refine_free_0_nodes": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 1.0408340855860843e-17,
+        "v_scaled_error": 5.273559366969494e-16,
+        "a_dyn_scaled_error": 1.9968040011243822e-16,
+        "load_scaled_error": 1.9968040011243822e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 5.377642775528102e-17,
+        "energy_scaled_error": 5.551115123125783e-17,
+        "energy_J": 0.014273740800000056,
+        "dissipation_J": 0.0,
+        "work_J": 0.014273740800000002
+      }
+    },
+    "m1_refine_free_1_dense": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 3.9898639947466563e-17,
+        "v_scaled_error": 2.192690473634684e-15,
+        "a_dyn_scaled_error": 1.9968040011243822e-16,
+        "load_scaled_error": 1.9968040011243822e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 2.6194324487249787e-16,
+        "energy_scaled_error": 3.0010716134398763e-16,
+        "energy_J": 0.0142737407999997,
+        "dissipation_J": 0.0,
+        "work_J": 0.014273740799999962
+      }
+    },
+    "m1_refine_free_1_nodes": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 3.9898639947466563e-17,
+        "v_scaled_error": 1.7763568394002505e-15,
+        "a_dyn_scaled_error": 1.9968040011243822e-16,
+        "load_scaled_error": 1.9968040011243822e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 2.5500435096859064e-16,
+        "energy_scaled_error": 3.0010716134398763e-16,
+        "energy_J": 0.0142737407999997,
+        "dissipation_J": 0.0,
+        "work_J": 0.014273740799999955
+      }
+    },
+    "m1_refine_free_2_dense": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 4.978656376053436e-16,
+        "v_scaled_error": 1.1657341758564144e-14,
+        "a_dyn_scaled_error": 1.9968040011243822e-16,
+        "load_scaled_error": 1.9968040011243822e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 1.349614864309956e-15,
+        "energy_scaled_error": 1.8943180357666733e-15,
+        "energy_J": 0.014273740800001895,
+        "dissipation_J": 0.0,
+        "work_J": 0.014273740800000545
+      }
+    },
+    "m1_refine_free_2_nodes": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 4.978656376053436e-16,
+        "v_scaled_error": 1.1823875212257917e-14,
+        "a_dyn_scaled_error": 1.9968040011243822e-16,
+        "load_scaled_error": 1.9968040011243822e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 1.3478801408339791e-15,
+        "energy_scaled_error": 1.8943180357666733e-15,
+        "energy_J": 0.014273740800001895,
+        "dissipation_J": 0.0,
+        "work_J": 0.014273740800000547
+      }
+    },
+    "m1_refine_viscous_0_dense": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 5.888741225913013e-07,
+        "v_scaled_error": 6.8524407753622896e-06,
+        "a_dyn_scaled_error": 1.3704881550724579e-05,
+        "load_scaled_error": 1.9968040011243822e-16,
+        "equilibrium_eta": 1.041094359175878e-16,
+        "energy_balance_scaled": 5.923927128455297e-07,
+        "energy_scaled_error": 9.93638100429614e-07,
+        "energy_J": 0.010513720267224155,
+        "dissipation_J": 0.002353868701876222,
+        "work_J": 0.012866996576387532
+      }
+    },
+    "m1_refine_viscous_0_nodes": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 5.888741225913013e-07,
+        "v_scaled_error": 6.8524407753622896e-06,
+        "a_dyn_scaled_error": 1.3704881550724579e-05,
+        "load_scaled_error": 1.9968040011243822e-16,
+        "equilibrium_eta": 1.0458016433921968e-16,
+        "energy_balance_scaled": 5.923927128420603e-07,
+        "energy_scaled_error": 9.93638100429614e-07,
+        "energy_J": 0.010513720267224155,
+        "dissipation_J": 0.0023538687018762215,
+        "work_J": 0.012866996576387534
+      }
+    },
+    "m1_refine_viscous_1_dense": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 1.5193084430993598e-07,
+        "v_scaled_error": 1.7349914251674203e-06,
+        "a_dyn_scaled_error": 3.4699828502793295e-06,
+        "load_scaled_error": 1.9968040011243822e-16,
+        "equilibrium_eta": 1.082510749439505e-16,
+        "energy_balance_scaled": 1.4765431118057837e-07,
+        "energy_scaled_error": 2.515779734535428e-07,
+        "energy_J": 0.010512978207097179,
+        "dissipation_J": 0.00235369666783559,
+        "work_J": 0.012866527220621588
+      }
+    },
+    "m1_refine_viscous_1_nodes": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 1.5193084430993598e-07,
+        "v_scaled_error": 1.7349914251674203e-06,
+        "a_dyn_scaled_error": 3.4699828502793295e-06,
+        "load_scaled_error": 1.9968040011243822e-16,
+        "equilibrium_eta": 1.0348835054298622e-16,
+        "energy_balance_scaled": 1.4765430888033504e-07,
+        "energy_scaled_error": 2.515779734535428e-07,
+        "energy_J": 0.010512978207097179,
+        "dissipation_J": 0.0023536966678327368,
+        "work_J": 0.012866527220621034
+      }
+    },
+    "m1_refine_viscous_2_dense": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 3.858203737570898e-08,
+        "v_scaled_error": 4.364080729846176e-07,
+        "a_dyn_scaled_error": 8.72816145913724e-07,
+        "load_scaled_error": 1.9968040011243822e-16,
+        "equilibrium_eta": 0.0,
+        "energy_balance_scaled": 3.683459852583948e-08,
+        "energy_scaled_error": 6.327994789279145e-08,
+        "energy_J": 0.010512789909071618,
+        "dissipation_J": 0.002353652472986257,
+        "work_J": 0.01286640554745935
+      }
+    },
+    "m1_refine_viscous_2_nodes": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 3.858203737570898e-08,
+        "v_scaled_error": 4.364080729846176e-07,
+        "a_dyn_scaled_error": 8.72816145913724e-07,
+        "load_scaled_error": 1.9968040011243822e-16,
+        "equilibrium_eta": 1.048567269196408e-16,
+        "energy_balance_scaled": 3.683459606079742e-08,
+        "energy_scaled_error": 6.327994789279145e-08,
+        "energy_J": 0.010512789909071618,
+        "dissipation_J": 0.002353652472983207,
+        "work_J": 0.012866405547458765
+      }
+    },
+    "m1_refine_coupled_0_dense": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 5.859100983565679e-06,
+        "v_scaled_error": 5.201778083041564e-05,
+        "a_dyn_scaled_error": 7.51819580761352e-05,
+        "load_scaled_error": 1.1102230246251565e-16,
+        "equilibrium_eta": 2.220446049250313e-16,
+        "energy_balance_scaled": 7.5703564912377175e-06,
+        "energy_scaled_error": 1.4596088025738141e-05,
+        "energy_J": 0.05171487218936679,
+        "dissipation_J": 0.013612651404938735,
+        "work_J": 0.06533509395079676,
+        "effort_scaled_error": 3.5154605901283054e-05
+      }
+    },
+    "m1_refine_coupled_0_nodes": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 5.859100983565679e-06,
+        "v_scaled_error": 5.197194894773771e-05,
+        "a_dyn_scaled_error": 7.51819580761352e-05,
+        "load_scaled_error": 0.0,
+        "equilibrium_eta": 1.1102230246251565e-16,
+        "energy_balance_scaled": 7.570356491251595e-06,
+        "energy_scaled_error": 1.4596088025738141e-05,
+        "energy_J": 0.05171487218936679,
+        "dissipation_J": 0.013612651404938735,
+        "work_J": 0.06533509395079677,
+        "effort_scaled_error": 3.5154605901283054e-05
+      }
+    },
+    "m1_refine_coupled_1_dense": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 1.509657223973393e-06,
+        "v_scaled_error": 1.3117896346948044e-05,
+        "a_dyn_scaled_error": 1.9084426939356788e-05,
+        "load_scaled_error": 1.1102230246251565e-16,
+        "equilibrium_eta": 2.220446049250313e-16,
+        "energy_balance_scaled": 1.8497251030868966e-06,
+        "energy_scaled_error": 3.6728502734173496e-06,
+        "energy_J": 0.05172579542711911,
+        "dissipation_J": 0.013616147686094027,
+        "work_J": 0.06534379283831622,
+        "effort_scaled_error": 9.05794334288279e-06
+      }
+    },
+    "m1_refine_coupled_1_nodes": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 1.509657223973393e-06,
+        "v_scaled_error": 1.3113371090278658e-05,
+        "a_dyn_scaled_error": 1.9084426939356788e-05,
+        "load_scaled_error": 2.220446049250313e-16,
+        "equilibrium_eta": 1.6653345369377348e-16,
+        "energy_balance_scaled": 1.849725048450046e-06,
+        "energy_scaled_error": 3.6728502734173496e-06,
+        "energy_J": 0.05172579542711911,
+        "dissipation_J": 0.013616147686148676,
+        "work_J": 0.06534379283831623,
+        "effort_scaled_error": 9.05794334288279e-06
+      }
+    },
+    "m1_refine_coupled_2_dense": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 3.8297707660728264e-07,
+        "v_scaled_error": 3.291711325181801e-06,
+        "a_dyn_scaled_error": 4.8054103879794745e-06,
+        "load_scaled_error": 1.1102230246251565e-16,
+        "equilibrium_eta": 2.2204460492503126e-16,
+        "energy_balance_scaled": 4.564351265834432e-07,
+        "energy_scaled_error": 9.206908430786642e-07,
+        "energy_J": 0.05172854758654945,
+        "dissipation_J": 0.013617042176936184,
+        "work_J": 0.06534604619861221,
+        "effort_scaled_error": 2.2978624548142257e-06
+      }
+    },
+    "m1_refine_coupled_2_nodes": {
+      "status": "PASS",
+      "issues": [],
+      "completeness_issues": [],
+      "metrics": {
+        "q_scaled_error": 3.8297707660728264e-07,
+        "v_scaled_error": 3.2915574323943986e-06,
+        "a_dyn_scaled_error": 4.8054103879794745e-06,
+        "load_scaled_error": 2.220446049250313e-16,
+        "equilibrium_eta": 1.6653345369377348e-16,
+        "energy_balance_scaled": 4.564350679497897e-07,
+        "energy_scaled_error": 9.206908430786642e-07,
+        "energy_J": 0.05172854758654945,
+        "dissipation_J": 0.013617042176994887,
+        "work_J": 0.06534604619861228,
+        "effort_scaled_error": 2.2978624548142257e-06
+      }
+    }
+  },
+  "case_count": 100,
+  "refinements": [
+    {
+      "method": 0,
+      "model": "free",
+      "metric": "q",
+      "errors": [
+        6.242714993640736e-07,
+        1.5572567059300713e-07,
+        3.882875626234905e-08
+      ],
+      "orders": [
+        2.0031668171265222,
+        2.0038093834140565
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 0,
+      "model": "free",
+      "metric": "v",
+      "errors": [
+        5.749028572310522e-06,
+        1.4372571429319136e-06,
+        3.5931428721269754e-07
+      ],
+      "orders": [
+        2.0000000001462683,
+        1.9999999940587294
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 0,
+      "model": "free",
+      "metric": "a_dyn",
+      "errors": [
+        1.998241584998482e-16,
+        1.998241584998482e-16,
+        1.998241584998482e-16
+      ],
+      "orders": [
+        "ROUND_OFF_LIMIT",
+        "ROUND_OFF_LIMIT"
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 0,
+      "model": "free",
+      "metric": "energy",
+      "errors": [
+        1.491862189340054e-16,
+        6.106226635438361e-16,
+        1.205632815803881e-15
+      ],
+      "orders": [
+        "ROUND_OFF_LIMIT",
+        "ROUND_OFF_LIMIT"
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 0,
+      "model": "free",
+      "metric": "energy_balance_nodes",
+      "errors": [
+        6.610616318999951e-07,
+        1.652654084347005e-07,
+        4.131635297603686e-08
+      ],
+      "orders": [
+        1.9999999959870043,
+        1.9999999697132393
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 0,
+      "model": "free",
+      "metric": "kinematic_defect",
+      "errors": [
+        0.0018862491001154441,
+        0.0009431245502295708,
+        0.0004715622766225586
+      ],
+      "orders": [
+        0.9999999997371235,
+        0.999999995387127
+      ],
+      "minimum_order": 0.9,
+      "status": "PASS"
+    },
+    {
+      "method": 0,
+      "model": "viscous",
+      "metric": "q",
+      "errors": [
+        8.506237656018267e-07,
+        2.1218914806643563e-07,
+        5.290861487296239e-08
+      ],
+      "orders": [
+        2.003170288257093,
+        2.0037763206127845
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 0,
+      "model": "viscous",
+      "metric": "v",
+      "errors": [
+        1.0548824523258244e-05,
+        2.6501968752343057e-06,
+        6.649179292250815e-07
+      ],
+      "orders": [
+        1.9929108031894915,
+        1.9948513522112945
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 0,
+      "model": "viscous",
+      "metric": "a_dyn",
+      "errors": [
+        2.1097649046786238e-05,
+        5.30039375046254e-06,
+        1.329835858765449e-06
+      ],
+      "orders": [
+        1.9929108032095901,
+        1.9948513518675985
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 0,
+      "model": "viscous",
+      "metric": "energy",
+      "errors": [
+        2.3361897569414147e-07,
+        5.8402969516091474e-08,
+        1.4600634406364277e-08
+      ],
+      "orders": [
+        2.0000438315029827,
+        2.0000106687859445
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 0,
+      "model": "viscous",
+      "metric": "energy_balance_nodes",
+      "errors": [
+        8.999121041443348e-07,
+        2.2497534461068946e-07,
+        5.62436710989378e-08
+      ],
+      "orders": [
+        2.0000171950222896,
+        2.000004233753777
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 0,
+      "model": "viscous",
+      "metric": "kinematic_defect",
+      "errors": [
+        0.003862163135730956,
+        0.0019384098219364931,
+        0.0009673537889964834
+      ],
+      "orders": [
+        0.9945354841855865,
+        1.002758093831268
+      ],
+      "minimum_order": 0.9,
+      "status": "PASS"
+    },
+    {
+      "method": 0,
+      "model": "coupled",
+      "metric": "q",
+      "errors": [
+        9.115250472563341e-06,
+        2.274055467377245e-06,
+        5.670202235311117e-07
+      ],
+      "orders": [
+        2.003014855771829,
+        2.0037953471619283
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 0,
+      "model": "coupled",
+      "metric": "v",
+      "errors": [
+        8.905871461672987e-05,
+        2.225909602876497e-05,
+        5.564455788642508e-06
+      ],
+      "orders": [
+        2.0003617854103575,
+        2.000082502083383
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 0,
+      "model": "coupled",
+      "metric": "a_dyn",
+      "errors": [
+        0.00012361386065869238,
+        3.094863417210472e-05,
+        7.757186143842321e-06
+      ],
+      "orders": [
+        1.9978928729887449,
+        1.9962704151671224
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 0,
+      "model": "coupled",
+      "metric": "effort",
+      "errors": [
+        5.469150283504698e-05,
+        1.3644332803430803e-05,
+        3.402121338508257e-06
+      ],
+      "orders": [
+        2.003014855851086,
+        2.0037953482096866
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 0,
+      "model": "coupled",
+      "metric": "energy",
+      "errors": [
+        4.056297320600977e-06,
+        1.0140755860102435e-06,
+        2.535189403546356e-07
+      ],
+      "orders": [
+        1.9999982133243912,
+        1.999999750451875
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 0,
+      "model": "coupled",
+      "metric": "energy_balance_nodes",
+      "errors": [
+        7.942845845321234e-06,
+        1.9858609340839273e-06,
+        4.964746065649894e-07
+      ],
+      "orders": [
+        1.9998914064360278,
+        1.999972762812887
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 0,
+      "model": "coupled",
+      "metric": "kinematic_defect",
+      "errors": [
+        0.010335108264455176,
+        0.00516168860197972,
+        0.0025760104806518518
+      ],
+      "orders": [
+        1.0016384884212923,
+        1.002704644969832
+      ],
+      "minimum_order": 0.9,
+      "status": "PASS"
+    },
+    {
+      "method": 1,
+      "model": "free",
+      "metric": "q",
+      "errors": [
+        1.214306433183765e-17,
+        3.8163916471489756e-17,
+        4.839878497975292e-16
+      ],
+      "orders": [
+        "ROUND_OFF_LIMIT",
+        "ROUND_OFF_LIMIT"
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 1,
+      "model": "free",
+      "metric": "v",
+      "errors": [
+        6.938893903907228e-16,
+        2.192690473634684e-15,
+        1.1657341758564144e-14
+      ],
+      "orders": [
+        "ROUND_OFF_LIMIT",
+        "ROUND_OFF_LIMIT"
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 1,
+      "model": "free",
+      "metric": "a_dyn",
+      "errors": [
+        1.998241584998482e-16,
+        1.998241584998482e-16,
+        1.998241584998482e-16
+      ],
+      "orders": [
+        "ROUND_OFF_LIMIT",
+        "ROUND_OFF_LIMIT"
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 1,
+      "model": "free",
+      "metric": "energy",
+      "errors": [
+        5.551115123125783e-17,
+        3.0010716134398763e-16,
+        1.8943180357666733e-15
+      ],
+      "orders": [
+        "ROUND_OFF_LIMIT",
+        "ROUND_OFF_LIMIT"
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 1,
+      "model": "free",
+      "metric": "energy_balance_nodes",
+      "errors": [
+        5.377642775528102e-17,
+        2.5500435096859064e-16,
+        1.3478801408339791e-15
+      ],
+      "orders": [
+        "ROUND_OFF_LIMIT",
+        "ROUND_OFF_LIMIT"
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 1,
+      "model": "free",
+      "metric": "kinematic_defect",
+      "errors": [
+        6.754056557294869e-14,
+        5.013588136761191e-13,
+        1.7056990169547042e-12
+      ],
+      "orders": [
+        "ROUND_OFF_LIMIT",
+        "ROUND_OFF_LIMIT"
+      ],
+      "minimum_order": 0.9,
+      "status": "PASS"
+    },
+    {
+      "method": 1,
+      "model": "viscous",
+      "metric": "q",
+      "errors": [
+        5.810580192850551e-07,
+        1.4995211050292112e-07,
+        3.8084439284505334e-08
+      ],
+      "orders": [
+        1.9541803979361256,
+        1.977228267338511
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 1,
+      "model": "viscous",
+      "metric": "v",
+      "errors": [
+        6.824293563550965e-06,
+        1.7271965257192878e-06,
+        4.34210317645789e-07
+      ],
+      "orders": [
+        1.9822474625457607,
+        1.9919663338801659
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 1,
+      "model": "viscous",
+      "metric": "a_dyn",
+      "errors": [
+        1.3648587127046419e-05,
+        3.4543930513830645e-06,
+        8.684206354026003e-07
+      ],
+      "orders": [
+        1.9822474625630766,
+        1.9919663336725422
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 1,
+      "model": "viscous",
+      "metric": "energy",
+      "errors": [
+        9.93638100429614e-07,
+        2.515779734535428e-07,
+        6.327994789279145e-08
+      ],
+      "orders": [
+        1.9817148791914405,
+        1.9911852977121065
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 1,
+      "model": "viscous",
+      "metric": "energy_balance_nodes",
+      "errors": [
+        5.923927128420603e-07,
+        1.4765430888033504e-07,
+        3.683459606079742e-08
+      ],
+      "orders": [
+        2.004330435686612,
+        2.0030901313299103
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 1,
+      "model": "viscous",
+      "metric": "kinematic_defect",
+      "errors": [
+        6.325239157523033e-05,
+        1.617848374768638e-05,
+        4.108730784380121e-06
+      ],
+      "orders": [
+        1.9670436248955945,
+        1.9773116950244574
+      ],
+      "minimum_order": 0.9,
+      "status": "PASS"
+    },
+    {
+      "method": 1,
+      "model": "coupled",
+      "metric": "q",
+      "errors": [
+        5.801819484049786e-06,
+        1.495307307329552e-06,
+        3.793882230040957e-07
+      ],
+      "orders": [
+        1.9560633990429128,
+        1.9786952093244305
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 1,
+      "model": "coupled",
+      "metric": "v",
+      "errors": [
+        5.201778083041564e-05,
+        1.3117896346948044e-05,
+        3.291711325181801e-06
+      ],
+      "orders": [
+        1.9874684721597196,
+        1.9946266548512752
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 1,
+      "model": "coupled",
+      "metric": "a_dyn",
+      "errors": [
+        7.518175665709008e-05,
+        1.908680291141001e-05,
+        4.806132124208523e-06
+      ],
+      "orders": [
+        1.9778071571749265,
+        1.9896272529438923
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 1,
+      "model": "coupled",
+      "metric": "effort",
+      "errors": [
+        3.4810916904187694e-05,
+        8.9718438430475e-06,
+        2.276329333333882e-06
+      ],
+      "orders": [
+        1.9560633991878278,
+        1.9786952121477877
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 1,
+      "model": "coupled",
+      "metric": "energy",
+      "errors": [
+        1.4596088025738141e-05,
+        3.6728502734173496e-06,
+        9.206908430786642e-07
+      ],
+      "orders": [
+        1.9906097668304135,
+        1.9961113816015017
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 1,
+      "model": "coupled",
+      "metric": "energy_balance_nodes",
+      "errors": [
+        7.570356491251595e-06,
+        1.849725048450046e-06,
+        4.564350679497897e-07
+      ],
+      "orders": [
+        2.03305040100194,
+        2.0188292945262227
+      ],
+      "minimum_order": 1.8,
+      "status": "PASS"
+    },
+    {
+      "method": 1,
+      "model": "coupled",
+      "metric": "kinematic_defect",
+      "errors": [
+        0.0002738413501032812,
+        7.256528053675349e-05,
+        1.8840268735289548e-05
+      ],
+      "orders": [
+        1.9159889613615835,
+        1.9454599003118171
+      ],
+      "minimum_order": 0.9,
+      "status": "PASS"
+    }
+  ],
+  "refinement_failures": [],
+  "negative_fill_controls": [
+    {
+      "case": "m0_zero",
+      "zero_values_preserved": true,
+      "removed_fill_bit_rejected": true
+    },
+    {
+      "case": "m1_zero",
+      "zero_values_preserved": true,
+      "removed_fill_bit_rejected": true
+    }
+  ],
+  "publication_independence": [
+    {
+      "base": "m0_stride_1.0",
+      "other": "m0_stride_0.25",
+      "common_rows": 17,
+      "max_error": 0.0,
+      "status": "PASS"
+    },
+    {
+      "base": "m0_stride_1.0",
+      "other": "m0_stride_0.5",
+      "common_rows": 17,
+      "max_error": 0.0,
+      "status": "PASS"
+    },
+    {
+      "base": "m0_stride_1.0",
+      "other": "m0_stride_2.0",
+      "common_rows": 9,
+      "max_error": 0.0,
+      "status": "PASS"
+    },
+    {
+      "base": "m0_stride_1.0",
+      "other": "m0_stride_1.3",
+      "common_rows": 3,
+      "max_error": 0.0,
+      "status": "PASS"
+    },
+    {
+      "base": "m0_zero",
+      "other": "m0_zero_other_marker",
+      "status": "PASS"
+    },
+    {
+      "base": "m1_stride_1.0",
+      "other": "m1_stride_0.25",
+      "common_rows": 17,
+      "max_error": 0.0,
+      "status": "PASS"
+    },
+    {
+      "base": "m1_stride_1.0",
+      "other": "m1_stride_0.5",
+      "common_rows": 17,
+      "max_error": 0.0,
+      "status": "PASS"
+    },
+    {
+      "base": "m1_stride_1.0",
+      "other": "m1_stride_2.0",
+      "common_rows": 9,
+      "max_error": 0.0,
+      "status": "PASS"
+    },
+    {
+      "base": "m1_stride_1.0",
+      "other": "m1_stride_1.3",
+      "common_rows": 3,
+      "max_error": 0.0,
+      "status": "PASS"
+    },
+    {
+      "base": "m1_zero",
+      "other": "m1_zero_other_marker",
+      "status": "PASS"
+    }
+  ],
+  "native_fill_control": {
+    "status": "PASS",
+    "returncode": 0
+  },
+  "partial_state_diagnostics": {
+    "m0_aligned": {
+      "observed_rows": 11,
+      "excluded_rows": 0,
+      "q_max_error_rad": 1.1519648082658485e-19,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_roundoff03": {
+      "observed_rows": 4,
+      "excluded_rows": 0,
+      "q_max_error_rad": 6.938893903907228e-18,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_roundoff029": {
+      "observed_rows": 30,
+      "excluded_rows": 0,
+      "q_max_error_rad": 5.551115123125783e-17,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_fraction": {
+      "observed_rows": 4,
+      "excluded_rows": 0,
+      "q_max_error_rad": 6.776263578034403e-21,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_short": {
+      "observed_rows": 2,
+      "excluded_rows": 0,
+      "q_max_error_rad": 0.0,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_translated_large": {
+      "observed_rows": 4,
+      "excluded_rows": 0,
+      "q_max_error_rad": 0.0,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_stride_0.25": {
+      "observed_rows": 65,
+      "excluded_rows": 0,
+      "q_max_error_rad": 3.5236570605778894e-19,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_stride_0.5": {
+      "observed_rows": 33,
+      "excluded_rows": 0,
+      "q_max_error_rad": 3.5236570605778894e-19,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_stride_1.0": {
+      "observed_rows": 17,
+      "excluded_rows": 0,
+      "q_max_error_rad": 3.5236570605778894e-19,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_stride_2.0": {
+      "observed_rows": 9,
+      "excluded_rows": 0,
+      "q_max_error_rad": 3.5236570605778894e-19,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_stride_1.3": {
+      "observed_rows": 14,
+      "excluded_rows": 0,
+      "q_max_error_rad": 3.5236570605778894e-19,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_shifted": {
+      "observed_rows": 65,
+      "excluded_rows": 0,
+      "q_max_error_rad": 9.781333336063118e-10,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_cropped": {
+      "observed_rows": 24,
+      "excluded_rows": 0,
+      "q_max_error_rad": 9.78133333253946e-10,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_affine": {
+      "observed_rows": 121,
+      "excluded_rows": 0,
+      "q_max_error_rad": 1.1737599993604658e-07,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_affine_nodes": {
+      "observed_rows": 31,
+      "excluded_rows": 0,
+      "q_max_error_rad": 1.1737599993604658e-07,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_cropped_nodes": {
+      "observed_rows": 17,
+      "excluded_rows": 0,
+      "q_max_error_rad": 9.78133333253946e-10,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_damped_affine": {
+      "observed_rows": 94,
+      "excluded_rows": 0,
+      "q_max_error_rad": 4.312381311506047e-08,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_multi": {
+      "observed_rows": 161,
+      "excluded_rows": 0,
+      "q_max_error_rad": 7.63553357260166e-10,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_zero": {
+      "observed_rows": 65,
+      "excluded_rows": 0,
+      "q_max_error_rad": 0.0,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_zero_other_marker": {
+      "observed_rows": 65,
+      "excluded_rows": 0,
+      "q_max_error_rad": 0.0,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_two_load_points": {
+      "observed_rows": 49,
+      "excluded_rows": 0,
+      "q_max_error_rad": 7.336000001369712e-10,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_wrapper": {
+      "observed_rows": 161,
+      "excluded_rows": 0,
+      "q_max_error_rad": 2.9566359067197817e-08,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_periodic_spline": {
+      "observed_rows": 173,
+      "excluded_rows": 0,
+      "q_max_error_rad": 5.043272733825689e-07,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_refine_free_0_dense": {
+      "observed_rows": 141,
+      "excluded_rows": 0,
+      "q_max_error_rad": 6.2600533337967e-07,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_refine_free_0_nodes": {
+      "observed_rows": 21,
+      "excluded_rows": 0,
+      "q_max_error_rad": 6.2600533337967e-07,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_refine_free_1_dense": {
+      "observed_rows": 141,
+      "excluded_rows": 0,
+      "q_max_error_rad": 1.5650133317404724e-07,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_refine_free_1_nodes": {
+      "observed_rows": 41,
+      "excluded_rows": 0,
+      "q_max_error_rad": 1.5650133317404724e-07,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_refine_free_2_dense": {
+      "observed_rows": 141,
+      "excluded_rows": 0,
+      "q_max_error_rad": 3.9125333126110995e-08,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_refine_free_2_nodes": {
+      "observed_rows": 81,
+      "excluded_rows": 0,
+      "q_max_error_rad": 3.9125333126110995e-08,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_refine_viscous_0_dense": {
+      "observed_rows": 141,
+      "excluded_rows": 0,
+      "q_max_error_rad": 8.511391413491137e-07,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_refine_viscous_0_nodes": {
+      "observed_rows": 21,
+      "excluded_rows": 0,
+      "q_max_error_rad": 8.511391413491137e-07,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_refine_viscous_1_dense": {
+      "observed_rows": 141,
+      "excluded_rows": 0,
+      "q_max_error_rad": 2.1277934574362445e-07,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_refine_viscous_1_nodes": {
+      "observed_rows": 41,
+      "excluded_rows": 0,
+      "q_max_error_rad": 2.1277934574362445e-07,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_refine_viscous_2_dense": {
+      "observed_rows": 141,
+      "excluded_rows": 0,
+      "q_max_error_rad": 5.319449580994118e-08,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_refine_viscous_2_nodes": {
+      "observed_rows": 81,
+      "excluded_rows": 0,
+      "q_max_error_rad": 5.319449580994118e-08,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_refine_coupled_0_dense": {
+      "observed_rows": 141,
+      "excluded_rows": 0,
+      "q_max_error_rad": 9.143034699850283e-06,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_refine_coupled_0_nodes": {
+      "observed_rows": 21,
+      "excluded_rows": 0,
+      "q_max_error_rad": 9.143034699850283e-06,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_refine_coupled_1_dense": {
+      "observed_rows": 141,
+      "excluded_rows": 0,
+      "q_max_error_rad": 2.286037963185328e-06,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_refine_coupled_1_nodes": {
+      "observed_rows": 41,
+      "excluded_rows": 0,
+      "q_max_error_rad": 2.286037963185328e-06,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_refine_coupled_2_dense": {
+      "observed_rows": 141,
+      "excluded_rows": 0,
+      "q_max_error_rad": 5.715269444928062e-07,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m0_refine_coupled_2_nodes": {
+      "observed_rows": 81,
+      "excluded_rows": 0,
+      "q_max_error_rad": 5.715269444928062e-07,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_aligned": {
+      "observed_rows": 11,
+      "excluded_rows": 0,
+      "q_max_error_rad": 6.776263578034403e-21,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_roundoff03": {
+      "observed_rows": 4,
+      "excluded_rows": 0,
+      "q_max_error_rad": 0.0,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_roundoff029": {
+      "observed_rows": 30,
+      "excluded_rows": 0,
+      "q_max_error_rad": 1.0061396160665481e-16,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_fraction": {
+      "observed_rows": 4,
+      "excluded_rows": 0,
+      "q_max_error_rad": 0.0,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_short": {
+      "observed_rows": 2,
+      "excluded_rows": 0,
+      "q_max_error_rad": 0.0,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_translated_large": {
+      "observed_rows": 4,
+      "excluded_rows": 0,
+      "q_max_error_rad": 8.470329472543003e-22,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_stride_0.25": {
+      "observed_rows": 65,
+      "excluded_rows": 0,
+      "q_max_error_rad": 5.421010862427522e-20,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_stride_0.5": {
+      "observed_rows": 33,
+      "excluded_rows": 0,
+      "q_max_error_rad": 5.421010862427522e-20,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_stride_1.0": {
+      "observed_rows": 17,
+      "excluded_rows": 0,
+      "q_max_error_rad": 5.421010862427522e-20,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_stride_2.0": {
+      "observed_rows": 9,
+      "excluded_rows": 0,
+      "q_max_error_rad": 5.421010862427522e-20,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_stride_1.3": {
+      "observed_rows": 14,
+      "excluded_rows": 0,
+      "q_max_error_rad": 5.421010862427522e-20,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_shifted": {
+      "observed_rows": 65,
+      "excluded_rows": 0,
+      "q_max_error_rad": 4.87890977618477e-19,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_cropped": {
+      "observed_rows": 24,
+      "excluded_rows": 0,
+      "q_max_error_rad": 1.8973538018496328e-19,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_affine": {
+      "observed_rows": 121,
+      "excluded_rows": 0,
+      "q_max_error_rad": 1.3010426069826053e-17,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_affine_nodes": {
+      "observed_rows": 31,
+      "excluded_rows": 0,
+      "q_max_error_rad": 1.3010426069826053e-17,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_cropped_nodes": {
+      "observed_rows": 17,
+      "excluded_rows": 0,
+      "q_max_error_rad": 2.0328790734103208e-19,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_damped_affine": {
+      "observed_rows": 94,
+      "excluded_rows": 0,
+      "q_max_error_rad": 2.273070565019658e-08,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_multi": {
+      "observed_rows": 161,
+      "excluded_rows": 0,
+      "q_max_error_rad": 3.0361175769669235e-10,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_zero": {
+      "observed_rows": 65,
+      "excluded_rows": 0,
+      "q_max_error_rad": 0.0,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_zero_other_marker": {
+      "observed_rows": 65,
+      "excluded_rows": 0,
+      "q_max_error_rad": 0.0,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_two_load_points": {
+      "observed_rows": 49,
+      "excluded_rows": 0,
+      "q_max_error_rad": 5.421010862427522e-20,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_wrapper": {
+      "observed_rows": 161,
+      "excluded_rows": 0,
+      "q_max_error_rad": 9.17575326093642e-09,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_periodic_spline": {
+      "observed_rows": 173,
+      "excluded_rows": 0,
+      "q_max_error_rad": 5.109376508380566e-07,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_refine_free_0_dense": {
+      "observed_rows": 141,
+      "excluded_rows": 0,
+      "q_max_error_rad": 1.214306433183765e-17,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_refine_free_0_nodes": {
+      "observed_rows": 21,
+      "excluded_rows": 0,
+      "q_max_error_rad": 1.0408340855860843e-17,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_refine_free_1_dense": {
+      "observed_rows": 141,
+      "excluded_rows": 0,
+      "q_max_error_rad": 3.9898639947466563e-17,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_refine_free_1_nodes": {
+      "observed_rows": 41,
+      "excluded_rows": 0,
+      "q_max_error_rad": 3.9898639947466563e-17,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_refine_free_2_dense": {
+      "observed_rows": 141,
+      "excluded_rows": 0,
+      "q_max_error_rad": 4.978656376053436e-16,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_refine_free_2_nodes": {
+      "observed_rows": 81,
+      "excluded_rows": 0,
+      "q_max_error_rad": 4.978656376053436e-16,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_refine_viscous_0_dense": {
+      "observed_rows": 141,
+      "excluded_rows": 0,
+      "q_max_error_rad": 5.888741225913013e-07,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_refine_viscous_0_nodes": {
+      "observed_rows": 21,
+      "excluded_rows": 0,
+      "q_max_error_rad": 5.888741225913013e-07,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_refine_viscous_1_dense": {
+      "observed_rows": 141,
+      "excluded_rows": 0,
+      "q_max_error_rad": 1.5193084430993598e-07,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_refine_viscous_1_nodes": {
+      "observed_rows": 41,
+      "excluded_rows": 0,
+      "q_max_error_rad": 1.5193084430993598e-07,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_refine_viscous_2_dense": {
+      "observed_rows": 141,
+      "excluded_rows": 0,
+      "q_max_error_rad": 3.858203737570898e-08,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_refine_viscous_2_nodes": {
+      "observed_rows": 81,
+      "excluded_rows": 0,
+      "q_max_error_rad": 3.858203737570898e-08,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_refine_coupled_0_dense": {
+      "observed_rows": 141,
+      "excluded_rows": 0,
+      "q_max_error_rad": 5.859100983565679e-06,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_refine_coupled_0_nodes": {
+      "observed_rows": 21,
+      "excluded_rows": 0,
+      "q_max_error_rad": 5.859100983565679e-06,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_refine_coupled_1_dense": {
+      "observed_rows": 141,
+      "excluded_rows": 0,
+      "q_max_error_rad": 1.509657223973393e-06,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_refine_coupled_1_nodes": {
+      "observed_rows": 41,
+      "excluded_rows": 0,
+      "q_max_error_rad": 1.509657223973393e-06,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_refine_coupled_2_dense": {
+      "observed_rows": 141,
+      "excluded_rows": 0,
+      "q_max_error_rad": 3.8297707660728264e-07,
+      "scope": "partial observations only; never used to grant PASS"
+    },
+    "m1_refine_coupled_2_nodes": {
+      "observed_rows": 81,
+      "excluded_rows": 0,
+      "q_max_error_rad": 3.8297707660728264e-07,
+      "scope": "partial observations only; never used to grant PASS"
+    }
+  },
+  "criteria": {
+    "residual_factor": 1000,
+    "precision": "real64",
+    "order_q_v_a_effort_energy": 1.8,
+    "order_kinematic_defect": 0.9,
+    "normalized_order_floor": 1e-11
+  }
+}

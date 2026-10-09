@@ -1,0 +1,5 @@
+PASS P1 poles release baseline: 10 native matrix controls
+PASS P1 poles release current: 10 native matrix controls
+PASS P1 poles debug baseline: 10 native matrix controls
+PASS P1 poles debug current: 10 native matrix controls
+P1_POLES: PASS; raw poles/decrements byte-identical; resolved positive roots retained

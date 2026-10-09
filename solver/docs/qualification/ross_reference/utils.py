@@ -1,0 +1,1810 @@
+import json
+import re
+import toml
+
+import control as ct
+import numpy as np
+import pandas as pd
+
+from collections.abc import Iterable
+from pathlib import Path
+from numba import njit
+from numpy.fft import fft
+from numpy import linalg as la
+from plotly import graph_objects as go
+from copy import deepcopy as copy
+from scipy.integrate import cumulative_trapezoid as integrate
+
+from ross.units import check_units
+
+
+class NumpyEncoder(json.JSONEncoder):
+    """JSON encoder that handles numpy types and non-serializable objects."""
+
+    def default(self, obj):
+        if isinstance(obj, np.ndarray):
+            return obj.tolist()
+        if isinstance(obj, np.integer):
+            return int(obj)
+        if isinstance(obj, np.floating):
+            return float(obj)
+        if isinstance(obj, np.complexfloating):
+            return {"real": float(obj.real), "imag": float(obj.imag)}
+        if isinstance(obj, np.bool_):
+            return bool(obj)
+        # Fallback for non-serializable objects (callables, custom objects, etc.)
+        # This matches TOML encoder behavior which silently handles such types.
+        return None
+
+
+def _is_json(file):
+    """Check if file has a .json extension."""
+    return Path(file).suffix.lower() == ".json"
+
+
+def load_data(file):
+    """Load data from a .toml or .json file.
+
+    Parameters
+    ----------
+    file : str or pathlib.Path
+        Path to the file. Format is determined by extension.
+
+    Returns
+    -------
+    data : dict
+    """
+    if _is_json(file):
+        with open(file, "r") as f:
+            return json.load(f)
+    else:
+        return toml.load(file)
+
+
+def dump_data(data, file):
+    """Dump data to a .toml or .json file.
+
+    Parameters
+    ----------
+    data : dict
+        Data to save.
+    file : str or pathlib.Path
+        Path to the file. Format is determined by extension.
+    """
+    if _is_json(file):
+        # Serialize to string first to prevent partial file writes on error
+        json_str = json.dumps(data, indent=2, cls=NumpyEncoder)
+        with open(file, "w") as f:
+            f.write(json_str)
+    else:
+        with open(file, "w") as f:
+            toml.dump(data, f)
+
+
+def dump_data_numpy(data, file):
+    """Dump data to a .toml or .json file with numpy-aware encoding.
+
+    Parameters
+    ----------
+    data : dict
+        Data to save (may contain numpy arrays/scalars).
+    file : str or pathlib.Path
+        Path to the file. Format is determined by extension.
+    """
+    if _is_json(file):
+        # Serialize to string first to prevent partial file writes on error
+        json_str = json.dumps(data, indent=2, cls=NumpyEncoder)
+        with open(file, "w") as f:
+            f.write(json_str)
+    else:
+        with open(file, "w") as f:
+            toml.dump(data, f, encoder=toml.TomlNumpyEncoder())
+
+
+def cast_numpy_types(obj):
+    """Recursively cast NumPy data types to native Python types."""
+    if isinstance(obj, dict):
+        return {k: cast_numpy_types(v) for k, v in obj.items()}
+    elif isinstance(obj, (list, tuple)):
+        casted = [cast_numpy_types(i) for i in obj]
+        return type(obj)(casted)
+    elif isinstance(obj, np.generic):
+        return obj.item()
+    elif isinstance(obj, np.ndarray):
+        return obj.tolist()
+    else:
+        return obj
+
+
+class DataNotFoundError(Exception):
+    """
+    An exception indicating that the data could not be found in the file.
+    """
+
+    pass
+
+
+def read_table_file(file, element, sheet_name=0, n=0, sheet_type="Model"):
+    """Instantiate one or more element objects using inputs from an Excel table.
+
+    Parameters
+    ----------
+    file: str
+        Path to the file containing the shaft parameters.
+    element: str
+        Specify the type of element to be instantiated: bearing, shaft or disk.
+    sheet_name: int or str, optional
+        Position of the sheet in the file (starting from 0) or its name. If none is
+        passed, it is assumed to be the first sheet in the file.
+    n: int
+        Exclusive for bearing elements, since this parameter is given outside the table
+        file.
+    sheet_type: str
+        Exclusive for shaft elements, as they have a Model table in which more
+        information can be passed, such as the material parameters.
+
+    Returns
+    -------
+    A dictionary of parameters.
+
+    Examples
+    --------
+    >>> import os
+    >>> file_path = os.path.dirname(os.path.realpath(__file__)) + '/data/shaft_si.xls'
+    >>> read_table_file(file_path, "shaft", sheet_type="Model", sheet_name="Model") # doctest: +ELLIPSIS
+    {'L': [0.03...
+    """
+    df = pd.read_excel(file, header=None, sheet_name=sheet_name)
+
+    # Assign specific values to variables
+    parameter_columns = {}
+    optional_parameter_columns = {}
+    header_key_word = ""
+    default_dictionary = {}
+    parameters = {}
+    if element == "bearing":
+        header_key_word = "kxx"
+        parameter_columns["kxx"] = ["kxx"]
+        parameter_columns["cxx"] = ["cxx"]
+        optional_parameter_columns["kyy"] = ["kyy"]
+        optional_parameter_columns["kxy"] = ["kxy"]
+        optional_parameter_columns["kyx"] = ["kyx"]
+        optional_parameter_columns["cyy"] = ["cyy"]
+        optional_parameter_columns["cxy"] = ["cxy"]
+        optional_parameter_columns["cyx"] = ["cyx"]
+        optional_parameter_columns["speed"] = ["speed", "frequency"]
+        default_dictionary["kyy"] = None
+        default_dictionary["kxy"] = 0
+        default_dictionary["kyx"] = 0
+        default_dictionary["cyy"] = None
+        default_dictionary["cxy"] = 0
+        default_dictionary["cyx"] = 0
+        default_dictionary["speed"] = None
+    elif element == "shaft":
+        if sheet_type == "Model":
+            header_key_word = "od_left"
+        else:
+            header_key_word = "material"
+        parameter_columns["L"] = ["length"]
+        parameter_columns["idl"] = ["i_d_l", "idl", "id_left"]
+        parameter_columns["odl"] = ["o_d_l", "odl", "od_left"]
+        parameter_columns["idr"] = ["i_d_r", "idr", "id_right"]
+        parameter_columns["odr"] = ["o_d_r", "odr", "od_right"]
+        parameter_columns["material"] = ["material", "matnum"]
+        optional_parameter_columns["n"] = ["n", "elemnum"]
+        optional_parameter_columns["axial_force"] = [
+            "axial_force",
+            "axial force",
+            "axial",
+        ]
+        optional_parameter_columns["torque"] = ["torque"]
+        optional_parameter_columns["shear_effects"] = ["shear_effects", "shear effects"]
+        optional_parameter_columns["rotary_inertia"] = [
+            "rotary_inertia",
+            "rotary inertia",
+        ]
+        optional_parameter_columns["gyroscopic"] = ["gyroscopic"]
+        optional_parameter_columns["shear_method_calc"] = [
+            "shear_method_calc",
+            "shear method calc",
+        ]
+        default_dictionary["n"] = None
+        default_dictionary["axial_force"] = 0
+        default_dictionary["torque"] = 0
+        default_dictionary["shear_effects"] = True
+        default_dictionary["rotary_inertia"] = True
+        default_dictionary["gyroscopic"] = True
+        default_dictionary["shear_method_calc"] = "cowper"
+    elif element == "disk":
+        header_key_word = "ip"
+        parameter_columns["n"] = ["unnamed: 0", "n"]
+        parameter_columns["m"] = ["m", "mass"]
+        parameter_columns["Id"] = ["it", "id"]
+        parameter_columns["Ip"] = ["ip"]
+
+    # Find table header and define if conversion is needed
+    header_index = -1
+    header_found = False
+    convert_to_metric = False
+    convert_to_rad_per_sec = False
+    for index, row in df.iterrows():
+        for i in range(0, row.size):
+            if isinstance(row[i], str):
+                if not header_found:
+                    if row[i].lower() == header_key_word:
+                        header_index = index
+                        header_found = True
+                if (
+                    "inches" in row[i].lower()
+                    or "lbm" in row[i].lower()
+                    or "lb" in row[i].lower()
+                ):
+                    convert_to_metric = True
+                if "rpm" in row[i].lower():
+                    convert_to_rad_per_sec = True
+                if header_found and convert_to_metric and convert_to_rad_per_sec:
+                    break
+        if header_found and convert_to_metric:
+            break
+    if not header_found:
+        raise ValueError(
+            "Could not find the header. Make sure the table has a header "
+            "containing the names of the columns. In the case of a " + element + ", "
+            "there should be a column named " + header_key_word + "."
+        )
+
+    # Get specific data from the file
+    new_materials = {}
+    if element == "shaft" and sheet_type == "Model":
+        material_header_index = -1
+        material_header_found = False
+        material_header_key_word = "matno"
+        for index, row in df.iterrows():
+            for i in range(0, row.size):
+                if isinstance(row[i], str):
+                    if row[i].lower() == material_header_key_word:
+                        material_header_index = index
+                        material_header_found = True
+                        break
+            if material_header_found:
+                break
+        if not material_header_found:
+            raise ValueError(
+                "Could not find the header for the materials. Make sure the table has a header "
+                "with the parameters for the materials that will be used. There should be a column "
+                "named " + material_header_key_word + "."
+            )
+        df_material = pd.read_excel(
+            file, header=material_header_index, sheet_name=sheet_name
+        )
+        material_name = []
+        material_rho = []
+        material_e = []
+        material_g_s = []
+        material_color = []
+        for index, row in df_material.iterrows():
+            if not pd.isna(row["matno"]):
+                material_name.append(int(row["matno"]))
+                material_rho.append(row["rhoa"])
+                material_e.append(row["ea"])
+                material_g_s.append(row["ga"])
+                if "color" in df_material.columns:
+                    if pd.isna(row["color"]):
+                        material_color.append("#525252")
+                    else:
+                        material_color.append(row["color"])
+                else:
+                    material_color.append("#525252")
+
+            else:
+                break
+        if convert_to_metric:
+            for i in range(0, len(material_name)):
+                material_rho[i] = material_rho[i] * 27679.904
+                material_e[i] = material_e[i] * 6894.757
+                material_g_s[i] = material_g_s[i] * 6894.757
+        new_materials["matno"] = material_name
+        new_materials["rhoa"] = material_rho
+        new_materials["ea"] = material_e
+        new_materials["ga"] = material_g_s
+        new_materials["color"] = material_color
+
+    df = pd.read_excel(file, header=header_index, sheet_name=sheet_name)
+    df.columns = df.columns.str.lower()
+
+    # Find and isolate data rows
+    first_data_row_found = False
+    last_data_row_found = False
+    indexes_to_drop = []
+    for index, row in df.iterrows():
+        if (
+            not first_data_row_found
+            and (
+                isinstance(row[header_key_word], int)
+                or isinstance(row[header_key_word], float)
+            )
+            and not pd.isna(row[header_key_word])
+        ):
+            first_data_row_found = True
+        elif not first_data_row_found:
+            indexes_to_drop.append(index)
+        elif first_data_row_found and not last_data_row_found:
+            if (
+                isinstance(row[header_key_word], int)
+                or isinstance(row[header_key_word], float)
+            ) and not pd.isna(row[header_key_word]):
+                continue
+            else:
+                last_data_row_found = True
+                indexes_to_drop.append(index)
+        elif last_data_row_found:
+            indexes_to_drop.append(index)
+    if not first_data_row_found:
+        raise DataNotFoundError(
+            "Could not find the data. Make sure you have at least one row containing "
+            "data below the header."
+        )
+    if len(indexes_to_drop) > 0:
+        df = df.drop(indexes_to_drop)
+
+    # Build parameters list
+    if element == "bearing":
+        parameters["n"] = n
+    for key, value in parameter_columns.items():
+        for name in value:
+            try:
+                parameters[key] = df[name].tolist()
+                break
+            except KeyError:
+                if name == value[-1]:
+                    raise ValueError(
+                        "Could not find a column with one of these names: " + str(value)
+                    )
+                continue
+    for key, value in optional_parameter_columns.items():
+        for name in value:
+            try:
+                parameters[key] = df[name].tolist()
+                break
+            except KeyError:
+                if name == value[-1]:
+                    parameters[key] = [default_dictionary[key]] * df.shape[0]
+                else:
+                    continue
+    if element == "shaft":
+        if sheet_type == "Model":
+            new_material = parameters["material"]
+            for i in range(0, df.shape[0]):
+                new_material[i] = "shaft_mat_" + str(int(new_material[i]))
+            parameters["material"] = new_material
+
+    # change xltrc index to python index (0 based)
+    if element in ("shaft", "disk"):
+        new_n = parameters["n"]
+        for i in range(0, df.shape[0]):
+            new_n[i] -= 1
+        parameters["n"] = new_n
+
+    if convert_to_metric:
+        for i in range(0, df.shape[0]):
+            if element == "bearing":
+                parameters["kxx"][i] = parameters["kxx"][i] * 175.126_836_986_4
+                parameters["cxx"][i] = parameters["cxx"][i] * 175.126_836_986_4
+                parameters["kyy"][i] = parameters["kyy"][i] * 175.126_836_986_4
+                parameters["kxy"][i] = parameters["kxy"][i] * 175.126_836_986_4
+                parameters["kyx"][i] = parameters["kyx"][i] * 175.126_836_986_4
+                parameters["cyy"][i] = parameters["cyy"][i] * 175.126_836_986_4
+                parameters["cxy"][i] = parameters["cxy"][i] * 175.126_836_986_4
+                parameters["cyx"][i] = parameters["cyx"][i] * 175.126_836_986_4
+            if element == "shaft":
+                parameters["L"][i] = parameters["L"][i] * 0.0254
+                parameters["idl"][i] = parameters["idl"][i] * 0.0254
+                parameters["odl"][i] = parameters["odl"][i] * 0.0254
+                parameters["idr"][i] = parameters["idr"][i] * 0.0254
+                parameters["odr"][i] = parameters["odr"][i] * 0.0254
+                parameters["axial_force"][i] = (
+                    parameters["axial_force"][i] * 4.448_221_615_255
+                )
+            elif element == "disk":
+                parameters["m"][i] = parameters["m"][i] * 0.453_592_37
+                parameters["Id"][i] = parameters["Id"][i] * 0.000_292_639_7
+                parameters["Ip"][i] = parameters["Ip"][i] * 0.000_292_639_7
+    if convert_to_rad_per_sec:
+        for i in range(0, df.shape[0]):
+            if element == "bearing":
+                parameters["speed"][i] = parameters["speed"][i] * 0.104_719_755_119_7
+    parameters.update(new_materials)
+    return parameters
+
+
+def visualize_matrix(rotor, matrix, frequency=None, **kwargs):
+    """Visualize global matrix.
+
+    This function gives some visualization of a given matrix, displaying
+    values on a heatmap.
+
+    Parameters
+    ----------
+    rotor: rs.Rotor
+        The rotor object.
+    matrix: str
+        String for the desired matrix.
+    frequency: float, optional
+        Excitation frequency. Defaults to rotor speed.
+    kwargs : optional
+        Additional key word arguments can be passed to change the plot layout only
+        (e.g. coloraixs=dict(colorscale="Rainbow"), width=1000, height=800, ...).
+        *See Plotly Python Figure Reference for more information.
+
+    Returns
+    -------
+    fig : Plotly graph_objects.Figure()
+        The figure object with the plot.
+
+    Examples
+    --------
+    >>> import ross as rs
+    >>> rotor = rs.rotor_example()
+
+    Visualizing Mass Matrix:
+    >>> fig = rs.visualize_matrix(rotor, "M", frequency=100)
+
+    Visualizing Stiffness Matrix:
+    >>> fig = rs.visualize_matrix(rotor, "K", frequency=100)
+
+    Visualizing Gyroscopic Matrix:
+    >>> fig = rs.visualize_matrix(rotor, "G")
+    """
+    A = np.zeros((rotor.ndof, rotor.ndof))
+    # E will store element's names and contributions to the global matrix
+    E = np.zeros((rotor.ndof, rotor.ndof), dtype=object)
+
+    M, N = E.shape
+    for i in range(M):
+        for j in range(N):
+            E[i, j] = []
+
+    for elm in rotor.elements:
+        g_dofs = list(elm.dof_global_index.values())
+        l_dofs = elm.dof_local_index()
+        try:
+            elm_matrix = getattr(elm, matrix)(frequency)
+        except TypeError:
+            elm_matrix = getattr(elm, matrix)()
+
+        A[np.ix_(g_dofs, g_dofs)] += elm_matrix
+
+        for l0, g0 in zip(l_dofs, g_dofs, strict=True):
+            for l1, g1 in zip(l_dofs, g_dofs, strict=True):
+                if elm_matrix[l0, l1] != 0:
+                    E[g0, g1].append(
+                        "<br>"
+                        + elm.__class__.__name__
+                        + f"(n={elm.n})"
+                        + f": {elm_matrix[l0, l1]:.2E}"
+                    )
+
+    # list for dofs -> ['x0', 'y0', 'alpha0', 'beta0', 'x1'...]
+    dof_list = [0 for i in range(rotor.ndof)]
+
+    for elm in rotor.elements:
+        for k, v in elm.dof_global_index.items():
+            dof_list[v] = k
+
+    data = {"row": [], "col": [], "value": [], "pos_value": [], "elements": []}
+    for i, dof_row in enumerate(dof_list):
+        for j, dof_col in enumerate(dof_list):
+            data["row"].append(i)
+            data["col"].append(j)
+            data["value"].append(A[i, j])
+            data["pos_value"].append(abs(A[i, j]))
+            data["elements"].append(E[i, j])
+
+    dof_string_list = []
+    sub = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉")
+    for d in dof_list:
+        d = d.replace("alpha", "α")
+        d = d.replace("beta", "β")
+        d = d.replace("_", "")
+        d = d.translate(sub)
+        dof_string_list.append(d)
+
+    x_axis = dof_string_list
+    y_axis = dof_string_list[::-1]
+    fig = go.Figure()
+    fig.add_trace(
+        go.Heatmap(
+            x=x_axis,
+            y=y_axis,
+            z=A[::-1],
+            customdata=np.array(data["elements"], dtype=object).reshape(A.shape)[::-1],
+            coloraxis="coloraxis",
+            hovertemplate=(
+                "<b>Value: %{z:.3e}<b><br>" + "<b>Elements:<b><br> %{customdata}"
+            ),
+            name="<b>Matrix {}</b>".format(matrix),
+        )
+    )
+
+    fig.update_layout(
+        coloraxis=dict(
+            cmin=np.amin(A),
+            cmax=np.amax(A),
+            colorscale="Rainbow",
+            colorbar=dict(
+                title=dict(text="<b>Value</b>", side="top"), exponentformat="power"
+            ),
+        ),
+        **kwargs,
+    )
+
+    return fig
+
+
+def convert(name):
+    """Converts a CamelCase str to a underscore_case str
+
+    Parameters
+    ----------
+    file: str
+        Path to the file containing the shaft parameters.
+
+    Returns
+    -------
+    underscore_case string
+
+    Examples
+    --------
+    >>> convert('CamelCase')
+    'camel_case'
+    """
+
+    s1 = re.sub("(.)([A-Z][a-z]+)", r"\1_\2", name)
+    return re.sub("([a-z0-9])([A-Z])", r"\1_\2", s1).lower()
+
+
+def intersection(x1, y1, x2, y2):
+    """
+    Intersection code from https://github.com/sukhbinder/intersection
+    MIT License
+
+    Copyright (c) 2017 Sukhbinder Singh
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+
+    INTERSECTIONS Intersections of curves.
+       Computes the (x,y) locations where two curves intersect.  The curves
+       can be broken with NaNs or have vertical segments.
+
+    Usage:
+    x, y = intersection(x1, y1, x2, y2)
+
+    Example:
+    a, b = 1, 2
+    phi = np.linspace(3, 10, 100)
+    x1 = a*phi - b*np.sin(phi)
+    y1 = a - b*np.cos(phi)
+
+    x2=phi
+    y2=np.sin(phi)+2
+    x,y=intersection(x1,y1,x2,y2)
+
+    plt.plot(x1,y1,c='r')
+    plt.plot(x2,y2,c='g')
+    plt.plot(x,y,'*k')
+    plt.show()
+
+    """
+
+    def _rect_inter_inner(x1, x2):
+        n1 = x1.shape[0] - 1
+        n2 = x2.shape[0] - 1
+        X1 = np.c_[x1[:-1], x1[1:]]
+        X2 = np.c_[x2[:-1], x2[1:]]
+        S1 = np.tile(X1.min(axis=1), (n2, 1)).T
+        S2 = np.tile(X2.max(axis=1), (n1, 1))
+        S3 = np.tile(X1.max(axis=1), (n2, 1)).T
+        S4 = np.tile(X2.min(axis=1), (n1, 1))
+        return S1, S2, S3, S4
+
+    def _rectangle_intersection_(x1, y1, x2, y2):
+        S1, S2, S3, S4 = _rect_inter_inner(x1, x2)
+        S5, S6, S7, S8 = _rect_inter_inner(y1, y2)
+
+        C1 = np.less_equal(S1, S2)
+        C2 = np.greater_equal(S3, S4)
+        C3 = np.less_equal(S5, S6)
+        C4 = np.greater_equal(S7, S8)
+
+        ii, jj = np.nonzero(C1 & C2 & C3 & C4)
+        return ii, jj
+
+    x1 = np.asarray(x1)
+    x2 = np.asarray(x2)
+    y1 = np.asarray(y1)
+    y2 = np.asarray(y2)
+
+    ii, jj = _rectangle_intersection_(x1, y1, x2, y2)
+    n = len(ii)
+
+    dxy1 = np.diff(np.c_[x1, y1], axis=0)
+    dxy2 = np.diff(np.c_[x2, y2], axis=0)
+
+    T = np.zeros((4, n))
+    AA = np.zeros((4, 4, n))
+    AA[0:2, 2, :] = -1
+    AA[2:4, 3, :] = -1
+    AA[0::2, 0, :] = dxy1[ii, :].T
+    AA[1::2, 1, :] = dxy2[jj, :].T
+
+    BB = np.zeros((4, n))
+    BB[0, :] = -x1[ii].ravel()
+    BB[1, :] = -x2[jj].ravel()
+    BB[2, :] = -y1[ii].ravel()
+    BB[3, :] = -y2[jj].ravel()
+
+    for i in range(n):
+        try:
+            T[:, i] = np.linalg.solve(AA[:, :, i], BB[:, i])
+        except:
+            T[:, i] = np.Inf
+
+    in_range = (T[0, :] >= 0) & (T[1, :] >= 0) & (T[0, :] <= 1) & (T[1, :] <= 1)
+
+    xy0 = T[2:, in_range]
+    xy0 = xy0.T
+    return xy0[:, 0], xy0[:, 1]
+
+
+def get_data_from_figure(fig):
+    """Get data from a Plotly scatter plot (XY) and convert to a pd.DataFrame.
+
+    This function takes a go.Figure() object from Plotly and converts the data to a
+    DataFrame from Pandas. It works only for Scatter Plots (XY) and does no support
+    subplots or polar plots.
+
+    This function is suitable to the following analyzes:
+        - run_freq_response()
+        - run_unbalance_response()
+        - run_time_response()
+
+    Parameters
+    ----------
+    fig : go.Figure
+        A Plotly figure generated by go.Figure() command.
+
+    Returns
+    -------
+    df : pd.DataFrame
+        A DataFrame with the fig.data.
+
+    Examples
+    --------
+    >>> import ross as rs
+    >>> rotor = rs.rotor_example()
+
+    Get post-processed data from an unbalance response
+    >>> resp = rotor.run_unbalance_response(
+    ...     3, 0.001, 0.0, np.linspace(0, 1000, 101)
+    ... )
+    >>> fig = resp.plot_magnitude(probe=[rs.Probe(3, 0.0, tag="probe1"), rs.Probe(3, np.pi/2, tag="probe2")])
+    >>> df = rs.get_data_from_figure(fig)
+
+    Use the probe tag to navigate through pandas data
+    Index 0 for frequency array
+    >>> df["probe1"].values[0] # doctest: +ELLIPSIS
+    array([   0.,   10.,   20.,   30.,...
+
+    Index 1 for amplitude array
+    >>> df["probe1"].values[1] # doctest: +ELLIPSIS
+    array([0.00000000e+00,...
+
+    Or use "iloc" to obtain the desired array from pandas
+    >>> df.iloc[1, 0] # doctest: +ELLIPSIS
+    array([0.00000000e+00, 1.6057...
+    """
+    dict_data = {data["name"]: {} for data in fig.data}
+
+    xaxis_label = fig.layout.xaxis.title.text
+    yaxis_label = fig.layout.yaxis.title.text
+
+    for i, data in enumerate(fig.data):
+        dict_data[data["name"]][xaxis_label] = data.x
+        dict_data[data["name"]][yaxis_label] = data.y
+
+    df = pd.DataFrame(dict_data)
+
+    return df
+
+
+def newmark(system_func, rhs_func, t, y_size, newmark_type="simple", **options):
+    """Transient solution of the dynamic behavior of the system.
+
+    Perform numerical integration using the Newmark method with Newton-Raphson
+    iterations of the generic equation of motion:
+    M * y'' + C * y' + K * y = RHS(t, y)
+
+    Parameters
+    ----------
+    system_func : callable
+        A function that calculates the system matrices and right-hand side (RHS) vector at each
+        time step. It should take at least one argument `(step, dt=None, y=None, ydot=None, y2dot=None)`
+        and return a tuple `(M, C, K, RHS)`, where `step` is a scalar int related to the current time
+        step, `dt` is the current time step in seconds, `y` is a ndarray of current state of the system,
+        `ydot` and `y2dot` are its first and second time derivatives. `M`, `C`, `K` are ndarrays with
+        `np.shape(M) = (y_size, y_size)` and `RHS` is a ndarray with `len(RHS) = y_size`.
+    rhs_func : callable
+        A function that calculates the right-hand side (RHS) vector at each time step. It should take at
+        least one argument `(step, dt=None, y=None, ydot=None, y2dot=None)` and return a ndarray with
+        `len(RHS) = y_size`.
+    t : array_like
+        Time array.
+    y_size : int
+        Size of the state vector.
+    **options
+        Options passed for controlling the integration parameters. All options available are
+        listed below.
+    gamma : float, optional
+        Parameter of the integration algorithm related to the velocity interpolation equation.
+        Default is 0.5.
+    beta : float, optional
+        Parameter of the integration algorithm related to the displacement interpolation equation.
+        Default is 0.25.
+    tol : float, optional
+        Convergence tolerance for the Newton-Raphson iterations. Default is 1e-6.
+    progress_interval : float, optional
+        Time interval at which progress is printed. Default is to not show progress.
+
+    Returns
+    -------
+    yout : ndarray
+        System response. It is an array containing the state variables at each time step of `t` with
+        `np.shape(yout) = (len(t), y_size)`
+
+    References
+    ----------
+    Newmark, N. M. (1959). A method of computation for structural dynamics.
+    Journal of the Engineering Mechanics Division, 85(3), 67-94.
+
+    Examples
+    --------
+    >>> import ross as rs
+    >>> rotor = rs.rotor_example()
+    >>> size = 10000
+    >>> node = 3
+    >>> speed = 500.0
+    >>> accel = 0.0
+    >>> t = np.linspace(0, 10, size)
+    >>> F = np.zeros((size, rotor.ndof))
+    >>> F[:, rotor.number_dof * node + 0] = 10 * np.cos(2 * t)
+    >>> F[:, rotor.number_dof * node + 1] = 10 * np.sin(2 * t)
+    >>> M = rotor.M(speed)
+    >>> C1 = rotor.C(speed)
+    >>> K1 = rotor.K(speed)
+    >>> C2 = rotor.G()
+    >>> K2 = rotor.Ksdt()
+    >>> system_func = lambda i, **state: (M, C1 + C2 * speed, K1 + K2 * accel, F[i, :])
+    >>> rhs_func = lambda i, **state: F[i, :]
+    >>> yout = newmark(system_func, rhs_func, t, rotor.ndof)
+    >>> yout[:, rotor.number_dof * node + 1] # doctest: +ELLIPSIS
+    array([0.00000000e+00, 8.49140057e-09, 4.34296767e-08, ...,
+           1.16148468e-05, 1.16492353e-05, 1.16859622e-05])
+    """
+
+    gamma = options.get("gamma", 0.5)
+    beta = options.get("beta", 0.25)
+    epsilon = options.get("epsilon", 1e-8)
+    tol = options.get("tol", 1e-6)
+    progress_interval = options.get("progress_interval", t[-1] + 1)
+    args = options.get("args", [])
+
+    n_steps = len(t)
+    ny = y_size
+
+    if newmark_type == "robust":
+        yout = _converge_robust_newmark(
+            system_func,
+            rhs_func,
+            args,
+            ny,
+            n_steps,
+            t,
+            progress_interval,
+            gamma,
+            beta,
+            epsilon,
+            tol,
+        )
+    else:
+        yout = _converge_simple_newmark(
+            system_func,
+            rhs_func,
+            args,
+            ny,
+            n_steps,
+            t,
+            progress_interval,
+            gamma,
+            beta,
+            tol,
+        )
+
+    return yout
+
+
+@njit(fastmath=True)
+def _residual_newmark(RHS, M, C, K, y, ydot, y2dot):
+    return RHS - (M @ y2dot + C @ ydot + K @ y)
+
+
+@njit(fastmath=True)
+def _jacobian_newmark(M, C, K, gamma, beta, dt):
+    return M + C * gamma * dt + K * beta * (dt**2)
+
+
+@njit(fastmath=True)
+def _update_newmark(y, ydot, y2dot, dy2dot, gamma, beta, dt):
+    y2dot += dy2dot
+    ydot += dy2dot * gamma * dt
+    y += dy2dot * beta * (dt**2)
+
+    return y, ydot, y2dot
+
+
+@njit(fastmath=True)
+def _simple_loop_newmark(
+    y0, ydot0, y2dot0, y, ydot, y2dot, RHS, M, C, K, gamma, beta, dt, tol
+):
+    y2dot[:] = 0.0
+    ydot[:] = ydot0 + y2dot0 * (1.0 - gamma) * dt
+    y[:] = y0 + ydot0 * dt + y2dot0 * (0.5 - beta) * (dt**2)
+
+    res = _residual_newmark(RHS, M, C, K, y, ydot, y2dot)
+    J = _jacobian_newmark(M, C, K, gamma, beta, dt)
+
+    nr_iter = 0
+
+    while la.norm(res) >= tol:
+        nr_iter += 1
+        if nr_iter > 50:
+            raise RuntimeError(
+                """Newton-Raphson algorithm diverged. Maximum number of iterations reached. 
+                Try decreasing the time step or using robust integration."""
+            )
+
+        dy2dot = la.solve(J, res)
+        y[:], ydot[:], y2dot[:] = _update_newmark(
+            y, ydot, y2dot, dy2dot, gamma, beta, dt
+        )
+
+        res = _residual_newmark(RHS, M, C, K, y, ydot, y2dot)
+
+    y0[:] = y[:]
+    ydot0[:] = ydot[:]
+    y2dot0[:] = y2dot[:]
+
+    return y0, ydot0, y2dot0
+
+
+def _converge_simple_newmark(
+    system_func, rhs_func, args, ny, n_steps, t, progress_interval, gamma, beta, tol
+):
+    y0 = np.zeros(ny)
+    ydot0 = np.zeros(ny)
+    y2dot0 = np.zeros(ny)
+
+    y = np.zeros(ny)
+    ydot = np.zeros(ny)
+    y2dot = np.zeros(ny)
+
+    yout = np.zeros((n_steps, ny))
+    yout[0, :] = y0
+
+    for step in range(1, n_steps):
+        aux = round(t[step] / progress_interval, 9)
+        if aux - int(aux) == 0:
+            print("Time: ", t[step], " seconds")
+
+        dt = t[step] - t[step - 1]
+
+        M, C, K, RHS = system_func(
+            step,
+            time_step=dt,
+            disp_resp=y0,
+            velc_resp=ydot0,
+            accl_resp=y2dot0,
+            args=args,
+        )
+
+        y0[:], ydot0[:], y2dot0[:] = _simple_loop_newmark(
+            y0, ydot0, y2dot0, y, ydot, y2dot, RHS, M, C, K, gamma, beta, dt, tol
+        )
+
+        yout[step, :] = y0
+
+    return yout
+
+
+def _converge_robust_newmark(
+    system_func,
+    rhs_func,
+    args,
+    ny,
+    n_steps,
+    t,
+    progress_interval,
+    gamma,
+    beta,
+    epsilon,
+    tol,
+):
+    y0 = np.zeros(ny)
+    ydot0 = np.zeros(ny)
+    y2dot0 = np.zeros(ny)
+
+    y = np.zeros(ny)
+    ydot = np.zeros(ny)
+    y2dot = np.zeros(ny)
+
+    yout = np.zeros((n_steps, ny))
+    yout[0, :] = y0
+
+    for step in range(1, n_steps):
+        aux = round(t[step] / progress_interval, 9)
+        if aux - int(aux) == 0:
+            print("Time: ", t[step], " seconds")
+
+        t_curr = t[step - 1]
+        t_target = t[step]
+        dt = t_target - t_curr
+
+        dt_min = dt * 1e-4
+        dt_max = dt
+
+        M, C, K, RHS = system_func(
+            step,
+            time_step=dt,
+            disp_resp=y0,
+            velc_resp=ydot0,
+            accl_resp=y2dot0,
+            args=args,
+        )
+        active_dofs = np.where(RHS != 0)[0]
+
+        while t_curr < t_target:
+            y2dot[:] = 0.0
+            ydot[:] = ydot0 + y2dot0 * (1.0 - gamma) * dt
+            y[:] = y0 + ydot0 * dt + y2dot0 * (0.5 - beta) * (dt**2)
+
+            RHS = rhs_func(
+                step,
+                time_step=dt,
+                disp_resp=y,
+                velc_resp=ydot,
+                accl_resp=y2dot,
+                args=args,
+            )
+
+            res = _residual_newmark(RHS, M, C, K, y, ydot, y2dot)
+            J0 = _jacobian_newmark(M, C, K, gamma, beta, dt)
+
+            nr_iter = 0
+            converged = True
+
+            while la.norm(res) >= tol:
+                nr_iter += 1
+
+                if nr_iter > 15:
+                    converged = False
+                    break
+
+                # Update Jacobian with perturbation
+                F_base = RHS
+                J = J0.copy()
+
+                for i in active_dofs:
+                    y_i, ydot_i, y2dot_i = y[i], ydot[i], y2dot[i]
+
+                    y[i], ydot[i], y2dot[i] = _update_newmark(
+                        y[i], ydot[i], y2dot[i], epsilon, gamma, beta, dt
+                    )
+
+                    F_pert = rhs_func(
+                        step,
+                        time_step=dt,
+                        disp_resp=y,
+                        velc_resp=ydot,
+                        accl_resp=y2dot,
+                        args=args,
+                    )
+
+                    J[:, i] -= (F_pert - F_base) / epsilon
+
+                    y[i], ydot[i], y2dot[i] = y_i, ydot_i, y2dot_i
+
+                dy2dot = la.solve(J, res)
+                y[:], ydot[:], y2dot[:] = _update_newmark(
+                    y, ydot, y2dot, dy2dot, gamma, beta, dt
+                )
+
+                RHS = rhs_func(
+                    step,
+                    time_step=dt,
+                    disp_resp=y,
+                    velc_resp=ydot,
+                    accl_resp=y2dot,
+                    args=args,
+                )
+                res = _residual_newmark(RHS, M, C, K, y, ydot, y2dot)
+
+            if converged:
+                y0[:] = y[:]
+                ydot0[:] = ydot[:]
+                y2dot0[:] = y2dot[:]
+                t_curr += dt
+
+                if nr_iter <= 5:
+                    dt = min(dt * 2.0, dt_max)
+                elif nr_iter >= 10:
+                    dt = max(dt * 0.5, dt_min)
+            else:
+                dt *= 0.25
+                if dt < dt_min:
+                    raise RuntimeError(
+                        f"Time step dropped below minimum threshold ({dt_min}) without convergence."
+                    )
+                if t_curr + dt > t_target:
+                    dt = t_target - t_curr
+
+        yout[step, :] = y0
+
+    return yout
+
+
+def make_speed_array(speed, t):
+    """Make speed, displacement and acceleration arrays from speed and time array.
+
+    Parameters
+    ----------
+    speed : array_like
+        Speed array.
+    t : array_like
+        Time array.
+
+    Returns
+    -------
+    speed : array_like
+        Speed array.
+    displacement : array_like
+        Displacement array.
+    acceleration     : array_like
+        Acceleration array.
+    """
+
+    speed_is_array = isinstance(speed, Iterable)
+    if not speed_is_array:
+        speed = np.full_like(t, speed)
+
+    acceleration = np.gradient(speed, t)
+    displacement = integrate(speed, t, initial=0)
+
+    return speed, displacement, acceleration
+
+
+@check_units
+def speed_range_from_endpoints(
+    speed_start, speed_stop, num_points=None, points_factor=20
+):
+    """Make an evenly spaced speed range from its end points.
+
+    Each end point can be given in any speed unit. When ``num_points`` is not
+    given, it grows with the square root of the span, so a narrow range gets a
+    finer step than a wide one: the step is about ``sqrt(span) / points_factor``
+    rad/s, and doubling the span multiplies the number of points by about 1.4.
+
+    The range is meant for the analyses that sweep the speed, such as
+    :py:meth:`ross.Rotor.run_campbell`, :py:meth:`ross.Rotor.run_freq_response`
+    and :py:meth:`ross.Rotor.run_unbalance_response`. The Campbell curves are
+    smooth and each of their points is a full modal analysis, so a lower
+    ``points_factor`` (around 4) is enough for them.
+
+    Parameters
+    ----------
+    speed_start : float, pint.Quantity
+        First speed of the range (rad/s).
+    speed_stop : float, pint.Quantity
+        Last speed of the range (rad/s). Must be greater than ``speed_start``.
+    num_points : int, optional
+        Number of points of the range, both end points included.
+        Default is ``ceil(points_factor * sqrt(speed_stop - speed_start))``,
+        with the span in rad/s, limited to the interval [20, 2000].
+    points_factor : float, optional
+        Factor of the default number of points. Default is 20.
+
+    Returns
+    -------
+    speed_range : np.ndarray
+        Evenly spaced speeds (rad/s).
+
+    Examples
+    --------
+    >>> from ross.units import Q_
+    >>> speed_range = speed_range_from_endpoints(Q_(0, "Hz"), Q_(3000, "RPM"))
+    >>> len(speed_range), round(speed_range[-1], 2)
+    (355, 314.16)
+    >>> len(speed_range_from_endpoints(Q_(0, "RPM"), Q_(3000, "RPM"), num_points=31))
+    31
+    """
+    span = speed_stop - speed_start
+    if span <= 0:
+        raise ValueError("speed_stop must be greater than speed_start.")
+
+    if num_points is None:
+        num_points = int(np.clip(np.ceil(points_factor * np.sqrt(span)), 20, 2000))
+    elif num_points < 2:
+        raise ValueError("num_points must be at least 2.")
+
+    return np.linspace(speed_start, speed_stop, int(num_points))
+
+
+def assemble_C_K_matrices(elements, C0, K0, *args):
+    """Assemble damping and stiffness matrices considering
+    specified elements a rotor.
+
+    Parameters
+    ----------
+    elements : array_like
+        List of elements of the rotor.
+    C0 : ndarray
+        Initial damping matrix.
+    K0 : ndarray
+        Initial stiffness matrix.
+    args : float, optional
+        Any additional argument that can be passed to the element C or K methods.
+
+    Returns
+    -------
+    C0 : ndarray
+        Initial damping matrix incorporating the specified elements.
+    K0 : ndarray
+        Initial stiffness matrix incorporating the specified elements.
+
+    Examples
+    --------
+    >>> import ross as rs
+    >>> rotor = rs.rotor_example()
+    >>> elements_without_bearing = [
+    ...     *rotor.shaft_elements,
+    ...     *rotor.disk_elements,
+    ...     *rotor.point_mass_elements
+    ... ]
+    >>> C0 = np.zeros((rotor.ndof, rotor.ndof))
+    >>> K0 = np.zeros((rotor.ndof, rotor.ndof))
+    >>> C1, K1 = assemble_C_K_matrices(elements_without_bearing, C0, K0)
+    >>> C, K = assemble_C_K_matrices(rotor.bearing_elements, C1, K1, 0)
+    >>> dofs = [0, 1, 3, 4]
+    >>> C[np.ix_(dofs, dofs)]
+    array([[0., 0., 0., 0.],
+           [0., 0., 0., 0.],
+           [0., 0., 0., 0.],
+           [0., 0., 0., 0.]])
+    >>> np.round(K[np.ix_(dofs, dofs)] / 1e6)
+    array([[47.,  0.,  0.,  6.],
+           [ 0., 46., -6.,  0.],
+           [ 0., -6.,  1.,  0.],
+           [ 6.,  0.,  0.,  1.]])
+    """
+
+    for elm in elements:
+        dofs = list(elm.dof_global_index.values())
+        try:
+            C0[np.ix_(dofs, dofs)] += elm.C(*args)
+        except:
+            C0[np.ix_(dofs, dofs)] += elm.C()
+        try:
+            K0[np.ix_(dofs, dofs)] += elm.K(*args)
+        except:
+            K0[np.ix_(dofs, dofs)] += elm.K()
+
+    return C0, K0
+
+
+def remove_dofs(matrix, dofs=None):
+    """Removes specified degrees of freedom from the given matrix.
+
+    By default, this function takes a 6 dof model matrix and removes the axial and torsional dofs,
+    resulting in a 4 dof model matrix.
+
+    Parameters
+    ----------
+    matrix: ndarray
+        The original matrix to process.
+    dofs: list
+        List of indices representing dofs to be removed. Default is None, but internally it considers
+        the axial and torsional dofs of a 6 dof model.
+
+    Returns
+    -------
+    new_matrix: ndarray
+        The modified matrix with the removed dofs.
+
+    Examples
+    --------
+    >>> import ross as rs
+    >>> rotor = rs.rotor_example_6dof()
+    >>> n_nodes = rotor.nodes[-1] + 1
+    >>> M_6dof = rotor.M()
+    >>> M_4dof = remove_dofs(M_6dof)
+    >>> M_6dof.shape
+    (42, 42)
+    >>> len(M_6dof) == n_nodes * 6
+    True
+    >>> M_4dof.shape
+    (28, 28)
+    >>> len(M_4dof) == n_nodes * 4
+    True
+    """
+    if dofs is None:
+        dofs = np.arange(2, len(matrix), 3)
+
+    new_matrix = np.delete(np.delete(matrix, dofs, axis=0), dofs, axis=1)
+
+    return new_matrix
+
+
+def convert_6dof_to_4dof(rotor):
+    """Convert a 6 dof rotor model to a 4 dof model.
+
+    This function takes a 6 dof rotor model and modifies it by removing the axial and
+    torsional dofs. It adjusts the corresponding matrix methods to reflect this change.
+
+    Parameters
+    ----------
+    rotor: rs.Rotor
+        The rotor object of 6 dof model.
+
+    Returns
+    -------
+    new_rotor: rs.Rotor
+        The rotor object modified.
+
+    Examples
+    --------
+    >>> import ross as rs
+    >>> rotor = rs.rotor_example_6dof()
+    >>> rotor_mod = convert_6dof_to_4dof(rotor)
+    >>> n_nodes = rotor.nodes[-1] + 1
+    >>> M_6dof = rotor.M()
+    >>> M_4dof = rotor_mod.M()
+    >>> M_6dof.shape
+    (42, 42)
+    >>> len(M_6dof) == n_nodes * 6
+    True
+    >>> M_4dof.shape
+    (28, 28)
+    >>> len(M_4dof) == n_nodes * 4
+    True
+    """
+    # Copy the rotor object
+    new_rotor = copy(rotor)
+
+    # Modify matrix methods to get 4 dof matrices
+    new_rotor.M = lambda frequency=None, speed=None, synchronous=False: remove_dofs(
+        rotor.M(frequency=frequency, speed=speed, synchronous=synchronous)
+    )
+    new_rotor.K = lambda frequency, speed=None: remove_dofs(rotor.K(frequency, speed))
+    new_rotor.Ksdt = lambda: remove_dofs(rotor.Ksdt())
+    new_rotor.C = lambda frequency, speed=None: remove_dofs(rotor.C(frequency, speed))
+    new_rotor.G = lambda: remove_dofs(rotor.G())
+
+    # Because of lru_cache, we need to unwrap the methods
+    new_rotor.run_modal = new_rotor.run_modal.__wrapped__
+    new_rotor._run_freq_response = new_rotor._run_freq_response.__wrapped__
+
+    # Update number of dofs
+    new_rotor.number_dof = 4
+    new_rotor.ndof = len(new_rotor.M())
+
+    return new_rotor
+
+
+def convert_6dof_to_torsional(rotor):
+    """Convert a 6 dof rotor model to a model with only torsional dofs.
+
+    This function takes a 6 dof rotor model and modifies it by removing the axial and
+    lateral dofs. It adjusts the corresponding matrix methods to reflect this change.
+
+    Important Note:
+    Some Rotor class methods, such as `run_ucs`, and `run_unbalance_response`, may not
+    work correctly with the modified rotor object. This is because these methods expect
+    a rotor with 6 dofs or at least 4 dofs.
+
+    Parameters
+    ----------
+    rotor: rs.Rotor
+        The rotor object of 6 dof model.
+
+    Returns
+    -------
+    new_rotor: rs.Rotor
+        The rotor object modified.
+
+    Examples
+    --------
+    >>> import ross as rs
+    >>> rotor = rs.rotor_example_6dof()
+    >>> rotor_mod = convert_6dof_to_torsional(rotor)
+    >>> n_nodes = rotor.nodes[-1] + 1
+    >>> M_6dof = rotor.M()
+    >>> M_tdof = rotor_mod.M()
+    >>> M_6dof.shape
+    (42, 42)
+    >>> len(M_6dof) == n_nodes * 6
+    True
+    >>> M_tdof.shape
+    (7, 7)
+    >>> len(M_tdof) == n_nodes * 1
+    True
+    """
+    # Copy the rotor object
+    new_rotor = copy(rotor)
+
+    # Create a list of dofs to remove (axial and lateral dofs)
+    dofs = [i for i in range(rotor.ndof) if (i - 5) % 6 != 0 or i < 5]
+
+    # Modify matrix methods to get 1 (torsional only) dof matrices
+    new_rotor.M = lambda frequency=None, speed=None, synchronous=False: remove_dofs(
+        rotor.M(frequency=frequency, speed=speed, synchronous=synchronous), dofs
+    )
+    new_rotor.K = lambda frequency, speed=None: remove_dofs(
+        rotor.K(frequency, speed), dofs
+    )
+    new_rotor.Ksdt = lambda: remove_dofs(rotor.Ksdt(), dofs)
+    new_rotor.C = lambda frequency, speed=None: remove_dofs(
+        rotor.C(frequency, speed), dofs
+    )
+    new_rotor.G = lambda: remove_dofs(rotor.G(), dofs)
+
+    # Because of lru_cache, we need to unwrap the methods
+    new_rotor.run_modal = new_rotor.run_modal.__wrapped__
+    new_rotor._run_freq_response = new_rotor._run_freq_response.__wrapped__
+
+    # Update number of dofs
+    new_rotor.number_dof = 1
+    new_rotor.ndof = len(new_rotor.M())
+
+    return new_rotor
+
+
+def compute_dfft(y, dt):
+    """Compute dFFT - Discrete Fourier Transform.
+
+    Parameters
+    ----------
+    y : np.array
+        Magnitude of the response in time domain (m).
+    dt : int
+        Time step (s).
+
+    Returns
+    -------
+    freq : np.array
+        Frequency range (Hz).
+    y_amp : np.array
+        Amplitude of the response in frequency domain (m).
+    y_phase : np.array
+        Phase of the response in frequency domain (rad).
+    """
+    b = np.floor(len(y) / 2)
+    c = len(y)
+    df = 1 / (c * dt)
+
+    y_amp = fft(y)[: int(b)]
+    y_amp = y_amp * 2 / c
+
+    y_phase = np.angle(y_amp)
+    y_amp = np.abs(y_amp)
+
+    freq = np.arange(0, df * b, df)
+    freq = freq[: int(b)]
+
+    return freq, y_amp, y_phase
+
+
+def compute_abs_phase(x_w):
+    """Compute absolute value and phase of a complex array.
+
+    This function calculates the absolute value (magnitude) and phase angle
+    for each element in a complex-valued NumPy array. It handles the case
+    where the input is zero, ensuring the phase is set to zero in such instances.
+    The input array is rounded to 10 decimal places before computation to
+    handle potential floating-point inaccuracies when checking for zero values.
+
+    Parameters
+    ----------
+    x_w : numpy.ndarray
+        A NumPy array of complex numbers.
+
+    Returns
+    -------
+    abs_x : numpy.ndarray
+        A NumPy array containing the absolute values (magnitudes) of the
+        input array `x_w`.
+    phase_x : numpy.ndarray
+        A NumPy array containing the phase angles (in radians) of the input
+        array `x_w`. The phase is set to 0 if the corresponding element in
+        `x_w` is zero (after rounding to 10 decimal places).
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> x_complex = np.array([1+1j, -2-2j, 0+0j, 1j])
+    >>> abs_val, phase_val = compute_abs_phase(x_complex)
+    >>> abs_val # doctest: +ELLIPSIS
+    array([1.41421356, 2.82842712, 0.        , 1.        ])
+    >>> phase_val # doctest: +ELLIPSIS
+    array([ 0.78539816, -2.35619449,  0.        ,  1.57079633])
+    """
+    x_w = np.round(x_w, 10)
+    abs_x = np.absolute(x_w)
+    phase_x = np.array([0 if np.absolute(z) == 0 else np.angle(z) for z in x_w])
+    return abs_x, phase_x
+
+
+def compute_fft(x, t):
+    """Compute Fast Fourier Transform (FFT) of a time signal.
+
+    This function calculates the Fast Fourier Transform (FFT) of a given
+    time-domain signal `x`. It computes the frequency spectrum, magnitude,
+    and phase of the signal for positive frequencies.
+
+    Parameters
+    ----------
+    x : numpy.ndarray
+        Time-domain signal as a NumPy array.
+    t : numpy.ndarray
+        Time vector corresponding to the signal `x` as a NumPy array.
+        The time step is inferred from the time vector.
+
+    Returns
+    -------
+    x_w : numpy.ndarray
+        Complex FFT of the signal `x` for positive frequencies.
+    f : numpy.ndarray
+        Frequency vector corresponding to `x_w`, containing positive
+        frequencies (in Hz).
+    abs_x : numpy.ndarray
+        Absolute value (magnitude) of the FFT for positive frequencies.
+    phase_x : numpy.ndarray
+        Phase angle of the FFT for positive frequencies (in radians).
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> t = np.linspace(0, 1, 1000, endpoint=False)  # 1 second duration
+    >>> x = np.sin(2*np.pi*5*t) + 0.5*np.sin(2*np.pi*20*t) # Signal with 5Hz and 20Hz components
+    >>> x_w, f, abs_x, phase_x = compute_fft(x, t)
+    >>> f # doctest: +ELLIPSIS
+    array([  0.,   1.,   2.,   3.,   4.,...
+    >>> abs_x # doctest: +ELLIPSIS
+    array([0. , 0. , 0. , 0. , 0. , 1. ,...
+    """
+    dt = t[1] - t[0]
+    n = len(x)
+    f = np.fft.fftfreq(n, dt)
+
+    x_w = fft(x) * 2 / n
+    abs_x, phase_x = compute_abs_phase(x_w)
+
+    x_w = x_w[f >= 0]
+    abs_x = abs_x[f >= 0]
+    phase_x = phase_x[f >= 0]
+    f = f[f >= 0]
+
+    return x_w, f, abs_x, phase_x
+
+
+def compute_freq_resp(t, y, u):
+    """Compute Frequency Response Function (FRF) between two signals.
+
+    This function calculates the Frequency Response Function (FRF) between an
+    input signal `u` and an output signal `y` in the frequency domain. It uses
+    Fast Fourier Transform (FFT) to transform both signals into the frequency
+    domain and then computes the FRF. Coherence is also calculated.
+
+    Parameters
+    ----------
+    t : numpy.ndarray
+        Time vector corresponding to signals `y` and `u`.
+    y : numpy.ndarray
+        Output time-domain signal.
+    u : numpy.ndarray
+        Input time-domain signal.
+
+    Returns
+    -------
+    f : numpy.ndarray
+        Frequency vector (in Hz).
+    abs_h : numpy.ndarray
+        Magnitude of the FRF.
+    phase_h : numpy.ndarray
+        Phase of the FRF (in radians).
+    h_w : numpy.ndarray
+        Complex FRF.
+    coe : numpy.ndarray
+        Coherence function.
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> t = np.linspace(0, 1, 1000, endpoint=False)
+    >>> u = np.sin(2*np.pi*5*t)  # Input signal at 5Hz
+    >>> y = 2*np.sin(2*np.pi*5*t + np.pi/4) # Output signal with gain 2 and phase shift pi/4
+    >>> f, abs_h, phase_h, h_w, coe = compute_freq_resp(t, y, u)
+    >>> f # doctest: +ELLIPSIS
+    array([  0.,   1.,   2.,   3.,   4.,...
+    >>> abs_h.size
+    500
+    """
+    y_w, _, _, _ = compute_fft(y, t)
+    u_w, f, _, _ = compute_fft(u, t)
+
+    g_yy = np.conj(y_w) * y_w
+    g_uu = np.conj(u_w) * u_w
+    g_uy = np.conj(u_w) * y_w
+    h_w = g_uy / g_uu
+    coe = np.absolute(g_uy) ** 2 / (g_yy * g_uu)
+
+    abs_h, phase_h = compute_abs_phase(h_w)
+
+    return f, abs_h, phase_h, h_w, coe
+
+
+def equal_dicts(dict_1, dict_2):
+    """Recursively compare two dictionaries to check if they are equal.
+
+    The comparison includes checking if both dictionaries have the same keys,
+    if the types of the values for corresponding keys are the same, and if the
+    values themselves are equal. For NumPy arrays, equality is checked using
+    `np.isclose` to account for potential floating-point inaccuracies. For
+    nested dictionaries, the function calls itself recursively.
+
+    Parameters
+    ----------
+    dict_1 : dict
+        The first dictionary to compare.
+    dict_2 : dict
+        The second dictionary to compare.
+
+    Returns
+    -------
+    tuple : (bool, dict)
+        A tuple containing two elements:
+        - bool: `True` if the dictionaries are considered equal, `False` otherwise.
+        - dict: A dictionary with the same keys as `dict_1` (and `dict_2`).
+          The values in this dictionary indicate the equality status for each
+          corresponding key-value pair. The value can be a boolean for simple
+          types or another dictionary for nested dictionaries, reflecting the
+          result of the recursive comparison.
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> dict1 = {'a': 1, 'b': 'hello', 'c': np.array([1, 2, 3])}
+    >>> dict2 = {'a': 1, 'b': 'hello', 'c': np.array([1, 2, 3])}
+    >>> dict3 = {'a': 1, 'b': 'world', 'c': np.array([1, 2, 3])}
+    >>> dict4 = {'a': 1, 'b': 'hello'}  # Different keys
+
+    >>> are_equal, equality_details = equal_dicts(dict1, dict2)
+    >>> are_equal
+    True
+    >>> equality_details # doctest: +SKIP
+    {'a': True, 'b': True, 'c': np.True_}
+
+    >>> are_equal, equality_details = equal_dicts(dict1, dict3)
+    >>> are_equal
+    False
+    >>> equality_details # doctest: +SKIP
+    {'a': True, 'b': False, 'c': np.True_}
+
+    >>> are_equal, equality_details = equal_dicts(dict1, dict4)
+    >>> are_equal
+    False
+
+    >>> # Example with nested dictionaries and NumPy arrays
+    >>> nested_dict1 = {'x': {'y': np.array([4, 5, 6]), 'z': 10}, 'w': 'test'}
+    >>> nested_dict2 = {'x': {'y': np.array([4, 5, 6]), 'z': 10}, 'w': 'test'}
+    >>> are_equal, equality_details = equal_dicts(nested_dict1, nested_dict2)
+    >>> are_equal
+    True
+    >>> equality_details # doctest: +SKIP
+    {'x': {'y': np.True_, 'z': True}, 'w': True}
+    """
+    # Compare the keys
+    if dict_1.keys() != dict_2.keys():
+        return False, {}
+
+    # Compare the values
+    is_equal = []
+    is_equal_key = {}
+    for key in dict_1.keys():
+        if isinstance(dict_1[key], np.ndarray):
+            is_equal.append(np.all(np.isclose(dict_1[key], dict_2[key])))
+            is_equal_key.update({key: is_equal[-1]})
+        elif isinstance(dict_1[key], dict):
+            equal_dicts_result = equal_dicts(dict_1[key], dict_2[key])
+            is_equal.append(equal_dicts_result[0])
+            is_equal_key.update({key: equal_dicts_result[1]})
+        else:
+            is_equal.append(dict_1[key] == dict_2[key])
+            is_equal_key.update({key: is_equal[-1]})
+
+    return all(is_equal), is_equal_key
+
+
+def is_scalar_or_list(parameter, list_len, parameter_name):
+    """
+    Check whether a given parameter is a scalar or a list with the specified length.
+
+    This function validates that the input parameter is either a single scalar value
+    or a list containing the expected number of elements. If the parameter does not
+    satisfy these conditions, a ValueError is raised.
+
+    Parameters
+    ----------
+    parameter : any
+        The value to be validated. It can be a scalar or a list.
+    list_len : int
+        The expected number of elements if the parameter is provided as a list.
+    parameter_name : str
+        The name of the parameter, used in the error message for clarity.
+
+    Returns
+    -------
+    numpy.ndarray
+        The validated parameter converted into a NumPy array.
+
+    Raises
+    ------
+    ValueError
+        If the parameter is neither a scalar nor a list with the specified number of elements.
+    """
+    raise_ex = False
+    if not is_scalar(parameter, parameter_name):
+        raise_ex = True
+
+    if isinstance(parameter, list) and len(parameter) != list_len:
+        raise_ex = True
+
+    if raise_ex:
+        raise ValueError(
+            f"{parameter_name} must be scalar or a list with {list_len} items."
+        )
+
+    return np.array(parameter)
+
+
+def is_transfer_function_or_none(parameter, parameter_name):
+    """
+    Validate whether an input is either None or a TransferFunction object.
+
+    This function checks if the provided input is acceptable as a transfer
+    function. The value must be either a valid TransferFunction instance
+    from the control library or None. If the value is None, it is returned
+    directly. If the value is not a TransferFunction, an exception is raised.
+
+    Parameters
+    ----------
+    parameter : any
+        Value to be validated. It must be either None or an instance of
+        a TransferFunction from the control library.
+    parameter_name : str
+        Name of the parameter, used to compose informative error messages.
+
+    Returns
+    -------
+    object or None
+        The original TransferFunction object if the input is valid,
+        or None if the input value is None.
+
+    Raises
+    ------
+    ValueError
+        Raised when the input value is neither None nor a TransferFunction.
+    """
+    if parameter is None:
+        return None
+
+    if not isinstance(parameter, ct.TransferFunction):
+        raise ValueError(f"{parameter_name} must be None or a TransferFunction")
+
+    return parameter
+
+
+def is_list_or_none(parameter, parameter_name):
+    """
+    Validate whether the given parameter is None, a list, or a NumPy array.
+
+    This function checks if the input parameter is of an acceptable type:
+    either None, a list, or a NumPy array. If the parameter is a list,
+    it is converted to a NumPy array. If the parameter is already a NumPy
+    array, it is returned unchanged. If the parameter is None, the function
+    simply returns None. Any other type will result in a ValueError.
+
+    Parameters
+    ----------
+    parameter : any
+        The value to be validated. Must be None, a list, or a NumPy array.
+    parameter_name : str
+        The name of the parameter, included in the error message for clarity.
+
+    Returns
+    -------
+    numpy.ndarray or None
+        The validated parameter as a NumPy array if it was a list or an
+        ndarray, or None if the parameter was None.
+
+    Raises
+    ------
+    ValueError
+        If the parameter is not None, a list, or a NumPy array.
+    """
+    if parameter is None:
+        return None
+
+    if isinstance(parameter, np.ndarray):
+        return parameter
+
+    if isinstance(parameter, list):
+        return np.array(parameter)
+
+    raise ValueError(f"{parameter_name} must be None, a list or a numpy.ndarray.")
+
+
+def is_scalar(parameter, parameter_name):
+    """
+    Check whether a given parameter is a scalar value.
+
+    This function verifies that the provided parameter is a scalar,
+    meaning it must be either an integer or a floating-point number.
+    If the parameter does not satisfy this condition, a ValueError
+    is raised. The scalar is returned as a NumPy array for consistency
+    with numerical processing routines.
+
+    Parameters
+    ----------
+    parameter : any
+        The value to be validated. It must be an integer or a float.
+    parameter_name : str
+        The name of the parameter, used in the error message for clarity.
+
+    Returns
+    -------
+    numpy.ndarray
+        The scalar value converted into a NumPy array.
+
+    Raises
+    ------
+    ValueError
+        If the parameter is not a scalar value.
+    """
+    if not isinstance(parameter, float) and not isinstance(parameter, int):
+        raise ValueError(f"{parameter_name} must be a scalar.")
+
+    return np.array(parameter)

@@ -1,0 +1,60 @@
+NAME
+A01_NATIVE
+
+DESCRIPTION
+A01 native force and phasor control
+
+SECTIONS  LENGTH    DIV       MXDIV     LDR       HANGLE    ACCG
+1         1.0000    1         3         0         0         9.81      
+
+POSITION  EXTDIAM   INTDIAM   YOUNG     POISSON   DENSITY   DIV       UMP
+1.0000    0.04      0         2.07E11   0.30      7850      0         0         
+
+DISC
+1         
+
+POSITION  EXTDIAM   LENGTH    DENSITY   INTDIAM   IX        IY        WEIGTH
+0.5       0.20      0.02      7850      0.04      0         0         0         
+
+BEARING
+2         
+
+POSITION  KXX       KXZ       KZZ       KZX       CXX       CXZ       CZZ       CZX       WEIGTH    TYPE
+0.0       1.0E6     1000      1.6E6     -600      1500      3         2200      -2        0         
+1.0       1.0E6     1000      1.6E6     -600      1500      3         2200      -2        0         
+
+CPBIS     CPBFS     CPBSPD    NCRSPD    INTSPD    SMIST     SMNDC     SMSPD
+0         3000      20        8         50        1.0E7     4         0         
+
+UNBL      UNBIF     UNBFF     UNBFD     UNBMD
+1         1200      1800      300       8         
+
+POSITION  VALUE     PHASE     KIND
+0.5       3.0E-5    90        0         
+
+FRESPPOS  NBRMOD    TIMOEP    TIMSPD    TANGLE    FRUNIT    TRUNIT
+2         8         0.5       1500      0         D         D         
+
+POSITION  DISPL     ORIENT
+0.5       1         0         
+0.5       2         0         
+
+OPTIONS
+
+CONCENT
+0         
+
+
+LATERAL_RESPONSE_MODE AUTO
+TRANSIENT
+1 CONSTANT NEWMARK
+TSTART TEND DT
+0 1 0.0001
+OUTPUT_STRIDE 50
+INITCOND ZERO
+SPEED_PROFILE CONSTANT
+RPM 1500
+INITIAL_PHASE 0.31
+FORCES UNBALANCE
+CONVERGENCE NO
+END_TRANSIENT

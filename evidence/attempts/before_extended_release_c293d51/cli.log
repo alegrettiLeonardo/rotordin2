@@ -1,0 +1,271 @@
+{
+  "status": "FAIL",
+  "cases": {
+    "default_output": {
+      "status": "FAIL",
+      "returncode": 0,
+      "issues": [
+        "nonzero forcing produced allzero torque",
+        "initial/subsequent applied torque wrong"
+      ]
+    },
+    "explicit_output": {
+      "status": "FAIL",
+      "returncode": 0,
+      "issues": [
+        "initial/subsequent applied torque wrong"
+      ]
+    },
+    "roundoff_end": {
+      "status": "FAIL",
+      "returncode": 0,
+      "issues": [
+        "initial/subsequent applied torque wrong"
+      ]
+    },
+    "explicit_fine": {
+      "status": "FAIL",
+      "returncode": 0,
+      "issues": [
+        "load row count",
+        "angle row count",
+        "division_angle row count",
+        "torque row count",
+        "stress row count",
+        "initial/subsequent applied torque wrong"
+      ]
+    },
+    "explicit_coarse": {
+      "status": "FAIL",
+      "returncode": 0,
+      "issues": [
+        "initial/subsequent applied torque wrong"
+      ]
+    },
+    "explicit_incommensurate": {
+      "status": "FAIL",
+      "returncode": 0,
+      "issues": [
+        "load row count",
+        "load missing requested final time",
+        "angle row count",
+        "angle missing requested final time",
+        "division_angle row count",
+        "division_angle missing requested final time",
+        "torque row count",
+        "torque missing requested final time",
+        "stress row count",
+        "stress missing requested final time",
+        "initial/subsequent applied torque wrong"
+      ]
+    },
+    "translated_text": {
+      "status": "FAIL",
+      "returncode": 0,
+      "issues": [
+        "load collapsed/nonincreasing printed time",
+        "load missing requested final time",
+        "angle collapsed/nonincreasing printed time",
+        "angle missing requested final time",
+        "division_angle collapsed/nonincreasing printed time",
+        "division_angle missing requested final time",
+        "torque collapsed/nonincreasing printed time",
+        "torque missing requested final time",
+        "stress collapsed/nonincreasing printed time",
+        "stress missing requested final time",
+        "initial/subsequent applied torque wrong"
+      ]
+    },
+    "invalid_negative_output": {
+      "status": "FAIL",
+      "returncode": 0,
+      "issues": [
+        "invalid CLI input did not fail closed"
+      ]
+    }
+  },
+  "comparisons": [
+    {
+      "case": "default_output",
+      "channel": "load",
+      "status": "FAIL",
+      "common_rows": 17,
+      "max_scaled_difference": 0.001
+    },
+    {
+      "case": "default_output",
+      "channel": "angle",
+      "status": "FAIL",
+      "common_rows": 17,
+      "max_scaled_difference": 1.025455e-06
+    },
+    {
+      "case": "default_output",
+      "channel": "division_angle",
+      "status": "FAIL",
+      "common_rows": 17,
+      "max_scaled_difference": 1.197577e-06
+    },
+    {
+      "case": "default_output",
+      "channel": "torque",
+      "status": "FAIL",
+      "common_rows": 17,
+      "max_scaled_difference": 0.00011975765
+    },
+    {
+      "case": "default_output",
+      "channel": "stress",
+      "status": "FAIL",
+      "common_rows": 17,
+      "max_scaled_difference": 1.0
+    },
+    {
+      "case": "explicit_fine",
+      "channel": "load",
+      "status": "PASS",
+      "common_rows": 17,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_fine",
+      "channel": "angle",
+      "status": "PASS",
+      "common_rows": 17,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_fine",
+      "channel": "division_angle",
+      "status": "PASS",
+      "common_rows": 17,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_fine",
+      "channel": "torque",
+      "status": "PASS",
+      "common_rows": 17,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_fine",
+      "channel": "stress",
+      "status": "PASS",
+      "common_rows": 17,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_coarse",
+      "channel": "load",
+      "status": "PASS",
+      "common_rows": 9,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_coarse",
+      "channel": "angle",
+      "status": "PASS",
+      "common_rows": 9,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_coarse",
+      "channel": "division_angle",
+      "status": "PASS",
+      "common_rows": 9,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_coarse",
+      "channel": "torque",
+      "status": "PASS",
+      "common_rows": 9,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_coarse",
+      "channel": "stress",
+      "status": "PASS",
+      "common_rows": 9,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_incommensurate",
+      "channel": "load",
+      "status": "PASS",
+      "common_rows": 2,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_incommensurate",
+      "channel": "angle",
+      "status": "PASS",
+      "common_rows": 2,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_incommensurate",
+      "channel": "division_angle",
+      "status": "PASS",
+      "common_rows": 2,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_incommensurate",
+      "channel": "torque",
+      "status": "PASS",
+      "common_rows": 2,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_incommensurate",
+      "channel": "stress",
+      "status": "PASS",
+      "common_rows": 2,
+      "max_scaled_difference": 0.0
+    }
+  ],
+  "failures": [
+    "default_output: nonzero forcing produced allzero torque",
+    "default_output: initial/subsequent applied torque wrong",
+    "explicit_output: initial/subsequent applied torque wrong",
+    "roundoff_end: initial/subsequent applied torque wrong",
+    "explicit_fine: load row count",
+    "explicit_fine: angle row count",
+    "explicit_fine: division_angle row count",
+    "explicit_fine: torque row count",
+    "explicit_fine: stress row count",
+    "explicit_fine: initial/subsequent applied torque wrong",
+    "explicit_coarse: initial/subsequent applied torque wrong",
+    "explicit_incommensurate: load row count",
+    "explicit_incommensurate: load missing requested final time",
+    "explicit_incommensurate: angle row count",
+    "explicit_incommensurate: angle missing requested final time",
+    "explicit_incommensurate: division_angle row count",
+    "explicit_incommensurate: division_angle missing requested final time",
+    "explicit_incommensurate: torque row count",
+    "explicit_incommensurate: torque missing requested final time",
+    "explicit_incommensurate: stress row count",
+    "explicit_incommensurate: stress missing requested final time",
+    "explicit_incommensurate: initial/subsequent applied torque wrong",
+    "translated_text: load collapsed/nonincreasing printed time",
+    "translated_text: load missing requested final time",
+    "translated_text: angle collapsed/nonincreasing printed time",
+    "translated_text: angle missing requested final time",
+    "translated_text: division_angle collapsed/nonincreasing printed time",
+    "translated_text: division_angle missing requested final time",
+    "translated_text: torque collapsed/nonincreasing printed time",
+    "translated_text: torque missing requested final time",
+    "translated_text: stress collapsed/nonincreasing printed time",
+    "translated_text: stress missing requested final time",
+    "translated_text: initial/subsequent applied torque wrong",
+    "invalid_negative_output: invalid CLI input did not fail closed",
+    "default_output/load shared-time mismatch",
+    "default_output/angle shared-time mismatch",
+    "default_output/division_angle shared-time mismatch",
+    "default_output/torque shared-time mismatch",
+    "default_output/stress shared-time mismatch"
+  ],
+  "scope": "CLI publication/constitutive chain regression; independent physical references in native companion"
+}

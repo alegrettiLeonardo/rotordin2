@@ -1,0 +1,96 @@
+FAIL m0_aligned active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_roundoff03 active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_roundoff029 active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_fraction active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_short advertised/actual/expected row count mismatch; active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_translated_large active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_stride_0.25 active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_stride_0.5 active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_stride_1.0 active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_stride_2.0 active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_stride_1.3 advertised/actual/expected row count mismatch; active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_shifted active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_cropped active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_affine active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_damped_affine advertised/actual/expected row count mismatch; active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_multi active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_zero active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_zero_other_marker active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_two_load_points active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_wrapper active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_periodic_spline advertised/actual/expected row count mismatch; active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_invalid_hzero invalid input was not rejected contextually
+FAIL m0_invalid_hnegative invalid input was not rejected contextually
+FAIL m0_invalid_hszero invalid input was not rejected contextually
+FAIL m0_invalid_hsnegative invalid input was not rejected contextually
+FAIL m0_invalid_reversed invalid input was not rejected contextually
+PASS m0_invalid_capacity 
+FAIL m0_invalid_bad_time_table invalid input was not rejected contextually
+FAIL m0_invalid_bad_index invalid input was not rejected contextually
+FAIL m0_invalid_unrepresentable_time invalid input was not rejected contextually
+FAIL m0_refine_free_0_dense active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_refine_free_0_nodes active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_refine_free_1_dense active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_refine_free_1_nodes active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_refine_free_2_dense active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_refine_free_2_nodes active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_refine_viscous_0_dense active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_refine_viscous_0_nodes active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_refine_viscous_1_dense active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_refine_viscous_1_nodes active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_refine_viscous_2_dense active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_refine_viscous_2_nodes active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_refine_coupled_0_dense active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_refine_coupled_0_nodes active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_refine_coupled_1_dense active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_refine_coupled_1_nodes active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_refine_coupled_2_dense active q/v/a/load/time contains marker or nonfinite value
+FAIL m0_refine_coupled_2_nodes active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_aligned active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_roundoff03 active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_roundoff029 active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_fraction active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_short advertised/actual/expected row count mismatch; active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_translated_large active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_stride_0.25 active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_stride_0.5 active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_stride_1.0 active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_stride_2.0 active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_stride_1.3 advertised/actual/expected row count mismatch; active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_shifted active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_cropped active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_affine active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_damped_affine advertised/actual/expected row count mismatch; active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_multi active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_zero active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_zero_other_marker active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_two_load_points active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_wrapper active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_periodic_spline advertised/actual/expected row count mismatch; active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_invalid_hzero invalid input was not rejected contextually
+FAIL m1_invalid_hnegative invalid input was not rejected contextually
+FAIL m1_invalid_hszero invalid input was not rejected contextually
+FAIL m1_invalid_hsnegative invalid input was not rejected contextually
+FAIL m1_invalid_reversed invalid input was not rejected contextually
+PASS m1_invalid_capacity 
+FAIL m1_invalid_bad_time_table invalid input was not rejected contextually
+FAIL m1_invalid_bad_index invalid input was not rejected contextually
+FAIL m1_invalid_unrepresentable_time invalid input was not rejected contextually
+FAIL m1_refine_free_0_dense active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_refine_free_0_nodes active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_refine_free_1_dense active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_refine_free_1_nodes active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_refine_free_2_dense active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_refine_free_2_nodes active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_refine_viscous_0_dense active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_refine_viscous_0_nodes active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_refine_viscous_1_dense active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_refine_viscous_1_nodes active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_refine_viscous_2_dense active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_refine_viscous_2_nodes active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_refine_coupled_0_dense active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_refine_coupled_0_nodes active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_refine_coupled_1_dense active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_refine_coupled_1_nodes active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_refine_coupled_2_dense active q/v/a/load/time contains marker or nonfinite value
+FAIL m1_refine_coupled_2_nodes active q/v/a/load/time contains marker or nonfinite value

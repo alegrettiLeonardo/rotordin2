@@ -1,0 +1,18 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "FAIL",
+      "scope": "report construction only; no solver/test/source changes",
+      "reason": "KeyError max_error: two exact-zero sentinel comparisons intentionally have boolean status without a numerical error field.",
+      "fix": "Require and distinguish the fourteen numeric publication comparisons and the two boolean sentinel controls; no zero substituted for a missing metric."
+    },
+    {
+      "attempt": 2,
+      "status": "PASS",
+      "scope": "report construction only",
+      "source_head": "539134eaee209f6de1c0c91e705fe92a75a28412",
+      "comment": "Numerical grid comparisons distinguished from Boolean exact-zero sentinel comparisons; data and criteria unchanged."
+    }
+  ]
+}

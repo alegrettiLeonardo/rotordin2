@@ -1,0 +1,84 @@
+{
+  "status": "FAIL",
+  "failures": [
+    "release: 6 scalar time-grid checks failed",
+    "release: changing only output grid changes terminal torque",
+    "release: integer-ratio terminal state lost relative to routine-level control",
+    "debug: 6 scalar time-grid checks failed",
+    "debug: changing only output grid changes terminal torque",
+    "debug: integer-ratio terminal state lost relative to routine-level control"
+  ],
+  "results": {
+    "release": {
+      "scalar_mathematical_failures": 6,
+      "default_output": {
+        "returncode": 0,
+        "rows": 65,
+        "last_time_s": 0.016,
+        "last_torque_Nm": 0.0,
+        "nonzero_torque_rows": 0,
+        "terminal_OK": true
+      },
+      "explicit_output": {
+        "returncode": 0,
+        "rows": 17,
+        "last_time_s": 0.016,
+        "last_torque_Nm": 0.00011975765,
+        "nonzero_torque_rows": 16,
+        "terminal_OK": true
+      },
+      "roundoff_end": {
+        "returncode": 0,
+        "rows": 30,
+        "last_time_s": 0.29,
+        "last_torque_Nm": 0.0,
+        "nonzero_torque_rows": 28,
+        "terminal_OK": true
+      },
+      "roundoff_end_baseline_routine": {
+        "returncode": 0,
+        "rows": 30,
+        "last_time_s": 0.29,
+        "last_torque_Nm": 0.000499934782,
+        "nonzero_torque_rows": 29,
+        "terminal_OK": true
+      }
+    },
+    "debug": {
+      "scalar_mathematical_failures": 6,
+      "default_output": {
+        "returncode": 0,
+        "rows": 65,
+        "last_time_s": 0.016,
+        "last_torque_Nm": 0.0,
+        "nonzero_torque_rows": 0,
+        "terminal_OK": true
+      },
+      "explicit_output": {
+        "returncode": 0,
+        "rows": 17,
+        "last_time_s": 0.016,
+        "last_torque_Nm": 0.00011975765,
+        "nonzero_torque_rows": 16,
+        "terminal_OK": true
+      },
+      "roundoff_end": {
+        "returncode": 0,
+        "rows": 30,
+        "last_time_s": 0.29,
+        "last_torque_Nm": 0.0,
+        "nonzero_torque_rows": 28,
+        "terminal_OK": true
+      },
+      "roundoff_end_baseline_routine": {
+        "returncode": 0,
+        "rows": 30,
+        "last_time_s": 0.29,
+        "last_torque_Nm": 0.000499934782,
+        "nonzero_torque_rows": 29,
+        "terminal_OK": true
+      }
+    }
+  },
+  "baseline_scope": "only tnuinteg restored from historical commit; other source objects current"
+}

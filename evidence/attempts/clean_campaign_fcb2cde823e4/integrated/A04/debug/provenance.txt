@@ -1,0 +1,16 @@
+mode=debug
+baseline=0
+fcb2cde823e43f264010062eb49745b34c71b8cc
+GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+bf8908111eeb5e7144bfe33fc4053ca5b00466a4c86466861d88b39e2060c033  /workspace/scratch/8c0efd7393df/rev_work/final_source_fcb2cde823e4/tests/reliability/a04_damping.f90
+eeb4e68cf19d7fb4e349c2b75c7114787a5426851156c8ce685254d28679d50e  /workspace/scratch/8c0efd7393df/rev_work/final_source_fcb2cde823e4/tests/reliability/a04_run.sh
+bf52358f273eb5482806ab58e7e576c5546a29fba170ae03fae47a42a7e460eb  /workspace/scratch/8c0efd7393df/rev_work/final_source_fcb2cde823e4/src/source/torsion/tmatrices.f90
+d12c01544d3be46a0f97ef754d17e5afc75b8e5bc04dd9a210ae22b47122c3ef  /workspace/scratch/8c0efd7393df/rev_work/final_source_fcb2cde823e4/src/source/torsion/tcouprops.f90
+7175dce746a875698ccbac7c029a777a59d23a71c488c6476b02acd9b3de98db  /workspace/scratch/8c0efd7393df/rev_work/final_source_fcb2cde823e4/src/source/torsion/thhmat.f90
+ae55d56f942141ebdf895d3507e0f53543d2c78671da27471207a7ecfe08107b  /workspace/scratch/8c0efd7393df/rev_work/final_source_fcb2cde823e4/build/debug/obj/solver/torsion/tmatrices.o
+510666f5fc56af587d7e5624ce4260607ed8018252d904debd00a4bf531e2098  /workspace/scratch/8c0efd7393df/rev_work/final_source_fcb2cde823e4/build/debug/obj/solver/torsion/tcouprops.o
+a5bad8092aaeb17e65bc65c60439326290971eccbf87a6100b006380abeb9a3b  /workspace/scratch/8c0efd7393df/rev_work/final_source_fcb2cde823e4/build/debug/obj/solver/torsion/thhmat.o

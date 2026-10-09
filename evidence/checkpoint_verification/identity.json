@@ -1,0 +1,12 @@
+{
+  "zip": "/workspace/scratch/8c0efd7393df/output/final/RotorDin2_corrigido_644b85a7a486.zip",
+  "zip_sha256": "11a68828eee82a94f1fbcbcc05692f4031cd3f72d9151068f449aaf71eece06c",
+  "crc": "PASS",
+  "bundle_sha256": "34f9f3db78702c164c692c2973b8224c273ee95cc33be97b97cab9e0439e52ac",
+  "restored_head": "644b85a7a486ae45ecdc5f575c8a2210f5ad6bfd",
+  "git_fsck": "PASS",
+  "export_checkout_files_equal": 2638,
+  "working_checkout_equal": "PASS",
+  "status": "CLEAN",
+  "descendants_or_wip": false
+}

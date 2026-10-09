@@ -1,0 +1,12 @@
+[
+  {
+    "mode": "release",
+    "binary": "release/rotordin2",
+    "sha256": "2119bb23cdadd94213fcc858e03fc7d4dfe110d83895e4ef5425aea2252a35c4"
+  },
+  {
+    "mode": "debug",
+    "binary": "debug/rotordin2-debug",
+    "sha256": "7453d35b8b1be54f0fd42e47e338d5340c8e87af6ff02414cff2764ae7cf2e57"
+  }
+]

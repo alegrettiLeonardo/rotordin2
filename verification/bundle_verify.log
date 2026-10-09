@@ -1,0 +1,26 @@
+/workspace/scratch/8c0efd7393df/rev_work/delivery_stage_539134eaee20/rotordin2-history.bundle is okay
+The bundle contains these 22 refs:
+644b85a7a486ae45ecdc5f575c8a2210f5ad6bfd refs/heads/checkpoint/reviewed-644b85a7a486
+539134eaee209f6de1c0c91e705fe92a75a28412 refs/heads/fix/rotordin2-mathematical-reliability
+4d928f79c8daf0ad9ee67e4439e23e0e7c6b6f47 refs/heads/task/st41-priority-fixes
+ec8f0b05517f668dc1daf9c8fde5b06a0da15387 refs/heads/work/a02-torsion-phase
+c715532c3dcba5e07dbbc48ce4513d580f315862 refs/heads/work/a04-a05-torsion-dynamics
+f10b9eba3b3443794dd1d8b48494b3cb375c9af5 refs/heads/work/a07-angular-acceleration
+fa7c30671808ab02d4cc7ba34be4ace93e2be0ce refs/heads/work/rev-integration
+6c733cabc5e9f15fa3593267572d6f789518a9ec refs/heads/work/rev-temporal
+782d4f70d690033a3e121547c25e20522015828d refs/heads/work/rev-tests
+4d928f79c8daf0ad9ee67e4439e23e0e7c6b6f47 refs/remotes/origin/HEAD
+74881f9445e88c258d5da79172d42b79cacadfca refs/remotes/origin/task/st41-geometry
+9e9474c393639530ad64da553a2f540a51b95056 refs/remotes/origin/task/st41-harmonic
+6beeca1fdc7ec9bee05f78b5afffe1c1212c115d refs/remotes/origin/task/st41-messages-af
+8ea15d28d9da6f61e9fe2aeb4cebfbb0ac1b3c7a refs/remotes/origin/task/st41-p1
+4d928f79c8daf0ad9ee67e4439e23e0e7c6b6f47 refs/remotes/origin/task/st41-priority-fixes
+539134eaee209f6de1c0c91e705fe92a75a28412 HEAD
+6c733cabc5e9f15fa3593267572d6f789518a9ec worktrees/rev_temporal/HEAD
+f10b9eba3b3443794dd1d8b48494b3cb375c9af5 worktrees/a07/HEAD
+fa7c30671808ab02d4cc7ba34be4ace93e2be0ce worktrees/rev_integration/HEAD
+782d4f70d690033a3e121547c25e20522015828d worktrees/rev_tests/HEAD
+c715532c3dcba5e07dbbc48ce4513d580f315862 worktrees/a04_a05/HEAD
+ec8f0b05517f668dc1daf9c8fde5b06a0da15387 worktrees/a02/HEAD
+The bundle records a complete history.
+The bundle uses this hash algorithm: sha1

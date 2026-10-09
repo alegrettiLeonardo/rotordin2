@@ -1,0 +1,6 @@
+A05_COUPLED_ACCELERATION  -1.295287958115183E+00  3.768586387434556E+00
+A05_FREE_DECAY method=0 q/v/a=  4.323324104132418E-01  1.353351930185512E-01 -2.706703862091019E-01
+A05_FREE_DECAY method=1 q/v/a=  4.323319270326383E-01  1.353348896162795E-01 -2.706700827972552E-01
+A05_NATIVE_INITIAL_ACCELERATION   4.000000000000000E+00  3.000000000000000E+00
+A05 checks=2045 failures=0
+A05 pinned ROSS initial-equilibrium residual comparison: PASS [{'case': 'scalar', 'initial_velocity': -1.0, 'native_acceleration': 2.0, 'physical_residual': 0.0, 'status': 'PASS'}, {'case': 'scalar', 'initial_velocity': 1.0, 'native_acceleration': -2.0, 'physical_residual': 0.0, 'status': 'PASS'}, {'case': 'coupled', 'physical_residual': 1.3322676295501878e-15, 'status': 'PASS'}]

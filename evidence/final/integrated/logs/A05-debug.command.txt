@@ -1,0 +1,1 @@
+bash tests/reliability/a05_run.sh debug /workspace/scratch/8c0efd7393df/rev_work/final_campaign_539134eaee20/integrated/A05/debug 

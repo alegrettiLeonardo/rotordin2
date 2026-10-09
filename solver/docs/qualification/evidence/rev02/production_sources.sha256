@@ -1,0 +1,4 @@
+9eb1fbd25da68e6c8ecc8a877bc1704034f1d42bfdc1b8eb38e7d540a9d13875  src/source/rd_torsion_time.f90
+f338cde04a4249caf47ef1f6e399800a753d3be77bf27b6ee83bc4667f575bab  src/source/torsion/tnuinteg.f90
+062d505f5b0112129aed1eea3402d169dd152f329d55fecc9e530a7fc7065121  src/source/torsion/tprptran.f90
+2eafee71233e7f03c25d47e9cb29b6a2e712b69acd3e386fb9d681824488f989  src/source/torsion/tsaidas.f90

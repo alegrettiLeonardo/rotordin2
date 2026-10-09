@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "git",
+    "bundle",
+    "verify",
+    "/workspace/scratch/8c0efd7393df/rev_work/final_campaign_539134eaee20/candidate-history.bundle"
+  ],
+  "cwd": "/workspace/scratch/8c0efd7393df/work/rotordin2",
+  "environment": {
+    "FC": "gfortran",
+    "LC_ALL": "C"
+  }
+}

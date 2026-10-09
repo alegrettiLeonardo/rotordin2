@@ -1,0 +1,13 @@
+STOP 1
+#BEGIN MODEL_ERROR
+ERROR CODE          : IN_BEARING_DATA
+SUMMARY             : beatab->error reading(1 line) <./b2.tbl>
+LOCATION            : BEARING 2; source=./b2.tbl
+RECEIVED            : during input loading; beatab->error reading(1 line) <./b2.tbl>
+EXPECTED            : requested source must exist and provide valid coefficients at the requested analysis speed
+PHYSICAL CAUSE      : explicitly requested bearing data could not be resolved
+HOW TO FIX          : review bearing ID, source path, table domain/scale and selected analysis speed; no data was substituted
+ACTION              : analysis aborted before invalid results could be generated
+#END MODEL_ERROR
+
+ERR(11:19:00.8):MODEL_AUDIT [IN_BEARING_DATA]: beatab->error reading(1 line) <./b2.tbl>

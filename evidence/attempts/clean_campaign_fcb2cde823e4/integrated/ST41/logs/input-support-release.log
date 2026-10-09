@@ -1,0 +1,6 @@
+PASS IN-03: 15 native record/field assertions
+PASS pipe_0: rc=0; following controls preserved
+PASS pipe_1: rc=0; following controls preserved
+PASS file_0: rc=0; following controls preserved
+PASS file_1: rc=0; following controls preserved
+PASS IN-03: four channel/blank combinations; model/amplitude/phase byte equality; controlled incomplete input

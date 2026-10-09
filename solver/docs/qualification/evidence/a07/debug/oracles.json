@@ -1,0 +1,387 @@
+{
+  "ross_commit": "3a258dc84113425534e8ca0be5336b2ba4baa83a",
+  "comparison_scope": "unmodified pinned methods via AST; no full ROSS installation",
+  "drive_derivation": {
+    "exact_disk_energy_small_angle_convergence": "PASS",
+    "virtual_work_follower_and_inertial_torque": "PASS",
+    "cases": [
+      {
+        "omega": -2.0,
+        "alpha": -1.5,
+        "linearization_errors": [
+          6.817489210386718e-06,
+          6.817499909050895e-08,
+          6.817499897948665e-10
+        ],
+        "result": "PASS"
+      },
+      {
+        "omega": -2.0,
+        "alpha": 0.0,
+        "linearization_errors": [
+          5.939989605227569e-06,
+          5.9399998988962643e-08,
+          5.939999117576811e-10
+        ],
+        "result": "PASS"
+      },
+      {
+        "omega": -2.0,
+        "alpha": 1.7,
+        "linearization_errors": [
+          5.9399896051373635e-06,
+          5.9399999204068354e-08,
+          5.940000435966653e-10
+        ],
+        "result": "PASS"
+      },
+      {
+        "omega": 0.0,
+        "alpha": -1.5,
+        "linearization_errors": [
+          4.477490965316272e-06,
+          4.477499925339967e-08,
+          4.47750031495886e-10
+        ],
+        "result": "PASS"
+      },
+      {
+        "omega": 0.0,
+        "alpha": 0.0,
+        "linearization_errors": [
+          3.599991360125898e-06,
+          3.599999909287277e-08,
+          3.599999187642311e-10
+        ],
+        "result": "PASS"
+      },
+      {
+        "omega": 0.0,
+        "alpha": 1.7,
+        "linearization_errors": [
+          3.599991360014876e-06,
+          3.5999999314917375e-08,
+          3.6000002978653356e-10
+        ],
+        "result": "PASS"
+      },
+      {
+        "omega": 3.0,
+        "alpha": -1.5,
+        "linearization_errors": [
+          1.9349976037724703e-06,
+          1.9349999796913764e-08,
+          1.9350004931695253e-10
+        ],
+        "result": "PASS"
+      },
+      {
+        "omega": 3.0,
+        "alpha": 0.0,
+        "linearization_errors": [
+          1.9349976037724703e-06,
+          1.93499997552804e-08,
+          1.9350004931695253e-10
+        ],
+        "result": "PASS"
+      },
+      {
+        "omega": 3.0,
+        "alpha": 1.7,
+        "linearization_errors": [
+          4.292329051081012e-06,
+          4.292333288802297e-08,
+          4.292333155575534e-10
+        ],
+        "result": "PASS"
+      }
+    ],
+    "zero_generalized_tilt_drive_Kalpha_over_Ip": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "follower_drive_Kalpha_over_Ip": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "inertial_axis_drive_Kalpha_over_Ip": [
+      [
+        0,
+        -1
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "production_drive_identification": "NOT_QUALIFIED"
+  },
+  "shaft_cases": [
+    {
+      "case": 1,
+      "phi": 0.08800000000000008,
+      "analytical_B_error": 2.0816681711721685e-17,
+      "transformed_ROSS_G_error": 3.469446951953614e-18,
+      "ROSS_Kst_equals_EB_B_transpose_error": 3.469446951953614e-18,
+      "shear_effect_relative_gap": 0.18374399999999982,
+      "canonical_B_comparison": "PASS",
+      "gyro_comparison": "PASS",
+      "full_ROSS_Kalpha_equivalence": "NOT_QUALIFIED"
+    },
+    {
+      "case": 2,
+      "phi": 0.0042952941176470595,
+      "analytical_B_error": 3.5236570605778894e-19,
+      "transformed_ROSS_G_error": 1.0842021724855044e-19,
+      "ROSS_Kst_equals_EB_B_transpose_error": 2.168404344971009e-19,
+      "shear_effect_relative_gap": 0.008609037786851428,
+      "canonical_B_comparison": "PASS",
+      "gyro_comparison": "PASS",
+      "full_ROSS_Kalpha_equivalence": "NOT_QUALIFIED"
+    },
+    {
+      "case": 3,
+      "phi": 2.8851559633027524,
+      "analytical_B_error": 5.551115123125783e-17,
+      "transformed_ROSS_G_error": 4.163336342344337e-17,
+      "ROSS_Kst_equals_EB_B_transpose_error": 5.673261773984841e-17,
+      "shear_effect_relative_gap": 14.094436859186931,
+      "canonical_B_comparison": "PASS",
+      "gyro_comparison": "PASS",
+      "full_ROSS_Kalpha_equivalence": "NOT_QUALIFIED"
+    },
+    {
+      "case": 4,
+      "phi": 0.22246,
+      "analytical_B_error": 0.0,
+      "transformed_ROSS_G_error": 0.0,
+      "ROSS_Kst_equals_EB_B_transpose_error": 0.0,
+      "shear_effect_relative_gap": 0.0,
+      "canonical_B_comparison": "PASS",
+      "gyro_comparison": "PASS",
+      "full_ROSS_Kalpha_equivalence": "NOT_QUALIFIED"
+    },
+    {
+      "case": 5,
+      "phi": 5.500000000000005e-15,
+      "analytical_B_error": 3.3633764759944626e-15,
+      "transformed_ROSS_G_error": 3.540396290520489e-16,
+      "ROSS_Kst_equals_EB_B_transpose_error": 1.9472179597862618e-15,
+      "shear_effect_relative_gap": 3.4518863832574745e-15,
+      "canonical_B_comparison": "PASS",
+      "gyro_comparison": "PASS",
+      "full_ROSS_Kalpha_equivalence": "NOT_QUALIFIED"
+    }
+  ],
+  "poles": [
+    {
+      "omega": -3.0,
+      "alpha": -2.0,
+      "error": 4.073266660176714e-15,
+      "result": "PASS"
+    },
+    {
+      "omega": -3.0,
+      "alpha": 0.0,
+      "error": 2.886579864025407e-15,
+      "result": "PASS"
+    },
+    {
+      "omega": -3.0,
+      "alpha": 2.0,
+      "error": 4.073266660176714e-15,
+      "result": "PASS"
+    },
+    {
+      "omega": 0.0,
+      "alpha": -2.0,
+      "error": 1.787840818971756e-15,
+      "result": "PASS"
+    },
+    {
+      "omega": 0.0,
+      "alpha": 0.0,
+      "error": 1.7798229048217483e-15,
+      "result": "PASS"
+    },
+    {
+      "omega": 0.0,
+      "alpha": 2.0,
+      "error": 1.8359117463897978e-15,
+      "result": "PASS"
+    },
+    {
+      "omega": 3.0,
+      "alpha": -2.0,
+      "error": 3.9283700765566935e-15,
+      "result": "PASS"
+    },
+    {
+      "omega": 3.0,
+      "alpha": 0.0,
+      "error": 2.886579864025407e-15,
+      "result": "PASS"
+    },
+    {
+      "omega": 3.0,
+      "alpha": 2.0,
+      "error": 3.9283700765566935e-15,
+      "result": "PASS"
+    }
+  ],
+  "ramps": [
+    {
+      "omega0": 0.0,
+      "alpha": 0.0,
+      "dt": 0.001,
+      "state_error": 4.4716834401992145e-15,
+      "conserved_momentum_drift": 2.1875947234240023e-15,
+      "energy_work_error": 1.1270038061014483e-18,
+      "full_actuator_work_error": 8.52273807082399e-16,
+      "declared_Euler_kernel": "PASS",
+      "production_ramp": "PASS"
+    },
+    {
+      "omega0": 0.0,
+      "alpha": 0.0,
+      "dt": 0.0005,
+      "state_error": 1.0408828746838461e-14,
+      "conserved_momentum_drift": 8.672641597928799e-15,
+      "energy_work_error": 3.208693153097298e-18,
+      "full_actuator_work_error": 3.634959000485327e-15,
+      "declared_Euler_kernel": "PASS",
+      "production_ramp": "PASS"
+    },
+    {
+      "omega0": 2.0,
+      "alpha": 0.0,
+      "dt": 0.001,
+      "state_error": 2.4429410470721506e-09,
+      "conserved_momentum_drift": 1.0121760200820784e-12,
+      "energy_work_error": 1.2866316648740535e-16,
+      "full_actuator_work_error": 2.0415418911201274e-15,
+      "declared_Euler_kernel": "PASS",
+      "production_ramp": "PASS"
+    },
+    {
+      "omega0": 2.0,
+      "alpha": 0.0,
+      "dt": 0.0005,
+      "state_error": 6.10636089991832e-10,
+      "conserved_momentum_drift": 1.0612366020679165e-12,
+      "energy_work_error": 1.114629448835451e-16,
+      "full_actuator_work_error": 7.231889800142543e-15,
+      "declared_Euler_kernel": "PASS",
+      "production_ramp": "PASS"
+    },
+    {
+      "omega0": 0.0,
+      "alpha": 1.0,
+      "dt": 0.001,
+      "state_error": 4.9491224100688125e-09,
+      "conserved_momentum_drift": 9.880981370570183e-10,
+      "energy_work_error": 6.691990676419582e-12,
+      "full_actuator_work_error": 7.14560234204751e-15,
+      "declared_Euler_kernel": "PASS",
+      "production_ramp": "NOT_QUALIFIED"
+    },
+    {
+      "omega0": 0.0,
+      "alpha": 1.0,
+      "dt": 0.0005,
+      "state_error": 1.2372521891561294e-09,
+      "conserved_momentum_drift": 2.469989896208141e-10,
+      "energy_work_error": 1.6730046028107226e-12,
+      "full_actuator_work_error": 2.842652650677504e-14,
+      "declared_Euler_kernel": "PASS",
+      "production_ramp": "NOT_QUALIFIED"
+    },
+    {
+      "omega0": 3.0,
+      "alpha": -1.0,
+      "dt": 0.001,
+      "state_error": 1.8006116745062284e-09,
+      "conserved_momentum_drift": 5.330001466227752e-10,
+      "energy_work_error": 4.0450129867181015e-13,
+      "full_actuator_work_error": 5.94855229933992e-15,
+      "declared_Euler_kernel": "PASS",
+      "production_ramp": "NOT_QUALIFIED"
+    },
+    {
+      "omega0": 3.0,
+      "alpha": -1.0,
+      "dt": 0.0005,
+      "state_error": 4.501535235334423e-10,
+      "conserved_momentum_drift": 1.332500932510472e-10,
+      "energy_work_error": 1.0114244283985708e-13,
+      "full_actuator_work_error": 2.450924391824566e-14,
+      "declared_Euler_kernel": "PASS",
+      "production_ramp": "NOT_QUALIFIED"
+    },
+    {
+      "omega0": -1.0,
+      "alpha": 1.0,
+      "dt": 0.001,
+      "state_error": 2.2827377332140797e-09,
+      "conserved_momentum_drift": 7.892169303063551e-10,
+      "energy_work_error": 2.4956319215696326e-12,
+      "full_actuator_work_error": 1.8488154258401723e-14,
+      "declared_Euler_kernel": "PASS",
+      "production_ramp": "NOT_QUALIFIED"
+    },
+    {
+      "omega0": -1.0,
+      "alpha": 1.0,
+      "dt": 0.0005,
+      "state_error": 5.706506734162731e-10,
+      "conserved_momentum_drift": 1.9728415754337314e-10,
+      "energy_work_error": 6.240406352810688e-13,
+      "full_actuator_work_error": 8.396931780674461e-14,
+      "declared_Euler_kernel": "PASS",
+      "production_ramp": "NOT_QUALIFIED"
+    },
+    {
+      "omega0": 1.0,
+      "alpha": -1.0,
+      "dt": 0.001,
+      "state_error": 3.0070017734487586e-09,
+      "conserved_momentum_drift": 1.0403146300137778e-09,
+      "energy_work_error": 6.8746093615911635e-12,
+      "full_actuator_work_error": 2.0911130967538223e-14,
+      "declared_Euler_kernel": "PASS",
+      "production_ramp": "NOT_QUALIFIED"
+    },
+    {
+      "omega0": 1.0,
+      "alpha": -1.0,
+      "dt": 0.0005,
+      "state_error": 7.515226574730804e-10,
+      "conserved_momentum_drift": 2.600629893725892e-10,
+      "energy_work_error": 1.7187697069770283e-12,
+      "full_actuator_work_error": 7.036068403528262e-14,
+      "declared_Euler_kernel": "PASS",
+      "production_ramp": "NOT_QUALIFIED"
+    }
+  ],
+  "ross_disk": {
+    "gyro_transformation": "PASS",
+    "skew_Kdt_equals_minus_G": "PASS",
+    "canonical_Kalpha_vs_ROSS_max_difference": 1.6,
+    "physical_equivalence": "NOT_QUALIFIED",
+    "Rotor_Ksdt_copy_behavior": "PASS"
+  },
+  "canonical_kernel_numerical_qualification": "PASS",
+  "A07_production_variable_spin": "NOT_QUALIFIED"
+}

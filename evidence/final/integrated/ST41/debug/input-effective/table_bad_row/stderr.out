@@ -1,0 +1,13 @@
+STOP 1
+#BEGIN MODEL_ERROR
+ERROR CODE          : IN_BEARING_DATA
+SUMMARY             : bearing table: nonnumeric, repeat, or slash field is not allowed
+LOCATION            : BEARING 2; source=./b2.tbl
+RECEIVED            : during input loading; bearing table: nonnumeric, repeat, or slash field is not allowed
+EXPECTED            : requested source must exist and provide valid coefficients at the requested analysis speed
+PHYSICAL CAUSE      : explicitly requested bearing data could not be resolved
+HOW TO FIX          : review bearing ID, source path, table domain/scale and selected analysis speed; no data was substituted
+ACTION              : analysis aborted before invalid results could be generated
+#END MODEL_ERROR
+
+ERR(11:23:04.4):MODEL_AUDIT [IN_BEARING_DATA]: bearing table: nonnumeric, repeat, or slash field is not allowed

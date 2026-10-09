@@ -1,0 +1,59 @@
+{
+  "reference_kind": "regression against prior RotorDin2 hybrid build, not experimental validation",
+  "command": [
+    "-std",
+    "-c",
+    "-b"
+  ],
+  "fixture_sha256": "55924e5298b9092ae5ddc47f0f374bb3f9814fca9b403290ef8d84c1a2d1dd82",
+  "scientific_tree_sha256": "d914ef74860a12d529573bfbbcb4d113414a0cc0f5d655b112196e5ffda9b9bb",
+  "critical_speeds_rpm": [
+    [
+      614.8843435,
+      307.8235337,
+      1226.590259
+    ],
+    [
+      617.8157725,
+      308.5560664,
+      1238.33674
+    ],
+    [
+      2807.33548,
+      1691.599844,
+      4412.17869
+    ],
+    [
+      0.0,
+      3369.211749,
+      0.0
+    ],
+    [
+      0.0,
+      3373.170759,
+      0.0
+    ],
+    [
+      0.0,
+      3374.41123,
+      0.0
+    ],
+    [
+      0.0,
+      3375.791629,
+      0.0
+    ],
+    [
+      0.0,
+      4374.525102,
+      0.0
+    ],
+    [
+      0.0,
+      5854.166281,
+      0.0
+    ]
+  ],
+  "relative_tolerance": 1e-08,
+  "absolute_tolerance_rpm": 1e-06
+}

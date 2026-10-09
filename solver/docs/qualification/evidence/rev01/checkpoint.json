@@ -1,0 +1,16 @@
+{
+  "scope": "REV01 aligned-time checkpoint; REV02 dense publication pending",
+  "release": "PASS: 6 aligned controls",
+  "debug": "PASS: 6 aligned controls",
+  "original_unmodified_probe_attempt": {
+    "release": "6 aligned PASS; 2 fine-output cases FAIL closed with rows=0",
+    "debug": "probe aborted after correctly rejected fine-output case: original reviewer probe indexes row 0 after ok=-1; no solver bounds failure",
+    "preserved_logs": [
+      "debug_probe.stdout",
+      "debug_probe.stderr",
+      "release_probe.stdout",
+      "release_probe.stderr"
+    ]
+  },
+  "original_probe_sha256": "7f284ed5b221ab0d8749c42d8b39dfa9fba421563ca5525067e9e326da48d762"
+}

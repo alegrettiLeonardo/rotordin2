@@ -1,0 +1,13 @@
+
+Program received signal SIGFPE: Floating-point exception - erroneous arithmetic operation.
+
+Backtrace for this error:
+#0  0x7f2b4f2fbe59 in ???
+#1  0x7f2b4f2fae75 in ???
+#2  0x7f2b4eff432f in ???
+#3  0x562435d994e2 in ???
+#4  0x562435d9d1c8 in ???
+#5  0x562435ca2c0d in rev_temporal_native
+	at /workspace/scratch/8c0efd7393df/work/rev_tests/tests/reliability/rev_temporal_native.f90:66
+#6  0x562435ca3fd6 in main
+	at /workspace/scratch/8c0efd7393df/work/rev_tests/tests/reliability/rev_temporal_native.f90:4

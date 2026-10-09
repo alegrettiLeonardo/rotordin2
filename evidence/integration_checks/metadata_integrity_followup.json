@@ -1,0 +1,190 @@
+{
+  "scope": "Targeted evidence-integrity controls only; no build/scientific execution",
+  "before_commit": "c3c02004fac88896178e706d14bac33db1f2c081",
+  "before_script_sha256": "ef2b1a839fb01b31ba751a0e4ba2944cfec26801f16653e1c5027cdc7733a558",
+  "after_script_sha256": "bc10d1776f92f2f16ed5e3164463e39b989246e0d122fd47febefc2d82c356aa",
+  "controls": [
+    {
+      "case": "before_nonzero_rc",
+      "returncode": 1,
+      "aggregate": {
+        "id": "REV_TEMPORAL_AGGREGATE",
+        "status": "FAIL",
+        "scope": "Read Release/Debug evidence from ST41 make test; no repeated executions or case counts",
+        "gates": {
+          "REV01": "PASS",
+          "REV02": "PASS",
+          "completeness": "PASS",
+          "no_false_success": "PASS"
+        },
+        "modes": {
+          "release": {
+            "status": "PASS",
+            "gates": {
+              "REV01": "PASS",
+              "REV02": "PASS",
+              "completeness": "PASS",
+              "no_false_success": "PASS",
+              "physics": "PASS",
+              "refinement": "PASS",
+              "cli": "PASS"
+            },
+            "errors": []
+          },
+          "debug": {
+            "status": "FAIL",
+            "gates": {
+              "REV01": "PASS",
+              "REV02": "PASS",
+              "completeness": "PASS",
+              "no_false_success": "PASS",
+              "physics": "PASS",
+              "refinement": "PASS",
+              "cli": "PASS"
+            },
+            "errors": [
+              "runner returncode is not zero"
+            ]
+          }
+        }
+      },
+      "control": "EXPECTED_FAILURE_REPRODUCED"
+    },
+    {
+      "case": "after_valid",
+      "returncode": 0,
+      "aggregate": {
+        "id": "REV_TEMPORAL_AGGREGATE",
+        "status": "PASS",
+        "scope": "Read Release/Debug evidence from ST41 make test; no repeated executions or case counts",
+        "gates": {
+          "REV01": "PASS",
+          "REV02": "PASS",
+          "completeness": "PASS",
+          "no_false_success": "PASS"
+        },
+        "modes": {
+          "release": {
+            "status": "PASS",
+            "gates": {
+              "REV01": "PASS",
+              "REV02": "PASS",
+              "completeness": "PASS",
+              "no_false_success": "PASS",
+              "physics": "PASS",
+              "refinement": "PASS",
+              "cli": "PASS"
+            },
+            "errors": []
+          },
+          "debug": {
+            "status": "PASS",
+            "gates": {
+              "REV01": "PASS",
+              "REV02": "PASS",
+              "completeness": "PASS",
+              "no_false_success": "PASS",
+              "physics": "PASS",
+              "refinement": "PASS",
+              "cli": "PASS"
+            },
+            "errors": []
+          }
+        }
+      },
+      "control": "PASS"
+    },
+    {
+      "case": "after_nonzero_rc",
+      "returncode": 1,
+      "aggregate": {
+        "id": "REV_TEMPORAL_AGGREGATE",
+        "status": "FAIL",
+        "scope": "Read Release/Debug evidence from ST41 make test; no repeated executions or case counts",
+        "gates": {
+          "REV01": "FAIL",
+          "REV02": "FAIL",
+          "completeness": "FAIL",
+          "no_false_success": "FAIL"
+        },
+        "modes": {
+          "release": {
+            "status": "PASS",
+            "gates": {
+              "REV01": "PASS",
+              "REV02": "PASS",
+              "completeness": "PASS",
+              "no_false_success": "PASS",
+              "physics": "PASS",
+              "refinement": "PASS",
+              "cli": "PASS"
+            },
+            "errors": []
+          },
+          "debug": {
+            "status": "FAIL",
+            "gates": {
+              "REV01": "PASS",
+              "REV02": "PASS",
+              "completeness": "PASS",
+              "no_false_success": "PASS",
+              "physics": "PASS",
+              "refinement": "PASS",
+              "cli": "PASS"
+            },
+            "errors": [
+              "runner returncode is not zero"
+            ]
+          }
+        }
+      },
+      "control": "PASS"
+    },
+    {
+      "case": "after_foreign_commit",
+      "returncode": 1,
+      "aggregate": {
+        "id": "REV_TEMPORAL_AGGREGATE",
+        "status": "FAIL",
+        "scope": "Read Release/Debug evidence from ST41 make test; no repeated executions or case counts",
+        "gates": {
+          "REV01": "FAIL",
+          "REV02": "FAIL",
+          "completeness": "FAIL",
+          "no_false_success": "FAIL"
+        },
+        "modes": {
+          "release": {
+            "status": "PASS",
+            "gates": {
+              "REV01": "PASS",
+              "REV02": "PASS",
+              "completeness": "PASS",
+              "no_false_success": "PASS",
+              "physics": "PASS",
+              "refinement": "PASS",
+              "cli": "PASS"
+            },
+            "errors": []
+          },
+          "debug": {
+            "status": "FAIL",
+            "gates": {
+              "REV01": "PASS",
+              "REV02": "PASS",
+              "completeness": "PASS",
+              "no_false_success": "PASS",
+              "physics": "PASS",
+              "refinement": "PASS",
+              "cli": "PASS"
+            },
+            "errors": [
+              "runner source commit differs from campaign"
+            ]
+          }
+        }
+      },
+      "control": "PASS"
+    }
+  ]
+}

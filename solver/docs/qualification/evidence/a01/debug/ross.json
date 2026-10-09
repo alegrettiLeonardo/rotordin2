@@ -1,0 +1,218 @@
+{
+  "commit": "3a258dc84113425534e8ca0be5336b2ba4baa83a",
+  "comparison": "unmodified ROSS methods via AST",
+  "cases": [
+    {
+      "alpha": -23.0,
+      "omega0": 0.0,
+      "delta": 0.0,
+      "error": 1.4682297245948627e-14,
+      "result": "PASS"
+    },
+    {
+      "alpha": -23.0,
+      "omega0": 0.0,
+      "delta": 1.5707963267948966,
+      "error": 1.4682297245948627e-14,
+      "result": "PASS"
+    },
+    {
+      "alpha": -23.0,
+      "omega0": 0.0,
+      "delta": 3.141592653589793,
+      "error": 1.4682297245948627e-14,
+      "result": "PASS"
+    },
+    {
+      "alpha": -23.0,
+      "omega0": 0.0,
+      "delta": 4.71238898038469,
+      "error": 1.4682297245948627e-14,
+      "result": "PASS"
+    },
+    {
+      "alpha": -23.0,
+      "omega0": 0.0,
+      "delta": 0.371,
+      "error": 1.411902337526965e-14,
+      "result": "PASS"
+    },
+    {
+      "alpha": -23.0,
+      "omega0": 73.0,
+      "delta": 0.0,
+      "error": 3.2222648616130146e-15,
+      "result": "PASS"
+    },
+    {
+      "alpha": -23.0,
+      "omega0": 73.0,
+      "delta": 1.5707963267948966,
+      "error": 3.2778211523304804e-15,
+      "result": "PASS"
+    },
+    {
+      "alpha": -23.0,
+      "omega0": 73.0,
+      "delta": 3.141592653589793,
+      "error": 3.2778211523304804e-15,
+      "result": "PASS"
+    },
+    {
+      "alpha": -23.0,
+      "omega0": 73.0,
+      "delta": 4.71238898038469,
+      "error": 4.166721803809933e-15,
+      "result": "PASS"
+    },
+    {
+      "alpha": -23.0,
+      "omega0": 73.0,
+      "delta": 0.371,
+      "error": 2.7597104107390885e-15,
+      "result": "PASS"
+    },
+    {
+      "alpha": 0.0,
+      "omega0": 0.0,
+      "delta": 0.0,
+      "error": 0.0,
+      "result": "PASS"
+    },
+    {
+      "alpha": 0.0,
+      "omega0": 0.0,
+      "delta": 1.5707963267948966,
+      "error": 0.0,
+      "result": "PASS"
+    },
+    {
+      "alpha": 0.0,
+      "omega0": 0.0,
+      "delta": 3.141592653589793,
+      "error": 0.0,
+      "result": "PASS"
+    },
+    {
+      "alpha": 0.0,
+      "omega0": 0.0,
+      "delta": 4.71238898038469,
+      "error": 0.0,
+      "result": "PASS"
+    },
+    {
+      "alpha": 0.0,
+      "omega0": 0.0,
+      "delta": 0.371,
+      "error": 0.0,
+      "result": "PASS"
+    },
+    {
+      "alpha": 0.0,
+      "omega0": 73.0,
+      "delta": 0.0,
+      "error": 8.222331026184933e-15,
+      "result": "PASS"
+    },
+    {
+      "alpha": 0.0,
+      "omega0": 73.0,
+      "delta": 1.5707963267948966,
+      "error": 7.555655537575344e-15,
+      "result": "PASS"
+    },
+    {
+      "alpha": 0.0,
+      "omega0": 73.0,
+      "delta": 3.141592653589793,
+      "error": 9.000119096229455e-15,
+      "result": "PASS"
+    },
+    {
+      "alpha": 0.0,
+      "omega0": 73.0,
+      "delta": 4.71238898038469,
+      "error": 7.555655537575344e-15,
+      "result": "PASS"
+    },
+    {
+      "alpha": 0.0,
+      "omega0": 73.0,
+      "delta": 0.371,
+      "error": 8.722340537257048e-15,
+      "result": "PASS"
+    },
+    {
+      "alpha": 23.0,
+      "omega0": 0.0,
+      "delta": 0.0,
+      "error": 1.4682297245948627e-14,
+      "result": "PASS"
+    },
+    {
+      "alpha": 23.0,
+      "omega0": 0.0,
+      "delta": 1.5707963267948966,
+      "error": 1.4682297245948627e-14,
+      "result": "PASS"
+    },
+    {
+      "alpha": 23.0,
+      "omega0": 0.0,
+      "delta": 3.141592653589793,
+      "error": 1.4682297245948627e-14,
+      "result": "PASS"
+    },
+    {
+      "alpha": 23.0,
+      "omega0": 0.0,
+      "delta": 4.71238898038469,
+      "error": 1.4682297245948627e-14,
+      "result": "PASS"
+    },
+    {
+      "alpha": 23.0,
+      "omega0": 0.0,
+      "delta": 0.371,
+      "error": 1.4243455460166965e-14,
+      "result": "PASS"
+    },
+    {
+      "alpha": 23.0,
+      "omega0": 73.0,
+      "delta": 0.0,
+      "error": 2.2659102469355094e-15,
+      "result": "PASS"
+    },
+    {
+      "alpha": 23.0,
+      "omega0": 73.0,
+      "delta": 1.5707963267948966,
+      "error": 2.2659102469355094e-15,
+      "result": "PASS"
+    },
+    {
+      "alpha": 23.0,
+      "omega0": 73.0,
+      "delta": 3.141592653589793,
+      "error": 2.2659102469355094e-15,
+      "result": "PASS"
+    },
+    {
+      "alpha": 23.0,
+      "omega0": 73.0,
+      "delta": 4.71238898038469,
+      "error": 2.9509528797299656e-15,
+      "result": "PASS"
+    },
+    {
+      "alpha": 23.0,
+      "omega0": 73.0,
+      "delta": 0.371,
+      "error": 2.578217351715324e-15,
+      "result": "PASS"
+    }
+  ],
+  "max_relative_error": 1.4682297245948627e-14,
+  "result": "PASS"
+}

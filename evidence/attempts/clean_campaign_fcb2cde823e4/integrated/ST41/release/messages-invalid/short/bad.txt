@@ -1,0 +1,8 @@
+NAME
+RD2-11 invalid-input regression
+
+DESCRIPTION
+Deliberately invalid numeric section count; must fail in SECTIONS.
+
+SECTIONS  LENGTH    DIV       MXDIV     LDR       HANGLE    ACCG
+INVALID   1.0000    001       003       0.00      00.0      9.81

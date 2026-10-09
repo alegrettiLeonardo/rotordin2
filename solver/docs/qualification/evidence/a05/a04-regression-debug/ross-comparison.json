@@ -1,0 +1,32 @@
+{
+  "id": "A04_ROSS_MATRIX",
+  "ross_commit": "3a258dc84113425534e8ca0be5336b2ba4baa83a",
+  "scope": "exact pinned CouplingElement.C method; torsional submatrix and coordinate congruence",
+  "full_ross_rotor_execution": "NOT_QUALIFIED",
+  "status": "PASS",
+  "cases": [
+    {
+      "signed_ratio": 1.0,
+      "max_absolute_error": 0.0,
+      "status": "PASS"
+    },
+    {
+      "signed_ratio": 2.5,
+      "max_absolute_error": 0.0,
+      "status": "PASS"
+    },
+    {
+      "signed_ratio": -2.5,
+      "max_absolute_error": 0.0,
+      "status": "PASS"
+    }
+  ],
+  "torsional_dofs_zero_based": [
+    5,
+    11
+  ],
+  "mapping": "theta_ROSS = r * q_RotorDin for each element endpoint",
+  "coupling_sha256": "c321ef3b45b8b34478af57092cf7f3f8640bb350de0486ef1a3ccaf97c3be49d",
+  "shaft_sha256": "46d6bdf328dad4958a3b3398c28c8424c6057775ff461a646627339104cb89f6",
+  "native_results_sha256": "17db990df96a42243eb8af941baa5b8b59bcaa06e8a430ad8f61fdb76ee81d55"
+}

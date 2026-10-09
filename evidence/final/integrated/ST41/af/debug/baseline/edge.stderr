@@ -1,0 +1,12 @@
+ERROR STOP 1
+
+Error termination. Backtrace:
+#0  0x7f030a131e59 in ???
+#1  0x7f030a132a71 in ???
+#2  0x7f030a13417a in ???
+#3  0x55b73466cd6a in require
+	at tests/st41/af_cases.f90:73
+#4  0x55b73466bc7b in af_cases
+	at tests/st41/af_cases.f90:21
+#5  0x55b73466cdbd in main
+	at tests/st41/af_cases.f90:2

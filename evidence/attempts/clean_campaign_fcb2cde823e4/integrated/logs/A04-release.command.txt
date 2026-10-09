@@ -1,0 +1,1 @@
+bash tests/reliability/a04_run.sh release /workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/A04/release 

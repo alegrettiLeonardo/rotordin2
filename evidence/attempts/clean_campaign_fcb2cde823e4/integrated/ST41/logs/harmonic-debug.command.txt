@@ -1,0 +1,1 @@
+bash tests/st41/run_harmonic.sh bin/rotordin2-debug build/debug/tests/st41/harmonic_oracle build/debug/tests/st41/compare_harmonic /workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/debug/harmonic 

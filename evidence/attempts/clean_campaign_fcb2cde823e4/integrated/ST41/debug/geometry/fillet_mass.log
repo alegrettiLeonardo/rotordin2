@@ -1,0 +1,6 @@
+MESH: physical sections=2 elements=16
+TORSION section / mapped / prescribed length:   1  4.8375698797499967E-03  4.8375698797499967E-03
+TORSION section / mapped / prescribed length:   2  0.0000000000000000E+00  0.0000000000000000E+00
+TORSION model / assembled / physical polar mass:  1  1.9137325808607580E-01  1.9137325808607580E-01
+TORSION model / assembled / physical polar mass:  2  1.9137325808607575E-01  1.9137325808607580E-01
+GEOMETRY fillet_mass: checks=287 failures=0

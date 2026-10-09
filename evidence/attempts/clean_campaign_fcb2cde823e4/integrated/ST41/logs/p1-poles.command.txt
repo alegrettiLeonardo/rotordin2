@@ -1,0 +1,1 @@
+bash tests/st41/run_p1_poles.sh /workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/p1-poles 

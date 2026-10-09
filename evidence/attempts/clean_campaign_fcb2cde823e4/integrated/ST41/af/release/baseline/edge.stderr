@@ -1,0 +1,8 @@
+ERROR STOP 1
+
+Error termination. Backtrace:
+#0  0x7f76d2f59e59 in ???
+#1  0x7f76d2f5aa71 in ???
+#2  0x55cd1f96376d in require.1
+#3  0x55cd1f96430f in MAIN__
+#4  0x55cd1f9635ae in main

@@ -1,0 +1,1 @@
+/workspace/scratch/8c0efd7393df/rev_work/final_campaign_539134eaee20/integrated/ST41/p1-campbell/debug/p1_vectors 25 50 < input.txt

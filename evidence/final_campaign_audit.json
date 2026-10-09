@@ -1,0 +1,140 @@
+{
+  "status": "PASS",
+  "source_commit": "539134eaee209f6de1c0c91e705fe92a75a28412",
+  "scope": "Read-only evidence audit; no compilation or solver execution",
+  "errors": [],
+  "facts": {
+    "source": "/workspace/scratch/8c0efd7393df/rev_work/final_source_539134eaee20",
+    "tracked_hashes_checked": 2688,
+    "manifest_hashes_checked": 5,
+    "binary_hashes_checked": 2,
+    "frozen_regression_diff_rechecked": true,
+    "binary_identity": {
+      "release": {
+        "identical": true,
+        "sha256": "029cefaa943b910932324f37aa7148e3b6bf41adbbcfddb77f362b3ffc03ade8"
+      },
+      "debug": {
+        "identical": true,
+        "sha256": "c86961caf5b8b107e859543f1f884b758d7508e24119e9fe7127ae8f16c603b8"
+      }
+    },
+    "original_review_hashes_rechecked": 6,
+    "executor_checks": 19,
+    "st41_checks": {
+      "passed": 25,
+      "historical_blocked": 1
+    },
+    "modes": {
+      "release": {
+        "native_cases": 140,
+        "valid_cases": 94,
+        "invalid_cases": 46,
+        "nonfinite_input_cases": 28,
+        "fine41_cases": 2,
+        "cli_cases": 8,
+        "gates": {
+          "REV01": "PASS",
+          "REV02": "PASS",
+          "completeness": "PASS",
+          "no_false_success": "PASS",
+          "physics": "PASS",
+          "refinement": "PASS",
+          "cli": "PASS"
+        },
+        "refinement_metrics": 38
+      },
+      "debug": {
+        "native_cases": 140,
+        "valid_cases": 94,
+        "invalid_cases": 46,
+        "nonfinite_input_cases": 28,
+        "fine41_cases": 2,
+        "cli_cases": 8,
+        "gates": {
+          "REV01": "PASS",
+          "REV02": "PASS",
+          "completeness": "PASS",
+          "no_false_success": "PASS",
+          "physics": "PASS",
+          "refinement": "PASS",
+          "cli": "PASS"
+        },
+        "refinement_metrics": 38
+      }
+    },
+    "directed_results": {
+      "release": {
+        "scalar_mathematical_failures": 0,
+        "default_output": {
+          "returncode": 0,
+          "rows": 65,
+          "last_time_s": 0.016,
+          "last_torque_Nm": 0.00011975765,
+          "nonzero_torque_rows": 63,
+          "terminal_OK": true
+        },
+        "explicit_output": {
+          "returncode": 0,
+          "rows": 17,
+          "last_time_s": 0.016,
+          "last_torque_Nm": 0.00011975765,
+          "nonzero_torque_rows": 16,
+          "terminal_OK": true
+        },
+        "roundoff_end": {
+          "returncode": 0,
+          "rows": 30,
+          "last_time_s": 0.29,
+          "last_torque_Nm": 0.000499934782,
+          "nonzero_torque_rows": 29,
+          "terminal_OK": true
+        },
+        "roundoff_end_baseline_routine": {
+          "returncode": 0,
+          "rows": 30,
+          "last_time_s": 0.2900000000000001,
+          "last_torque_Nm": 0.000499934782,
+          "nonzero_torque_rows": 29,
+          "terminal_OK": true
+        }
+      },
+      "debug": {
+        "scalar_mathematical_failures": 0,
+        "default_output": {
+          "returncode": 0,
+          "rows": 65,
+          "last_time_s": 0.016,
+          "last_torque_Nm": 0.00011975765,
+          "nonzero_torque_rows": 63,
+          "terminal_OK": true
+        },
+        "explicit_output": {
+          "returncode": 0,
+          "rows": 17,
+          "last_time_s": 0.016,
+          "last_torque_Nm": 0.00011975765,
+          "nonzero_torque_rows": 16,
+          "terminal_OK": true
+        },
+        "roundoff_end": {
+          "returncode": 0,
+          "rows": 30,
+          "last_time_s": 0.29,
+          "last_torque_Nm": 0.000499934782,
+          "nonzero_torque_rows": 29,
+          "terminal_OK": true
+        },
+        "roundoff_end_baseline_routine": {
+          "returncode": 0,
+          "rows": 30,
+          "last_time_s": 0.2900000000000001,
+          "last_torque_Nm": 0.000499934782,
+          "nonzero_torque_rows": 29,
+          "terminal_OK": true
+        }
+      }
+    },
+    "counting_scope": "140 native + 8 CLI corpus cases per profile; 296 corpus cases summed across two profiles, not 296 distinct physical scenarios. Native fill controls and derived comparisons are reported separately. Aggregate and ST41 wrapper rows are not additional REV cases."
+  }
+}

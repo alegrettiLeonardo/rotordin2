@@ -1,0 +1,19 @@
+/workspace/scratch/8c0efd7393df/toolchain/gfortran
+x86_64-linux-gnu
+13.3.0
+GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+6bce55650459906a66dadcc1dfbfe9073dbd6fb8b8f82386aab6e46594479c37  /workspace/scratch/8c0efd7393df/toolchain/gfortran
+MODE=debug
+SOLVER=-O0 -g -cpp -std=f2018 -fcheck=all -fbacktrace -ffpe-trap=invalid,zero,overflow
+LINALG=-O0 -g -cpp -frecursive -fcheck=all -fbacktrace
+CPP=-D_LINUX
+LINK=
+81237c4074eaf4e4d73344ec28cb95ff099236b02a8431b91a8e531d52d2a32a  Makefile
+3d23271db3f773023c87754a37af1f31eda2b540855418bf07e4de7e8a50f4cb  docs/build/lapack-sources.lst
+5bfe88cab031d522438cbf20dfabefec9b1061413b522ce1685cc5c397e8bc80  docs/build/solver-sources.lst
+b555b65cf6ce515407e5f5cb7eecda4fe9ce33305761df514792efa495f806b6  docs/build/lapack-modules.lst
+f3f81aa7f2fbba3bdb95a047b69c184e3dd3b638418dcd189f7ca4c86484bc25  docs/build/solver-modules.lst

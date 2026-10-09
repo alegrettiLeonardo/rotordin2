@@ -1,0 +1,1 @@
+env ST41_REFERENCE_LOG= bash tests/st41/run_geometry.sh release /workspace/scratch/8c0efd7393df/rev_work/final_campaign_539134eaee20/integrated/ST41/release/geometry 

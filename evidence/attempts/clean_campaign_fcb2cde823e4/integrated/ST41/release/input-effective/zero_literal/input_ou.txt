@@ -1,0 +1,89 @@
+08-OC-2026@11:18:18.6 - key [138754]
+user:FRANCISCO - desc:EST-ROTORDIN - NEWTON
+ RotorDin-v:1.10-0 r:2.1.0
+ WEG Equipamentos Eletricos S.A. - p:2021
+
+ os user :<>
+ input :<./input.txt>
+
+ calculation options :
+ unbalance response
+ with bearing support params
+===> BEGIN INPUT
+NAME
+FRANCISCO
+
+DESCRIPTION
+EST-ROTORDIN - NEWTON
+
+SECTIONS  LENGTH    DIV       MXDIV     LDR       HANGLE    ACCG      HANUN     SHMFWD
+        1 0.100E+01         1         3    0.0000    0.0000    9.8100       deg  1, 1
+
+POSITION  EXTDIAM   INTDIAM   YOUNG     POISSON   DENSITY   DIV       UMP       YELD STR
+0.100E+01 0.200E-01 0.000E+00 0.207E+12 0.300E+00 0.785E+04         0 0.000E+00 0.000E+00
+
+DISK      NRAT      GYCOF
+        4       0.0 
+
+POSITION  DIAMETER  LENGTH    DENSITY   INTDIAM   IX        IY        WEIGHT    OFFSET
+0.403E+00 0.250E+00 0.500E-02 0.785E+04 0.200E-01 0.197E-01 0.393E-01 0.500E+01 0.000E+00
+0.407E+00 0.250E+00 0.500E-02 0.785E+04 0.200E-01 0.197E-01 0.393E-01 0.500E+01 0.000E+00
+0.412E+00 0.250E+00 0.500E-02 0.785E+04 0.200E-01 0.197E-01 0.393E-01 0.500E+01 0.000E+00
+0.417E+00 0.250E+00 0.500E-02 0.785E+04 0.200E-01 0.197E-01 0.393E-01 0.500E+01 0.000E+00
+
+BEARING   SCALE     RKS       FXSTF
+ 2 + 0    0.100E+01      0.000.500E+21
+
+POSITION  KXX       KXZ       KZZ       KZX       CXX       CXZ       CZZ       CZX       WEIGHT    KPH       KTH
+0.100E-01 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00
+0.990E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00
+
+CPBIS     CPBFS     CPBSPD    NCRSPD    INTSPD    SMIST     SMNDC     SMSPD     IMDTRK
+0.000E+00 0.600E+04 0.250E+02        50         9 0.100E+08         4 0.000E+00         0
+
+EXCT      UNBIS     UNBFS     UNBSPD    UNBMD     MINAMP    MDRPM     EANUN
+        2 0.900E+03 0.240E+04 0.100E+03        10 0.000E+00 0.000E+00 deg
+
+POSITION  VALUE     PHASE     KIND      THF/OFS
+0.407E+00 0.300E-04 0.000E+00         0 0.000E+00
+0.412E+00 0.120E-04 0.370E+02         0 0.000E+00
+
+RESPPOS   NBRMOD    TIMOEP    TIMSPD    TANGLE     RANUN     TAUN
+        4        10 0.412E+00 0.180E+04 0.000E+00        deg       deg
+
+POSITION  DISPL     ORIENT
+0.412E+00 0.100E+01 0.000E+00
+0.412E+00 0.200E+01 0.000E+00
+0.800E+00 0.100E+01 0.000E+00
+0.800E+00 0.200E+01 0.000E+00
+
+OPTIONS
+          
+
+CONCENT
+        0
+
+CMASSPOS  CMASS     IX        IY        IZ
+
+SUPPORT   SCALE
+        2 0.100E+01
+
+BEANBR    KXX       KXZ       KZZ       KZX       CXX       CXZ       CZZ       CZX       WEIGHT    DESC
+        1 0.100E+09 0.000E+00 0.100E+09 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.200E+03           
+        2 0.100E+09 0.000E+00 0.100E+09 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.200E+03           
+<=== END INPUT
+===> BEGIN OPTION FILE
+<=== END OPTION FILE
+===> BEGIN OUTPUT
+ lateral calculation summary
+
+ matrix size        =  96x  96
+ number of sections =   1
+ section mass  (kg) = 0.24662E+01
+ disk mass     (kg) = 0.20000E+02
+ concent. mass (kg) = 0.00000E+00
+ rotor mass    (kg) = 0.22466E+02
+ rotor length   (m) = 0.10000E+01
+ center of mass (m) = 0.41988E+00
+<=== END OUTPUT
+ ELAPSED (s): 0.01 

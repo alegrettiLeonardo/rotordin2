@@ -1,0 +1,3 @@
+group=all
+mode=release
+synthetic_fixture=simple2b-derived

@@ -1,0 +1,15 @@
+{
+  "id": "REV_TEMPORAL",
+  "mode": "release",
+  "source_commit": "f8570307e90fa56e0d98df72e0ae7df04846dc70",
+  "status": "FAIL",
+  "gates": {
+    "REV01": "FAIL",
+    "REV02": "FAIL",
+    "completeness": "FAIL",
+    "no_false_success": "FAIL",
+    "physics": "FAIL",
+    "refinement": "FAIL",
+    "cli": "FAIL"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "source_head": "fcb2cde823e43f264010062eb49745b34c71b8cc",
+  "source_tree": "a82de40fe81cdae6f7d3f6abb551ace7aeb79799",
+  "branch": "fix/rotordin2-mathematical-reliability",
+  "repo": "/workspace/scratch/8c0efd7393df/rev_work/final_source_fcb2cde823e4",
+  "review_runner_unmodified": true,
+  "source_clean_before_after": true,
+  "independent_and_integrated_binaries_identical": true,
+  "binaries": [
+    {
+      "mode": "release",
+      "filename": "rotordin2",
+      "sha256": "029cefaa943b910932324f37aa7148e3b6bf41adbbcfddb77f362b3ffc03ade8"
+    },
+    {
+      "mode": "debug",
+      "filename": "rotordin2-debug",
+      "sha256": "d48725a82f3d46b1c666df8c540ba7aeffbb4ccd97651ccd38775e3e16eb19ed"
+    }
+  ]
+}

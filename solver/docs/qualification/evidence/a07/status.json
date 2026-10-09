@@ -1,0 +1,45 @@
+{
+  "baseline": "4d928f79c8daf0ad9ee67e4439e23e0e7c6b6f47",
+  "A07": "NOT_QUALIFIED",
+  "canonical_matrix": "PASS",
+  "gyroscopic_matrix": "PASS",
+  "constant_speed_equivalence": "PASS",
+  "declared_kernel_ramps": "PASS",
+  "production_ramps": "NOT_QUALIFIED",
+  "production_gate": "PASS",
+  "reason": "actuator generalized tilt work and transmitted torque distribution unspecified",
+  "tested_scientific_sources_sha256": {
+    "src/source/rd_commons.f90": "bf90958df5fd94228d96ee52d6620945d956171b9caf05cad99a6b04d5ffc2c9",
+    "src/source/matrizes.f90": "b2e111396dfaa3ca81f5e6ebff3c29093f5df1746e1c60c6d38132f24d6905f6",
+    "src/source/shaft_timoshenko_cowper.f90": "af983fd77ceaefc75e2a36c3142767250f70c8c42ace28cdae861a394317ad7f",
+    "src/source/transient_matrix.f90": "fa5bc563368586a0bbd928ee27bf5478cf2b017eca963fc02299ab9d4e3ca99f",
+    "src/source/transient_solver.f90": "8047a45f72dd5022136b35ec46379b155f91bb5499f7e52105144935be16cd66"
+  },
+  "modes": {
+    "release": {
+      "native_checks": 80,
+      "native_failures": 0,
+      "shaft_oracles": 5,
+      "exact_energy_drive_models": 9,
+      "pole_sets": 9,
+      "disk_kernel_integrations": 12,
+      "CLI_executions": 12,
+      "make_test": "PASS"
+    },
+    "debug": {
+      "native_checks": 80,
+      "native_failures": 0,
+      "shaft_oracles": 5,
+      "exact_energy_drive_models": 9,
+      "pole_sets": 9,
+      "disk_kernel_integrations": 12,
+      "CLI_executions": 12,
+      "make_test": "PASS"
+    }
+  },
+  "infrastructure_attempts": {
+    "failed_generated_executable_permission": 2,
+    "source_changes_to_recover": false,
+    "final_serial_debug_make_test": "PASS"
+  }
+}

@@ -1,0 +1,7 @@
+#BEGIN EFFECTIVE_INPUT
+SPEED_UNIT=rpm; only selected analyses are reported; coefficient lookups are logged when used.
+BEARING_SUPPORT_OPTION_B=T
+ANALYSIS=HARMONIC_ORBIT SOURCE=TIMSPD RPM= 1.8000000000000000E+003
+GLOBAL_REFERENCE_CONSTRAINT=NOT_DETERMINED; connectivity/rank records do not certify stability.
+FXSTF_ROLE=STATIC_ELASTIC_LINE_ONLY; no stiffness is injected into the dynamic model.
+#END EFFECTIVE_INPUT

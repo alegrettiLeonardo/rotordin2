@@ -1,0 +1,13 @@
+539134eaee209f6de1c0c91e705fe92a75a28412 test(REV): check all channels of the exact 41-row counterexample
+d84f17b58164e01d0a3d528c91a8bcb2f3610587 test(REV): exercise nonfinite inputs through the real integrator
+fcb2cde823e43f264010062eb49745b34c71b8cc test(REV): reject nonfinite native and CLI report times
+c4a156579953a4bc3a8bbfcb86b311e25b60f08b docs(REV): record preserved checkpoint and integrated temporal contracts
+177a407a165da12709996aad0f939aa6eb7970de test(REV): require native CLI completion reports and document evidence scope
+55d6c90c30b919960e9311dd43697e7647d8bf4e fix(torsion): publish every requested time with consistent dense states
+dc0deb2b5b148417b143b6918d808ea373f13100 REV: require valid mode evidence before publishing temporal gates
+49fd9e09a66019deab0761be0c2d022cff300f70 REV: integrate temporal qualification into make test and final gates
+3a9388b5e6cf7c15b8ecab31f7d351804322f5d3 test(REV): expose canonical summary link in final status
+8c3cb00d134d347248f1e3d7fba32bce7a24fe60 test(REV): exercise actual short step independent of unused nominal size
+b3dfa92fe6a47b74e0e3ac119c06d4f50871841d test(REV): add independent real integrator and CLI temporal qualification
+d12fb2ed69d9f34c8f7758aa358804840cd458f1 fix(torsion): integrate the represented final time with explicit step accounting
+3f6428663fb8aff5c0af6d16228998f0fb44db14 docs(REV): freeze independent temporal acceptance criteria before patch evaluation

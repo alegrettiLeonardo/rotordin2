@@ -1,0 +1,5 @@
+ M docs/manifests/SOLVER.sha256
+ M src/source/rd_torsion_time.f90
+ M src/source/torsion/tnuinteg.f90
+ M src/source/torsion/tprptran.f90
+ M src/source/torsion/tsaidas.f90

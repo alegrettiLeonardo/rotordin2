@@ -1,0 +1,17 @@
+At line 408 of file /workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/messages/baseline-source/rd_textfun.f90
+Fortran runtime error: End of record
+
+Error termination. Backtrace:
+#0  0x7f301c638e59 in ???
+#1  0x7f301c639a71 in ???
+#2  0x7f301c63a6dc in ???
+#3  0x7f301c8cf810 in ???
+#4  0x7f301c8dd9ab in ???
+#5  0x7f301c8d31e8 in ???
+#6  0x7f301c8d3592 in ???
+#7  0x55c64d2893bb in __rd_textfun_MOD_fopmsf
+	at /workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/integrated/ST41/messages/baseline-source/rd_textfun.f90:408
+#8  0x55c64d285b96 in messages_cases
+	at tests/st41/messages_cases.f90:18
+#9  0x55c64d287dd2 in main
+	at tests/st41/messages_cases.f90:2

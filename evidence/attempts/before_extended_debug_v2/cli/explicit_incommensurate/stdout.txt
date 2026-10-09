@@ -1,0 +1,221 @@
+========================================================================
+#BEGIN output.out
+08-OC-2026@11:05:57.9 - key [307839]
+user:GRID_REVIEW - desc:Independent torsional time-grid review
+ RotorDin-v:1.10-0 r:2.1.0
+ WEG Equipamentos Eletricos S.A. - p:2021
+
+ os user :<>
+ input :<stdio>
+
+ calculation options :
+ Torsion Time Transient Response
+===> BEGIN INPUT
+NAME
+GRID_REVIEW
+
+DESCRIPTION
+Independent torsional time-grid review
+
+SECTIONS  LENGTH    DIV       MXDIV     LDR       HANGLE    ACCG      HANUN     SHMFWD
+        1 0.100E+01         1         3    0.0000    0.0000    9.8100       deg  1, 1
+
+POSITION  EXTDIAM   INTDIAM   YOUNG     POISSON   DENSITY   DIV       UMP       YELD STR
+0.100E+01 0.400E-01 0.000E+00 0.260E+06 0.300E+00 0.785E+04         1 0.000E+00 0.000E+00
+
+DISK      NRAT      GYCOF
+        0       0.0 
+
+POSITION  DIAMETER  LENGTH    DENSITY   INTDIAM   IX        IY        WEIGHT    OFFSET
+
+BEARING   SCALE     RKS       FXSTF
+ 0 + 0    0.100E+01      0.000.500E+21
+
+POSITION  KXX       KXZ       KZZ       KZX       CXX       CXZ       CZZ       CZX       WEIGHT    KPH       KTH
+
+CPBIS     CPBFS     CPBSPD    NCRSPD    INTSPD    SMIST     SMNDC     SMSPD     IMDTRK
+0.000E+00 0.300E+04 0.200E+02        50         8 0.100E+08         4 0.000E+00         0
+
+EXCT      UNBIS     UNBFS     UNBSPD    UNBMD     MINAMP    MDRPM     EANUN
+        1 0.100E+02 0.200E+02 0.100E+02         4 0.000E+00 0.000E+00 deg
+
+POSITION  VALUE     PHASE     KIND      THF/OFS
+0.100E+01 0.100E-02 0.000E+00        -1 0.000E+00
+
+RESPPOS   NBRMOD    TIMOEP    TIMSPD    TANGLE     RANUN     TAUN
+        1         4 0.100E+01 0.150E+04 0.000E+00        rad       rad
+
+POSITION  DISPL     ORIENT
+0.100E+01 0.100E+01 0.000E+00
+
+OPTIONS
+stdio
+
+CONCENT
+        0
+
+CMASSPOS  CMASS     IX        IY        IZ
+<=== END INPUT
+===> BEGIN TORSION OPTION FILE
+KIND
+3
+
+CPNRT     CPSM      CPSP
+   1500.0      0.00 1.0
+
+COUPL     FPRT      FPRTS     MODES
+        1      0.02 .1000E-02 
+
+CINX      KC        DC        IC        RATIO
+        1 0.100E+03 0.400E+01 0.300E+00 0.100E+01
+
+DAMPING   MD_OFF    ETYPE     FRLGAP    FRQRD
+        0         0         1         F         T
+
+MODE      RATIO
+
+FILLET    SHSTR     STEQSF
+        0   0.3000
+
+FIDX      RADIUS
+
+TRANS     ITSTP     RSSTP     SIZE      INIT      FINT
+        1   0.00000   0.00130         5   0.00000   0.00000
+
+DAMPING
+   0.00000
+
+TRANSIENT DATA
+0.0,0.004,0.008,0.012,0.016
+1.0,1.0,1.0,1.0,1.0
+
+OPTIONS
+n
+
+<=== END TORSION OPTION FILE
+===> BEGIN OUTPUT
+ torsion calculation summary
+
+ matrix size        =   4x   4
+ number of sections =   1
+ section mass  (kg) = 0.98646E+01
+ disk mass     (kg) = 0.00000E+00
+ concent. mass (kg) = 0.00000E+00
+ rotor mass    (kg) = 0.98646E+01
+ rotor length   (m) = 0.10000E+01
+ center of mass (m) = 0.50000E+00
+<=== END OUTPUT
+#END output.out
+RD_AUDIT_V1 EIGENSOLVER DGGEVX_REAL 2
+========================================================================
+#BEGIN ttimtran.out
+08-OC-2026@11:05:57.9 - key [307839]
+user:GRID_REVIEW - desc:Independent torsional time-grid review
+ Torsion Time Transient Response
+
+numerical integration       : Wilson-theta
+intial integ. time       (s):  0.000000E+00
+final  integ. time       (s): 16.000000E-03
+integ. time step         (s):  1.000000E-03
+integ. result step       (s):  1.300000E-03
+ind. pos.(m) damp.(Nm/rad/s):  1 ->   1.0000 x   0.000000E+00
+
+ Input Data Torque (Nm)
+  Graph Data
+   time(s) index->    1
+    0.000000E+00    1.000000E-03
+    4.000000E-03    1.000000E-03
+    8.000000E-03    1.000000E-03
+   12.000000E-03    1.000000E-03
+   16.000000E-03    1.000000E-03
+
+ Input Interpolated Torque (Nm)
+  Graph Data
+   time(s) y(m)->       1.0000
+    0.000000E+00    0.000000E+00
+    1.300000E-03    1.000000E-03
+    2.600000E-03    1.000000E-03
+    3.900000E-03    1.000000E-03
+    5.200000E-03    1.000000E-03
+    6.500000E-03    1.000000E-03
+    7.800000E-03    1.000000E-03
+    9.100000E-03    1.000000E-03
+   10.400000E-03    1.000000E-03
+   11.700000E-03    1.000000E-03
+   13.000000E-03    1.000000E-03
+   14.300000E-03    1.000000E-03
+   15.600000E-03    1.000000E-03
+
+ Total Angular Displacement (rad)
+  Graph Data
+   time(s) y(m)->       1.0000
+    0.000000E+00    0.000000E+00
+    1.300000E-03    8.349833E-09
+    2.600000E-03   46.538403E-09
+    3.900000E-03   89.129230E-09
+    5.200000E-03  147.865420E-09
+    6.500000E-03  228.932570E-09
+    7.800000E-03  312.656003E-09
+    9.100000E-03  400.608697E-09
+   10.400000E-03  508.822494E-09
+   11.700000E-03  625.955107E-09
+   13.000000E-03  732.200711E-09
+   14.300000E-03  856.358423E-09
+   15.600000E-03    1.003369E-06
+
+ Angular Displacement at division (rad)
+  Graph Data
+   time(s) y(m)->       1.0000
+    0.000000E+00    0.000000E+00
+    1.300000E-03   12.366332E-09
+    2.600000E-03   67.224442E-09
+    3.900000E-03  126.690999E-09
+    5.200000E-03  206.529738E-09
+    6.500000E-03  313.627789E-09
+    7.800000E-03  418.645340E-09
+    9.100000E-03  526.286376E-09
+   10.400000E-03  654.405183E-09
+   11.700000E-03  785.811749E-09
+   13.000000E-03  901.068089E-09
+   14.300000E-03    1.030847E-06
+   15.600000E-03    1.176266E-06
+
+ Torsion Output Torque at Division (Nm)
+  Graph Data
+   time(s) y(m)->       1.0000
+    0.000000E+00    0.000000E+00
+    1.300000E-03    1.236633E-06
+    2.600000E-03    6.722444E-06
+    3.900000E-03   12.669100E-06
+    5.200000E-03   20.652974E-06
+    6.500000E-03   31.362779E-06
+    7.800000E-03   41.864534E-06
+    9.100000E-03   52.628638E-06
+   10.400000E-03   65.440518E-06
+   11.700000E-03   78.581175E-06
+   13.000000E-03   90.106809E-06
+   14.300000E-03  103.084656E-06
+   15.600000E-03  117.626567E-06
+
+ Torsion Output Shear Stress at div.(rad/s) x (Pa)
+  Graph Data
+   time(s) y(m)->       1.0000
+    0.000000E+00    0.000000E+00
+    1.300000E-03   98.408144E-03
+    2.600000E-03  534.955114E-03
+    3.900000E-03    1.008175E+00
+    5.200000E-03    1.643511E+00
+    6.500000E-03    2.495771E+00
+    7.800000E-03    3.331474E+00
+    9.100000E-03    4.188054E+00
+   10.400000E-03    5.207591E+00
+   11.700000E-03    6.253291E+00
+   13.000000E-03    7.170472E+00
+   14.300000E-03    8.203216E+00
+   15.600000E-03    9.360425E+00
+
+#END ttimtran.out
+========================================================================
+#BEGIN exectime.out
+ ELAPSED (s): 0.00 
+#END exectime.out

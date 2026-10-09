@@ -1,0 +1,17 @@
+PASS route campbell_table           rc=0
+PASS route campbell_outside         rc=1
+PASS route export_nrat              rc=0
+PASS route export_mdrpm             rc=0
+PASS route export_fallback          rc=0
+PASS route table_boundary_375       rc=0
+PASS route table_boundary_500       rc=0
+PASS route table_boundary_4000      rc=0
+PASS route table_boundary_5000      rc=0
+PASS route table_outside_374.9      rc=1
+PASS route table_outside_5000.1     rc=1
+PASS route foundation_pipe_0        rc=0
+PASS route foundation_pipe_1        rc=0
+PASS route foundation_file_0        rc=0
+PASS route foundation_file_1        rc=0
+PASS route orbit_table_sweep        rc=0
+PASS IN routes: group=all; 16 native cases; actual TABLE values/context/domain; selected export precedence; FOUNDATION stream equivalence

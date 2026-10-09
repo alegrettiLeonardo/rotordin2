@@ -1,0 +1,2 @@
+ERR(11:09:55.8):splined->too/few data
+STOP 1

@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "bash",
+    "/workspace/scratch/8c0efd7393df/rev_work/review_original/Revisao_Codex_644b85_Evidencias/run_directed_review.sh",
+    "/workspace/scratch/8c0efd7393df/rev_work/final_source_fcb2cde823e4",
+    "/workspace/scratch/8c0efd7393df/rev_work/final_campaign_fcb2cde823e4/after_directed"
+  ],
+  "cwd": "/workspace/scratch/8c0efd7393df",
+  "environment": {
+    "FC": "gfortran",
+    "LC_ALL": "C",
+    "ALLOW_OTHER_HEAD": "1"
+  }
+}

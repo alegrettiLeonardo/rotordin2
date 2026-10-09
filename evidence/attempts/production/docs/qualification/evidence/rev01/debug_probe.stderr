@@ -1,0 +1,14 @@
+RD_TORSION_TIME INTEGRATED=10 LAST_INTEGRATED=  1.0000000000000000E-02 REQUESTED=11 PUBLISHED=11 LAST_PUBLISHED=  1.0000000000000000E-02 VALID_ROWS=11 VALID_CHANNELS=44 COMPLETE=T
+RD_TORSION_TIME INTEGRATED=10 LAST_INTEGRATED=  1.0000000000000000E-02 REQUESTED=11 PUBLISHED=11 LAST_PUBLISHED=  1.0000000000000000E-02 VALID_ROWS=11 VALID_CHANNELS=44 COMPLETE=T
+RD_TORSION_TIME INTEGRATED=10 LAST_INTEGRATED=  1.0000000000000000E-02 REQUESTED=41 PUBLISHED=1 LAST_PUBLISHED=  0.0000000000000000E+00 VALID_ROWS=1 VALID_CHANNELS=4 COMPLETE=F
+At line 35 of file /workspace/scratch/8c0efd7393df/rev_work/review_original/Revisao_Codex_644b85_Evidencias/probes/review_time_grid.f90
+Fortran runtime error: Index '0' of dimension 1 of array 'times' below lower bound of 1
+
+Error termination. Backtrace:
+#0  0x7f2ae070be59 in ???
+#1  0x7f2ae070ca71 in ???
+#2  0x7f2ae070d082 in ???
+#3  0x56003b729265 in review_time_grid
+	at /workspace/scratch/8c0efd7393df/rev_work/review_original/Revisao_Codex_644b85_Evidencias/probes/review_time_grid.f90:35
+#4  0x56003b729cd0 in main
+	at /workspace/scratch/8c0efd7393df/rev_work/review_original/Revisao_Codex_644b85_Evidencias/probes/review_time_grid.f90:4

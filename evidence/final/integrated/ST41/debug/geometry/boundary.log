@@ -1,0 +1,4 @@
+MESH: physical sections=4 elements=17
+CYLINDER mass / first moment / CG:   4.7549607024334868E+01  3.3884080014946257E+01  7.8647980059121492E-01
+ASSEMBLY M/K/G defects / final OmegaG defect:   0.00000000E+00  0.00000000E+00  0.00000000E+00  9.95881405E-19
+GEOMETRY boundary: checks=327 failures=0

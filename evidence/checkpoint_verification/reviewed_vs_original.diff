@@ -1,0 +1,1481 @@
+diff --git a/src/source/matrizes.f90 b/src/source/matrizes.f90
+index 1f23246..f39b45c 100644
+--- a/src/source/matrizes.f90
++++ b/src/source/matrizes.f90
+@@ -83,7 +83,7 @@ subroutine matrizes(pp,pdm,errmsg,ok)
+   use com_dsc, only: md, idx, idy
+   use com_kasc, only: vkasc
+   use com_knd, only: cknd, supr
+-  use com_mat, only: mm, mg, dm, smn
++  use com_mat, only: mm, mg, mka, dm, smn
+   use com_mbk, only: mkb
+   use com_mtk, only: mk1
+   use com_sea, only: rs, es, gs, dely, s, ie, ump
+@@ -94,7 +94,7 @@ subroutine matrizes(pp,pdm,errmsg,ok)
+   use com_ymc, only: nc => nbrg, rks, pc
+   use rd_kinds, only: lrk
+   use shaft_timoshenko_cowper, only: timo_cowper_stiffness,&
+-  &timo_cowper_mass,timo_cowper_gyro,ump_element_matrix
++  &timo_cowper_mass,timo_cowper_gyro,timo_cowper_angular_acceleration,ump_element_matrix
+   implicit none
+ !
+ !     arguments
+@@ -105,7 +105,7 @@ subroutine matrizes(pp,pdm,errmsg,ok)
+   character(len=3) :: cbd
+   character(len=8) :: nmm
+   parameter(cbd = 'mtg',nmm = 'matrizes')
+-  real(lrk) :: a, kappa, phi_m, phi_g, kappa_m, kappa_g, sumv_r, m, dy
++  real(lrk) :: a, kappa, phi_m, phi_g, phi_a, kappa_m, kappa_g, kappa_a, sumv_r, m, dy
+   integer :: c, ii, jj, kk, ll, nn, oo, r, nsuppf, nf, nshaft, nfdof, pstep, ptotal, ielok
+ !     function
+   integer :: inddis, ifidxof, foundation_ndof_f, support_dof_x
+@@ -113,8 +113,8 @@ subroutine matrizes(pp,pdm,errmsg,ok)
+   integer :: oki
+ !
+ !     sub-matrices mass/stiffness/gyroscopic/ump
+-  real(lrk) :: sm, sk, sg, su
+-  dimension sm(8,8),sk(8,8),sg(8,8),su(8,8)
++  real(lrk) :: sm, sk, sg, sa, su
++  dimension sm(8,8),sk(8,8),sg(8,8),sa(8,8),su(8,8)
+ !
+ !     maximal number of global matrices elements
+   integer :: mtg
+@@ -219,6 +219,8 @@ subroutine matrizes(pp,pdm,errmsg,ok)
+   call zermat_r(mkb,dm,dm,mtg,mtg)
+ !     gyroscopic -> mg
+   call zermat_r(mg,dm,dm,mtg,mtg)
++!     independent prescribed-spin kinetic bilinear -> mka (A07)
++  call zermat_r(mka,dm,dm,mtg,mtg)
+ !
+   c = 1
+   m = n(1)
+@@ -257,6 +259,12 @@ subroutine matrizes(pp,pdm,errmsg,ok)
+       errmsg = 'Invalid Timoshenko/Cowper shaft gyroscopic data'
+       return
+     end if
++    call timo_cowper_angular_acceleration(dy,es(r),gs(r),rs(r),s(r),ie(r),&
++    &gfc(r),sa,phi_a,kappa_a,ielok)
++    if (ielok .lt. 0) then
++      errmsg = 'Invalid Timoshenko/Cowper angular-acceleration data'
++      return
++    end if
+ !
+ !       Phi is also used by the static elastic-line interpolation.
+     vkasc(r) = a
+@@ -290,6 +298,7 @@ subroutine matrizes(pp,pdm,errmsg,ok)
+ !
+ !           gyroscopic matrix
+         mg(ii,jj) = mg(ii,jj)+sg(nn,oo)
++        mka(ii,jj) = mka(ii,jj)+sa(nn,oo)
+       end do
+     end do
+     pstep=pstep+1
+@@ -328,6 +337,7 @@ subroutine matrizes(pp,pdm,errmsg,ok)
+         nn = oo+4
+         mg(ll,nn) = mg(ll,nn)-idy(ii)
+         mg(nn,ll) = mg(nn,ll)+idy(ii)
++        mka(nn,ll) = mka(nn,ll)+idy(ii)
+       else
+ !           Chen flexible-disk reduction.  Id and Ip act on two added
+ !           disk rotational DOFs.  KR connects disk and shaft rotations.
+@@ -337,6 +347,7 @@ subroutine matrizes(pp,pdm,errmsg,ok)
+         mm(nn,nn) = mm(nn,nn)+idx(ii)
+         mg(ll,nn) = mg(ll,nn)-idy(ii)
+         mg(nn,ll) = mg(nn,ll)+idy(ii)
++        mka(nn,ll) = mka(nn,ll)+idy(ii)
+ !
+ !           theta-x spring pair
+         mk1(oo+3,oo+3)=mk1(oo+3,oo+3)+dkr(ii)
+@@ -392,6 +403,7 @@ subroutine matrizes(pp,pdm,errmsg,ok)
+ !         add giroscopic matrix
+       mg(ll,nn) = mg(ll,nn)-iyic(ii)
+       mg(nn,ll) = mg(nn,ll)+iyic(ii)
++      mka(nn,ll) = mka(nn,ll)+iyic(ii)
+ !
+     else
+ !         if concentrated position not found return
+diff --git a/src/source/rd_commons.f90 b/src/source/rd_commons.f90
+index edfc0e2..f4e2cc9 100644
+--- a/src/source/rd_commons.f90
++++ b/src/source/rd_commons.f90
+@@ -873,9 +873,12 @@ module com_mat
+   implicit none
+   private
+   integer, parameter :: mtg = 500
+-  public :: mm, mg, dm, smn
++  public :: mm, mg, mka, dm, smn
+   real(lrk), save :: mm(mtg,mtg)
+   real(lrk), save :: mg(mtg,mtg)
++  ! Canonical prescribed-Euler-spin kinetic bilinear; not an alias of G.
++  ! A07: application to varying spin requires an established drive-work model.
++  real(lrk), save :: mka(mtg,mtg) = 0.0_lrk
+   integer, save :: dm
+   integer, save :: smn
+ end module com_mat
+diff --git a/src/source/rotordin.f90 b/src/source/rotordin.f90
+index f8f8731..e18e268 100644
+--- a/src/source/rotordin.f90
++++ b/src/source/rotordin.f90
+@@ -226,7 +226,8 @@ program rotordin
+       call scexems(lm,std,lgn,1,0)
+ !
+ !         torsion modal damping matrix
+-      call tmdamp()
++      call tmdamp_checked(msg,ok)
++      if (ok .ne. 0) call emsg(lgn,1,msg)
+ !
+       if (opt(1)) then
+         call scexems(lm,std,lgn,0,23)
+diff --git a/src/source/shaft_timoshenko_cowper.f90 b/src/source/shaft_timoshenko_cowper.f90
+index 19459f9..b8c5e25 100644
+--- a/src/source/shaft_timoshenko_cowper.f90
++++ b/src/source/shaft_timoshenko_cowper.f90
+@@ -9,7 +9,7 @@ module shaft_timoshenko_cowper
+   integer, parameter :: lrk = real64
+   private
+   public :: cowper_properties, timo_cowper_stiffness, timo_cowper_mass, &
+-            timo_cowper_gyro, ump_element_matrix
++            timo_cowper_gyro, timo_cowper_angular_acceleration, ump_element_matrix
+ contains
+ 
+ ! ============================================================================
+@@ -205,6 +205,57 @@ subroutine timo_cowper_gyro(l, e, gs, rho, area, iner, gf, ge, phi, kappa, ok)
+   ok=1
+ end subroutine timo_cowper_gyro
+ 
++subroutine timo_cowper_angular_acceleration(l,e,gs,rho,area,iner,gf,ka,phi,kappa,ok)
++  ! Lalanne & Ferraris, pp.2-4, Eqs.(1.2)-(1.7):
++  ! T_cross = Omega * qdot^T B q, B = integral 2*rho*I*N_psi^T*N_theta dy.
++  ! With phi_spin prescribed and zero generalized drive work in the two tilt
++  ! coordinates, K_alpha=B and G=B-transpose(B).  A physical driving torque
++  ! may contribute additional tilt work; the production ramp gate handles that
++  ! currently unspecified contract.  Never infer B by copying the assembled G.
++  ! The complete Timoshenko rotation fields below match the native M/K/G
++  ! interpolation. Three-point Gauss integration is exact (quartic integrand).
++  use, intrinsic :: ieee_arithmetic, only: ieee_is_finite
++  implicit none
++  real(lrk), intent(in) :: l,e,gs,rho,area,iner,gf
++  real(lrk), intent(out) :: ka(8,8),phi,kappa
++  integer, intent(out) :: ok
++  real(lrk) :: absc(3),weights(3),xi,r(4),nx(8),nz(8),scale
++  integer :: k,i,j
++
++  ka=0.0_lrk; phi=0.0_lrk; kappa=0.0_lrk; ok=-1
++  ! Test finiteness before ordered comparisons or any arithmetic; quiet NaN
++  ! must be rejected without an invalid-operation trap in the Debug profile.
++  if (.not.all(ieee_is_finite([l,e,gs,rho,area,iner,gf]))) return
++  if (l<=0.0_lrk .or. rho<=0.0_lrk) return
++  call cowper_properties(e,gs,area,iner,kappa,phi,ok)
++  if (ok<0) return
++  phi=12.0_lrk*e*iner/(kappa*gs*area*l*l)
++  absc=[-sqrt(3.0_lrk/5.0_lrk),0.0_lrk,sqrt(3.0_lrk/5.0_lrk)]
++  weights=[5.0_lrk/9.0_lrk,8.0_lrk/9.0_lrk,5.0_lrk/9.0_lrk]
++  do k=1,3
++    xi=(absc(k)+1.0_lrk)/2.0_lrk
++    r(1)=6.0_lrk*xi*(xi-1.0_lrk)/(l*(1.0_lrk+phi))
++    r(2)=(1.0_lrk-4.0_lrk*xi+3.0_lrk*xi*xi+(1.0_lrk-xi)*phi)/(1.0_lrk+phi)
++    r(3)=-r(1)
++    r(4)=(-2.0_lrk*xi+3.0_lrk*xi*xi+xi*phi)/(1.0_lrk+phi)
++    ! theta_x=+dz/dy and theta_z=-dx/dy in the Euler-Bernoulli limit.
++    nx=[0.0_lrk,r(1),r(2),0.0_lrk,0.0_lrk,r(3),r(4),0.0_lrk]
++    nz=[-r(1),0.0_lrk,0.0_lrk,r(2),-r(3),0.0_lrk,0.0_lrk,r(4)]
++    scale=gf*rho*iner*l*weights(k)
++    do j=1,8
++      do i=1,8
++        ka(i,j)=ka(i,j)+scale*nz(i)*nx(j)
++      enddo
++    enddo
++  enddo
++  if (.not.all(ieee_is_finite(ka)) .or. .not.ieee_is_finite(phi) .or. &
++      .not.ieee_is_finite(kappa)) then
++    ka=0.0_lrk; phi=0.0_lrk; kappa=0.0_lrk; ok=-1
++    return
++  endif
++  ok=1
++end subroutine timo_cowper_angular_acceleration
++
+ subroutine ump_element_matrix(l, ump, ku)
+   implicit none
+   real(lrk), intent(in) :: l, ump
+diff --git a/src/source/torsion/tcouprops.f90 b/src/source/torsion/tcouprops.f90
+index acfa38b..faaeddd 100644
+--- a/src/source/torsion/tcouprops.f90
++++ b/src/source/torsion/tcouprops.f90
+@@ -41,6 +41,7 @@ subroutine tcouprops(cplgid,cplgst,cplgdp,cplgin,cplgsr,&
+ &rssec,gssec,ratsec,dmpsec,idsec,&
+ &ncsp,ncp,nn,mts,mtt,mxs,mxc,errmsg,ok)
+   use rd_kinds, only: lrk, wp
++  use, intrinsic :: ieee_arithmetic, only: ieee_is_finite
+   implicit none
+ !
+   character(len=99) :: errmsg
+@@ -86,6 +87,16 @@ subroutine tcouprops(cplgid,cplgst,cplgdp,cplgin,cplgsr,&
+   ncsp = 0
+ !     coupling loop
+   do ii = 1,ncp
++!       Passive coupling contract in reflected train coordinates.
++    if (.not.ieee_is_finite(cplgdp(ii)).or..not.ieee_is_finite(cplgst(ii)).or. &
++        .not.ieee_is_finite(cplgsr(ii))) then
++      write(errmsg,'(a,i0,a)') 'A04 tcouprops: coupling ',ii,' requires finite stiffness, damping and speed ratio'
++      return
++    end if
++    if (cplgdp(ii)<0._wp.or.cplgst(ii)<0._wp.or.cplgsr(ii)==0._wp) then
++      write(errmsg,'(a,i0,a)') 'A04 tcouprops: coupling ',ii,' requires K,C>=0 and nonzero speed ratio'
++      return
++    end if
+ !       coupling section final position index
+     jj = cplgid(ii)
+     cfi = jj+1
+@@ -113,6 +124,10 @@ subroutine tcouprops(cplgid,cplgst,cplgdp,cplgin,cplgsr,&
+     end if
+ !       number of sections
+     nsc = fci-ici
++    if(nsc<1.or.ncsp+nsc>mtt) then
++      write(errmsg,'(a,i0,a)') 'A04 tcouprops: coupling ',ii,' has invalid subdivision count'
++      return
++    end if
+ !
+ !       coupling sections
+     do jj = 1,nsc
+@@ -125,6 +140,10 @@ subroutine tcouprops(cplgid,cplgst,cplgdp,cplgin,cplgsr,&
+ !         section inertia
+ !         compensate density here, just dely
+       scj(jj) = rs(kk)*(Y(kk+1)-Y(kk))*2*Ie(kk)
++      if(dyc(jj)<=0._wp.or.gs(kk)<=0._wp.or.Ie(kk)<=0._wp.or.scj(jj)<=0._wp) then
++        write(errmsg,'(a,i0,a,i0)') 'A04 tcouprops: nonpositive geometry/material in coupling ',ii,', division ',kk
++        return
++      end if
+ !         section stiffness
+       sck(jj) = gs(kk)*2*Ie(kk)/dyc(jj)
+     end do
+@@ -161,8 +180,12 @@ subroutine tcouprops(cplgid,cplgst,cplgdp,cplgin,cplgsr,&
+       cgs(jj) = sck(jj)/2/Ie(kk)*dyc(jj)*ack
+ !         speed ratio
+       spr(jj) = cplgsr(ii)
+-!         damping
+-      cdp(jj) = cplgdp(ii)/nsc
++!         Kelvin-Voigt coupling subdivisions are in SERIES. Equal
++!         relaxation time c_e/k_e preserves terminal K+i*w*C when their
++!         internal inertias are neglected; equal parts require n*C.
++!         The original elastic compliance weights also cover unequal
++!         lengths/sections and equivalent torsional compliance lengths.
++      cdp(jj) = cplgdp(ii)*sck(jj)/tk
+     end do
+ !       results
+     do jj = 1,nsc
+diff --git a/src/source/torsion/thhmat.f90 b/src/source/torsion/thhmat.f90
+index 32570db..12b846c 100644
+--- a/src/source/torsion/thhmat.f90
++++ b/src/source/torsion/thhmat.f90
+@@ -1,78 +1,91 @@
+-!     $Id$
+-!     ==================================================================
+-!
+-!>    @file thhmat.f
+-!>    @brief calculates receptance matrix hh
+-!>    last changes:<br>
+-!>    new file feb-20 - f.
+-!
+-!>    @brief calculates complex receptance matrix hh
+-!
+-!>    @param[in] rad system frequency (rad/s)
+-!>    @param[in] reye eye matrix [1]
+-!>    @param[in] tmd modal damping matrix
+-!>    @param[in] cfi eingenvectors matrix
+-!>    @param[in] clam engenvalues matrix
+-!>    @param[out] m1 return complex receptance matrix
+-!>    @param[in] nmd number of modes to consider
+-!>    @param[in] mdoff mode offset
+-!>    @param[in] ddm size of system and output matrices
+-!>    @param[in] mtg reye,tmd,cfi,clam square matrices dimension
+-!
++!> Torsional receptance in a complete or truncated undamped modal basis.
++!> Physical damping is generally nonclassical: retain the full modal block.
++!> See docs/qualification/A04_TORSIONAL_DAMPING.md.
+ subroutine thhmat(rad,reye,tmd,cfi,clam,m1,nmd,mdoff,ddm,mtg)
+-  use rd_kinds, only: lrk, wp
++  use rd_kinds, only: wp
++  use, intrinsic :: iso_fortran_env, only: error_unit
+   implicit none
+-!
+-  integer :: nmd, mdoff, ddm, mtg
+-  real(lrk) :: rad, reye, tmd
+-!
+-  complex(wp) :: clam, cfi, m1
+-  dimension reye(mtg,mtg),tmd(mtg,mtg),cfi(mtg,mtg),clam(mtg,mtg),&
+-  &m1(mtg,mtg)
+-!
+-  real(lrk) :: rd2n
+-  integer :: nmdt
+-  complex(wp) :: j0, j1, r1, pmn, m2
+-  dimension m2(mtg,mtg)
+-  character(len=1) :: c1
+-  dimension c1(2)
+-  parameter (j0 = 0,j1 = (0,1),r1 = (1,0),&
+-  &c1 = (/'N','T'/))
+-!
+-!     -w^2
+-  rd2n = -1*rad**2
+-!     -w^2*eye -> m1
+-  call escmat_rrc(reye,m1,rd2n,ddm,ddm,mtg,mtg)
+-!
+-!     j*w*tcp -> m2
+-  pmn = j1*rad
+-  call escmat_rcc(tmd,m2,pmn,ddm,ddm,mtg,mtg)
+-!
+-!     m1+m2 -> m1
+-  call sommat_c(m1,m2,m1,ddm,ddm,mtg,mtg)
+-!
+-!     m1+clam -> m2
+-  call sommat_c(m1,clam,m2,ddm,ddm,mtg,mtg)
+-!
+-!     invert diagonal m2 -> m1, mode offset
+-!     starts on line and column 1+mdoff
+-  call invmatd_ct(m2,m1,ddm,mtg,mdoff)
+-!
+-!     subtract mode offset
+-  nmdt = nmd-mdoff
+-!
+-!     following operations are limited
+-!     by the number of modes -> nmdt
+-!
+-!     multiply cfi * m1 -> m2
+-  call ZGEMM (c1(1),c1(1),ddm,nmdt,nmdt,r1,&
+-  &cfi,mtg,m1,mtg,j0,m2,mtg)
+-!
+-!     multiply m2 * cfi' -> m1
+-  call ZGEMM (c1(1),c1(2),ddm,ddm,nmdt,r1,&
+-  &m2,mtg,cfi,mtg,j0,m1,mtg)
+-!
+-  return
+-!
++  integer :: nmd,mdoff,ddm,mtg,ok
++  real(wp) :: rad,reye(mtg,mtg),tmd(mtg,mtg)
++  complex(wp) :: cfi(mtg,mtg),clam(mtg,mtg),m1(mtg,mtg)
++  character(len=99) :: errmsg
++  call thhmat_checked(rad,reye,tmd,cfi,clam,m1,nmd,mdoff,ddm,mtg,errmsg,ok)
++  if(ok/=0) then
++    write(error_unit,'(a)') trim(errmsg)
++    error stop 1
++  end if
+ end subroutine thhmat
+-!
++
++subroutine thhmat_checked(rad,reye,tmd,cfi,clam,m1,nmd,mdoff,ddm,mtg,errmsg,ok)
++  use rd_kinds, only: wp
++  use, intrinsic :: ieee_arithmetic, only: ieee_is_finite
++  implicit none
++  integer,intent(in) :: nmd,mdoff,ddm,mtg
++  real(wp),intent(in) :: rad,reye(mtg,mtg),tmd(mtg,mtg)
++  complex(wp),intent(in) :: cfi(mtg,mtg),clam(mtg,mtg)
++  complex(wp),intent(out) :: m1(mtg,mtg)
++  character(len=99),intent(out) :: errmsg
++  integer,intent(out) :: ok
++  complex(wp),allocatable :: z(:,:),lu(:,:),rhs(:,:),solution(:,:),res(:,:)
++  integer,allocatable :: ipiv(:)
++  integer :: nr,i,j,ii,jj,info
++  real(wp) :: denom,eta,znorm,xnorm,bnorm,tol
++  ok=-1;errmsg=' ';m1=(0._wp,0._wp)
++  nr=nmd-mdoff
++  if(ddm<1.or.ddm>mtg.or.mdoff<0.or.nmd>ddm.or.nr<1) then
++    errmsg='A04 thhmat: invalid dimensions or modal range';return
++  end if
++  if(.not.ieee_is_finite(rad).or..not.all(ieee_is_finite(tmd(1:ddm,1:ddm))).or. &
++    .not.all(ieee_is_finite(reye(1:ddm,1:ddm))).or. &
++    .not.all(ieee_is_finite(real(cfi(1:ddm,1:nr),wp))).or. &
++    .not.all(ieee_is_finite(aimag(cfi(1:ddm,1:nr)))).or. &
++    .not.all(ieee_is_finite(real(clam(1:ddm,1:ddm),wp))).or. &
++    .not.all(ieee_is_finite(aimag(clam(1:ddm,1:ddm))))) then
++    errmsg='A04 thhmat: finite frequency, modal matrices and vectors required';return
++  end if
++  if(abs(rad)>sqrt(huge(1._wp))) then
++    errmsg='A04 thhmat: frequency square overflows real64';return
++  end if
++  allocate(z(nr,nr),lu(nr,nr),rhs(nr,ddm),solution(nr,ddm),res(nr,ddm),ipiv(nr))
++  do j=1,nr
++    jj=j+mdoff
++    do i=1,nr
++      ii=i+mdoff
++      z(i,j)=clam(ii,jj)-rad**2*reye(ii,jj)+cmplx(0._wp,rad*tmd(ii,jj),wp)
++    end do
++  end do
++  if(.not.all(ieee_is_finite(real(z,wp))).or..not.all(ieee_is_finite(aimag(z)))) then
++    errmsg='A04 thhmat: nonfinite modal dynamic stiffness';return
++  end if
++  ! Solve Z_modal * X = Phi_retained^T; never invert only its diagonal.
++  ! CFI has already been shifted by mdoff by the production callers.
++  rhs=transpose(cfi(1:ddm,1:nr));solution=rhs;lu=z
++  call zgetrf(nr,nr,lu,nr,ipiv,info)
++  if(info/=0) then
++    write(errmsg,'(a,i0)') 'A04 thhmat: singular modal dynamic stiffness; LU info=',info
++    return
++  end if
++  call zgetrs('N',nr,ddm,lu,nr,ipiv,solution,nr,info)
++  if(info/=0) then
++    write(errmsg,'(a,i0)') 'A04 thhmat: modal solve failed; LAPACK info=',info
++    return
++  end if
++  if(.not.all(ieee_is_finite(real(solution,wp))).or..not.all(ieee_is_finite(aimag(solution)))) then
++    errmsg='A04 thhmat: nonfinite modal response';return
++  end if
++  res=matmul(z,solution)-rhs
++  znorm=maxval(sum(abs(z),dim=2));xnorm=maxval(sum(abs(solution),dim=2));bnorm=maxval(sum(abs(rhs),dim=2))
++  denom=znorm*xnorm+bnorm
++  eta=maxval(sum(abs(res),dim=2))/max(denom,tiny(1._wp))
++  tol=1000._wp*epsilon(1._wp)*real(max(nr,ddm),wp)
++  if(.not.ieee_is_finite(eta).or.eta>tol) then
++    write(errmsg,'(a,es10.2,a,es10.2)') 'A04 thhmat: modal residual=',eta,' exceeds ',tol
++    return
++  end if
++  m1(1:ddm,1:ddm)=matmul(cfi(1:ddm,1:nr),solution)
++  if(.not.all(ieee_is_finite(real(m1(1:ddm,1:ddm),wp))).or. &
++     .not.all(ieee_is_finite(aimag(m1(1:ddm,1:ddm))))) then
++    errmsg='A04 thhmat: nonfinite physical receptance';m1=(0._wp,0._wp);return
++  end if
++  ok=0
++end subroutine thhmat_checked
+diff --git a/src/source/torsion/tmatrices.f90 b/src/source/torsion/tmatrices.f90
+index 1f4c6e8..6984f07 100644
+--- a/src/source/torsion/tmatrices.f90
++++ b/src/source/torsion/tmatrices.f90
+@@ -138,6 +138,7 @@ subroutine tmatrices(im,pdm,errmsg,ok)
+   use com_tman, only: ntbr, tpc, tkk, tcc, tjj, sct
+   use com_tmat, only: tj, tk, tc, dm
+   use rd_kinds, only: lrk, wp
++  use, intrinsic :: ieee_arithmetic, only: ieee_is_finite
+   implicit none
+ !
+ !     arguments
+@@ -364,8 +365,15 @@ subroutine tmatrices(im,pdm,errmsg,ok)
+           tj(jj,kk) = tj(jj,kk)+ds1*ds3*jt3(oo,pp)
+           tk(jj,kk) = tk(jj,kk)+ds2*ds3*kt3(oo,pp)
+         end if
+-!           damping
+-        tc(jj,kk) = tc(jj,kk)+ds3*scdp
++!           Relative viscous torque: R=.5*c_e*[r_e*(v2-v1)]**2.
++!           Native q is angle reflected to reference speed: phi_e=r_e*q_e.
++!           Therefore C_e=r_e**2*c_e*B'B, matching native elastic
++!           connectivity (two linear half-elements for the 3-node K).
++        if(im==1) then
++          tc(jj,kk) = tc(jj,kk)+ds3*scdp*kt2(oo,pp)
++        else
++          tc(jj,kk) = tc(jj,kk)+ds3*scdp*kt3(oo,pp)
++        end if
+       end do
+     end do
+ !
+@@ -381,6 +389,12 @@ subroutine tmatrices(im,pdm,errmsg,ok)
+   call progress_stage('TORSION_MATRIX_ASSEMBLY',&
+   &'assemble torsional restrictions')
+   do ii = 1,ntbr
++    if(.not.ieee_is_finite(tcc(ii)).or..not.ieee_is_finite(sct)) then
++      errmsg='A04 tmatrices: finite torsional restriction damping and scale required';return
++    end if
++    if(tcc(ii)<0._wp.or.sct<0._wp) then
++      errmsg='A04 tmatrices: passive restriction requires nonnegative damping and scale';return
++    end if
+ !       bearing division index
+     m1 = indypf(tpc(ii),errmsg)
+     if (m1 .lt. 0) then
+@@ -495,11 +509,24 @@ end subroutine tmatrices
+ !>    @brief modal damping matrix
+ !
+ subroutine tmdamp()
++  use, intrinsic :: iso_fortran_env, only: error_unit
++  implicit none
++  character(len=99) :: errmsg
++  integer :: ok
++  call tmdamp_checked(errmsg,ok)
++  if(ok/=0) then
++    write(error_unit,'(a)') trim(errmsg)
++    error stop 1
++  end if
++end subroutine tmdamp
++
++subroutine tmdamp_checked(errmsg,ok)
+   use com_mdamps, only: tdmrt, tdmmd, ntdmp
+-  use com_mdampso, only: mdoff
+   use com_tepm, only: rfi, rlam, ddm
+   use com_tmdm, only: tmd
+-  use rd_kinds, only: lrk
++  use com_tmat, only: tj,tc,dm
++  use rd_kinds, only: lrk,wp
++  use, intrinsic :: ieee_arithmetic, only: ieee_is_finite
+   implicit none
+ !
+ !     modal dampings
+@@ -518,30 +545,109 @@ subroutine tmdamp()
+ !
+ !     modal damping
+ !
+-  integer :: jj, mi
++  integer :: jj, mi,ok
+   real(lrk) :: om
++  character(len=99) :: errmsg
++  real(wp), allocatable :: gram(:,:),work(:,:)
+ !
+   intrinsic :: sqrt
+ !
+-!     zero modal damping matrix
+-  call zermat_r(tmd,ddm,ddm,mtg,mtg)
++  ok=-1;errmsg=' ';tmd=0._wp
++  if(ddm<1.or.ddm>mtg.or.ddm/=dm) then
++    errmsg='A04 tmdamp: invalid physical/modal dimensions';return
++  end if
++  if(ntdmp<0.or.ntdmp>mxtdmp) then
++    errmsg='A04 tmdamp: invalid modal damping count';return
++  end if
++  if(.not.all(ieee_is_finite(rfi(1:dm,1:ddm))).or. &
++     .not.all(ieee_is_finite(tc(1:dm,1:dm))).or. &
++     .not.all(ieee_is_finite(tj(1:dm,1:dm))).or. &
++     .not.all(ieee_is_finite(rlam(1:ddm)))) then
++    errmsg='A04 tmdamp: finite modal basis, inertia, frequencies and physical C required';return
++  end if
++  allocate(gram(ddm,ddm),work(dm,ddm))
++  work=matmul(tj(1:dm,1:dm),rfi(1:dm,1:ddm))
++  gram=matmul(transpose(rfi(1:dm,1:ddm)),work)
++  do jj=1,ddm
++    gram(jj,jj)=gram(jj,jj)-1._wp
++  end do
++  if(maxval(abs(gram))>1e-8_wp) then
++    errmsg='A04 tmdamp: basis is not J-orthonormal; full modal damping not qualified';return
++  end if
++!     Physical damping generally creates a FULL modal matrix. Discarding
++!     offdiagonal entries is valid only under a proven classical-damping
++!     assumption; no such assumption is made for discrete couplings.
++  work=matmul(tc(1:dm,1:dm),rfi(1:dm,1:ddm))
++  tmd(1:ddm,1:ddm)=matmul(transpose(rfi(1:dm,1:ddm)),work)
+ !
+   do jj = 1,ntdmp
+ !       mode id
+     mi = tdmmd(jj)
+ !       check mode id
+     if (mi .gt. 0 .and. mi .le. ddm) then
++      if(.not.ieee_is_finite(tdmrt(jj))) then
++        errmsg='A04 tmdamp: finite modal damping ratio required';tmd=0._wp;return
++      end if
++      if(tdmrt(jj)<0._wp.or.rlam(mi)<0._wp) then
++        errmsg='A04 tmdamp: nonnegative modal damping ratio and squared frequency required';tmd=0._wp;return
++      end if
+ !         natural frequency rad/s
+       om = sqrt(rlam(mi))
+ !         modal damping = 2*w*qsi
+-      tmd(mi,mi) = 2*om*tdmrt(jj)
++      tmd(mi,mi) = tmd(mi,mi)+2*om*tdmrt(jj)
+     else
+ !         warning
+-      call elmsgw(0,25,'tmdamp')
++      errmsg='A04 tmdamp: specified modal damping index outside modal basis';tmd=0._wp;return
+     end if
+   end do
+ !
++  if(.not.all(ieee_is_finite(tmd(1:ddm,1:ddm)))) then
++    errmsg='A04 tmdamp: nonfinite transformed modal damping';tmd=0._wp;return
++  end if
++  ok=0
+   return
+ !
+-end subroutine tmdamp
++end subroutine tmdamp_checked
++
++!> Return physical damping, including only the added MODAL damping pulled
++!> back to q coordinates: Cadd = J*Phi*diag(2*zeta*omega)*Phi'*J.
++!> Cphys is already represented in tmd and must not be added twice.
++subroutine torsion_physical_damping(cout,ld,errmsg,ok)
++  use rd_kinds, only: wp
++  use com_tmat, only: tj,tc,dm
++  use com_tepm, only: rfi,rlam,ddm
++  use com_mdamps, only: tdmrt,tdmmd,ntdmp
++  use, intrinsic :: ieee_arithmetic, only: ieee_is_finite
++  implicit none
++  integer,intent(in) :: ld
++  real(wp),intent(out) :: cout(ld,ld)
++  character(len=99),intent(out) :: errmsg
++  integer,intent(out) :: ok
++  real(wp),allocatable :: jp(:)
++  real(wp) :: ci
++  integer :: h,i,j,mi
++  ok=-1;errmsg=' ';cout=0._wp
++  if(dm<1.or.dm>ld) then
++    errmsg='A04 torsion_physical_damping: invalid dimension';return
++  end if
++  call tmdamp_checked(errmsg,ok)
++  if(ok/=0) return
++  ok=-1
++  cout(1:dm,1:dm)=tc(1:dm,1:dm)
++  allocate(jp(dm))
++  do h=1,ntdmp
++    mi=tdmmd(h)
++    ci=2._wp*sqrt(rlam(mi))*tdmrt(h)
++    jp=matmul(tj(1:dm,1:dm),rfi(1:dm,mi))
++    do j=1,dm
++      do i=1,dm
++        cout(i,j)=cout(i,j)+ci*jp(i)*jp(j)
++      end do
++    end do
++  end do
++  if(.not.all(ieee_is_finite(cout(1:dm,1:dm)))) then
++    errmsg='A04 torsion_physical_damping: nonfinite physical damping';cout=0._wp;return
++  end if
++  ok=0
++end subroutine torsion_physical_damping
+ !
+diff --git a/src/source/torsion/tnuinteg.f90 b/src/source/torsion/tnuinteg.f90
+index fc93369..aa8ec1f 100644
+--- a/src/source/torsion/tnuinteg.f90
++++ b/src/source/torsion/tnuinteg.f90
+@@ -266,72 +266,178 @@ end subroutine loadvf
+ !>    @param[out] ok return flag. unsuccessful if <0.
+ !
+ subroutine accel0f(mm,kk,cc,uo,vo,fo,dm,mtg,wo,errmsg,ok)
+-  use rd_textfun, only: fomsgf
+-  use rd_kinds, only: lrk, wp
++  use rd_kinds, only: wp
++  use, intrinsic :: ieee_arithmetic, only: ieee_is_finite
+   implicit none
+-!
+-  integer :: dm, mtg, ok
+-  real(wp) :: mm, kk, cc, uo, vo, fo, wo
+-  dimension mm(mtg,mtg),kk(mtg,mtg),cc(mtg,mtg),&
+-  &uo(mtg),vo(mtg),fo(mtg),wo(mtg)
+-  character(len=99) :: errmsg
+-!
+-  integer :: ipiv
+-  real(wp) :: mmd, ku, cv, dv
+-  dimension ipiv(mtg),mmd(mtg,mtg),&
+-  &ku(mtg,1),cv(mtg,1),dv(mtg,1)
+-!
+-  integer :: ii
+-  character(len=1) :: c1
+-  character(len=3) :: erc
+-  character(len=7) :: nmm
+-  parameter (c1 = 'N',nmm = 'accel0f')
+-!
+-  intrinsic :: real
+-!
+-!     initialize return
+-  ok = -1
+-!
+-!     copy torsion inertia matrix mm -> mmd
+-  call copmat_d(mm,mmd,dm,mtg,mtg)
+-!     LU -> mmd
+-  call dgetrf(dm,dm,mmd,mtg,ipiv,ii)
+-  if(ii .ne. 0) then
+-    write(erc,5) ii
+-    errmsg = fomsgf(99, nmm,28,erc,0)
++  integer,intent(in) :: dm,mtg
++  real(wp),intent(in) :: mm(mtg,mtg),kk(mtg,mtg),cc(mtg,mtg),uo(mtg),vo(mtg),fo(mtg)
++  real(wp),intent(out) :: wo(mtg)
++  character(len=99),intent(out) :: errmsg
++  integer,intent(out) :: ok
++  real(wp),allocatable :: lu(:,:),ku(:),cv(:),rhs(:),candidate(:),work(:)
++  integer,allocatable :: ipiv(:),iwork(:)
++  real(wp) :: mscale,anorm,rcond,eta,force_scale,ratio
++  integer :: info
++  logical :: torsion_matvec_representable
++  ok=-1;errmsg=' ';wo=0._wp
++  if(dm<1.or.dm>mtg) then
++    errmsg='A05 accel0f: invalid dimension; require 1 <= dm <= matrix capacity';return
++  end if
++  if(.not.all(ieee_is_finite(mm(1:dm,1:dm))).or. &
++     .not.all(ieee_is_finite(kk(1:dm,1:dm))).or. &
++     .not.all(ieee_is_finite(cc(1:dm,1:dm))).or. &
++     .not.all(ieee_is_finite(uo(1:dm))).or. &
++     .not.all(ieee_is_finite(vo(1:dm))).or. &
++     .not.all(ieee_is_finite(fo(1:dm)))) then
++    errmsg='A05 accel0f: finite J,C,K,q0,v0,T0 required';return
++  end if
++  mscale=maxval(abs(mm(1:dm,1:dm)))
++  if(mscale==0._wp) then
++    errmsg='A05 accel0f: singular zero inertia matrix J';return
++  end if
++  allocate(lu(dm,dm),ku(dm),cv(dm),rhs(dm),candidate(dm),work(4*dm),ipiv(dm),iwork(dm))
++  ! Uniform scaling avoids dependence of LU/condition estimation on inertia
++  ! units. It does not change the equation and does not form an inverse.
++  lu=mm(1:dm,1:dm)/mscale
++  anorm=maxval(sum(abs(lu),dim=2))
++  call dgetrf(dm,dm,lu,dm,ipiv,info)
++  if(info/=0) then
++    write(errmsg,'(a,i0,a,i0)') 'A05 accel0f: singular/invalid J; LU info=',info,', dofs=',dm
+     return
+   end if
+-!
+-!     multiplies (kk * dv(uo)) -> ku
+-  call DGEMM (c1,c1, dm, 1, dm, real(1._lrk, wp), kk, mtg,uo, mtg, real(0._lrk, wp), ku, mtg)
+-!
+-!     multiplies (cc * dv(vo)) -> cv
+-  call DGEMM (c1,c1, dm, 1, dm, real(1._lrk, wp), cc, mtg,vo, mtg, real(0._lrk, wp), cv, mtg)
+-!
+-!     difference ku(kk*uo)-cv(cc*vo) -> ku
+-  call difmat_d(ku,cv,ku,dm,1,mtg,1)
+-!
+-!     difference cv(fo)-ku((kk*uo)-(cc*vo)) -> dv
+-  call difmat_d(fo,ku,dv,dm,1,mtg,1)
+-!
+-!     copy force vector to solution dv->wo
+-  call copv_dd(dv,wo,dm,mtg,mtg)
+-!     solve system inverse of mass times force -> wo
+-!     force dv = fo-(kk*uo)-(cc*vo)
+-!     lapack system solver -> wo
+-  call dgetrs(c1,dm,1,mmd,mtg,ipiv,wo,dm,ii)
+-  if(ii .ne. 0) then
+-    write(erc,5) ii
+-    errmsg = fomsgf(99, nmm,32,erc,0)
++  call dgecon('I',dm,lu,dm,anorm,rcond,work,iwork,info)
++  if(info/=0.or..not.ieee_is_finite(rcond)) then
++    errmsg='A05 accel0f: inertia condition estimate failed';return
++  end if
++  if(rcond<=epsilon(1._wp)*real(dm,wp)) then
++    write(errmsg,'(a,es10.2,a,i0)') 'A05 accel0f: ill-conditioned inertia; rcond=',rcond,', dofs=',dm
+     return
+   end if
+-!
+-  ok = 0
+-  return
+-!
+-5 format(i3)
+-!
++  ! Physical equilibrium at the initial instant:
++  ! J*a0 = T0 - C*v0 - K*q0. Both internal forces oppose excitation.
++  if(.not.torsion_matvec_representable(kk,uo,dm,mtg,mtg)) then
++    errmsg='A05 accel0f: elastic torque intermediate exceeds real64 range; rescale model';return
++  end if
++  if(.not.torsion_matvec_representable(cc,vo,dm,mtg,mtg)) then
++    errmsg='A05 accel0f: damping torque intermediate exceeds real64 range; rescale model';return
++  end if
++  ku=matmul(kk(1:dm,1:dm),uo(1:dm))
++  cv=matmul(cc(1:dm,1:dm),vo(1:dm))
++  if(.not.all(ieee_is_finite(ku)).or..not.all(ieee_is_finite(cv))) then
++    errmsg='A05 accel0f: nonfinite initial elastic or damping torque';return
++  end if
++  force_scale=max(maxval(abs(fo(1:dm))),maxval(abs(ku)),maxval(abs(cv)))
++  rhs=0._wp
++  if(force_scale>0._wp) then
++    rhs=fo(1:dm)/force_scale-cv/force_scale-ku/force_scale
++    if(mscale<1._wp) then
++      if(force_scale>huge(1._wp)*mscale) then
++        errmsg='A05 accel0f: initial torque/inertia scale exceeds real64 capacity';return
++      end if
++    end if
++    ratio=force_scale/mscale
++    if(maxval(abs(rhs))>1._wp) then
++      if(ratio>huge(1._wp)/maxval(abs(rhs))) then
++        errmsg='A05 accel0f: scaled initial RHS exceeds real64 capacity';return
++      end if
++    end if
++    rhs=rhs*ratio
++  end if
++  candidate=rhs
++  call dgetrs('N',dm,1,lu,dm,ipiv,candidate,dm,info)
++  if(info/=0) then
++    write(errmsg,'(a,i0)') 'A05 accel0f: initial acceleration LU solve failed; info=',info
++    return
++  end if
++  if(.not.all(ieee_is_finite(candidate))) then
++    errmsg='A05 accel0f: nonfinite initial acceleration';return
++  end if
++  ! Independently reconstruct the ORIGINAL signed equilibrium, not the
++  ! RHS buffer used by LU. Publish acceleration only after this gate.
++  call torsion_initial_residual(mm,kk,cc,uo,vo,fo,candidate,dm,mtg,dm,eta,info)
++  if(info/=0) then
++    if(info==-2) then
++      errmsg='A05 accel0f: equilibrium torque intermediate exceeds real64 range; rescale model';return
++    end if
++    write(errmsg,'(a,es10.2,a,i0)') 'A05 accel0f: initial equilibrium residual failed; eta=',eta,', dofs=',dm
++    return
++  end if
++  wo(1:dm)=candidate
++  ok=0
+ end subroutine accel0f
++
++!> Physical initial-equilibrium residual with independent signed terms.
++!> eta = ||J*a + C*v + K*q - T||inf /
++!>       (||J*a||inf + ||C*v||inf + ||K*q||inf + ||T||inf).
++!> Common torque scaling avoids an overflowing denominator and preserves
++!> cancellation information; dimension/finite failures never publish PASS.
++subroutine torsion_initial_residual(mm,kk,cc,q,v,f,a,dm,ld,la,eta,ok)
++  use rd_kinds, only: wp
++  use, intrinsic :: ieee_arithmetic, only: ieee_is_finite
++  implicit none
++  integer,intent(in) :: dm,ld,la
++  real(wp),intent(in) :: mm(ld,ld),kk(ld,ld),cc(ld,ld),q(ld),v(ld),f(ld),a(la)
++  real(wp),intent(out) :: eta
++  integer,intent(out) :: ok
++  real(wp),allocatable :: ma(:),cv(:),kq(:),res(:)
++  real(wp) :: scale_t,den,tol
++  logical :: torsion_matvec_representable
++  ok=-1;eta=huge(1._wp)
++  if(dm<1.or.dm>ld.or.dm>la) return
++  if(.not.all(ieee_is_finite(mm(1:dm,1:dm))).or. &
++     .not.all(ieee_is_finite(cc(1:dm,1:dm))).or. &
++     .not.all(ieee_is_finite(kk(1:dm,1:dm))).or. &
++     .not.all(ieee_is_finite(q(1:dm))).or..not.all(ieee_is_finite(v(1:dm))).or. &
++     .not.all(ieee_is_finite(f(1:dm))).or..not.all(ieee_is_finite(a(1:dm)))) return
++  if(.not.torsion_matvec_representable(mm,a,dm,ld,la).or. &
++     .not.torsion_matvec_representable(cc,v,dm,ld,ld).or. &
++     .not.torsion_matvec_representable(kk,q,dm,ld,ld)) then
++    ok=-2;return
++  end if
++  allocate(ma(dm),cv(dm),kq(dm),res(dm))
++  ma=matmul(mm(1:dm,1:dm),a(1:dm));cv=matmul(cc(1:dm,1:dm),v(1:dm))
++  kq=matmul(kk(1:dm,1:dm),q(1:dm))
++  if(.not.all(ieee_is_finite(ma)).or..not.all(ieee_is_finite(cv)).or..not.all(ieee_is_finite(kq))) return
++  scale_t=max(maxval(abs(ma)),maxval(abs(cv)),maxval(abs(kq)),maxval(abs(f(1:dm))))
++  if(scale_t==0._wp) then
++    eta=0._wp;ok=0;return
++  end if
++  ma=ma/scale_t;cv=cv/scale_t;kq=kq/scale_t
++  res=ma+cv+kq-f(1:dm)/scale_t
++  den=maxval(abs(ma))+maxval(abs(cv))+maxval(abs(kq))+maxval(abs(f(1:dm)/scale_t))
++  eta=maxval(abs(res))/den
++  tol=1000._wp*epsilon(1._wp)*real(dm,wp)
++  if(ieee_is_finite(eta)) then
++    if(eta<=tol) ok=0
++  end if
++end subroutine torsion_initial_residual
++
++!> Conservative pre-arithmetic bound for a real64 matrix-vector product.
++!> n*max(abs(A))*max(abs(x)) <= huge(real64) bounds every intermediate
++!> product and row accumulation without ever evaluating an overflowing
++!> product. It can reject a cancellation-dominated extreme case; it must
++!> not let Debug SIGFPE replace a contextual initial-equilibrium error.
++logical function torsion_matvec_representable(mat,vec,n,ld,lv) result(safe)
++  use rd_kinds, only: wp
++  implicit none
++  integer,intent(in) :: n,ld,lv
++  real(wp),intent(in) :: mat(ld,ld),vec(lv)
++  real(wp) :: am,vm,limit
++  safe=.false.
++  if(n<1.or.n>ld.or.n>lv) return
++  am=maxval(abs(mat(1:n,1:n)));vm=maxval(abs(vec(1:n)))
++  if(am==0._wp.or.vm==0._wp) then
++    safe=.true.;return
++  end if
++  limit=huge(1._wp)/real(n,wp)
++  if(vm>1._wp) then
++    safe=am<=limit/vm
++  else if(am<=limit) then
++    safe=.true.
++  else
++    safe=am*vm<=limit
++  end if
++end function torsion_matvec_representable
+ !
+ !     ==================================================================
+ !>    @brief initialize result matrices u,du/dt,d2u/dt2 []nrstps x nrind
+@@ -1180,7 +1286,9 @@ subroutine tnuinteg(mm,cc,kk,dm,ttrdsz,tper,tload,&
+ !
+ !     results matrices u,du/dt,d2u/dt2 [] nrstps x nrind
+ !     displacement, velocity, acceleration -> resum,resvm,resam
+-  call preprm(rind,nrind,uo,vo,wo,mxttrd,mxo,mtg,&
++!     Results use mxttrs leading dimension, which may differ from the
++!     load-table capacity mxttrd. Preserve every initial DOF column.
++  call preprm(rind,nrind,uo,vo,wo,mxttrs,mxo,mtg,&
+   &resum,resvm,resam)
+ !
+ !     integration constants -> a,tet
+@@ -1216,7 +1324,10 @@ subroutine tnuinteg(mm,cc,kk,dm,ttrdsz,tper,tload,&
+   nper = 0
+ !
+ !     time integration loop
+-  do while (abs(tt-endit) .gt. prec .and. rid .le. nrstps)
++!     A fixed 5e-4-second termination tolerance skipped the final samples
++!     whenever the integration step was smaller. Use the prescribed step
++!     count; the interpolation tolerance is not a termination criterion.
++  do while (tid .lt. nistps .and. rid .le. nrstps)
+ !
+ !       new time index
+     tid = tid+1
+diff --git a/src/source/torsion/tpefora.f90 b/src/source/torsion/tpefora.f90
+index 8e29a92..5190ea7 100644
+--- a/src/source/torsion/tpefora.f90
++++ b/src/source/torsion/tpefora.f90
+@@ -78,9 +78,9 @@ subroutine tpefora(im,ddm,idhr,pse,wra,wui,wnui,hrs,&
+ !
+ !     periodic force response simulation time and time step
+ !
+-  integer :: j, k, l, l1, m, o, prs, di, iiff, oki
+-  real(lrk) :: py, tt, aa, aa1, va, va1, fi, fi1, ww, am, am1, sr, rd, tq, st, ad, tqdiv1f, rargf
+-  complex(wp) :: ca, ca1
++  integer :: j, k, l, l1, m, o, prs, di, oki
++  real(lrk) :: py, tt, aa, va, fi, ww, am, sr, rd, tq, st, xi
++  complex(wp) :: phase,rdhat,tqhat,sthat
+   dimension py(mxr),prs(mxr)
+ !
+ !     input output time harmonic response
+@@ -98,6 +98,12 @@ subroutine tpefora(im,ddm,idhr,pse,wra,wui,wnui,hrs,&
+ !     return
+   ok = -1
+ !
++!     A02: reject production effort output for the inconsistent 3-node K/J.
++  if (im==2) then
++    errmsg='A02 NOT_QUALIFIED: 3-node torsion K/J interpolation mismatch; use qualified 2-node element.'
++    return
++  end if
++!
+ !     check  fprt->final time / fprts -> time step
+   if (fprt .le. 0 .or. fprts .le. 0 .or. fprts .gt. fprt) then
+ !       'invalid data ' !8
+@@ -194,67 +200,37 @@ subroutine tpefora(im,ddm,idhr,pse,wra,wui,wnui,hrs,&
+     do j = 1, np
+ !         position index
+       m = prs(j)
+-!         model index
+-      if (im .eq. 1) then
+-        l = m
+-!           next division to get angle
+-        l1 = iiff(l.lt.ddm,l+1,l-1)
+-      else
+-        l = (m-1)*2+1
+-        l1 = iiff(l.lt.ddm,l+2,l-2)
+-      end if
+-!         division id
+-      di = iiff(l.lt.ddm,m,m-1)
+-!         speed ratio
+-      if (prs(j) .gt. 1) then
+-        sr = crat(prs(j)-1)
+-      else
+-        sr = 1
+-      end if
+-!
+-!         Fourier sum
+-      aa = 0
+-      aa1 = 0
+-!         unique frequencies loop
+-      do m = 1,wnui
+-!           complex displacement angle value on response position divisi
+-        ca = hrs(l,m)
+-!           complex displacement angle value next division to response p
+-        ca1 = hrs(l1,m)
+-!           displacement angle amplitude -> va
+-        va = real(abs(ca), lrk)
+-        va1 = real(abs(ca1), lrk)
+-!           displacement angle -> fi
+-        fi = rargf(ca)
+-        fi1 = rargf(ca1)
+-!           unique frequency index
+-        o = wui(m,1)
+-!           cos frequency (rad/s)
+-        ww = wra(o)
+-!           harmonic time amplitude
+-        am = sr*va*cos(ww*tt+fi)
+-        am1 = sr*va1*cos(ww*tt+fi1)
+-!           sum of time harmonic amplitudes
+-        aa = aa+am
+-        aa1 = aa1+am1
+-!           frequency loop
++!         Node displacement retains the existing reflected-coordinate map.
++      l=(m-1)*im+1
++!         Efforts are evaluated at the upstream element's right face;
++!         the first node uses the first element's left face.
++      di=max(1,prs(j)-1)
++      xi=1._wp
++      if (prs(j)==1) xi=-1._wp
++      sr=1._wp
++      if (prs(j)>1) sr=crat(prs(j)-1)
++!
++!         Linear complex recovery per frequency, then temporal superposition.
++!         Applying the speed ratio here AND in tqdiv1f used to square it.
++      aa=0._wp; rd=0._wp; tq=0._wp; st=0._wp
++      do m=1,wnui
++        o=wui(m,1)
++        ww=wra(o)
++        phase=exp(cmplx(0._wp,ww*tt,wp))
++        aa=aa+sr*real(hrs(l,m)*phase,wp)
++        call tdvtrst_c(im,di,mtg,hrs(:,m),xi,rdhat,tqhat,sthat,errmsg,oki)
++        if (oki<0) return
++        rd=rd+real(rdhat*phase,wp)
++        tq=tq+real(tqhat*phase,wp)
++        st=st+real(sthat*phase,wp)
+       end do
+-!         time angular displacement amplitude output->hav
+-      hav(k,j) = aa
+-!         twist angle on element
+-      ad = aa-aa1
+-!         torque,stress,safety on division -> tq,st
+-      rd = tqdiv1f(di,ad,tq,st)
+-!         time angular relative displacement amplitude on division -> ht
+-      hta(k,j) = rd
+-!         time torque on division -> htq
+-      htq(k,j) = tq
+-!         time stress on division -> hst
+-      hst(k,j) = st
+-!         max angular division displacement value -> hmv
+-      if (abs(ad) .gt. hmv(j)) hmv(j) = abs(ad)
+-!         max torque value -> hmt
+-      if (abs(tq) .gt. hmt(j)) hmt(j) = tq
++!         Signed instantaneous outputs; amplitude is used only for maxima.
++      hav(k,j)=aa
++      hta(k,j)=rd
++      htq(k,j)=tq
++      hst(k,j)=st
++      hmv(j)=max(hmv(j),abs(rd))
++      hmt(j)=max(hmt(j),abs(tq))
+ !         max total angular displacement value -> hma
+       if (abs(aa) .gt. hma(j)) hma(j) = abs(aa)
+ !         response position loop
+diff --git a/src/source/torsion/tpefors.f90 b/src/source/torsion/tpefors.f90
+index 47d08d9..8d9f695 100644
+--- a/src/source/torsion/tpefors.f90
++++ b/src/source/torsion/tpefors.f90
+@@ -205,7 +205,8 @@ subroutine tpefors(im,anrd,std,plt,errmsg,ok)
+     rad = wra(j)
+ !
+ !       receptance matrix hh -> m1, thhmat.f
+-    call thhmat(rad,reye,tmd,cfi,clam,m1,nmd,mdoff,ddm,mtg)
++    call thhmat_checked(rad,reye,tmd,cfi,clam,m1,nmd,mdoff,ddm,mtg,errmsg,oki)
++    if(oki/=0) return
+ !
+ !       multiply m1 * qq -> rsp
+ !       system relative angular displacemnt for current frequency
+diff --git a/src/source/torsion/tprptran.f90 b/src/source/torsion/tprptran.f90
+index 2d82fa5..5ef41e3 100644
+--- a/src/source/torsion/tprptran.f90
++++ b/src/source/torsion/tprptran.f90
+@@ -62,6 +62,7 @@ subroutine tprptran(im,anrd,stdio,plt,errmsg,ok)
+   use rd_textfun, only: fomsgf
+   use com_mdd, only: qtd_modos, porb, rorb, rang
+   use com_sec, only: n, y, nt, nn
++  use com_sprat, only: crat
+   use com_tmat, only: tj, tk, tc, dm
+   use com_tmdm, only: tmd
+   use com_ttraneq, only: tequt
+@@ -69,6 +70,7 @@ subroutine tprptran(im,anrd,stdio,plt,errmsg,ok)
+   use com_ttransd, only: ttrmd, ttrdtt, ttrdta, nttra, ttrdsz, iseqt
+   use com_unb1, only: ndd, mu, ed, tpf, nb
+   use rd_kinds, only: lrk, wp
++  use, intrinsic :: ieee_arithmetic, only: ieee_is_finite
+   implicit none
+ !
+   character(len=99) :: errmsg
+@@ -111,7 +113,7 @@ subroutine tprptran(im,anrd,stdio,plt,errmsg,ok)
+   data nrstps /0/
+   real(lrk) :: prec, minamp, std, mean, dm1, stddvf
+ !     integration step,view step,initial integration,final integration,p
+-  real(lrk) :: its, vts, iit, fit, tpd, mndmp
++  real(lrk) :: its, vts, iit, fit, tpd, mndmp, ratio
+ !     minimum torsion damping, minimum transient torque amplification
+   character(len=1) :: blank
+   character(len=6) :: cnm
+@@ -148,6 +150,10 @@ subroutine tprptran(im,anrd,stdio,plt,errmsg,ok)
+ !
+ !     return init
+   ok = -1
++  if(im==2) then
++    errmsg='A04 NOT_QUALIFIED: 3-node torsion K/J interpolation mismatch; use qualified 2-node element'
++    return
++  end if
+ !
+ !     check for transient time data
+   if (ttrdsz .le. 0) then
+@@ -166,11 +172,10 @@ subroutine tprptran(im,anrd,stdio,plt,errmsg,ok)
+   call indorb(y,po,prs,py,no,nt,mxr,mts,errmsg,oki)
+   if (oki .lt. 0) return
+ !
+-!     copy damping matrix tc -> tc1
+-  call copmat1_d(tc,tc1,dm,dm,mtg,mtg,mtg,mtg)
+-!
+-!     sum modal damping tc1+tmd -> tc1
+-  call sommat_drd(tc1,tmd,tc1,dm,dm,mtg,mtg)
++!     Modal damping has different coordinates and units. Pull added
++!     modal damping back with J*Phi before summing with physical C.
++  call torsion_physical_damping(tc1,mtg,errmsg,oki)
++  if(oki/=0) return
+ !
+ !     torque time equation time step
+   if (iseqt) then
+@@ -257,6 +262,10 @@ subroutine tprptran(im,anrd,stdio,plt,errmsg,ok)
+       end if
+ !         excitation section index
+       m1 = pdd(ii)
++!         Same reflected-coordinate torque contract as harmonic torsion:
++!         physical theta=r*q, Q=r*T, grounded viscous Cq=r**2*Cphysical.
++      ratio=1._wp
++      if(m1>1) ratio=crat(m1-1)
+ !         torsional model 1 = 2 nodes, 2 = three nodes
+       if (im .eq. 1) then
+ !           model index
+@@ -270,8 +279,14 @@ subroutine tprptran(im,anrd,stdio,plt,errmsg,ok)
+       ite(nte) = jj
+ !         used defined damping
+       std = ttrmd(tid)
++      if(.not.ieee_is_finite(std)) then
++        errmsg='A04 tprptran: finite local transient damping required';return
++      end if
++      if(std<0._wp) then
++        errmsg='A04 tprptran: passive local transient damping must be nonnegative';return
++      end if
+ !         add defined damping on damping matrix
+-      tc1(jj,jj) = tc1(jj,jj)+std
++      tc1(jj,jj) = tc1(jj,jj)+ratio**2*std
+ !         get torque multiplier
+       std = mu(ii)
+ !         check for near zero, minamp
+@@ -292,28 +307,17 @@ subroutine tprptran(im,anrd,stdio,plt,errmsg,ok)
+ !         ttrdta(:,tid+1) -> tlm(:,nte+1)
+       do jj = 1,ttrdsz
+ !           apply multiplier std
+-        tlm(jj,nte+1) = ttrdta(tid,jj)*std
++        tlm(jj,nte+1) = ratio*ttrdta(tid,jj)*std
+       end do
+ !         excitation kind if
+     end if
+ !       excitation loop
+   end do
+ !
+-!     check for minimum value of damping
++!     A passive undamped model is valid. Warn without inventing a grounded
++!     dashpot: artificial minimum damping changes energy and rigid motion.
+   if (.not. chkdmpf(dm,mtg,tc1)) then
+-!       warning message
+-    call elmsgw(0,30,nmm)
+-!       first excitation section index
+-    m1 = ite(1)
+-!       torsional model 1 = 2 nodes, 2 = three nodes
+-    if (im .eq. 1) then
+-!         model index
+-      jj = m1
+-    else if (im .eq. 2) then
+-      jj = (m1-1)*2+1
+-    end if
+-!       add defined minimum damping on damping matrix
+-    tc1(jj,jj) = mndmp
++    write(*,'(a)') 'A04 tprptran: no physical/modal damping; integrating the specified undamped model'
+   end if
+ !
+ !     check for transient excitations
+diff --git a/src/source/torsion/tresp_f.f90 b/src/source/torsion/tresp_f.f90
+index b96e8ed..e7c2d66 100644
+--- a/src/source/torsion/tresp_f.f90
++++ b/src/source/torsion/tresp_f.f90
+@@ -87,18 +87,26 @@ subroutine tresp_f(im,anrd,lgp,std,plt,errmsg,ok)
+   parameter (mtr = mtg)
+ !
+   real(lrk) :: rpg, py, reye, rdr, tqr, str
+-  real(wp) :: rd
++  complex(wp) :: rdhat,tqhat,sthat
++  real(wp) :: xi
+   complex(wp) :: clam, cfi, qq, m1, rsp, amp
+   dimension rpg(mtr),py(mxp),&
+   &reye(mtg,mtg),clam(mtg,mtg),cfi(mtg,mtg),&
+   &qq(mtg,1),m1(mtg,mtg),rsp(mtg,mtg),amp(mxp,mtr),&
+-  &rd(mtr),rdr(mxp,mtr),tqr(mxp,mtr),str(mxp,mtr)
++  &rdr(mxp,mtr),tqr(mxp,mtr),str(mxp,mtr)
+ !
+   intrinsic :: exp, min
+ !
+ !     return
+   ok = -1
+ !
++!     A02: native three-node K uses two linear halves, but J is quadratic.
++!     Do not present an unqualified interpolation as a valid stress model.
++  if (im==2) then
++    errmsg='A02 NOT_QUALIFIED: 3-node torsion K/J interpolation mismatch; use qualified 2-node element.'
++    return
++  end if
++!
+ !     parameters check
+ !     speed delta
+   if (dw_r .le. 0) then
+@@ -235,16 +243,12 @@ subroutine tresp_f(im,anrd,lgp,std,plt,errmsg,ok)
+     rad = rpm2radf(rpm)
+ !
+ !       receptance matrix hh -> m1, thhmat.f
+-    call thhmat(rad,reye,tmd,cfi,clam,m1,nmd,mdoff,ddm,mtg)
++    call thhmat_checked(rad,reye,tmd,cfi,clam,m1,nmd,mdoff,ddm,mtg,errmsg,oki)
++    if(oki/=0) return
+ !
+ !       multiply m1 * qq -> rsp
+     call ZGEMM (c1,c1,ddm,1,ddm,r1,m1,mtg,qq,mtg,j0,rsp,mtg)
+ !
+-!        convert complex angular displacent amplitude -> rd
+-    do j = 1,ddm
+-      rd(j) = abs(rsp(j,1))
+-    end do
+-!
+ !       response positions
+     do i = 1,np
+ !         model index, response index -> ll
+@@ -262,11 +266,20 @@ subroutine tresp_f(im,anrd,lgp,std,plt,errmsg,ok)
+       end if
+ !         complex amplitude with speed ratio -> amp
+       amp(i,k) = rad*rsp(ll,1)
+-!         response division index
+-      j = prs(i)-1
+-!         torque and displacement on element
+-!         between two divisions -> rdr,tqr,str (ttrqdiv.f)
+-      call tdvtrst(im,j,mtr,rd,rdr(i,k),tqr(i,k),str(i,k))
++!         Use the upstream element at a requested node; first node uses
++!         the first element's left face (there is no division zero).
++      j=max(1,prs(i)-1)
++      xi=1._wp
++      if (prs(i)==1) xi=-1._wp
++!         Recover complex twist/elastic torque/nominal shear BEFORE abs.
++      call tdvtrst_c(im,j,mtg,rsp(:,1),xi,rdhat,tqhat,sthat,errmsg,oki)
++      if (oki<0) then
++        call progress_end('TORSION_FREQUENCY_RESPONSE','FAILED')
++        return
++      end if
++      rdr(i,k)=abs(rdhat)
++      tqr(i,k)=abs(tqhat)
++      str(i,k)=abs(sthat)
+     end do
+ !
+ !       rpm speed to graphics
+diff --git a/src/source/torsion/tsaidas.f90 b/src/source/torsion/tsaidas.f90
+index 5da44ac..6377169 100644
+--- a/src/source/torsion/tsaidas.f90
++++ b/src/source/torsion/tsaidas.f90
+@@ -606,6 +606,10 @@ subroutine ts_resp_f(nm,np,nrp,py,rpg,amp,rdr,tqr,str,&
+ !
+   write(iu,5,err=200) stm
+   call outdsc(iu)
++  write(iu,'(a)',err=200) 'A02: elastic element torque; nominal circular-section shear stress.'
++  write(iu,'(a)',err=200) 'Coupling-equivalent stress is not a qualified local coupling stress.'
++  write(iu,'(a)',err=200) 'Effort face: upstream element at each node; first node uses its downstream element.'
++
+   txt = txtmsgf(50, 105)
+   i = len_trim(txt)
+   write(iu,15,err=200) txt(1:i),nm
+@@ -1038,6 +1042,10 @@ subroutine ts_pefor(im,np,ntp,pse,pui,pnui,wnui,wui,wra,&
+ !
+   write(iu,5,err=200) stm
+   call outdsc(iu)
++  write(iu,'(a)',err=200) 'A02: elastic element torque; nominal circular-section shear stress.'
++  write(iu,'(a)',err=200) 'Coupling-equivalent stress is not a qualified local coupling stress.'
++  write(iu,'(a)',err=200) 'Effort face: upstream element at each node; first node uses its downstream element.'
++
+   call fltout(iu,txtmsgf(50, 112))
+   write(iu,25,err=200)
+ !
+diff --git a/src/source/torsion/ttrqdiv.f90 b/src/source/torsion/ttrqdiv.f90
+index 8adec89..3304574 100644
+--- a/src/source/torsion/ttrqdiv.f90
++++ b/src/source/torsion/ttrqdiv.f90
+@@ -1,3 +1,106 @@
++!     ==================================================================
++!>    A02 complex elastic recovery. theta contains reflected coordinates q.
++!>    Physical element coordinates are phi = ratio*q, as in native r^2 K/J.
++!>    leff includes only the existing equivalent compliance length.
++!>    stress is NOMINAL circular-section shear; it is not a concentration,
++!>    external torque, damping torque, or a physical coupling local stress.
++!>    im=2 uses the piecewise-linear B associated with native tk3s; its
++!>    inertia interpolation is inconsistent and production harmonic routes
++!>    remain NOT_QUALIFIED. xi=0 selects the right-hand limiting derivative.
++subroutine tqe_phasor(im,leff,shear,jpolar,radius,ratio,xi,theta,delta,torque,stress,errmsg,ok)
++  use rd_kinds, only: wp
++  use, intrinsic :: ieee_arithmetic, only: ieee_is_finite
++  implicit none
++  integer, intent(in) :: im
++  real(wp), intent(in) :: leff,shear,jpolar,radius,ratio,xi
++  complex(wp), intent(in) :: theta(3)
++  complex(wp), intent(out) :: delta,torque,stress
++  character(len=99), intent(out) :: errmsg
++  integer, intent(out) :: ok
++  real(wp) :: b(3),stiff
++  integer :: nnode
++
++  ok=-1; errmsg=''; delta=(0._wp,0._wp); torque=delta; stress=delta
++  if (im/=1 .and. im/=2) then
++    errmsg='A02: received invalid torsion element type; expected 1 (2 nodes) or 2 (3 nodes).'
++    return
++  end if
++  if (.not.all(ieee_is_finite([leff,shear,jpolar,radius,ratio,xi]))) then
++    errmsg='A02: nonfinite torsion recovery property; expected finite length, G, Jp, radius, ratio and xi.'
++    return
++  end if
++  if (leff<=0._wp .or. shear<=0._wp .or. jpolar<=0._wp .or. radius<0._wp .or. ratio==0._wp) then
++    errmsg='A02: invalid torsion recovery property; require L,G,Jp>0, radius>=0 and nonzero speed ratio.'
++    return
++  end if
++  if (abs(xi)>1._wp) then
++    errmsg='A02: torsion recovery coordinate xi outside [-1,1]; select a point inside the element.'
++    return
++  end if
++  nnode=im+1
++  if (.not.all(ieee_is_finite(real(theta(1:nnode),wp))) .or. &
++      .not.all(ieee_is_finite(aimag(theta(1:nnode))))) then
++    errmsg='A02: nonfinite angular phasor; torque/stress recovery rejected.'
++    return
++  end if
++  ! Dimensionless derivatives: B = b/leff. No abs or small-angle cutoff.
++  if (im==1) then
++    b=[-1._wp,1._wp,0._wp]
++  else if (xi<0._wp) then
++    b=[-2._wp,2._wp,0._wp]
++  else
++    b=[0._wp,-2._wp,2._wp]
++  end if
++  delta=ratio*(theta(nnode)-theta(1))
++  stiff=shear*jpolar/leff
++  ! SUM, not complex DOT_PRODUCT: the kinematic map has no conjugation.
++  torque=stiff*ratio*sum(b(1:nnode)*theta(1:nnode))
++  stress=torque*(radius/jpolar)
++  if (.not.all(ieee_is_finite([real(delta,wp),aimag(delta),real(torque,wp),aimag(torque), &
++      real(stress,wp),aimag(stress)]))) then
++    delta=(0._wp,0._wp); torque=delta; stress=delta
++    errmsg='A02: overflow/nonfinite recovered torque or stress; check units and section properties.'
++    return
++  end if
++  ok=0
++end subroutine tqe_phasor
++
++!>    Recover the complex elastic effort from the actual native element.
++!>    xi=-1 is its left face, xi=+1 its right face. For two nodes it is constant.
++subroutine tdvtrst_c(im,di,mtg,dl,xi,rd,tq,st,errmsg,ok)
++  use rd_kinds, only: wp
++  use com_sec, only: nt,y
++  use com_sea, only: ie
++  use com_sed, only: ds
++  use com_sprat, only: crat
++  use com_sprat2, only: gsst
++  use com_eqvlen, only: tsl
++  implicit none
++  integer, intent(in) :: im,di,mtg
++  complex(wp), intent(in) :: dl(mtg)
++  real(wp), intent(in) :: xi
++  complex(wp), intent(out) :: rd,tq,st
++  character(len=99), intent(out) :: errmsg
++  integer, intent(out) :: ok
++  integer :: c1,nnode
++  complex(wp) :: theta(3)
++
++  ok=-1; errmsg=''; rd=(0._wp,0._wp); tq=rd; st=rd
++  if ((im/=1 .and. im/=2) .or. di<1 .or. di>=nt) then
++    errmsg='A02: invalid torsion recovery element/division; no adjacent shaft element is available.'
++    return
++  end if
++  c1=(di-1)*im+1; nnode=im+1
++  if (c1+nnode-1>mtg) then
++    errmsg='A02: torsion phasor vector is shorter than the requested element connectivity.'
++    return
++  end if
++  theta=(0._wp,0._wp)
++  theta(1:nnode)=dl(c1:c1+nnode-1)
++  call tqe_phasor(im,y(di+1)-y(di)+tsl(di),gsst(di),2*ie(di),ds(di+1)/2,crat(di), &
++      xi,theta,rd,tq,st,errmsg,ok)
++end subroutine tdvtrst_c
++
+ !     $Id$
+ !     ==================================================================
+ !
+diff --git a/src/source/transient_forcing.f90 b/src/source/transient_forcing.f90
+index c8d6075..7cd21f9 100644
+--- a/src/source/transient_forcing.f90
++++ b/src/source/transient_forcing.f90
+@@ -106,7 +106,12 @@ subroutine transient_unbalance_force(dm,omega,alpha,phase,force,&
+         errmsg='transient: invalid unbalance DOF mapping'
+         return
+       endif
+-      force(l)=force(l)+me*(-omega*omega*sin(theta)+&
++      ! A01 native contract: r_e=e[sin(theta),cos(theta)] in fixed X,Z,
++      ! positive spin from +Z toward +X, theta=integral(Omega dt)+phase.
++      ! Force on the rotor is -m*r_e_ddot.  At alpha=0 this is exactly
++      ! Re(U*Omega**2*[-i,1]*exp(i*delta)*exp(+i*phase)), as in both
++      ! harmonic paths.  See docs/qualification/A01_UNBALANCE.md.
++      force(l)=force(l)+me*(omega*omega*sin(theta)-&
+       &alpha*cos(theta))
+       force(l+1)=force(l+1)+me*(omega*omega*cos(theta)+&
+       &alpha*sin(theta))
+diff --git a/src/source/transient_matrix.f90 b/src/source/transient_matrix.f90
+index ab490a1..eb0f7ca 100644
+--- a/src/source/transient_matrix.f90
++++ b/src/source/transient_matrix.f90
+@@ -1,6 +1,45 @@
+ !
+ !     Physical matrix update for the true transient solver.
+ !
++subroutine transient_angular_acceleration_contract(errmsg,ok)
++  ! A07: the existing deck specifies speed, not how its driving torque does
++  ! generalized work on tilt. A follower torque, an inertial-axis torque and
++  ! a torque conjugate to the Euler spin coordinate give different alpha terms.
++  ! Do not silently select one. Constant profiles and rotation-free controls
++  ! remain valid; affected ramps stop before initialization/integration.
++  use com_mat, only: mg,mka,dm
++  use com_trnctl, only: trn_speed_kind,trn_nprof
++  use com_trnprof, only: trn_prpm
++  implicit none
++  character(*), intent(out) :: errmsg
++  integer, intent(out) :: ok
++  integer :: i
++  logical :: varying
++  ok=0; errmsg=''; varying=.false.
++  if (trn_speed_kind/=1) then
++    do i=2,trn_nprof
++      if (trn_prpm(i)/=trn_prpm(i-1)) varying=.true.
++    enddo
++  endif
++  if (varying .and. (any(mg(1:dm,1:dm)/=0).or.any(mka(1:dm,1:dm)/=0))) then
++    ok=-1
++    errmsg='A07 NOT_QUALIFIED: variable spin needs drive torque/tilt-work contract; use constant RPM'
++  endif
++end subroutine transient_angular_acceleration_contract
++
++subroutine transient_compose_rotation(n,ld,omega,alpha,gyro,ka,kbase,cbase,kphys,cphys)
++  ! Algebraic kernel for a DECLARED prescribed-Euler-spin/zero-tilt-work model.
++  ! The production wrapper must establish its angular-acceleration contract.
++  use rd_kinds, only: wp
++  implicit none
++  integer, intent(in) :: n,ld
++  real(wp), intent(in) :: omega,alpha,gyro(ld,ld),ka(ld,ld),kbase(ld,ld),cbase(ld,ld)
++  real(wp), intent(out) :: kphys(ld,ld),cphys(ld,ld)
++  ! Only the active block belongs to this model (ld is the fixed capacity).
++  kphys(1:n,1:n)=kbase(1:n,1:n)+alpha*ka(1:n,1:n)
++  cphys(1:n,1:n)=cbase(1:n,1:n)+omega*gyro(1:n,1:n)
++end subroutine transient_compose_rotation
++
+ subroutine transient_check_bearing_range(rpm,errmsg,ok)
+   use com_knd, only: cknd, supr
+   use com_nbc, only: cp, scl, bc
+@@ -41,9 +80,10 @@ end subroutine transient_check_bearing_range
+ !
+ subroutine transient_matrix_update(dm,pp,rpm,omega,alpha,&
+ &mass,gyro,kbase,cbase,kphys,cphys,errmsg,ok)
+-  use com_mat, only: mm, mg, gdm => dm, smn
++  use com_mat, only: mm, mg, mka, gdm => dm, smn
+   use com_mtk, only: mk1
+   use rd_kinds, only: lrk, wp
++  use, intrinsic :: ieee_arithmetic, only: ieee_is_finite
+   implicit none
+   integer :: mtg
+   parameter(mtg=500)
+@@ -60,6 +100,14 @@ subroutine transient_matrix_update(dm,pp,rpm,omega,alpha,&
+     errmsg='transient: inconsistent global matrix dimension'
+     return
+   endif
++  if(.not.ieee_is_finite(alpha)) then
++    errmsg='A07: angular acceleration must be finite'
++    return
++  endif
++  if(alpha/=0._wp .and. (any(mg(1:dm,1:dm)/=0).or.any(mka(1:dm,1:dm)/=0))) then
++    errmsg='A07 NOT_QUALIFIED: variable spin needs drive torque/tilt-work contract; use constant RPM'
++    return
++  endif
+   call transient_check_bearing_range(rpm,errmsg,oki)
+   if(oki.ne.0) return
+   call prpkc(real(omega, lrk),dm,pp,wk,wc,0,errmsg,oki)
+@@ -70,10 +118,9 @@ subroutine transient_matrix_update(dm,pp,rpm,omega,alpha,&
+       gyro(i,j)=real(mg(i,j), wp)
+       kbase(i,j)=real(mk1(i,j), wp)+real(real(wk(i,j)), wp)
+       cbase(i,j)=real(real(wc(i,j)), wp)
+-      kphys(i,j)=kbase(i,j)+alpha*gyro(i,j)
+-      cphys(i,j)=cbase(i,j)+omega*gyro(i,j)
+     enddo
+   enddo
++  call transient_compose_rotation(dm,mtg,omega,alpha,gyro,mka,kbase,cbase,kphys,cphys)
+   ok=0
+   return
+ end subroutine transient_matrix_update
+diff --git a/src/source/transient_solver.f90 b/src/source/transient_solver.f90
+index 8e06ef9..1782c41 100644
+--- a/src/source/transient_solver.f90
++++ b/src/source/transient_solver.f90
+@@ -115,6 +115,8 @@ subroutine transient_run(iu,pp,run_dt,write_output,metrics,&
+   character(len=*) :: errmsg
+   character(len=32) :: pan
+   ok=-1
++  call transient_angular_acceleration_contract(errmsg,oki)
++  if(oki.ne.0) return
+   nstep=nint((trn_tend-trn_tstart)/run_dt)
+   if(write_output) then
+     pan='TRUE_TRANSIENT'

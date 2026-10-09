@@ -1,0 +1,189 @@
+{
+  "status": "PASS",
+  "cases": {
+    "default_output": {
+      "status": "PASS",
+      "returncode": 0,
+      "issues": []
+    },
+    "explicit_output": {
+      "status": "PASS",
+      "returncode": 0,
+      "issues": []
+    },
+    "roundoff_end": {
+      "status": "PASS",
+      "returncode": 0,
+      "issues": []
+    },
+    "explicit_fine": {
+      "status": "PASS",
+      "returncode": 0,
+      "issues": []
+    },
+    "explicit_coarse": {
+      "status": "PASS",
+      "returncode": 0,
+      "issues": []
+    },
+    "explicit_incommensurate": {
+      "status": "PASS",
+      "returncode": 0,
+      "issues": []
+    },
+    "translated_text": {
+      "status": "PASS",
+      "returncode": 0,
+      "issues": []
+    },
+    "invalid_negative_output": {
+      "status": "PASS",
+      "returncode": 1,
+      "issues": []
+    }
+  },
+  "comparisons": [
+    {
+      "case": "default_output",
+      "channel": "load",
+      "status": "PASS",
+      "common_rows": 17,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "default_output",
+      "channel": "angle",
+      "status": "PASS",
+      "common_rows": 17,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "default_output",
+      "channel": "division_angle",
+      "status": "PASS",
+      "common_rows": 17,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "default_output",
+      "channel": "torque",
+      "status": "PASS",
+      "common_rows": 17,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "default_output",
+      "channel": "stress",
+      "status": "PASS",
+      "common_rows": 17,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_fine",
+      "channel": "load",
+      "status": "PASS",
+      "common_rows": 17,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_fine",
+      "channel": "angle",
+      "status": "PASS",
+      "common_rows": 17,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_fine",
+      "channel": "division_angle",
+      "status": "PASS",
+      "common_rows": 17,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_fine",
+      "channel": "torque",
+      "status": "PASS",
+      "common_rows": 17,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_fine",
+      "channel": "stress",
+      "status": "PASS",
+      "common_rows": 17,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_coarse",
+      "channel": "load",
+      "status": "PASS",
+      "common_rows": 9,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_coarse",
+      "channel": "angle",
+      "status": "PASS",
+      "common_rows": 9,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_coarse",
+      "channel": "division_angle",
+      "status": "PASS",
+      "common_rows": 9,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_coarse",
+      "channel": "torque",
+      "status": "PASS",
+      "common_rows": 9,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_coarse",
+      "channel": "stress",
+      "status": "PASS",
+      "common_rows": 9,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_incommensurate",
+      "channel": "load",
+      "status": "PASS",
+      "common_rows": 3,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_incommensurate",
+      "channel": "angle",
+      "status": "PASS",
+      "common_rows": 3,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_incommensurate",
+      "channel": "division_angle",
+      "status": "PASS",
+      "common_rows": 3,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_incommensurate",
+      "channel": "torque",
+      "status": "PASS",
+      "common_rows": 3,
+      "max_scaled_difference": 0.0
+    },
+    {
+      "case": "explicit_incommensurate",
+      "channel": "stress",
+      "status": "PASS",
+      "common_rows": 3,
+      "max_scaled_difference": 0.0
+    }
+  ],
+  "failures": [],
+  "scope": "CLI publication/constitutive chain regression; independent physical references in native companion"
+}

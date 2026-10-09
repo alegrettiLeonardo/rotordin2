@@ -1,0 +1,16 @@
+============================================================
+ ROTORDIN - FOUNDATION DYNAMIC STIFFNESS AUDIT
+============================================================
+ FOUNDATION_MODEL: DYNAMIC_STIFFNESS_TABLE
+ FOUNDATION DOF:      4
+ TABLE POINTS:      2
+ FREQUENCY MIN [Hz]:       1.0000
+ FREQUENCY MAX [Hz]:     100.0000
+ INTERNAL STIFFNESS UNIT: N/M
+ INPUT FORMAT: AMPLITUDE_PHASE
+ INTERPOLATION: LINEAR REAL_IMAG
+ RECIPROCAL 4X4 MATRIX: YES (10 TERMS)
+ SUPPORTED ANALYSIS: LATERAL FREQUENCY RESPONSE
+ INTERFACES:      2
+    1   SUPPORT          1          1          2
+    2   SUPPORT          2          3          4
